@@ -1,0 +1,442 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Ring Library &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4. Mempool Library" href="mempool_lib.html" />
+    <link rel="prev" title="2. Overview" href="overview.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="mempool_lib.html" title="4. Mempool Library"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="2. Overview"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Ring Library</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="ring-library">
+<span id="id1"></span><h1><span class="section-number">3. </span>Ring Library<a class="headerlink" href="#ring-library" title="Permalink to this headline">¶</a></h1>
+<p>The ring allows the management of queues.
+Instead of having a linked list of infinite size, the cne_ring has the following properties:</p>
+<ul class="simple">
+<li><p>FIFO</p></li>
+<li><p>Maximum size is fixed, the objects are stored in a table</p></li>
+<li><p>Objects can be pointers or elements of multiple of 4 byte size</p></li>
+<li><p>Lockless implementation</p></li>
+<li><p>Multi-consumer or single-consumer dequeue</p></li>
+<li><p>Multi-producer or single-producer enqueue</p></li>
+<li><p>Bulk dequeue - Dequeues the specified count of objects if successful; otherwise fails</p></li>
+<li><p>Bulk enqueue - Enqueues the specified count of objects if successful; otherwise fails</p></li>
+<li><p>Burst dequeue - Dequeue the maximum available objects if the specified count cannot be fulfilled</p></li>
+<li><p>Burst enqueue - Enqueue the maximum available objects if the specified count cannot be fulfilled</p></li>
+</ul>
+<p>The advantages of this data structure over a linked list queue are as follows:</p>
+<ul class="simple">
+<li><p>Faster; only requires a single 32 bit Compare-And-Swap instruction instead of several pointer size Compare-And-Swap instructions.</p></li>
+<li><p>Simpler than a full lockless queue.</p></li>
+<li><p>Adapted to bulk enqueue/dequeue operations.
+As objects are stored in a table, a dequeue of several objects will not produce as many cache misses as in a linked queue.
+Also, a bulk dequeue of many objects does not cost more than a dequeue of a simple object.</p></li>
+</ul>
+<p>The disadvantages:</p>
+<ul class="simple">
+<li><p>Size is fixed</p></li>
+<li><p>Having many rings costs more in terms of memory than a linked list queue. An empty ring contains at least N objects.</p></li>
+</ul>
+<p>A simplified representation of a Ring is shown in with consumer and producer head and tail pointers to objects stored in the data structure.</p>
+<figure class="align-default" id="id3">
+<span id="figure-ring1"></span><img alt="../images/ring1.svg" src="../images/ring1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.1 </span><span class="caption-text">Ring Structure</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="lockless-ring-buffer-in-linux">
+<h2><span class="section-number">3.1. </span>Lockless Ring Buffer in Linux*<a class="headerlink" href="#lockless-ring-buffer-in-linux" title="Permalink to this headline">¶</a></h2>
+<p>The following is a link describing the <a class="reference external" href="http://lwn.net/Articles/340400/">Linux Lockless Ring Buffer Design</a>.</p>
+</section>
+<section id="additional-features">
+<h2><span class="section-number">3.2. </span>Additional Features<a class="headerlink" href="#additional-features" title="Permalink to this headline">¶</a></h2>
+<section id="name">
+<h3><span class="section-number">3.2.1. </span>Name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<p>A ring is identified by a unique name. It’s imporant that the application maintains
+the current rings and their names in order to avoid creating rings with a duplicate
+name.</p>
+</section>
+</section>
+<section id="use-cases">
+<h2><span class="section-number">3.3. </span>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
+<p>Use cases for the Ring library include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Communication between applications in CNDP</p></li>
+<li><p>Running a CNDP application with a psuedo ethernet device.</p></li>
+<li><p>Used by memory pool allocator</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="anatomy-of-a-ring-buffer">
+<h2><span class="section-number">3.4. </span>Anatomy of a Ring Buffer<a class="headerlink" href="#anatomy-of-a-ring-buffer" title="Permalink to this headline">¶</a></h2>
+<p>This section explains how a ring buffer operates.
+The ring structure is composed of two head and tail couples; one is used by producers and one is used by the consumers.
+The figures of the following sections refer to them as prod_head, prod_tail, cons_head and cons_tail.</p>
+<p>Each figure represents a simplified state of the ring, which is a circular buffer.
+The content of the function local variables is represented on the top of the figure,
+and the content of ring structure is represented on the bottom of the figure.</p>
+<section id="single-producer-enqueue">
+<h3><span class="section-number">3.4.1. </span>Single Producer Enqueue<a class="headerlink" href="#single-producer-enqueue" title="Permalink to this headline">¶</a></h3>
+<p>This section explains what occurs when a producer adds an object to the ring.
+In this example, only the producer head and tail (prod_head and prod_tail) are modified,
+and there is only one producer.</p>
+<p>The initial state is to have a prod_head and prod_tail pointing at the same location.</p>
+<section id="enqueue-first-step">
+<h4><span class="section-number">3.4.1.1. </span>Enqueue First Step<a class="headerlink" href="#enqueue-first-step" title="Permalink to this headline">¶</a></h4>
+<p>First, <em>ring-&gt;prod_head</em> and ring-&gt;cons_tail are copied in local variables.
+The prod_next local variable points to the next element of the table, or several elements after in case of bulk enqueue.</p>
+<p>If there is not enough room in the ring (this is detected by checking cons_tail), it returns an error.</p>
+<figure class="align-default" id="id4">
+<span id="figure-ring-enqueue1"></span><img alt="../images/ring-enqueue1.svg" src="../images/ring-enqueue1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.2 </span><span class="caption-text">Enqueue first step</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="enqueue-second-step">
+<h4><span class="section-number">3.4.1.2. </span>Enqueue Second Step<a class="headerlink" href="#enqueue-second-step" title="Permalink to this headline">¶</a></h4>
+<p>The second step is to modify <em>ring-&gt;prod_head</em> in ring structure to point to the same location as prod_next.</p>
+<p>The added object is copied in the ring (obj4).</p>
+<figure class="align-default" id="id5">
+<span id="figure-ring-enqueue2"></span><img alt="../images/ring-enqueue2.svg" src="../images/ring-enqueue2.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.3 </span><span class="caption-text">Enqueue second step</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="enqueue-last-step">
+<h4><span class="section-number">3.4.1.3. </span>Enqueue Last Step<a class="headerlink" href="#enqueue-last-step" title="Permalink to this headline">¶</a></h4>
+<p>Once the object is added in the ring, ring-&gt;prod_tail in the ring structure is modified to point to the same location as <em>ring-&gt;prod_head</em>.
+The enqueue operation is finished.</p>
+<figure class="align-default" id="id6">
+<span id="figure-ring-enqueue3"></span><img alt="../images/ring-enqueue3.svg" src="../images/ring-enqueue3.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.4 </span><span class="caption-text">Enqueue last step</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="single-consumer-dequeue">
+<h3><span class="section-number">3.4.2. </span>Single Consumer Dequeue<a class="headerlink" href="#single-consumer-dequeue" title="Permalink to this headline">¶</a></h3>
+<p>This section explains what occurs when a consumer dequeues an object from the ring.
+In this example, only the consumer head and tail (cons_head and cons_tail) are modified and there is only one consumer.</p>
+<p>The initial state is to have a cons_head and cons_tail pointing at the same location.</p>
+<section id="dequeue-first-step">
+<h4><span class="section-number">3.4.2.1. </span>Dequeue First Step<a class="headerlink" href="#dequeue-first-step" title="Permalink to this headline">¶</a></h4>
+<p>First, ring-&gt;cons_head and ring-&gt;prod_tail are copied in local variables.
+The cons_next local variable points to the next element of the table, or several elements after in the case of bulk dequeue.</p>
+<p>If there are not enough objects in the ring (this is detected by checking prod_tail), it returns an error.</p>
+<figure class="align-default" id="id7">
+<span id="figure-ring-dequeue1"></span><img alt="../images/ring-dequeue1.svg" src="../images/ring-dequeue1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.5 </span><span class="caption-text">Dequeue last step</span><a class="headerlink" href="#id7" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dequeue-second-step">
+<h4><span class="section-number">3.4.2.2. </span>Dequeue Second Step<a class="headerlink" href="#dequeue-second-step" title="Permalink to this headline">¶</a></h4>
+<p>The second step is to modify ring-&gt;cons_head in the ring structure to point to the same location as cons_next.</p>
+<p>The dequeued object (obj1) is copied in the pointer given by the user.</p>
+<figure class="align-default" id="id8">
+<span id="figure-ring-dequeue2"></span><img alt="../images/ring-dequeue2.svg" src="../images/ring-dequeue2.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.6 </span><span class="caption-text">Dequeue second step</span><a class="headerlink" href="#id8" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="dequeue-last-step">
+<h4><span class="section-number">3.4.2.3. </span>Dequeue Last Step<a class="headerlink" href="#dequeue-last-step" title="Permalink to this headline">¶</a></h4>
+<p>Finally, ring-&gt;cons_tail in the ring structure is modified to point to the same location as ring-&gt;cons_head.
+The dequeue operation is finished.</p>
+<figure class="align-default" id="id9">
+<span id="figure-ring-dequeue3"></span><img alt="../images/ring-dequeue3.svg" src="../images/ring-dequeue3.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.7 </span><span class="caption-text">Dequeue last step</span><a class="headerlink" href="#id9" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="multiple-producers-enqueue">
+<h3><span class="section-number">3.4.3. </span>Multiple Producers Enqueue<a class="headerlink" href="#multiple-producers-enqueue" title="Permalink to this headline">¶</a></h3>
+<p>This section explains what occurs when two producers concurrently add an object to the ring.
+In this example, only the producer head and tail (prod_head and prod_tail) are modified.</p>
+<p>The initial state is to have a prod_head and prod_tail pointing at the same location.</p>
+<section id="multiple-producers-enqueue-first-step">
+<h4><span class="section-number">3.4.3.1. </span>Multiple Producers Enqueue First Step<a class="headerlink" href="#multiple-producers-enqueue-first-step" title="Permalink to this headline">¶</a></h4>
+<p>On both cores, <em>ring-&gt;prod_head</em> and ring-&gt;cons_tail are copied in local variables.
+The prod_next local variable points to the next element of the table,
+or several elements after in the case of bulk enqueue.</p>
+<p>If there is not enough room in the ring (this is detected by checking cons_tail), it returns an error.</p>
+<figure class="align-default" id="id10">
+<span id="figure-ring-mp-enqueue1"></span><img alt="../images/ring-mp-enqueue1.svg" src="../images/ring-mp-enqueue1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.8 </span><span class="caption-text">Multiple producer enqueue first step</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multiple-producers-enqueue-second-step">
+<h4><span class="section-number">3.4.3.2. </span>Multiple Producers Enqueue Second Step<a class="headerlink" href="#multiple-producers-enqueue-second-step" title="Permalink to this headline">¶</a></h4>
+<p>The second step is to modify ring-&gt;prod_head in the ring structure to point to the same location as prod_next.
+This operation is done using a Compare And Swap (CAS) instruction, which does the following operations atomically:</p>
+<ul class="simple">
+<li><p>If ring-&gt;prod_head is different to local variable prod_head,
+the CAS operation fails, and the code restarts at first step.</p></li>
+<li><p>Otherwise, ring-&gt;prod_head is set to local prod_next,
+the CAS operation is successful, and processing continues.</p></li>
+</ul>
+<p>In the figure, the operation succeeded on core 1, and step one restarted on core 2.</p>
+<figure class="align-default" id="id11">
+<span id="figure-ring-mp-enqueue2"></span><img alt="../images/ring-mp-enqueue2.svg" src="../images/ring-mp-enqueue2.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.9 </span><span class="caption-text">Multiple producer enqueue second step</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multiple-producers-enqueue-third-step">
+<h4><span class="section-number">3.4.3.3. </span>Multiple Producers Enqueue Third Step<a class="headerlink" href="#multiple-producers-enqueue-third-step" title="Permalink to this headline">¶</a></h4>
+<p>The CAS operation is retried on core 2 with success.</p>
+<p>The core 1 updates one element of the ring(obj4), and the core 2 updates another one (obj5).</p>
+<figure class="align-default" id="id12">
+<span id="figure-ring-mp-enqueue3"></span><img alt="../images/ring-mp-enqueue3.svg" src="../images/ring-mp-enqueue3.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.10 </span><span class="caption-text">Multiple producer enqueue third step</span><a class="headerlink" href="#id12" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multiple-producers-enqueue-fourth-step">
+<h4><span class="section-number">3.4.3.4. </span>Multiple Producers Enqueue Fourth Step<a class="headerlink" href="#multiple-producers-enqueue-fourth-step" title="Permalink to this headline">¶</a></h4>
+<p>Each core now wants to update ring-&gt;prod_tail.
+A core can only update it if ring-&gt;prod_tail is equal to the prod_head local variable.
+This is only true on core 1. The operation is finished on core 1.</p>
+<figure class="align-default" id="id13">
+<span id="figure-ring-mp-enqueue4"></span><img alt="../images/ring-mp-enqueue4.svg" src="../images/ring-mp-enqueue4.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.11 </span><span class="caption-text">Multiple producer enqueue fourth step</span><a class="headerlink" href="#id13" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="multiple-producers-enqueue-last-step">
+<h4><span class="section-number">3.4.3.5. </span>Multiple Producers Enqueue Last Step<a class="headerlink" href="#multiple-producers-enqueue-last-step" title="Permalink to this headline">¶</a></h4>
+<p>Once ring-&gt;prod_tail is updated by core 1, core 2 is allowed to update it too.
+The operation is also finished on core 2.</p>
+<figure class="align-default" id="id14">
+<span id="figure-ring-mp-enqueue5"></span><img alt="../images/ring-mp-enqueue5.svg" src="../images/ring-mp-enqueue5.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.12 </span><span class="caption-text">Multiple producer enqueue last step</span><a class="headerlink" href="#id14" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="modulo-32-bit-indexes">
+<h3><span class="section-number">3.4.4. </span>Modulo 32-bit Indexes<a class="headerlink" href="#modulo-32-bit-indexes" title="Permalink to this headline">¶</a></h3>
+<p>In the preceding figures, the prod_head, prod_tail, cons_head and cons_tail indexes are represented by arrows.
+In the actual implementation, these values are not between 0 and size(ring)-1 as would be assumed.
+The indexes are between 0 and 2^32 -1, and we mask their value when we access the object table (the ring itself).
+32-bit modulo also implies that operations on indexes (such as, add/subtract) will automatically do 2^32 modulo
+if the result overflows the 32-bit number range.</p>
+<p>The following are two examples that help to explain how indexes are used in a ring.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>To simplify the explanation, operations with modulo 16-bit are used instead of modulo 32-bit.
+In addition, the four indexes are defined as unsigned 16-bit integers,
+as opposed to unsigned 32-bit integers in the more realistic case.</p>
+</div>
+<figure class="align-default" id="id15">
+<span id="figure-ring-modulo1"></span><img alt="../images/ring-modulo1.svg" src="../images/ring-modulo1.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.13 </span><span class="caption-text">Modulo 32-bit indexes - Example 1</span><a class="headerlink" href="#id15" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>This ring contains 11000 entries.</p>
+<figure class="align-default" id="id16">
+<span id="figure-ring-modulo2"></span><img alt="../images/ring-modulo2.svg" src="../images/ring-modulo2.svg" /><figcaption>
+<p><span class="caption-number">Fig. 3.14 </span><span class="caption-text">Modulo 32-bit indexes - Example 2</span><a class="headerlink" href="#id16" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>This ring contains 12536 entries.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For ease of understanding, we use modulo 65536 operations in the above examples.
+In real execution cases, this is redundant for low efficiency, but is done automatically when the result overflows.</p>
+</div>
+<p>The code always maintains a distance between producer and consumer between 0 and size(ring)-1.
+Thanks to this property, we can do subtractions between 2 index values in a modulo-32bit base:
+that’s why the overflow of the indexes is not a problem.</p>
+<p>At any time, entries and free_entries are between 0 and size(ring)-1,
+even if only the first term of subtraction has overflowed:</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">uint32_t</span> <span class="n">entries</span> <span class="o">=</span> <span class="p">(</span><span class="n">prod_tail</span> <span class="o">-</span> <span class="n">cons_head</span><span class="p">);</span>
+<span class="kt">uint32_t</span> <span class="n">free_entries</span> <span class="o">=</span> <span class="p">(</span><span class="n">mask</span> <span class="o">+</span> <span class="n">cons_tail</span> <span class="o">-</span><span class="n">prod_head</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2><span class="section-number">3.5. </span>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="http://svn.freebsd.org/viewvc/base/release/8.0.0/sys/sys/buf_ring.h?revision=199625&amp;amp;view=markup">bufring.h in FreeBSD</a> (version 8)</p></li>
+<li><p><a class="reference external" href="http://svn.freebsd.org/viewvc/base/release/8.0.0/sys/kern/subr_bufring.c?revision=199625&amp;amp;view=markup">bufring.c in FreeBSD</a> (version 8)</p></li>
+<li><p><a class="reference external" href="http://lwn.net/Articles/340400/">Linux Lockless Ring Buffer Design</a></p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">3. Ring Library</a><ul>
+<li><a class="reference internal" href="#lockless-ring-buffer-in-linux">3.1. Lockless Ring Buffer in Linux*</a></li>
+<li><a class="reference internal" href="#additional-features">3.2. Additional Features</a><ul>
+<li><a class="reference internal" href="#name">3.2.1. Name</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#use-cases">3.3. Use Cases</a></li>
+<li><a class="reference internal" href="#anatomy-of-a-ring-buffer">3.4. Anatomy of a Ring Buffer</a><ul>
+<li><a class="reference internal" href="#single-producer-enqueue">3.4.1. Single Producer Enqueue</a><ul>
+<li><a class="reference internal" href="#enqueue-first-step">3.4.1.1. Enqueue First Step</a></li>
+<li><a class="reference internal" href="#enqueue-second-step">3.4.1.2. Enqueue Second Step</a></li>
+<li><a class="reference internal" href="#enqueue-last-step">3.4.1.3. Enqueue Last Step</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#single-consumer-dequeue">3.4.2. Single Consumer Dequeue</a><ul>
+<li><a class="reference internal" href="#dequeue-first-step">3.4.2.1. Dequeue First Step</a></li>
+<li><a class="reference internal" href="#dequeue-second-step">3.4.2.2. Dequeue Second Step</a></li>
+<li><a class="reference internal" href="#dequeue-last-step">3.4.2.3. Dequeue Last Step</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#multiple-producers-enqueue">3.4.3. Multiple Producers Enqueue</a><ul>
+<li><a class="reference internal" href="#multiple-producers-enqueue-first-step">3.4.3.1. Multiple Producers Enqueue First Step</a></li>
+<li><a class="reference internal" href="#multiple-producers-enqueue-second-step">3.4.3.2. Multiple Producers Enqueue Second Step</a></li>
+<li><a class="reference internal" href="#multiple-producers-enqueue-third-step">3.4.3.3. Multiple Producers Enqueue Third Step</a></li>
+<li><a class="reference internal" href="#multiple-producers-enqueue-fourth-step">3.4.3.4. Multiple Producers Enqueue Fourth Step</a></li>
+<li><a class="reference internal" href="#multiple-producers-enqueue-last-step">3.4.3.5. Multiple Producers Enqueue Last Step</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#modulo-32-bit-indexes">3.4.4. Modulo 32-bit Indexes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#references">3.5. References</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="overview.html"
+                        title="previous chapter"><span class="section-number">2. </span>Overview</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="mempool_lib.html"
+                        title="next chapter"><span class="section-number">4. </span>Mempool Library</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/ring_lib.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="mempool_lib.html" title="4. Mempool Library"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="overview.html" title="2. Overview"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">3. </span>Ring Library</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

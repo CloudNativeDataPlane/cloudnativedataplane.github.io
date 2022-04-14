@@ -1,0 +1,20 @@
+var searchData=
+[
+  ['jcfg_5fapplication_5ftype_4768',['JCFG_APPLICATION_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3ab15e56e6c5d92d9e9a6ed4dcbf2230ec',1,'jcfg.h']]],
+  ['jcfg_5fdebug_5fdecoding_4769',['JCFG_DEBUG_DECODING',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24aeb39ba5953c0db10891c6f2ebc9f34e4',1,'jcfg.h']]],
+  ['jcfg_5fdebug_5fparsing_4770',['JCFG_DEBUG_PARSING',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24a0d08ebfed909869fa335ea7af24eb17b',1,'jcfg.h']]],
+  ['jcfg_5fdefault_5ftype_4771',['JCFG_DEFAULT_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3a6b13fc79fa1e44524da0d618055be656',1,'jcfg.h']]],
+  ['jcfg_5finfo_5fstrict_5fflag_4772',['JCFG_INFO_STRICT_FLAG',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24adfa34af13204f75d249ee3790327bf76',1,'jcfg.h']]],
+  ['jcfg_5finfo_5fverbose_4773',['JCFG_INFO_VERBOSE',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24aec6f8aac6114ae2117bd2e4c77afd05f',1,'jcfg.h']]],
+  ['jcfg_5flgroup_5ftype_4774',['JCFG_LGROUP_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3ae731f2698aedf5fe55876a93a0f07f37',1,'jcfg.h']]],
+  ['jcfg_5flport_5fgroup_5ftype_4775',['JCFG_LPORT_GROUP_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3afa368ade73075638e08b53456d2b472f',1,'jcfg.h']]],
+  ['jcfg_5flport_5ftype_4776',['JCFG_LPORT_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3abe7f7a30891a9a80bb1df4191f3c735e',1,'jcfg.h']]],
+  ['jcfg_5fmax_5ftypes_4777',['JCFG_MAX_TYPES',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3ac8b0a9ff1020693f780e782b21c82b6d',1,'jcfg.h']]],
+  ['jcfg_5foption_5ftype_4778',['JCFG_OPTION_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3a8c36b52f98b21296f26c852b89674b5d',1,'jcfg.h']]],
+  ['jcfg_5fparse_5ffile_4779',['JCFG_PARSE_FILE',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24a5b95d6a20f1adfaf9ea362633f693b4d',1,'jcfg.h']]],
+  ['jcfg_5fparse_5fsocket_4780',['JCFG_PARSE_SOCKET',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24a7f32c250c5c396c2ccd24b116620e40f',1,'jcfg.h']]],
+  ['jcfg_5fparse_5fstring_4781',['JCFG_PARSE_STRING',['../jcfg_8h.html#a5a77d65f4abba81d4456fa6ba8136e24a4fee8d3307730d2ff80be3cb39dcfe55',1,'jcfg.h']]],
+  ['jcfg_5fthread_5ftype_4782',['JCFG_THREAD_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3a92933a312a35d770b75f95175796be4c',1,'jcfg.h']]],
+  ['jcfg_5fumem_5ftype_4783',['JCFG_UMEM_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3aee3a0248ca83fa6fa4a11cbe7770b420',1,'jcfg.h']]],
+  ['jcfg_5fuser_5ftype_4784',['JCFG_USER_TYPE',['../jcfg_8h.html#a748b0ddec315feeb82446e53c2cad7e3a4d83952e4a37f56043a07499429d3a0d',1,'jcfg.h']]]
+];

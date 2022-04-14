@@ -1,0 +1,312 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Overview &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Ring Library" href="ring_lib.html" />
+    <link rel="prev" title="1. Introduction" href="intro.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="ring_lib.html" title="3. Ring Library"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="1. Introduction"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Overview</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="overview">
+<h1><span class="section-number">2. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h1>
+<p>This section gives a global overview of the architecture of Cloud Native Data Plane (CNDP).</p>
+<p>The main goal of the CNDP is to provide a simple, complete framework for fast packet processing in
+Cloud Native data plane applications. Users may use the code to understand some of the techniques
+employed, to build upon for prototyping or to add their own protocol stacks.</p>
+<figure class="align-default" id="id1">
+<span id="cndp-system-overview"></span><img alt="../images/cndp_system_overview.svg" src="../images/cndp_system_overview.svg" /><figcaption>
+<p><span class="caption-number">Fig. 2.1 </span><span class="caption-text">CNDP System Overview</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="development-environment">
+<h2><span class="section-number">2.1. </span>Development Environment<a class="headerlink" href="#development-environment" title="Permalink to this headline">¶</a></h2>
+<p>The CNDP project installation requires Linux and the associated toolchain,
+such as one or more compilers, assembler, make utility,
+editor and various libraries to create the CNDP components and libraries.</p>
+<p>See the <em>CNDP Getting Started Guide</em> for information on setting up the development environment.</p>
+</section>
+<section id="components">
+<h2><span class="section-number">2.2. </span>Components<a class="headerlink" href="#components" title="Permalink to this headline">¶</a></h2>
+<p>CNDP provides a number of libraries and tools that can be catagorised as follows:</p>
+<ul class="simple">
+<li><p>Core libraries: the core libraries for interacting with an lport</p></li>
+<li><p>Application libraries: libraries with additional functionality that can be used by apps.</p></li>
+<li><p>PMDs: the PMDs enabled in CNDP.</p></li>
+<li><p>Functional Test: testcne - a functional test framework.</p></li>
+<li><p>Ansible Playbooks: Playbooks for setting up the CNDP Development environment.</p></li>
+<li><p>Docker and Kubernetes: Docker files, Pod specs and instructions for getting started with CNDP in a Kubernetes env.</p></li>
+<li><p>Language bindings</p></li>
+</ul>
+<p>An incomplete picture of the architecture is shown here.</p>
+<figure class="align-default" id="figure-architecture-overview">
+<img alt="../images/arch.svg" src="../images/arch.svg" /></figure>
+<p>The following section shows the breakdown of these libraries under the lib/core directory.</p>
+<section id="cloud-native-environment-cne">
+<h3><span class="section-number">2.2.1. </span>Cloud Native Environment (cne)<a class="headerlink" href="#cloud-native-environment-cne" title="Permalink to this headline">¶</a></h3>
+<p>Initializes the application environment and provides runtime services like unique
+thread ids.</p>
+</section>
+<section id="events">
+<h3><span class="section-number">2.2.2. </span>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h3>
+<p>Library to manage epoll event callbacks.</p>
+</section>
+<section id="hash">
+<h3><span class="section-number">2.2.3. </span>Hash<a class="headerlink" href="#hash" title="Permalink to this headline">¶</a></h3>
+<p>Hash table implementation with various hash functions.</p>
+</section>
+<section id="key-value">
+<h3><span class="section-number">2.2.4. </span>Key Value<a class="headerlink" href="#key-value" title="Permalink to this headline">¶</a></h3>
+<p>Library to parse key-value pairs.</p>
+</section>
+<section id="log">
+<h3><span class="section-number">2.2.5. </span>Log<a class="headerlink" href="#log" title="Permalink to this headline">¶</a></h3>
+<p>Logging services with various debug levels.</p>
+</section>
+<section id="memory-pool-manager">
+<h3><span class="section-number">2.2.6. </span>Memory Pool Manager<a class="headerlink" href="#memory-pool-manager" title="Permalink to this headline">¶</a></h3>
+<p>The Memory Pool Manager is responsible for allocating pools of objects in memory. A pool is
+identified by name and uses a ring to store free objects. It provides some other optional services,
+such as a per-core object cache and an alignment helper to ensure that objects are padded to spread
+them equally on all DRAM channels.</p>
+<p>This memory pool allocator is described in <a class="reference internal" href="mempool_lib.html#mempool-library"><span class="std std-ref">Mempool Library</span></a>.</p>
+</section>
+<section id="memory-map-mmap">
+<h3><span class="section-number">2.2.7. </span>Memory Map (mmap)<a class="headerlink" href="#memory-map-mmap" title="Permalink to this headline">¶</a></h3>
+<p>A memory allocator using mmap(). This memory is usually passed to a mempool.</p>
+</section>
+<section id="os-abstraction-layer-osal">
+<h3><span class="section-number">2.2.8. </span>OS Abstraction Layer (osal)<a class="headerlink" href="#os-abstraction-layer-osal" title="Permalink to this headline">¶</a></h3>
+<p>Library to abstract some things like reading cpu counts from the file-system
+or interacting with a netdev.</p>
+</section>
+<section id="network-packet-buffer-management-pktmbuf">
+<h3><span class="section-number">2.2.9. </span>Network Packet Buffer Management (pktmbuf)<a class="headerlink" href="#network-packet-buffer-management-pktmbuf" title="Permalink to this headline">¶</a></h3>
+<p>The pktmbuf library provides the facility to create and destroy buffers that may be used by the
+CNDP application to store message buffers. The message buffers are created at startup time and
+stored in a mempool, using the CNDP mempool library.</p>
+<p>This library provides an API to allocate/free mbufs, manipulate packet buffers which are used
+to carry network packets.</p>
+<p>Network Packet Buffer Management is described in <a class="reference internal" href="pktmbuf_lib.html#pktmbuf-library"><span class="std std-ref">pktmbuf Library</span></a>.</p>
+</section>
+<section id="poll-mode-drivers-pmds">
+<h3><span class="section-number">2.2.10. </span>Poll-Mode Drivers (pmds)<a class="headerlink" href="#poll-mode-drivers-pmds" title="Permalink to this headline">¶</a></h3>
+<p>PMDs implement the pktdev API. For more information, see <a class="reference internal" href="../pmds/overview.html#guides-pmd"><span class="std std-ref">PMD Guide</span></a>.</p>
+</section>
+<section id="ring">
+<h3><span class="section-number">2.2.11. </span>Ring<a class="headerlink" href="#ring" title="Permalink to this headline">¶</a></h3>
+<p>The ring structure provides a lockless multi-producer, multi-consumer FIFO API in a finite size
+table. It has some advantages over lockless queues; easier to implement, adapted to bulk operations
+and faster. A ring is used by the <a class="reference internal" href="mempool_lib.html#mempool-library"><span class="std std-ref">Memory Pool Manager (mempool)</span></a> and may be
+used as a general communication mechanism between cores and/or execution blocks connected together
+on a logical core.</p>
+<p>This ring buffer and its usage are fully described in <a class="reference internal" href="ring_lib.html#ring-library"><span class="std std-ref">Ring Library</span></a>.</p>
+</section>
+<section id="tx-buffer-txbuff">
+<h3><span class="section-number">2.2.12. </span>Tx Buffer (txbuff)<a class="headerlink" href="#tx-buffer-txbuff" title="Permalink to this headline">¶</a></h3>
+<p>Provide buffering for packets before transmission.</p>
+</section>
+<section id="xskdev">
+<h3><span class="section-number">2.2.13. </span>xskdev<a class="headerlink" href="#xskdev" title="Permalink to this headline">¶</a></h3>
+<p>This is a low level API that abstracts some of the complexities of AF_XDP sockets.</p>
+</section>
+<section id="pktdev">
+<h3><span class="section-number">2.2.14. </span>pktdev<a class="headerlink" href="#pktdev" title="Permalink to this headline">¶</a></h3>
+<p>This is a high level API that allows you to interact with a number of underlying devices such as
+rings and AF_XDP sockets. It has inbuilt mempool management and uses the xskdev APIs to create and
+manage logical ports.</p>
+</section>
+<section id="application-libraries-lib-usr-app">
+<h3><span class="section-number">2.2.15. </span>Application Libraries (lib/usr/app)<a class="headerlink" href="#application-libraries-lib-usr-app" title="Permalink to this headline">¶</a></h3>
+<p>Libraries providing services for applications such as json-c config file parsing and Unix Domain
+Socket (UDS) handling.</p>
+</section>
+<section id="c-language-libraries-clib">
+<h3><span class="section-number">2.2.16. </span>C Language Libraries (clib)<a class="headerlink" href="#c-language-libraries-clib" title="Permalink to this headline">¶</a></h3>
+<p>Libraries providing services to packet processing applications such as Access Control List (ACL) and
+timer implementations.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>ACL an AVX 512 enabled Access Control List library</p></li>
+<li><p>cthread a userspace lightweight threading library</p></li>
+<li><p>Intel(R) Data Streaming Accelerator (Intel(R) DSA)</p></li>
+</ul>
+</div></blockquote>
+</section>
+</section>
+<section id="cnet-cloud-native-network-stack-lib-cnet">
+<h2><span class="section-number">2.3. </span>CNET - Cloud Native Network stack (lib/cnet)<a class="headerlink" href="#cnet-cloud-native-network-stack-lib-cnet" title="Permalink to this headline">¶</a></h2>
+<p>The libraries under the cnet directory create the CNET stack, which uses the <a class="reference internal" href="graph_lib.html#graph-library"><span class="std std-ref">Graph Library</span></a>.
+These include nodes for UDP/IPv4/QUIC with IPv6/TCP in the future.</p>
+<p>The CNET stack gets most of its configuration via netlink messages. Using netlink allows CNET to be
+configured via the host command line tools. Using tools like <code class="docutils literal notranslate"><span class="pre">ifconfig</span></code> or <code class="docutils literal notranslate"><span class="pre">ip</span></code> or <code class="docutils literal notranslate"><span class="pre">arp</span></code> the user
+can configure the CNET and allow CNET to detect changes in the system network configuration.</p>
+<p>The <a class="reference internal" href="#cnet-overview"><span class="std std-numref">Fig. 2.2</span></a> shows the basic layout of the CNDP with CNET stack and components.</p>
+<figure class="align-default" id="id2">
+<span id="cnet-overview"></span><img alt="../images/cnet_overview.svg" src="../images/cnet_overview.svg" /><figcaption>
+<p><span class="caption-number">Fig. 2.2 </span><span class="caption-text">CNET Overview</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2. Overview</a><ul>
+<li><a class="reference internal" href="#development-environment">2.1. Development Environment</a></li>
+<li><a class="reference internal" href="#components">2.2. Components</a><ul>
+<li><a class="reference internal" href="#cloud-native-environment-cne">2.2.1. Cloud Native Environment (cne)</a></li>
+<li><a class="reference internal" href="#events">2.2.2. Events</a></li>
+<li><a class="reference internal" href="#hash">2.2.3. Hash</a></li>
+<li><a class="reference internal" href="#key-value">2.2.4. Key Value</a></li>
+<li><a class="reference internal" href="#log">2.2.5. Log</a></li>
+<li><a class="reference internal" href="#memory-pool-manager">2.2.6. Memory Pool Manager</a></li>
+<li><a class="reference internal" href="#memory-map-mmap">2.2.7. Memory Map (mmap)</a></li>
+<li><a class="reference internal" href="#os-abstraction-layer-osal">2.2.8. OS Abstraction Layer (osal)</a></li>
+<li><a class="reference internal" href="#network-packet-buffer-management-pktmbuf">2.2.9. Network Packet Buffer Management (pktmbuf)</a></li>
+<li><a class="reference internal" href="#poll-mode-drivers-pmds">2.2.10. Poll-Mode Drivers (pmds)</a></li>
+<li><a class="reference internal" href="#ring">2.2.11. Ring</a></li>
+<li><a class="reference internal" href="#tx-buffer-txbuff">2.2.12. Tx Buffer (txbuff)</a></li>
+<li><a class="reference internal" href="#xskdev">2.2.13. xskdev</a></li>
+<li><a class="reference internal" href="#pktdev">2.2.14. pktdev</a></li>
+<li><a class="reference internal" href="#application-libraries-lib-usr-app">2.2.15. Application Libraries (lib/usr/app)</a></li>
+<li><a class="reference internal" href="#c-language-libraries-clib">2.2.16. C Language Libraries (clib)</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#cnet-cloud-native-network-stack-lib-cnet">2.3. CNET - Cloud Native Network stack (lib/cnet)</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="intro.html"
+                        title="previous chapter"><span class="section-number">1. </span>Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ring_lib.html"
+                        title="next chapter"><span class="section-number">3. </span>Ring Library</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/overview.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="ring_lib.html" title="3. Ring Library"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="intro.html" title="1. Introduction"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>Overview</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

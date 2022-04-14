@@ -1,0 +1,17 @@
+a {
+  text-decoration: none;
+}
+
+a,
+a:hover {
+  color: #355f7c;
+}
+
+a.nav-link:hover {
+  text-decoration: none;
+}
+
+div.footer {
+  /* bootstrap overwrites body background color */
+  background-color: #11303d;
+}

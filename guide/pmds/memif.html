@@ -1,0 +1,676 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. Memif Poll Mode Driver &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. NULL PMD" href="null.html" />
+    <link rel="prev" title="3. AF_XDP Poll Mode Driver" href="af_xdp.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="null.html" title="5. NULL PMD"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="af_xdp.html" title="3. AF_XDP Poll Mode Driver"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Poll Mode Drivers</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Memif Poll Mode Driver</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="memif-poll-mode-driver">
+<h1><span class="section-number">4. </span>Memif Poll Mode Driver<a class="headerlink" href="#memif-poll-mode-driver" title="Permalink to this headline">¶</a></h1>
+<p>Shared memory packet interface (memif) PMD allows for CNDP and any other client
+using memif (DPDK, VPP, libmemif) to communicate using shared memory. Memif is
+Linux only.</p>
+<p>The created device transmits packets in a raw format. It can be used with
+Ethernet mode, IP mode, or Punt/Inject. At this moment, only Ethernet mode is
+supported in CNDP memif implementation.</p>
+<p>Memif works in two roles: server and client. Client connects to server over an
+existing socket. It is also a producer of shared memory file and initializes
+the shared memory. Each interface can be connected to one peer interface
+at same time. Server creates the socket and listens for any client connection
+requests. The socket may already exist on the system. Be sure to remove any such
+sockets, if you are creating a server interface, or you will see an
+“Address already in use” error.</p>
+<p>The method to enable one or more interfaces is to use the json file configuration
+by adding client or server to the lport configuration. Memif uses unix domain socket
+to transmit control messages.</p>
+<p><strong>Connection establishment</strong></p>
+<p>In order to create memif connection, two memif interfaces, each in separate
+process, are needed. One interface in <code class="docutils literal notranslate"><span class="pre">server</span></code> role and other in
+<code class="docutils literal notranslate"><span class="pre">client</span></code> role. It is not possible to connect two interfaces in a single
+process. Each interface can be connected to one interface at same time,
+identified by matching id parameter.</p>
+<p>Memif driver uses unix domain socket to exchange required information between
+memif interfaces. If socket is used by <code class="docutils literal notranslate"><span class="pre">server</span></code> interface, it’s marked as
+listener socket (in scope of current process) and listens to connection requests
+from other processes. One socket can be used by multiple interfaces. One process
+can have <code class="docutils literal notranslate"><span class="pre">client</span></code> and <code class="docutils literal notranslate"><span class="pre">server</span></code> interfaces at the same time, provided each role
+is assigned unique socket.</p>
+<p>For detailed information on memif control messages, see: net/memif/memif.h.</p>
+<p>Client interface attempts to make a connection on assigned socket. Process
+listening on this socket will extract the connection request and create a new
+connected socket (control channel). Then it sends the ‘hello’ message
+(<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_HELLO</span></code>), containing configuration boundaries. Client interface
+adjusts its configuration accordingly, and sends ‘init’ message
+(<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_INIT</span></code>). This message among others contains interface id. Driver
+uses this id to find server interface, and assigns the control channel to this
+interface. If such interface is found, ‘ack’ message (<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_ACK</span></code>) is
+sent. Client interface sends ‘add region’ message (<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_ADD_REGION</span></code>) for
+every region allocated. Server responds to each of these messages with ‘ack’
+message. Same behavior applies to rings. Client sends ‘add ring’ message
+(<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_ADD_RING</span></code>) for every initialized ring. Server again responds to
+each message with ‘ack’ message. To finalize the connection, client interface
+sends ‘connect’ message (<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_CONNECT</span></code>). Upon receiving this message
+server maps regions to its address space, initializes rings and responds with
+‘connected’ message (<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_CONNECTED</span></code>). Disconnect
+(<code class="docutils literal notranslate"><span class="pre">MEMIF_MSG_TYPE_DISCONNECT</span></code>) can be sent by both server and client interfaces at
+any time, due to driver error or if the interface is being deleted.</p>
+<p>Files</p>
+<ul class="simple">
+<li><p>net/memif/memif.h <em>- control messages definitions</em></p></li>
+<li><p>net/memif/memif_socket.h</p></li>
+<li><p>net/memif/memif_socket.c</p></li>
+</ul>
+<section id="shared-memory">
+<h2><span class="section-number">4.1. </span>Shared memory<a class="headerlink" href="#shared-memory" title="Permalink to this headline">¶</a></h2>
+<p><strong>Shared memory format</strong></p>
+<p>Client is producer and server is consumer. Memory regions, are mapped shared memory files,
+created by memif client and provided to server at connection establishment.
+Regions contain rings and buffers. Rings and buffers can also be separated into multiple
+regions. For no-zero-copy, rings and buffers are stored inside single memory
+region to reduce the number of opened files.</p>
+<p>region n (no-zero-copy):</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 18%" />
+<col style="width: 3%" />
+<col style="width: 55%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>Rings</p></td>
+<td colspan="3"><p>Buffers</p></td>
+</tr>
+<tr class="row-even"><td><p>S2M rings</p></td>
+<td><p>M2S rings</p></td>
+<td><p>packet buffer 0</p></td>
+<td><p>.</p></td>
+<td><p>pb ((1 &lt;&lt; pmd-&gt;run.log2_ring_size)*(s2m + m2s))-1</p></td>
+</tr>
+</tbody>
+</table>
+<p>S2M OR M2S Rings:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 21%" />
+<col style="width: 59%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ring 0</p></td>
+<td><p>ring 1</p></td>
+<td><p>ring num_s2m_rings - 1</p></td>
+</tr>
+</tbody>
+</table>
+<p>ring 0:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 75%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>ring header</p></td>
+<td><p>(1 &lt;&lt; pmd-&gt;run.log2_ring_size) * desc</p></td>
+</tr>
+</tbody>
+</table>
+<p>Descriptors are assigned packet buffers in order of rings creation. If we have one ring
+in each direction and ring size is 1024, then first 1024 buffers will belong to S2M ring and
+last 1024 will belong to M2S ring. In case of zero-copy, buffers are dequeued and
+enqueued as needed.</p>
+<p><strong>Descriptor format</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+<col style="width: 1%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td rowspan="2"><p>Quad</p>
+<p>Word</p>
+</td>
+<td><p>6</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>6</p></td>
+<td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td colspan="32"><p>length</p></td>
+<td colspan="16"><p>region</p></td>
+<td colspan="16"><p>flags</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td colspan="32"><p>metadata</p></td>
+<td colspan="32"><p>offset</p></td>
+</tr>
+<tr class="row-odd"><td rowspan="2"></td>
+<td><p>6</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td><p>1</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Flags field - flags (Quad Word 0, bits 0:15)</strong></p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4%" />
+<col style="width: 17%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Bits</p></th>
+<th class="head"><p>Name</p></th>
+<th class="head"><p>Functionality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>MEMIF_DESC_FLAG_NEXT</p></td>
+<td><p>Is chained buffer. When set, the packet is divided into multiple buffers. May not be contiguous.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Region index - region (Quad Word 0, 16:31)</strong></p>
+<p>Index of memory region, the buffer is located in.</p>
+<p><strong>Data length - length (Quad Word 0, 32:63)</strong></p>
+<p>Length of transmitted/received data.</p>
+<p><strong>Data Offset - offset (Quad Word 1, 0:31)</strong></p>
+<p>Data start offset from memory region address. <em>.regions[desc-&gt;region].addr + desc-&gt;offset</em></p>
+<p><strong>Metadata - metadata (Quad Word 1, 32:63)</strong></p>
+<p>Buffer metadata.</p>
+<p>Files</p>
+<ul class="simple">
+<li><p>net/memif/memif.h <em>- descriptor and ring definitions</em></p></li>
+<li><p>net/memif/pmd_memif_socket.c <em>- pmd_memif_socket_rx() pmd_memif_socket_tx()</em></p></li>
+</ul>
+<p><strong>Shared memory format</strong></p>
+<p>Region 0 is created by memif driver and contains rings. Client interface exposes CNDP memory (mmap or malloc).
+Instead of using memfd_create() to create new shared file, existing memory segment or mmap region is created an used.</p>
+<p>region 0:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td colspan="2"><p>Rings</p></td>
+</tr>
+<tr class="row-even"><td><p>S2M rings</p></td>
+<td><p>M2S rings</p></td>
+</tr>
+</tbody>
+</table>
+<p>region n:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>Buffers</p></td>
+</tr>
+<tr class="row-even"><td><p>pktmbufs or
+raw buffers</p></td>
+</tr>
+</tbody>
+</table>
+<p>Buffers are dequeued and enqueued as needed. Offset descriptor field is calculated at tx.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. Memif Poll Mode Driver</a><ul>
+<li><a class="reference internal" href="#shared-memory">4.1. Shared memory</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="af_xdp.html"
+                        title="previous chapter"><span class="section-number">3. </span>AF_XDP Poll Mode Driver</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="null.html"
+                        title="next chapter"><span class="section-number">5. </span>NULL PMD</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/pmds/memif.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="null.html" title="5. NULL PMD"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="af_xdp.html" title="3. AF_XDP Poll Mode Driver"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Poll Mode Drivers</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>Memif Poll Mode Driver</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

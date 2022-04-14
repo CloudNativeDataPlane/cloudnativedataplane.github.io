@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. Pktmbuf Library &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Graph Library and Inbuilt Nodes" href="graph_lib.html" />
+    <link rel="prev" title="4. Mempool Library" href="mempool_lib.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="graph_lib.html" title="6. Graph Library and Inbuilt Nodes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mempool_lib.html" title="4. Mempool Library"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>Pktmbuf Library</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="pktmbuf-library">
+<span id="id1"></span><h1><span class="section-number">5. </span>Pktmbuf Library<a class="headerlink" href="#pktmbuf-library" title="Permalink to this headline">¶</a></h1>
+<p>The pktmbuf library provides the ability to allocate and free buffers (pktmbufs)
+that may be used by the CNDP application to store message buffers.
+The message buffers are stored in a mempool, using the <a class="reference internal" href="mempool_lib.html#mempool-library"><span class="std std-ref">Mempool Library</span></a>.</p>
+<p>A pktmbuf struct generally carries network packet buffers, but it can actually
+be any data (control data, events, …).
+The pktmbuf header structure is kept as small as possible and currently uses
+just one cache line, with the most frequently used fields being in that cache line.</p>
+<section id="design-of-packet-buffers">
+<h2><span class="section-number">5.1. </span>Design of Packet Buffers<a class="headerlink" href="#design-of-packet-buffers" title="Permalink to this headline">¶</a></h2>
+<p>For the storage of the packet data (including protocol headers),
+embed metadata within a single memory buffer the structure followed by a fixed size area for the packet data.
+The advantage of this method is that it only needs one operation to allocate/free the whole memory representation of a packet.</p>
+<p>The metadata contains control information such as message type, length, offset to the start of the data
+and some commonly used metadata checksum offload with protocol header offsets/lengths.</p>
+<p>For a newly allocated pktmbuf, the area at which the data begins in the message buffer is
+CNE_PKTMBUF_HEADROOM bytes after the beginning of the buffer, which is cache aligned.
+Message buffers may be used to carry control information, packets, events,
+and so on between different entities in the system.</p>
+<p><a class="reference internal" href="#figure-pktmbuf-layout"><span class="std std-numref">Fig. 5.1</span></a> shows the basic layout of pktmbuf_t structure related to Mempool structures.</p>
+<figure class="align-default" id="id2">
+<span id="figure-pktmbuf-layout"></span><img alt="../images/pktmbuf_layout.svg" src="../images/pktmbuf_layout.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5.1 </span><span class="caption-text">Pktmbuf Layout</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Buffer Manager implements a fairly standard set of buffer access functions to manipulate network packets.
+The following set of figures help define the Rx/Tx usage model with AF_XDP.</p>
+<figure class="align-default" id="id3">
+<span id="rx-umem-buffer"></span><img alt="../images/RX-UMEM-Buffer.svg" src="../images/RX-UMEM-Buffer.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5.2 </span><span class="caption-text">RX UMEM pktmbuf layout</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The TX buffer layout is the same as the RX buffer layout, but it does use some different offset values
+to align with AF_XDP requirements.</p>
+<figure class="align-default" id="id4">
+<span id="tx-umem-buffer"></span><img alt="../images/TX-UMEM-Buffer.svg" src="../images/TX-UMEM-Buffer.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5.3 </span><span class="caption-text">TX UMEM pktmbuf layout</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The Rx/Tx buffers are somewhat defined by the AF_XDP UMEM buffer layout.</p>
+</section>
+<section id="pktmbuf-and-umem-layout">
+<h2><span class="section-number">5.2. </span>Pktmbuf and UMEM layout<a class="headerlink" href="#pktmbuf-and-umem-layout" title="Permalink to this headline">¶</a></h2>
+<p>The AF_XDP design uses a UMEM buffer and rings to move data from usespace to kernel. The rings
+operate on UMEM buffer offsets instead of memory points to account for kernel and userspace having
+different address spaces. A UMEM is one large memory array of buffers for packet data to be sent and
+received to remove having to copy the packet to/from the kernel/userspace.</p>
+<p>A UMEM buffer space can be shared between between multiple AF_XDP sockets, which allows buffers to
+be shared between sockets without needing to copy the packet data. If using multiple UMEMs with
+different AF_XDP sockets plus sending packets between these UMEMs the application would need to
+copy the data. Normally, a set of AF_XDP sockets will share a single UMEM. CNDP uses mempools to
+allocate and free buffers to get the best performance, which means each AF_XDP socket needs to have
+its own mempool set of buffers in the UMEM buffer space.</p>
+<p>A multiple AF_XDP sockets could share a single mempool, but a socket could starve other sockets of
+buffers if some type of limit is put into place. We use a mempool per socket to achive this type of
+limiting of a single socket consuming all of the buffers.</p>
+<figure class="align-default" id="id5">
+<span id="multiple-mempools-umem"></span><img alt="../images/multiple-mempools-umem.svg" src="../images/multiple-mempools-umem.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5.4 </span><span class="caption-text">UMEM with multiple pktmbuf pools</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="buffers-stored-in-memory-pools-umem">
+<h2><span class="section-number">5.3. </span>Buffers Stored in Memory Pools (UMEM)<a class="headerlink" href="#buffers-stored-in-memory-pools-umem" title="Permalink to this headline">¶</a></h2>
+<p>The Buffer Manager uses the <a class="reference internal" href="mempool_lib.html#mempool-library"><span class="std std-ref">Mempool Library</span></a> to allocate buffers.
+For CNDP we use a mempool to help define and allocate buffers from a UMEM with AF_XDP. When creating a UMEM we use the
+mempool buffer memory as the UMEM buffers memory as in the figure <a class="reference internal" href="#umem-mbuf"><span class="std std-numref">Fig. 5.5</span></a> below.
+An pktmbuf contains a field indicating the pool that it originated from.
+When calling pktmbuf_free(m), the pktmbuf returns to its original pool.</p>
+<figure class="align-default" id="id6">
+<span id="umem-mbuf"></span><img alt="../images/umem_mbuf.svg" src="../images/umem_mbuf.svg" /><figcaption>
+<p><span class="caption-number">Fig. 5.5 </span><span class="caption-text">AF_XDP memory layout</span><a class="headerlink" href="#id6" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="constructors">
+<h2><span class="section-number">5.4. </span>Constructors<a class="headerlink" href="#constructors" title="Permalink to this headline">¶</a></h2>
+<p>Packet pktmbuf constructors are provided by the API.
+The pktmbuf_init() function initializes some fields in the pktmbuf structure that
+are not modified by the user once created (pktmbuf type, origin pool, buffer start address, and so on).
+This function is given as a callback function to the mempool_create() function at pool creation time.</p>
+</section>
+<section id="allocating-and-freeing-pktmbufs">
+<h2><span class="section-number">5.5. </span>Allocating and Freeing pktmbufs<a class="headerlink" href="#allocating-and-freeing-pktmbufs" title="Permalink to this headline">¶</a></h2>
+<p>Allocating a new pktmbuf requires the user to specify the mempool from which the pktmbuf should be taken.
+For any newly-allocated pktmbuf, it contains one segment, with a length of 0.
+The offset to data is initialized to have some bytes of headroom in the buffer (CNE_PKTMBUF_HEADROOM).</p>
+<p>Freeing a pktmbuf means returning it into its original mempool.
+The content of an pktmbuf is not modified when it is stored in a pool (as a free pktmbuf).
+Fields initialized by the constructor do not need to be re-initialized at pktmbuf allocation.</p>
+</section>
+<section id="manipulating-pktmbufs">
+<h2><span class="section-number">5.6. </span>Manipulating pktmbufs<a class="headerlink" href="#manipulating-pktmbufs" title="Permalink to this headline">¶</a></h2>
+<p>This library provides some functions for manipulating the data in a packet pktmbuf. For instance:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Get data length</p></li>
+<li><p>Get a pointer to the start of data</p></li>
+<li><p>Prepend data before data</p></li>
+<li><p>Append data after data</p></li>
+<li><p>Remove data at the beginning of the buffer (pktmbuf_adj())</p></li>
+<li><p>Remove data at the end of the buffer (pktmbuf_trim()) Refer to the <em>CNDP API Reference</em> for details.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="meta-information">
+<h2><span class="section-number">5.7. </span>Meta Information<a class="headerlink" href="#meta-information" title="Permalink to this headline">¶</a></h2>
+<p>Some information is stored in the pktmbuf header i.e. data offset, packet length, lport number,
+offload data and other information about the packet. More optional metadata is stored after the
+header in a metadata structure, which part of the headroom of the pktmbuf. The metadata information
+is currently used by the CNET stack to hold more information about the packet.</p>
+<p>At this time CNDP does not support chaining of pktmbuf_t structures.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. Pktmbuf Library</a><ul>
+<li><a class="reference internal" href="#design-of-packet-buffers">5.1. Design of Packet Buffers</a></li>
+<li><a class="reference internal" href="#pktmbuf-and-umem-layout">5.2. Pktmbuf and UMEM layout</a></li>
+<li><a class="reference internal" href="#buffers-stored-in-memory-pools-umem">5.3. Buffers Stored in Memory Pools (UMEM)</a></li>
+<li><a class="reference internal" href="#constructors">5.4. Constructors</a></li>
+<li><a class="reference internal" href="#allocating-and-freeing-pktmbufs">5.5. Allocating and Freeing pktmbufs</a></li>
+<li><a class="reference internal" href="#manipulating-pktmbufs">5.6. Manipulating pktmbufs</a></li>
+<li><a class="reference internal" href="#meta-information">5.7. Meta Information</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mempool_lib.html"
+                        title="previous chapter"><span class="section-number">4. </span>Mempool Library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="graph_lib.html"
+                        title="next chapter"><span class="section-number">6. </span>Graph Library and Inbuilt Nodes</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/pktmbuf_lib.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="graph_lib.html" title="6. Graph Library and Inbuilt Nodes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mempool_lib.html" title="4. Mempool Library"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>Pktmbuf Library</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

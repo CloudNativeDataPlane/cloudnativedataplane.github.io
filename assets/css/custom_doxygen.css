@@ -1,0 +1,27 @@
+a:hover {
+  color: #3D578C;
+}
+
+a.navbar-brand,
+a.nav-link {
+  font-family: var(--bs-body-font-family);
+  line-height: var(--bs-body-line-height);
+}
+
+a.nav-link {
+  font-size: var(--bs-body-font-size);
+}
+
+a.nav-link:hover {
+  text-decoration: none;
+}
+
+.arrow {
+  /* bootstrap wants border-box, but that breaks doxygen arrows in navtree */
+  box-sizing: content-box;
+}
+
+#MSearchBox .left {
+  display: inline;
+  vertical-align: baseline;
+}

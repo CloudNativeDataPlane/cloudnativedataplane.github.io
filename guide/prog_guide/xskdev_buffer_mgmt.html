@@ -1,0 +1,301 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8. xskdev Buffer Management &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Glossary" href="glossary.html" />
+    <link rel="prev" title="7. Crypto Libraries" href="crypto.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="9. Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="crypto.html" title="7. Crypto Libraries"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>xskdev Buffer Management</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="xskdev-buffer-management">
+<span id="xsk-buf-mgmt"></span><h1><span class="section-number">8. </span>xskdev Buffer Management<a class="headerlink" href="#xskdev-buffer-management" title="Permalink to this headline">¶</a></h1>
+<p>The goal of the xskdev buffer management API is to make sure that external applications that want
+to use the xskdev API with their own buffer manager can do so without having to use the predefined
+pktmbuf.</p>
+<p>This API is enabled through the use of a flag in the lport configuration structure (lport_cfg_t).</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#define LPORT_USER_MANAGED_BUFFERS   (1 &lt;&lt; 5) </span><span class="cm">/**&lt; Enable Buffer Manager outside of CNDP */</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>To enable buffer management outside of CNDP simple add the following flag to the lport configuration:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">lport</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">|=</span> <span class="n">LPORT_USER_MANAGED_BUFFERS</span>
+</pre></div>
+</div>
+<p>By default CNDP supports an aligned memory model for UMEM frames (aligned to 2K). If an unaligned
+memory model is required, this can be enabled through an additional lport_cfg_t flag:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#define LPORT_UMEM_UNALIGNED_BUFFERS (1 &lt;&lt; 6) </span><span class="cm">/**&lt; Enable unaligned frame UMEM support */</span><span class="cp"></span>
+</pre></div>
+</div>
+<p>Under the hood of the xskdev API - this unaligned buffer flag enables a different calculation for
+the buffer address and data offset.</p>
+<p>A new set of callback functions were introduced to allow users to register external buffer management
+functions that will be called back through the xskdev API. These include functions to allocate and
+free buffers. As well as functions to set/get buffer pointers, lengths… Finally the option to provide
+ones own RX/TX function is also available should one prefer to provide their own implementation.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_alloc_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">bufs</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">nb_pkts</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_free_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">**</span><span class="n">bufs</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">nb_pkts</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_set_len_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_set_data_len_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">void</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_set_data_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">,</span> <span class="kt">uint64_t</span> <span class="n">off</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">void</span> <span class="o">**</span><span class="p">(</span><span class="o">*</span><span class="n">buf_inc_ptr_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">**</span><span class="n">buf</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_get_len_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_get_data_len_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">uint64_t</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_get_data_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">uint64_t</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_get_addr_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">buf</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_rx_burst_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">bufs</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">nb_pkts</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="kt">uint16_t</span> <span class="p">(</span><span class="o">*</span><span class="n">buf_tx_burst_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">bufs</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">nb_pkts</span><span class="p">);</span>
+
+<span class="k">typedef</span> <span class="k">struct</span> <span class="nc">lport_buf_mgmt</span> <span class="p">{</span>
+    <span class="n">buf_alloc_t</span> <span class="n">buf_alloc</span><span class="p">;</span>                   <span class="cm">/**&lt; Allocate buffer routine */</span>
+    <span class="n">buf_free_t</span> <span class="n">buf_free</span><span class="p">;</span>                     <span class="cm">/**&lt; Free buffer routine */</span>
+    <span class="n">buf_set_len_t</span> <span class="n">buf_set_len</span><span class="p">;</span>               <span class="cm">/**&lt; Set buffer length routine */</span>
+    <span class="n">buf_set_data_len_t</span> <span class="n">buf_set_data_len</span><span class="p">;</span>     <span class="cm">/**&lt; Set buffer data length routine */</span>
+    <span class="n">buf_set_data_t</span> <span class="n">buf_set_data</span><span class="p">;</span>             <span class="cm">/**&lt; Set buffer data pointer routine*/</span>
+    <span class="n">buf_get_len_t</span> <span class="n">buf_get_len</span><span class="p">;</span>               <span class="cm">/**&lt; Get buffer length routine */</span>
+    <span class="n">buf_get_data_len_t</span> <span class="n">buf_get_data_len</span><span class="p">;</span>     <span class="cm">/**&lt; Get buffer data length routine */</span>
+    <span class="n">buf_get_data_t</span> <span class="n">buf_get_data</span><span class="p">;</span>             <span class="cm">/**&lt; Get buffer data pointer routine */</span>
+    <span class="n">buf_get_addr_t</span> <span class="n">buf_get_addr</span><span class="p">;</span>             <span class="cm">/**&lt; Get buffer base address routine */</span>
+    <span class="n">buf_inc_ptr_t</span> <span class="n">buf_inc_ptr</span><span class="p">;</span>               <span class="cm">/**&lt; Increment the buffer pointer */</span>
+    <span class="kt">uint32_t</span> <span class="n">frame_size</span><span class="p">;</span>                     <span class="cm">/**&lt; Frame size in umem */</span>
+    <span class="kt">size_t</span> <span class="n">buf_headroom</span><span class="p">;</span>                     <span class="cm">/**&lt; Buffer headroom size */</span>
+    <span class="kt">size_t</span> <span class="n">pool_header_sz</span><span class="p">;</span>                   <span class="cm">/**&lt; Pool header size for external buffer pool*/</span>
+    <span class="kt">void</span>    <span class="o">*</span><span class="n">buf_arg</span><span class="p">;</span>                        <span class="cm">/**&lt; Argument for the buffer alloc/free routines */</span>
+    <span class="n">buf_rx_burst_t</span> <span class="n">buf_rx_burst</span><span class="p">;</span>             <span class="cm">/**&lt; RX burst callback */</span>
+    <span class="n">buf_tx_burst_t</span> <span class="n">buf_tx_burst</span><span class="p">;</span>             <span class="cm">/**&lt; TX burst callback */</span>
+    <span class="kt">bool</span> <span class="n">unaligned_buff</span><span class="p">;</span>                     <span class="cm">/**&lt; Unaligned buffer support */</span>
+<span class="p">}</span> <span class="n">lport_buf_mgmt_t</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>These functions are set in the xskdev_info_t during the call to xskdev_socket_create()</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the case of CNDP managed buffers, new buffer management functions were implemented
+in xskdev.c with the *_default suffix. If CNDP is managing the buffers, then these
+default functions are registered with the xskdev_info_t at setup time.
+It’s critical for the default case that the bufsz in the lport configuration is set
+appropriately as it will dictate the UMEM framesize.</p>
+</div>
+<p>These functions are shown below:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">LPORT_USER_MANAGED_BUFFERS</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_arg</span> <span class="o">||</span> <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_alloc</span> <span class="o">||</span> <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_free</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_set_len</span> <span class="o">||</span> <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_set_data</span> <span class="o">||</span> <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_len</span> <span class="o">||</span>
+        <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_data</span> <span class="o">||</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_headroom</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_addr</span><span class="p">)</span>
+        <span class="n">CNE_ERR_GOTO</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s">&quot;Buffer alloc/free pointers are not set</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="n">xskdev_buf_set_buf_mgmt_ops</span><span class="p">(</span><span class="o">&amp;</span><span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_arg</span> <span class="o">=</span> <span class="n">xi</span><span class="o">-&gt;</span><span class="n">pi</span> <span class="o">=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">pi</span><span class="p">;</span> <span class="cm">/*Buffer pool*/</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_alloc</span>        <span class="o">=</span> <span class="n">xskdev_buf_alloc_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_free</span>         <span class="o">=</span> <span class="n">xskdev_buf_free_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_set_len</span>      <span class="o">=</span> <span class="n">xskdev_buf_set_len_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_set_data_len</span> <span class="o">=</span> <span class="n">xskdev_buf_set_data_len_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_set_data</span>     <span class="o">=</span> <span class="n">xskdev_buf_set_data_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_data_len</span> <span class="o">=</span> <span class="n">xskdev_buf_get_data_len_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_len</span>      <span class="o">=</span> <span class="n">xskdev_buf_get_len_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_data</span>     <span class="o">=</span> <span class="n">xskdev_buf_get_data_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_inc_ptr</span>      <span class="o">=</span> <span class="n">xskdev_buf_inc_ptr_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_headroom</span>     <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">pktmbuf_t</span><span class="p">);</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_get_addr</span>     <span class="o">=</span> <span class="n">xskdev_buf_get_addr_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">frame_size</span>       <span class="o">=</span> <span class="n">c</span><span class="o">-&gt;</span><span class="n">bufsz</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">pool_header_sz</span>   <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is assumed that if a user doesn’t provide RX/TX function they wish to use the CNDP
+xskdev API functions.</p>
+</div>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_rx_burst</span> <span class="o">||</span> <span class="o">!</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_tx_burst</span> <span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* If no external rx and tx functions were registered*/</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_rx_burst</span> <span class="o">=</span> <span class="n">xskdev_rx_burst_default</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_tx_burst</span> <span class="o">=</span> <span class="n">xskdev_tx_burst_default</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Some additional internal functions were added to the xskdev_info_t structure to allow for the
+support of an unaligned memory model.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="n">c</span><span class="o">-&gt;</span><span class="n">flags</span> <span class="o">&amp;</span> <span class="n">LPORT_UMEM_UNALIGNED_BUFFERS</span><span class="p">))</span> <span class="p">{</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">__get_mbuf_addr_tx</span> <span class="o">=</span> <span class="n">__get_mbuf_addr_tx_aligned</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">__pull_cq_addr</span> <span class="o">=</span> <span class="n">__pull_cq_addr_aligned</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">__get_mbuf_rx</span> <span class="o">=</span>  <span class="n">__get_mbuf_rx_aligned</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">unaligned_buff</span> <span class="o">=</span> <span class="nb">true</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">__get_mbuf_addr_tx</span> <span class="o">=</span> <span class="n">__get_mbuf_addr_tx_unaligned</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">__pull_cq_addr</span> <span class="o">=</span>  <span class="n">__pull_cq_addr_unaligned</span><span class="p">;</span>
+    <span class="n">xi</span><span class="o">-&gt;</span><span class="n">__get_mbuf_rx</span> <span class="o">=</span>  <span class="n">__get_mbuf_rx_unaligned</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>A few examples of how the buffer management callbacks are invoked is shown below:</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cm">/**</span>
+<span class="cm">* Receive packets from the interface</span>
+<span class="cm">*</span>
+<span class="cm">* @param xi</span>
+<span class="cm">*   The void * type of xskdev_info_t structure</span>
+<span class="cm">* @param bufs</span>
+<span class="cm">*   The list or vector or pktmbufs structures to send on the interface.</span>
+<span class="cm">* @param nb_pkts</span>
+<span class="cm">*   The number of pktmbuf_t pointers in the list or vector bufs</span>
+<span class="cm">* @return</span>
+<span class="cm">*   The number of packet sent to the interface or 0 if RX is empty.</span>
+<span class="cm">*/</span>
+<span class="n">CNDP_API</span> <span class="n">__cne_always_inline</span> <span class="kt">uint16_t</span>
+<span class="n">xskdev_rx_burst</span><span class="p">(</span><span class="n">xskdev_info_t</span> <span class="o">*</span><span class="n">xi</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">bufs</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">nb_pkts</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_rx_burst</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">bufs</span><span class="p">,</span> <span class="n">nb_pkts</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/**</span>
+<span class="cm">* Send buffers to be transmitted</span>
+<span class="cm">*</span>
+<span class="cm">* @param xi</span>
+<span class="cm">*   The void * type of xskdev_info_t structure</span>
+<span class="cm">* @param bufs</span>
+<span class="cm">*   The list or vector or pktmbufs structures to send on the interface.</span>
+<span class="cm">* @param nb_pkts</span>
+<span class="cm">*   The number of pktmbuf_t pointers in the list or vector bufs</span>
+<span class="cm">* @return</span>
+<span class="cm">*   The number of packet sent to the interface or 0 if RX is empty.</span>
+<span class="cm">*/</span>
+<span class="n">CNDP_API</span> <span class="n">__cne_always_inline</span> <span class="kt">uint16_t</span>
+<span class="n">xskdev_tx_burst</span><span class="p">(</span><span class="n">xskdev_info_t</span> <span class="o">*</span><span class="n">xi</span><span class="p">,</span> <span class="kt">void</span> <span class="o">**</span><span class="n">bufs</span><span class="p">,</span> <span class="kt">uint16_t</span> <span class="n">nb_pkts</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">xi</span><span class="o">-&gt;</span><span class="n">buf_mgmt</span><span class="p">.</span><span class="n">buf_tx_burst</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">bufs</span><span class="p">,</span> <span class="n">nb_pkts</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="crypto.html"
+                        title="previous chapter"><span class="section-number">7. </span>Crypto Libraries</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="glossary.html"
+                        title="next chapter"><span class="section-number">9. </span>Glossary</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/xskdev_buffer_mgmt.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="9. Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="crypto.html" title="7. Crypto Libraries"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>xskdev Buffer Management</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

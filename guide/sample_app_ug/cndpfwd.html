@@ -1,0 +1,420 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>4. CNDPFWD Sample Application &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. DLB Sample Application" href="dlb_test.html" />
+    <link rel="prev" title="3. CLI library guide" href="cli.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="dlb_test.html" title="5. DLB Sample Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="cli.html" title="3. CLI library guide"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sample Applications User Guides</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>CNDPFWD Sample Application</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cndpfwd-sample-application">
+<h1><span class="section-number">4. </span>CNDPFWD Sample Application<a class="headerlink" href="#cndpfwd-sample-application" title="Permalink to this headline">¶</a></h1>
+<p>The cndpfwd sample application is a simple example of packet processing using CNDP API. The
+“pkt_api” option lets you choose among the xskdev or pktdev API. The following modes are available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>drop (aka rx-only)</p></li>
+<li><p>loopback</p></li>
+<li><p>tx-only</p></li>
+<li><p>fwd</p></li>
+<li><p>acl-strict</p></li>
+<li><p>acl-permissive</p></li>
+</ul>
+</div></blockquote>
+<p>In forward mode (‘fwd’), the destination logical port on which to forward the packet is specified by
+the last octet of the destination MAC address. It should be a valid lport number 0-N. If the
+destination port does not exist the packet is sent back out the port on which it was received. Both
+ACL modes follow this same logic as long as packets pass ACL checks.</p>
+<p>For the “acl-strict” and “acl-permissive” modes the application demonstrates the use of the ACL
+library in CNDP. These modes allow for simple ACL classification and will create an ACL
+classification table based on some hardcoded rules and will forward or drop traffic, depending on
+whether it matches the classification rules set up in the ACL context. The “acl-strict” mode drops
+all packets unless it matches a permit rule while the “acl-permissive” mode forwards everything
+unless it matches a deny rule. Both ACL modes drop all non-IPv4 traffic unconditionally.</p>
+<p>The creation of an AF_XDP socket involves loading of a BPF program which is a privileged operation.
+In order to run the CNDP application in an unprivileged container, the privileged operations are
+done by a Kubernetes device plugin. The CNDP application talks to the Kubernetes device plugin over
+a unix domain socket. The path to the unix domain socket created by the device plugin is the value
+of the “uds_path” attribute. The “unprivileged” flag should be true if running the CNDP app in an
+unprivileged container. The sysctl param <code class="docutils literal notranslate"><span class="pre">kernel.unprivileged_bpf_disabled</span></code> should be 0 to perform
+unprivileged BPF operations. For more details about the device plugin, please refer to
+<a class="reference internal" href="k8s_dp_integration.html#integration-k8s-dp"><span class="std std-ref">Integration of the K8s device plugin with CNDP</span></a>.</p>
+<section id="running-the-application">
+<h2><span class="section-number">4.1. </span>Running the Application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h2>
+<p>Make sure to create or edit the fwd.jsonc before running the application then to run the example in
+a linux environment:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./builddir/examples/cndpfwd/cndpfwd -c examples/cndpfwd/fwd.jsonc
+</pre></div>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Usage: ./builddir/examples/cndpfwd/cndpfwd [-h] [-c json_file] [-b burst] &lt;mode&gt;</span>
+<span class="go">  &lt;mode&gt;         Mode types [drop | rx-only], tx-only, [lb | loopback], fwd, acl-strict or acl-permissive</span>
+<span class="go">  -a &lt;api&gt;       The API type to use xskdev or pktdev APIs, default is xskdev.\n&quot;</span>
+<span class="go">                 The -a option overrides JSON file.\n&quot;</span>
+<span class="go">  -b &lt;burst&gt;     Burst size. If not present default burst size 256 max 256.</span>
+<span class="go">  -c &lt;json-file&gt; The JSON configuration file</span>
+<span class="go">  -C             Wait on unix domain socket for JSON or JSON-C file</span>
+<span class="go">  -d             More debug stats are displayed</span>
+<span class="go">  -D             JCFG debug decoding</span>
+<span class="go">  -V             JCFG information verbose</span>
+<span class="go">  -P             JCFG debug parsing</span>
+<span class="go">  -h             Display the help information</span>
+</pre></div>
+</div>
+<p>To run the installed (<code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">install</span></code>) version of the application, please use the
+provided wrapper script rcndp in the tools directory which sets the LD_LIBRARY_PATH to the
+location where libraries are installed.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./tools/rcndp cndpfwd -c /tmp/fwd.jsonc</span>
+</pre></div>
+</div>
+</section>
+<section id="example-configuration-json-file">
+<h2><span class="section-number">4.2. </span>Example configuration JSON file<a class="headerlink" href="#example-configuration-json-file" title="Permalink to this headline">¶</a></h2>
+<p>The configuration json file is located in the <code class="docutils literal notranslate"><span class="pre">cndpfwd</span></code> example sub-directory</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">{</span>
+<span class="go">    // (R) - Required entry</span>
+<span class="go">    // (O) - Optional entry</span>
+<span class="go">    // All descriptions are optional and short form is &#39;desc&#39;</span>
+<span class="go">    // The order of the entries in this file are handled when it is parsed and the</span>
+<span class="go">    // entries can be in any order.</span>
+
+<span class="go">    // (R) Application information</span>
+<span class="go">    //    name        - (O) the name of the application</span>
+<span class="go">    //    description - (O) the description of the application</span>
+<span class="go">    &quot;application&quot;: {</span>
+<span class="go">        &quot;name&quot;: &quot;cndpfwd&quot;,</span>
+<span class="go">        &quot;description&quot;: &quot;A simple packet forwarder for pktdev and xskdev&quot;</span>
+<span class="go">    },</span>
+
+<span class="go">    // (O) Default values</span>
+<span class="go">    //    bufcnt - (O) UMEM default buffer count in 1K increments</span>
+<span class="go">    //    bufsz  - (O) UMEM buffer size in 1K increments</span>
+<span class="go">    //    rxdesc - (O) Number of RX ring descriptors in 1K increments</span>
+<span class="go">    //    txdesc - (O) Number of TX ring descriptors in 1K increments</span>
+<span class="go">    //    cache  - (O) MBUF Pool cache size in number of entries</span>
+<span class="go">    //    mtype  - (O) Memory type for mmap allocations</span>
+<span class="go">    &quot;defaults&quot;: {</span>
+<span class="go">        &quot;bufcnt&quot;: 16,</span>
+<span class="go">        &quot;bufsz&quot;: 2,</span>
+<span class="go">        &quot;rxdesc&quot;: 2,</span>
+<span class="go">        &quot;txdesc&quot;: 2,</span>
+<span class="go">        &quot;cache&quot;: 128,</span>
+<span class="go">        &quot;mtype&quot;: &quot;2MB&quot;</span>
+<span class="go">    },</span>
+
+<span class="go">    // List of all UMEM&#39;s to be created</span>
+<span class="go">    // key/val - (R) The &#39;key&#39; is the name of the umem for later reference.</span>
+<span class="go">    //               The &#39;val&#39; is the object describing the UMEM buffer.</span>
+<span class="go">    //               Multiple umem regions can be defined.</span>
+<span class="go">    // A UMEM can support multiple lports using the regions array. Each lports can use</span>
+<span class="go">    // one of the regions.</span>
+<span class="go">    //    bufcnt  - (R) The number of buffers in 1K increments in the UMEM space.</span>
+<span class="go">    //    bufsz   - (R) The size in 1K increments of each buffer in the UMEM space.</span>
+<span class="go">    //    mtype   - (O) If missing or empty string or missing means use 4KB or default system pages.</span>
+<span class="go">    //    regions - (O) Array of sizes one per region in 1K increments, total must be &lt;= bufcnt</span>
+<span class="go">    //    rxdesc  - (O) Number of RX descriptors to be allocated in 1K increments,</span>
+<span class="go">    //                  if not present or zero use defaults.rxdesc, normally zero.</span>
+<span class="go">    //    txdesc  - (O) Number of TX descriptors to be allocated in 1K increments,</span>
+<span class="go">    //                  if not present or zero use defaults.txdesc, normally zero.</span>
+<span class="go">    //    description | desc - (O) Description of the umem space.</span>
+<span class="go">    &quot;umems&quot;: {</span>
+<span class="go">        &quot;umem0&quot;: {</span>
+<span class="go">            &quot;bufcnt&quot;: 32,</span>
+<span class="go">            &quot;bufsz&quot;: 2,</span>
+<span class="go">            &quot;mtype&quot;: &quot;2MB&quot;,</span>
+<span class="go">            &quot;regions&quot;: [</span>
+<span class="go">                16,</span>
+<span class="go">                16</span>
+<span class="go">            ],</span>
+<span class="go">            &quot;rxdesc&quot;: 0,</span>
+<span class="go">            &quot;txdesc&quot;: 0,</span>
+<span class="go">            &quot;description&quot;: &quot;UMEM Description 0&quot;</span>
+<span class="go">        }</span>
+<span class="go">    },</span>
+
+<span class="go">    // List of all lports to be used in the application</span>
+<span class="go">    // An lport is defined by a netdev/queue ID pair, which is a socket containing a Rx/Tx ring pair.</span>
+<span class="go">    // Each queue ID is assigned to a single socket or a socket is the lport defined by netdev/qid.</span>
+<span class="go">    // Note: A netdev can be shared between lports as the qid is unique per lport</span>
+<span class="go">    //       If netdev is not defined or empty then it must be a virtual interface and not</span>
+<span class="go">    //       associated with a netdev/queue ID.</span>
+<span class="go">    // key/val - (R) The &#39;key&#39; is the logical name e.g. &#39;eth0:0&#39;, &#39;eth1:0&#39;, ... to be used by the</span>
+<span class="go">    //               application to reference an lport. The &#39;val&#39; object contains information about</span>
+<span class="go">    //               each lport.</span>
+<span class="go">    //    netdev        - (R) The netdev device to be used, the part before the colon</span>
+<span class="go">    //                     must reflect the netdev name</span>
+<span class="go">    //    pmd           - (R) All PMDs have a name i.e. &#39;net_af_xdp&#39;, &#39;ring&#39;, ...</span>
+<span class="go">    //    qid           - (R) Is the queue id to use for this lport, defined by ethtool command line</span>
+<span class="go">    //    umem          - (R) The UMEM assigned to this lport</span>
+<span class="go">    //    region        - (O) UMEM region index value, default region 0</span>
+<span class="go">    //    busy_poll     - (O) Enable busy polling support, true or false, default false</span>
+<span class="go">    //    busy_timeout  - (O) 1-65535 or 0 - use default value, values in milliseconds</span>
+<span class="go">    //    busy_budget   - (O) 0xFFFF disabled, 0 use default, &gt;0 budget value</span>
+<span class="go">    //    unprivileged  - (O) inhibit loading the BPF program if true, default false</span>
+<span class="go">    //    force_wakeup  - (O) force TX wakeup calls for CVL NIC, default false</span>
+<span class="go">    //    skb_mode      - (O) Enable XDP_FLAGS_SKB_MODE when creating af_xdp socket, forces copy mode, default false</span>
+<span class="go">    //    description   - (O) the description, &#39;desc&#39; can be used as well</span>
+<span class="go">    &quot;lports&quot;: {</span>
+<span class="go">        &quot;eth0:0&quot;: {</span>
+<span class="go">            &quot;pmd&quot;: &quot;net_af_xdp&quot;,</span>
+<span class="go">            &quot;qid&quot;: 11,</span>
+<span class="go">            &quot;umem&quot;: &quot;umem0&quot;,</span>
+<span class="go">            &quot;region&quot;: 0,</span>
+<span class="go">            &quot;description&quot;: &quot;LAN 0 port&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;eth1:0&quot;: {</span>
+<span class="go">            &quot;pmd&quot;: &quot;net_af_xdp&quot;,</span>
+<span class="go">            &quot;qid&quot;: 12,</span>
+<span class="go">            &quot;umem&quot;: &quot;umem0&quot;,</span>
+<span class="go">            &quot;region&quot;: 1,</span>
+<span class="go">            &quot;description&quot;: &quot;LAN 1 port&quot;</span>
+<span class="go">        }</span>
+<span class="go">    },</span>
+
+<span class="go">    // (O) Define the lcore groups for each thread to run</span>
+<span class="go">    //     Can be integers or a string for a range of lcores</span>
+<span class="go">    //     e.g. [10], [10-14,16], [10-12, 14-15, 17-18, 20]</span>
+<span class="go">    // Names of a lcore group and its lcores assigned to the group.</span>
+<span class="go">    // The initial group is for the main thread of the application.</span>
+<span class="go">    // The default group is special and is used if a thread if not assigned to a group.</span>
+<span class="go">    &quot;lcore-groups&quot;: {</span>
+<span class="go">        &quot;initial&quot;: [10],</span>
+<span class="go">        &quot;group0&quot;: [13],</span>
+<span class="go">        &quot;group1&quot;: [14],</span>
+<span class="go">        &quot;default&quot;: [&quot;15-16&quot;]</span>
+<span class="go">    },</span>
+
+<span class="go">    // (O) Set of common options application defined.</span>
+<span class="go">    //     The Key can be any string and value can be boolean, string, array or integer</span>
+<span class="go">    //     An array must contain only a single value type, boolean, integer, string and</span>
+<span class="go">    //     can&#39;t be a nested array.</span>
+<span class="go">    //   pkt_api    - (O) Set the type of packet API xskdev or pktdev</span>
+<span class="go">    //   no-metrics - (O) Disable metrics gathering and thread</span>
+<span class="go">    //   no-restapi - (O) Disable RestAPI support</span>
+<span class="go">    //   cli        - (O) Enable/Disable CLI supported</span>
+<span class="go">    //   mode       - (O) Mode type [drop | rx-only], tx-only, [lb | loopback], fwd, acl-strict, acl-permissive</span>
+<span class="go">    //   uds_path   - (0) Path to unix domain socket to get xsk map fd</span>
+<span class="go">    &quot;options&quot;: {</span>
+<span class="go">        &quot;pkt_api&quot;: &quot;xskdev&quot;,</span>
+<span class="go">        &quot;no-metrics&quot;: false,</span>
+<span class="go">        &quot;no-restapi&quot;: false,</span>
+<span class="go">        &quot;cli&quot;: true,</span>
+<span class="go">        &quot;mode&quot;: &quot;drop&quot;</span>
+<span class="go">    },</span>
+
+<span class="go">    // List of threads to start and information for that thread. Application can start</span>
+<span class="go">    // it&#39;s own threads for any reason and are not required to be configured by this file.</span>
+<span class="go">    //</span>
+<span class="go">    //   Key/Val   - (R) A unique thread name.</span>
+<span class="go">    //                   The format is &lt;type-string&gt;[:&lt;identifier&gt;] the &#39;:&#39; and identifier</span>
+<span class="go">    //                   are optional if all thread names are unique</span>
+<span class="go">    //      group  - (O) The lcore-group this thread belongs to. The</span>
+<span class="go">    //      lports - (O) The list of lports assigned to this thread and can not shared lports.</span>
+<span class="go">    //      description | desc - (O) The description</span>
+<span class="go">    &quot;threads&quot;: {</span>
+<span class="go">        &quot;main&quot;: {</span>
+<span class="go">            &quot;group&quot;: &quot;initial&quot;,</span>
+<span class="go">            &quot;description&quot;: &quot;CLI Thread&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;fwd:0&quot;: {</span>
+<span class="go">            &quot;group&quot;: &quot;group0&quot;,</span>
+<span class="go">            &quot;lports&quot;: [&quot;eth0:0&quot;],</span>
+<span class="go">            &quot;description&quot;: &quot;Thread 0&quot;</span>
+<span class="go">        },</span>
+<span class="go">        &quot;fwd:1&quot;: {</span>
+<span class="go">            &quot;group&quot;: &quot;group1&quot;,</span>
+<span class="go">            &quot;lports&quot;: [&quot;eth1:0&quot;],</span>
+<span class="go">            &quot;description&quot;: &quot;Thread 1&quot;</span>
+<span class="go">        }</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+</section>
+<section id="unix-domain-socket-interface">
+<h2><span class="section-number">4.3. </span>Unix Domain Socket interface<a class="headerlink" href="#unix-domain-socket-interface" title="Permalink to this headline">¶</a></h2>
+<p>The <cite>cndpfwd</cite> sample application provides a rudimentary remote control interface
+accessible through a Unix socket created under <cite>/var/run/cndp</cite> directory. Each
+successive run will create a new socket file, formatted as <cite>app_socket.&lt;pid&gt;</cite>
+where <cite>pid</cite> is the Process ID of the resulting <cite>cndpfwd</cite> application process.</p>
+<p>It is possible to directly connect to the socket and communicate with it using
+plaintext requests, and the API will respond with JSON data.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>UDS interface will not be available if <cite>no-metrics</cite> option is set to <cite>true</cite>
+in the JSONC file.</p>
+</div>
+<p>Available UDS endpoints:</p>
+<ul class="simple">
+<li><p><cite>/</cite> - list all available endpoints</p></li>
+<li><p><cite>/info</cite> - lists some basic information about the <cite>cndpfwd</cite> process</p></li>
+<li><p><cite>/app/hostname</cite> - returns hostname of the machine <cite>cndpfwd</cite> is running on</p></li>
+<li><p><cite>/app/appname</cite> - returns application name</p></li>
+<li><p><cite>/app/threads</cite> - lists active CNDP threads</p></li>
+<li><p><cite>/app/ports</cite> - lists configured CNDP ports</p></li>
+<li><p><cite>/app/start</cite> and <cite>/app/stop</cite> - allows starting and stopping individual threads
+by name, specified as a parameter, e.g. <cite>/app/stop,fwd:0</cite> (or <cite>all</cite> to start
+or stop all forwarding threads)</p></li>
+<li><p><cite>/metrics/port_stats</cite> - lists metrics for <cite>cndpfwd</cite> app</p></li>
+</ul>
+<p>The following UDS endpoints will only be avialable if ACL is enabled:</p>
+<ul class="simple">
+<li><p><cite>/acl/rules</cite> - lists general information about the rule table</p></li>
+<li><p><cite>/acl/rules,r:&lt;rule&gt;</cite> - show a specific ACL rule (indicated by its number) in
+the rule table</p></li>
+<li><p><cite>/acl/rules,p:&lt;rule&gt;</cite> - show a specific page from ACL rule table (each page
+will contain at most 32 rules)</p></li>
+<li><p><cite>/acl/clear</cite> - clears current rule table</p></li>
+<li><p><cite>/acl/add,&lt;rule&gt;</cite> - adds a new rule to the rule table, formatted as:
+<cite>&lt;src ip&gt;:&lt;dest ip&gt;:&lt;allow|deny&gt;</cite>
+where source and destination IPv4 addresses are in CIDR notation, e.g. <cite>192.168.1.0/24</cite></p></li>
+<li><p><cite>/acl/build</cite> - builds the ACL rule table (requires stopping all forwarding
+threads first)</p></li>
+</ul>
+<p>Note that the ACL rule table changes will not take effect until the “build”
+command is called.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">4. CNDPFWD Sample Application</a><ul>
+<li><a class="reference internal" href="#running-the-application">4.1. Running the Application</a></li>
+<li><a class="reference internal" href="#example-configuration-json-file">4.2. Example configuration JSON file</a></li>
+<li><a class="reference internal" href="#unix-domain-socket-interface">4.3. Unix Domain Socket interface</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="cli.html"
+                        title="previous chapter"><span class="section-number">3. </span>CLI library guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="dlb_test.html"
+                        title="next chapter"><span class="section-number">5. </span>DLB Sample Application</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/sample_app_ug/cndpfwd.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="dlb_test.html" title="5. DLB Sample Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="cli.html" title="3. CLI library guide"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Sample Applications User Guides</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">4. </span>CNDPFWD Sample Application</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

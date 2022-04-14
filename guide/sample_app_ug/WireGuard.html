@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. Wireguard Rust user space &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Timer Sample Application" href="timer.html" />
+    <link rel="prev" title="9. Phil Sample Application" href="phil.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="timer.html" title="11. Timer Sample Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="phil.html" title="9. Phil Sample Application"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sample Applications User Guides</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">10. </span>Wireguard Rust user space</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="wireguard-rust-user-space">
+<h1><span class="section-number">10. </span>Wireguard Rust user space<a class="headerlink" href="#wireguard-rust-user-space" title="Permalink to this headline">¶</a></h1>
+<section id="wireguard">
+<span id="wireguard-overview"></span><h2><span class="section-number">10.1. </span>WireGuard<a class="headerlink" href="#wireguard" title="Permalink to this headline">¶</a></h2>
+<p>WireGuard is an extremely simple yet fast and modern VPN that uses state-of-the-art cryptography.
+Wireguard Rust is a user space implementation of the wireguard protocol. It’s maintained in GitHub
+at <a class="reference external" href="https://github.com/WireGuard/wireguard-rs/">wireguard-rs</a>.</p>
+</section>
+<section id="wireguard-rust-user-space-with-cndp">
+<h2><span class="section-number">10.2. </span>WireGuard Rust user space with CNDP<a class="headerlink" href="#wireguard-rust-user-space-with-cndp" title="Permalink to this headline">¶</a></h2>
+<p>Wireguard Rust user space implementation uses CNDP/AF-XDP to send and receive packets from/to user
+space CNDP/AF-XDP replaces existing linux networking stack used to send/receive WireGuard UDP
+packets. Wireguard Rust with CNDP will run on Linux platform. WireGuard CNDP application runs as a
+background process and by default uses WireGuard kernel TUN interface to read/write packets from TUN
+interface. It uses CNDP API’s to send and receive UDP packets.</p>
+<p id="wireguard-cndp-custom-app">A custom linux application is also implemented on top of Wireguard and CNDP stack which uses Rust
+channel instead of Kernel TUN interface for data path. Control path still uses Kernel TUN interface
+to configure local and peer encryption keys, ip addresses, peer end point etc.</p>
+<figure class="align-default">
+<img alt="../images/WG_CNDP.png" src="../images/WG_CNDP.png" />
+</figure>
+<figure class="align-default">
+<img alt="../images/WG_CNDP_Custom_app.png" src="../images/WG_CNDP_Custom_app.png" />
+</figure>
+</section>
+<section id="wireguard-rust-high-level-flow">
+<h2><span class="section-number">10.3. </span>WireGuard Rust High level flow<a class="headerlink" href="#wireguard-rust-high-level-flow" title="Permalink to this headline">¶</a></h2>
+<p>High level flow of Wireguard Rust is shown in below diagram. Here UDP reader and writer uses CNDP
+APIs to receive and send WireGuard UDP packets.</p>
+<figure class="align-default">
+<img alt="../images/WG_RUST_HighLevelFlow.png" src="../images/WG_RUST_HighLevelFlow.png" />
+</figure>
+</section>
+<section id="wireguard-cndp-performance-measurement-setup-using-dpdk-pktgen">
+<h2><span class="section-number">10.4. </span>Wireguard CNDP performance measurement setup using DPDK PktGen<a class="headerlink" href="#wireguard-cndp-performance-measurement-setup-using-dpdk-pktgen" title="Permalink to this headline">¶</a></h2>
+<p>Flow traffic configuration setup which is used to measure Wireguard CNDP performance is shown in
+below diagram. This uses custom Wireguard CNDP application described in
+<a class="reference internal" href="#wireguard-cndp-custom-app"><span class="std std-ref">Custom Wireguard</span></a></p>
+<figure class="align-default">
+<img alt="../images/WG_CNDP_Traffic_Flow.png" src="../images/WG_CNDP_Traffic_Flow.png" />
+</figure>
+</section>
+<section id="setup-wireguard-rust-with-cndp">
+<h2><span class="section-number">10.5. </span>Setup WireGuard Rust with CNDP<a class="headerlink" href="#setup-wireguard-rust-with-cndp" title="Permalink to this headline">¶</a></h2>
+<p>Clone the Wireguard Rust repo and checkout the commit on which the patches are based:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/WireGuard/wireguard-rs.git</span>
+<span class="go">cd wireguard-rs</span>
+<span class="go">git checkout 7d84ef9</span>
+</pre></div>
+</div>
+<p>Apply the Wireguard CNDP patches in lang/rs/wireguard/patch. Ignore the whitespace warning errors.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git am 0001-Integarte-CNDP-Cloud-Native-Data-Plane-with-Wireguar.patch</span>
+<span class="go">git am 0002-Rename-variable-private-to-priv_-to-fix-build-error.patch</span>
+<span class="go">git am 0003-Remove-extra-argument-from-pktmbuf_dump.patch</span>
+</pre></div>
+</div>
+<p>Build Wireguard with CNDP</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cargo build --release</span>
+</pre></div>
+</div>
+<p>In Wireguard repo, refer to src/platform/linux/cndp/README.md file under usage section to configure
+and start Wireguard with CNDP.</p>
+</section>
+<section id="future-work">
+<h2><span class="section-number">10.6. </span>Future work<a class="headerlink" href="#future-work" title="Permalink to this headline">¶</a></h2>
+<p>Currently network I/O performance in WireGuard Rust is optimized by using CNDP/AF-XDP. There are
+other opportunities for performance optimization like chacha20-poly1305 encryption/decryption, using
+lockless queue implementation (using DLB or lockless ring).</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. Wireguard Rust user space</a><ul>
+<li><a class="reference internal" href="#wireguard">10.1. WireGuard</a></li>
+<li><a class="reference internal" href="#wireguard-rust-user-space-with-cndp">10.2. WireGuard Rust user space with CNDP</a></li>
+<li><a class="reference internal" href="#wireguard-rust-high-level-flow">10.3. WireGuard Rust High level flow</a></li>
+<li><a class="reference internal" href="#wireguard-cndp-performance-measurement-setup-using-dpdk-pktgen">10.4. Wireguard CNDP performance measurement setup using DPDK PktGen</a></li>
+<li><a class="reference internal" href="#setup-wireguard-rust-with-cndp">10.5. Setup WireGuard Rust with CNDP</a></li>
+<li><a class="reference internal" href="#future-work">10.6. Future work</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="phil.html"
+                        title="previous chapter"><span class="section-number">9. </span>Phil Sample Application</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="timer.html"
+                        title="next chapter"><span class="section-number">11. </span>Timer Sample Application</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/sample_app_ug/WireGuard.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="timer.html" title="11. Timer Sample Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="phil.html" title="9. Phil Sample Application"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Sample Applications User Guides</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">10. </span>Wireguard Rust user space</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

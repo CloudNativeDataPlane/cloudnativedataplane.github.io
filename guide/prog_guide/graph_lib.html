@@ -1,0 +1,553 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>6. Graph Library and Inbuilt Nodes &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7. Crypto Libraries" href="crypto.html" />
+    <link rel="prev" title="5. Pktmbuf Library" href="pktmbuf_lib.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="crypto.html" title="7. Crypto Libraries"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="pktmbuf_lib.html" title="5. Pktmbuf Library"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>Graph Library and Inbuilt Nodes</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="graph-library-and-inbuilt-nodes">
+<span id="graph-library"></span><h1><span class="section-number">6. </span>Graph Library and Inbuilt Nodes<a class="headerlink" href="#graph-library-and-inbuilt-nodes" title="Permalink to this headline">¶</a></h1>
+<p>Graph architecture abstracts the data processing functions as a <code class="docutils literal notranslate"><span class="pre">node</span></code> and
+<code class="docutils literal notranslate"><span class="pre">links</span></code> them together to create a complex <code class="docutils literal notranslate"><span class="pre">graph</span></code> to enable reusable/modular
+data processing functions.</p>
+<p>The graph library provides API to enable graph framework operations such as
+create, lookup, dump and destroy on graph and node operations such as clone,
+edge update, and edge shrink, etc. The API also allows to create the stats
+cluster to monitor per graph and per node stats.</p>
+<section id="features">
+<h2><span class="section-number">6.1. </span>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>Features of the Graph library are:</p>
+<ul class="simple">
+<li><p>Nodes as plugins.</p></li>
+<li><p>Support for out of tree nodes.</p></li>
+<li><p>Inbuilt nodes for packet processing.</p></li>
+<li><p>Multi-process support.</p></li>
+<li><p>Low overhead graph walk and node enqueue.</p></li>
+<li><p>Low overhead statistics collection infrastructure.</p></li>
+<li><p>Support to export the graph as a Graphviz dot file. See <code class="docutils literal notranslate"><span class="pre">cne_graph_export()</span></code>.</p></li>
+<li><p>Allow having another graph walk implementation in the future by segregating
+the fast path(<code class="docutils literal notranslate"><span class="pre">cne_graph_worker.h</span></code>) and slow path code.</p></li>
+</ul>
+</section>
+<section id="advantages-of-graph-architecture">
+<h2><span class="section-number">6.2. </span>Advantages of Graph architecture<a class="headerlink" href="#advantages-of-graph-architecture" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Memory latency is the enemy for high-speed packet processing, moving the
+similar packet processing code to a node will reduce the I cache and D
+caches misses.</p></li>
+<li><p>Exploits the probability that most packets will follow the same nodes in the
+graph.</p></li>
+<li><p>Allow SIMD instructions for packet processing of the node.-</p></li>
+<li><p>The modular scheme allows having reusable nodes for the consumers.</p></li>
+<li><p>The modular scheme allows us to abstract the vendor HW specific
+optimizations as a node.</p></li>
+</ul>
+</section>
+<section id="performance-tuning-parameters">
+<h2><span class="section-number">6.3. </span>Performance tuning parameters<a class="headerlink" href="#performance-tuning-parameters" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Test with various burst size values (256, 128, 64, 32) using
+CNE_GRAPH_BURST_SIZE config option.
+The testing shows, on x86 and arm64 servers, The sweet spot is 256 burst
+size. While on arm64 embedded SoCs, it is either 64 or 128.</p></li>
+</ul>
+</section>
+<section id="programming-model">
+<h2><span class="section-number">6.4. </span>Programming model<a class="headerlink" href="#programming-model" title="Permalink to this headline">¶</a></h2>
+<section id="anatomy-of-node">
+<h3><span class="section-number">6.4.1. </span>Anatomy of Node:<a class="headerlink" href="#anatomy-of-node" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id1">
+<span id="figure-anatomy-of-a-node"></span><img alt="../images/anatomy_of_a_node.svg" src="../images/anatomy_of_a_node.svg" /><figcaption>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">Anatomy of a node</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference internal" href="#figure-anatomy-of-a-node"><span class="std std-numref">Fig. 6.1</span></a> diagram depicts the anatomy of a node.</p>
+<p>The node is the basic building block of the graph framework.</p>
+<p>A node consists of:</p>
+<section id="process">
+<h4><span class="section-number">6.4.1.1. </span>process():<a class="headerlink" href="#process" title="Permalink to this headline">¶</a></h4>
+<p>The callback function will be invoked by worker thread using
+<code class="docutils literal notranslate"><span class="pre">cne_graph_walk()</span></code> function when there is data to be processed by the node.
+A graph node process the function using <code class="docutils literal notranslate"><span class="pre">process()</span></code> and enqueue to next
+downstream node using <code class="docutils literal notranslate"><span class="pre">cne_node_enqueue*()</span></code> function.</p>
+</section>
+<section id="context-memory">
+<h4><span class="section-number">6.4.1.2. </span>Context memory:<a class="headerlink" href="#context-memory" title="Permalink to this headline">¶</a></h4>
+<p>It is memory allocated by the library to store the node-specific context
+information. This memory will be used by process(), init(), fini() callbacks.</p>
+</section>
+<section id="init">
+<h4><span class="section-number">6.4.1.3. </span>init():<a class="headerlink" href="#init" title="Permalink to this headline">¶</a></h4>
+<p>The callback function will be invoked by <code class="docutils literal notranslate"><span class="pre">cne_graph_create()</span></code> on when
+a node gets attached to a graph.</p>
+</section>
+<section id="fini">
+<h4><span class="section-number">6.4.1.4. </span>fini():<a class="headerlink" href="#fini" title="Permalink to this headline">¶</a></h4>
+<p>The callback function will be invoked by <code class="docutils literal notranslate"><span class="pre">cne_graph_destroy()</span></code> on when a
+node gets detached to a graph.</p>
+</section>
+<section id="node-name">
+<h4><span class="section-number">6.4.1.5. </span>Node name:<a class="headerlink" href="#node-name" title="Permalink to this headline">¶</a></h4>
+<p>It is the name of the node. When a node registers to graph library, the library
+gives the ID as <code class="docutils literal notranslate"><span class="pre">cne_node_t</span></code> type. Both ID or Name shall be used lookup the
+node. <code class="docutils literal notranslate"><span class="pre">cne_node_from_name()</span></code>, <code class="docutils literal notranslate"><span class="pre">cne_node_id_to_name()</span></code> are the node
+lookup functions.</p>
+</section>
+<section id="nb-edges">
+<h4><span class="section-number">6.4.1.6. </span>nb_edges:<a class="headerlink" href="#nb-edges" title="Permalink to this headline">¶</a></h4>
+<p>The number of downstream nodes connected to this node. The <code class="docutils literal notranslate"><span class="pre">next_nodes[]</span></code>
+stores the downstream nodes objects. <code class="docutils literal notranslate"><span class="pre">cne_node_edge_update()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">cne_node_edge_shrink()</span></code> functions shall be used to update the <code class="docutils literal notranslate"><span class="pre">next_node[]</span></code>
+objects. Consumers of the node APIs are free to update the <code class="docutils literal notranslate"><span class="pre">next_node[]</span></code>
+objects till <code class="docutils literal notranslate"><span class="pre">cne_graph_create()</span></code> invoked.</p>
+</section>
+<section id="next-node">
+<h4><span class="section-number">6.4.1.7. </span>next_node[]:<a class="headerlink" href="#next-node" title="Permalink to this headline">¶</a></h4>
+<p>The dynamic array to store the downstream nodes connected to this node. Downstream
+node should not be current node itself or a source node.</p>
+</section>
+<section id="source-node">
+<h4><span class="section-number">6.4.1.8. </span>Source node:<a class="headerlink" href="#source-node" title="Permalink to this headline">¶</a></h4>
+<p>Source nodes are static nodes created using <code class="docutils literal notranslate"><span class="pre">CNE_NODE_REGISTER</span></code> by passing
+<code class="docutils literal notranslate"><span class="pre">flags</span></code> as <code class="docutils literal notranslate"><span class="pre">CNE_NODE_SOURCE_F</span></code>.
+While performing the graph walk, the <code class="docutils literal notranslate"><span class="pre">process()</span></code> function of all the source
+nodes will be called first. So that these nodes can be used as input nodes for a graph.</p>
+</section>
+</section>
+<section id="node-creation-and-registration">
+<h3><span class="section-number">6.4.2. </span>Node creation and registration<a class="headerlink" href="#node-creation-and-registration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Node implementer creates the node by implementing ops and attributes of
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cne_node_register</span></code>.</p></li>
+<li><p>The library registers the node by invoking CNE_NODE_REGISTER on library load
+using the constructor scheme. The constructor scheme used here to support multi-process.</p></li>
+</ul>
+</section>
+<section id="link-the-nodes-to-create-the-graph-topology">
+<h3><span class="section-number">6.4.3. </span>Link the Nodes to create the graph topology<a class="headerlink" href="#link-the-nodes-to-create-the-graph-topology" title="Permalink to this headline">¶</a></h3>
+<figure class="align-default" id="id2">
+<span id="figure-link-the-nodes"></span><img alt="../images/link_the_nodes.svg" src="../images/link_the_nodes.svg" /><figcaption>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Link the nodes</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference internal" href="#figure-link-the-nodes"><span class="std std-numref">Fig. 6.2</span></a> diagram shows a graph topology after
+linking the N nodes.</p>
+<p>Once nodes are available to the program, Application or node public API
+functions can links them together to create a complex packet processing graph.</p>
+<p>There are multiple different types of strategies to link the nodes.</p>
+<section id="method-a">
+<h4><span class="section-number">6.4.3.1. </span>Method (a):<a class="headerlink" href="#method-a" title="Permalink to this headline">¶</a></h4>
+<p>Provide the <code class="docutils literal notranslate"><span class="pre">next_nodes[]</span></code> at the node registration time. See  <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cne_node_register::nb_edges</span></code>.
+This is a use case to address the static node scheme where one knows upfront the
+<code class="docutils literal notranslate"><span class="pre">next_nodes[]</span></code> of the node.</p>
+</section>
+<section id="method-b">
+<h4><span class="section-number">6.4.3.2. </span>Method (b):<a class="headerlink" href="#method-b" title="Permalink to this headline">¶</a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">cne_node_edge_get()</span></code>, <code class="docutils literal notranslate"><span class="pre">cne_node_edge_update()</span></code>, <code class="docutils literal notranslate"><span class="pre">cne_node_edge_shrink()</span></code>
+to update the <code class="docutils literal notranslate"><span class="pre">next_nodes[]</span></code> links for the node runtime but before graph create.</p>
+</section>
+<section id="method-c">
+<h4><span class="section-number">6.4.3.3. </span>Method (c):<a class="headerlink" href="#method-c" title="Permalink to this headline">¶</a></h4>
+<p>Use <code class="docutils literal notranslate"><span class="pre">cne_node_clone()</span></code> to clone a already existing node, created using CNE_NODE_REGISTER.
+When <code class="docutils literal notranslate"><span class="pre">cne_node_clone()</span></code> invoked, The library, would clone all the attributes
+of the node and creates a new one. The name for cloned node shall be
+<code class="docutils literal notranslate"><span class="pre">&quot;parent_node_name-user_provided_name&quot;</span></code>.</p>
+<p>This method enables the use case of Rx and Tx nodes where multiple of those nodes
+need to be cloned based on the number of CPU available in the system.
+The cloned nodes will be identical, except the <code class="docutils literal notranslate"><span class="pre">&quot;context</span> <span class="pre">memory&quot;</span></code>.
+Context memory will have information of port, queue pair in case of Rx and Tx
+ethdev nodes.</p>
+</section>
+</section>
+<section id="create-the-graph-object">
+<h3><span class="section-number">6.4.4. </span>Create the graph object<a class="headerlink" href="#create-the-graph-object" title="Permalink to this headline">¶</a></h3>
+<p>Now that the nodes are linked, it’s time to create a graph by including
+the required nodes. The application can provide a set of node patterns to
+form a graph object. The <code class="docutils literal notranslate"><span class="pre">fini()</span></code> API used underneath for the pattern
+matching to include the required nodes. After the graph create any changes to
+nodes or graph is not allowed.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">cne_graph_create()</span></code> API shall be used to create the graph.</p>
+<p>Example of a graph object creation:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">{&quot;ethdev_rx-0-0&quot;, ip4*, ethdev_tx-*&quot;}</span>
+</pre></div>
+</div>
+<p>In the above example, A graph object will be created with ethdev Rx
+node of port 0 and queue 0, all ipv4* nodes in the system,
+and ethdev tx node of all ports.</p>
+</section>
+<section id="multicore-graph-processing">
+<h3><span class="section-number">6.4.5. </span>Multicore graph processing<a class="headerlink" href="#multicore-graph-processing" title="Permalink to this headline">¶</a></h3>
+<p>In the current graph library implementation, specifically,
+<code class="docutils literal notranslate"><span class="pre">cne_graph_walk()</span></code> and <code class="docutils literal notranslate"><span class="pre">cne_node_enqueue*</span></code> fast path API functions
+are designed to work on single-core to have better performance.
+The fast path API works on graph object, So the multi-core graph
+processing strategy would be to create graph object PER WORKER.</p>
+</section>
+<section id="in-fast-path">
+<h3><span class="section-number">6.4.6. </span>In fast path<a class="headerlink" href="#in-fast-path" title="Permalink to this headline">¶</a></h3>
+<p>Typical fast-path code looks like below, where the application
+gets the fast-path graph object using <code class="docutils literal notranslate"><span class="pre">cne_graph_lookup()</span></code>
+on the worker thread and run the <code class="docutils literal notranslate"><span class="pre">cne_graph_walk()</span></code> in a tight loop.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">cne_graph</span> <span class="o">*</span><span class="n">graph</span> <span class="o">=</span> <span class="n">cne_graph_lookup</span><span class="p">(</span><span class="s">&quot;worker0&quot;</span><span class="p">);</span>
+
+<span class="k">while</span> <span class="p">(</span><span class="o">!</span><span class="n">done</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">cne_graph_walk</span><span class="p">(</span><span class="n">graph</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="context-update-when-graph-walk-in-action">
+<h3><span class="section-number">6.4.7. </span>Context update when graph walk in action<a class="headerlink" href="#context-update-when-graph-walk-in-action" title="Permalink to this headline">¶</a></h3>
+<p>The fast-path object for the node is <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cne_node</span></code>.</p>
+<p>It may be possible that in slow-path or after the graph walk-in action,
+the user needs to update the context of the node hence access to
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cne_node</span> <span class="pre">*</span></code> memory.</p>
+<p><code class="docutils literal notranslate"><span class="pre">cne_graph_foreach_node()</span></code>, <code class="docutils literal notranslate"><span class="pre">cne_graph_node_get()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">cne_graph_node_get_by_name()</span></code> APIs can be used to to get the
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cne_node*</span></code>. <code class="docutils literal notranslate"><span class="pre">cne_graph_foreach_node()</span></code> iterator function works on
+<code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">cne_graph</span> <span class="pre">*</span></code> fast-path graph object while others works on graph ID or name.</p>
+</section>
+<section id="get-the-node-statistics-using-graph-cluster">
+<h3><span class="section-number">6.4.8. </span>Get the node statistics using graph cluster<a class="headerlink" href="#get-the-node-statistics-using-graph-cluster" title="Permalink to this headline">¶</a></h3>
+<p>The user may need to know the aggregate stats of the node across
+multiple graph objects. Especially the situation where each graph object bound
+to a worker thread.</p>
+<p>Introduced a graph cluster object for statistics.
+<code class="docutils literal notranslate"><span class="pre">cne_graph_cluster_stats_create()</span></code> API shall be used for creating a
+graph cluster with multiple graph objects and <code class="docutils literal notranslate"><span class="pre">cne_graph_cluster_stats_get()</span></code>
+to get the aggregate node statistics.</p>
+<p>An example statistics output from <code class="docutils literal notranslate"><span class="pre">cne_graph_cluster_stats_get()</span></code></p>
+<div class="highlight-diff notranslate"><div class="highlight"><pre><span></span><span class="gi">+---------+-----------+-------------+---------------+-----------+---------------+-----------+</span>
+|Node     |calls      |objs         |realloc_count  |objs/call  |objs/sec(10E6) |cycles/call|
+<span class="gi">+---------------------+-------------+---------------+-----------+---------------+-----------+</span>
+|node0    |12977424   |3322220544   |5              |256.000    |3047.151872    |20.0000    |
+|node1    |12977653   |3322279168   |0              |256.000    |3047.210496    |17.0000    |
+|node2    |12977696   |3322290176   |0              |256.000    |3047.221504    |17.0000    |
+|node3    |12977734   |3322299904   |0              |256.000    |3047.231232    |17.0000    |
+|node4    |12977784   |3322312704   |1              |256.000    |3047.243776    |17.0000    |
+|node5    |12977825   |3322323200   |0              |256.000    |3047.254528    |17.0000    |
+<span class="gi">+---------+-----------+-------------+---------------+-----------+---------------+-----------+</span>
+</pre></div>
+</div>
+</section>
+<section id="node-writing-guidelines">
+<h3><span class="section-number">6.4.9. </span>Node writing guidelines<a class="headerlink" href="#node-writing-guidelines" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">process()</span></code> function of a node is the fast-path function and that needs
+to be written carefully to achieve max performance.</p>
+<p>Broadly speaking, there are two different types of nodes.</p>
+</section>
+<section id="static-nodes">
+<h3><span class="section-number">6.4.10. </span>Static nodes<a class="headerlink" href="#static-nodes" title="Permalink to this headline">¶</a></h3>
+<p>The first kind of nodes are those that have a fixed <code class="docutils literal notranslate"><span class="pre">next_nodes[]</span></code> for the
+complete burst (like ethdev_rx, ethdev_tx) and it is simple to write.
+<code class="docutils literal notranslate"><span class="pre">process()</span></code> function can move the obj burst to the next node either using
+<code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_move()</span></code> or using <code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_get()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_put()</span></code>.</p>
+</section>
+<section id="intermediate-nodes">
+<h3><span class="section-number">6.4.11. </span>Intermediate nodes<a class="headerlink" href="#intermediate-nodes" title="Permalink to this headline">¶</a></h3>
+<p>The second kind of such node is <code class="docutils literal notranslate"><span class="pre">intermediate</span> <span class="pre">nodes</span></code> that decide what is the
+<code class="docutils literal notranslate"><span class="pre">next_node[]</span></code> to send to on a per-packet basis. In these nodes,</p>
+<ul class="simple">
+<li><p>Firstly, there has to be the best possible packet processing logic.</p></li>
+<li><p>Secondly, each packet needs to be queued to its next node.</p></li>
+</ul>
+<p>This can be done using <code class="docutils literal notranslate"><span class="pre">cne_node_enqueue_[x1|x2|x4]()</span></code> APIs if
+they are to single next or <code class="docutils literal notranslate"><span class="pre">cne_node_enqueue_next()</span></code> that takes array of nexts.</p>
+<p>In scenario where multiple intermediate nodes are present but most of the time
+each node using the same next node for all its packets, the cost of moving every
+pointer from current node’s stream to next node’s stream could be avoided.
+This is called home run and <code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_move()</span></code> could be used to
+just move stream from the current node to the next node with least number of cycles.
+Since this can be avoided only in the case where all the packets are destined
+to the same next node, node implementation should be also having worst-case
+handling where every packet could be going to different next node.</p>
+<section id="example-of-intermediate-node-implementation-with-home-run">
+<h4><span class="section-number">6.4.11.1. </span>Example of intermediate node implementation with home run:<a class="headerlink" href="#example-of-intermediate-node-implementation-with-home-run" title="Permalink to this headline">¶</a></h4>
+<p>1. Start with speculation that next_node = node-&gt;ctx.
+This could be the next_node application used in the previous function call of this node.</p>
+<p>2. Get the next_node stream array with required space using
+<code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_get(next_node,</span> <span class="pre">space)</span></code>.</p>
+<p>3. while n_left_from &gt; 0 (i.e packets left to be sent) prefetch next pkt_set
+and process current pkt_set to find their next node</p>
+<p>4. if all the next nodes of the current pkt_set match speculated next node,
+just count them as successfully speculated(<code class="docutils literal notranslate"><span class="pre">last_spec</span></code>) till now and
+continue the loop without actually moving them to the next node. else if there is
+a mismatch, copy all the pkt_set pointers that were <code class="docutils literal notranslate"><span class="pre">last_spec</span></code> and move the
+current pkt_set to their respective next’s nodes using <code class="docutils literal notranslate"><span class="pre">cne_enqueue_next_x1()</span></code>.
+Also, one of the next_node can be updated as speculated next_node if it is more
+probable. Finally, reset <code class="docutils literal notranslate"><span class="pre">last_spec</span></code> to zero.</p>
+<ol class="arabic simple" start="5">
+<li><p>if n_left_from != 0 then goto 3) to process remaining packets.</p></li>
+</ol>
+<p>6. if last_spec == nb_objs, All the objects passed were successfully speculated
+to single next node. So, the current stream can be moved to next node using
+<code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_move(node,</span> <span class="pre">next_node)</span></code>.
+This is the <code class="docutils literal notranslate"><span class="pre">home</span> <span class="pre">run</span></code> where memcpy of buffer pointers to next node is avoided.</p>
+<ol class="arabic simple" start="7">
+<li><p>Update the <code class="docutils literal notranslate"><span class="pre">node-&gt;ctx</span></code> with more probable next node.</p></li>
+</ol>
+</section>
+</section>
+</section>
+<section id="graph-object-memory-layout">
+<h2><span class="section-number">6.5. </span>Graph object memory layout<a class="headerlink" href="#graph-object-memory-layout" title="Permalink to this headline">¶</a></h2>
+<figure class="align-default" id="id3">
+<span id="figure-graph-mem-layout"></span><img alt="../images/graph_mem_layout.svg" src="../images/graph_mem_layout.svg" /><figcaption>
+<p><span class="caption-number">Fig. 6.3 </span><span class="caption-text">Graph object memory layout</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The <a class="reference internal" href="#figure-graph-mem-layout"><span class="std std-numref">Fig. 6.3</span></a> diagram shows <code class="docutils literal notranslate"><span class="pre">cne_graph</span></code> object memory
+layout. Understanding the memory layout helps to debug the graph library and
+improve the performance if needed.</p>
+<p>Graph object consists of a header, circular buffer to store the pending
+stream when walking over the graph, and variable-length memory to store
+the <code class="docutils literal notranslate"><span class="pre">cne_node</span></code> objects.</p>
+<p>The graph_nodes_mem_create() creates and populate this memory. The functions
+such as <code class="docutils literal notranslate"><span class="pre">cne_graph_walk()</span></code> and <code class="docutils literal notranslate"><span class="pre">cne_node_enqueue_*</span></code> use this memory
+to enable fastpath services.</p>
+</section>
+<section id="inbuilt-nodes">
+<h2><span class="section-number">6.6. </span>Inbuilt Nodes<a class="headerlink" href="#inbuilt-nodes" title="Permalink to this headline">¶</a></h2>
+<p>CNDP provides a set of nodes for data processing. The following section
+details the documentation for the same.</p>
+<section id="ethdev-rx">
+<h3><span class="section-number">6.6.1. </span>ethdev_rx<a class="headerlink" href="#ethdev-rx" title="Permalink to this headline">¶</a></h3>
+<p>This node does <code class="docutils literal notranslate"><span class="pre">cne_eth_rx_burst()</span></code> into stream buffer passed to it
+(src node stream) and does <code class="docutils literal notranslate"><span class="pre">cne_node_next_stream_move()</span></code> only when
+there are packets received. Each <code class="docutils literal notranslate"><span class="pre">cne_node</span></code> works only on one Rx port and
+queue that it gets from node-&gt;ctx. For each (port X, rx_queue Y),
+a cne_node is cloned from  ethdev_rx_base_node as <code class="docutils literal notranslate"><span class="pre">ethdev_rx-X-Y</span></code> in
+<code class="docutils literal notranslate"><span class="pre">cne_node_eth_config()</span></code> along with updating <code class="docutils literal notranslate"><span class="pre">node-&gt;ctx</span></code>.
+Each graph needs to be associated  with a unique cne_node for a (port, rx_queue).</p>
+</section>
+<section id="ethdev-tx">
+<h3><span class="section-number">6.6.2. </span>ethdev_tx<a class="headerlink" href="#ethdev-tx" title="Permalink to this headline">¶</a></h3>
+<p>This node does <code class="docutils literal notranslate"><span class="pre">cne_eth_tx_burst()</span></code> for a burst of objs received by it.
+It sends the burst to a fixed Tx Port and Queue information from
+node-&gt;ctx. For each (port X), this <code class="docutils literal notranslate"><span class="pre">cne_node</span></code> is cloned from
+ethdev_tx_node_base as “ethdev_tx-X” in <code class="docutils literal notranslate"><span class="pre">cne_node_eth_config()</span></code>
+along with updating node-&gt;context.</p>
+<p>Since each graph doesn’t need more than one Txq, per port, a Txq is assigned
+based on graph id to each cne_node instance. Each graph needs to be associated
+with a cne_node for each (port).</p>
+</section>
+<section id="pkt-drop">
+<h3><span class="section-number">6.6.3. </span>pkt_drop<a class="headerlink" href="#pkt-drop" title="Permalink to this headline">¶</a></h3>
+<p>This node frees all the objects passed to it considering them as
+<code class="docutils literal notranslate"><span class="pre">cne_mbufs</span></code> that need to be freed.</p>
+</section>
+<section id="ip4-lookup">
+<h3><span class="section-number">6.6.4. </span>ip4_lookup<a class="headerlink" href="#ip4-lookup" title="Permalink to this headline">¶</a></h3>
+<p>This node is an intermediate node that does LPM lookup for the received
+ipv4 packets and the result determines each packets next node.</p>
+<p>On successful LPM lookup, the result contains the <code class="docutils literal notranslate"><span class="pre">next_node</span></code> id and
+<code class="docutils literal notranslate"><span class="pre">next-hop</span></code> id with which the packet needs to be further processed.</p>
+<p>On LPM lookup failure, objects are redirected to pkt_drop node.
+<code class="docutils literal notranslate"><span class="pre">cne_node_ip4_route_add()</span></code> is control path API to add ipv4 routes.
+To achieve home run, node use <code class="docutils literal notranslate"><span class="pre">cne_node_stream_move()</span></code> as mentioned in above
+sections.</p>
+</section>
+<section id="ip4-rewrite">
+<h3><span class="section-number">6.6.5. </span>ip4_rewrite<a class="headerlink" href="#ip4-rewrite" title="Permalink to this headline">¶</a></h3>
+<p>This node gets packets from <code class="docutils literal notranslate"><span class="pre">ip4_lookup</span></code> node with next-hop id for each
+packet is embedded in <code class="docutils literal notranslate"><span class="pre">node_mbuf_priv1(mbuf)-&gt;nh</span></code>. This id is used
+to determine the L2 header to be written to the packet before sending
+the packet out to a particular ethdev_tx node.
+<code class="docutils literal notranslate"><span class="pre">cne_node_ip4_rewrite_add()</span></code> is control path API to add next-hop info.</p>
+</section>
+<section id="null">
+<h3><span class="section-number">6.6.6. </span>null<a class="headerlink" href="#null" title="Permalink to this headline">¶</a></h3>
+<p>This node ignores the set of objects passed to it and reports that all are
+processed.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">6. Graph Library and Inbuilt Nodes</a><ul>
+<li><a class="reference internal" href="#features">6.1. Features</a></li>
+<li><a class="reference internal" href="#advantages-of-graph-architecture">6.2. Advantages of Graph architecture</a></li>
+<li><a class="reference internal" href="#performance-tuning-parameters">6.3. Performance tuning parameters</a></li>
+<li><a class="reference internal" href="#programming-model">6.4. Programming model</a><ul>
+<li><a class="reference internal" href="#anatomy-of-node">6.4.1. Anatomy of Node:</a><ul>
+<li><a class="reference internal" href="#process">6.4.1.1. process():</a></li>
+<li><a class="reference internal" href="#context-memory">6.4.1.2. Context memory:</a></li>
+<li><a class="reference internal" href="#init">6.4.1.3. init():</a></li>
+<li><a class="reference internal" href="#fini">6.4.1.4. fini():</a></li>
+<li><a class="reference internal" href="#node-name">6.4.1.5. Node name:</a></li>
+<li><a class="reference internal" href="#nb-edges">6.4.1.6. nb_edges:</a></li>
+<li><a class="reference internal" href="#next-node">6.4.1.7. next_node[]:</a></li>
+<li><a class="reference internal" href="#source-node">6.4.1.8. Source node:</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#node-creation-and-registration">6.4.2. Node creation and registration</a></li>
+<li><a class="reference internal" href="#link-the-nodes-to-create-the-graph-topology">6.4.3. Link the Nodes to create the graph topology</a><ul>
+<li><a class="reference internal" href="#method-a">6.4.3.1. Method (a):</a></li>
+<li><a class="reference internal" href="#method-b">6.4.3.2. Method (b):</a></li>
+<li><a class="reference internal" href="#method-c">6.4.3.3. Method (c):</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#create-the-graph-object">6.4.4. Create the graph object</a></li>
+<li><a class="reference internal" href="#multicore-graph-processing">6.4.5. Multicore graph processing</a></li>
+<li><a class="reference internal" href="#in-fast-path">6.4.6. In fast path</a></li>
+<li><a class="reference internal" href="#context-update-when-graph-walk-in-action">6.4.7. Context update when graph walk in action</a></li>
+<li><a class="reference internal" href="#get-the-node-statistics-using-graph-cluster">6.4.8. Get the node statistics using graph cluster</a></li>
+<li><a class="reference internal" href="#node-writing-guidelines">6.4.9. Node writing guidelines</a></li>
+<li><a class="reference internal" href="#static-nodes">6.4.10. Static nodes</a></li>
+<li><a class="reference internal" href="#intermediate-nodes">6.4.11. Intermediate nodes</a><ul>
+<li><a class="reference internal" href="#example-of-intermediate-node-implementation-with-home-run">6.4.11.1. Example of intermediate node implementation with home run:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#graph-object-memory-layout">6.5. Graph object memory layout</a></li>
+<li><a class="reference internal" href="#inbuilt-nodes">6.6. Inbuilt Nodes</a><ul>
+<li><a class="reference internal" href="#ethdev-rx">6.6.1. ethdev_rx</a></li>
+<li><a class="reference internal" href="#ethdev-tx">6.6.2. ethdev_tx</a></li>
+<li><a class="reference internal" href="#pkt-drop">6.6.3. pkt_drop</a></li>
+<li><a class="reference internal" href="#ip4-lookup">6.6.4. ip4_lookup</a></li>
+<li><a class="reference internal" href="#ip4-rewrite">6.6.5. ip4_rewrite</a></li>
+<li><a class="reference internal" href="#null">6.6.6. null</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="pktmbuf_lib.html"
+                        title="previous chapter"><span class="section-number">5. </span>Pktmbuf Library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="crypto.html"
+                        title="next chapter"><span class="section-number">7. </span>Crypto Libraries</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/graph_lib.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="crypto.html" title="7. Crypto Libraries"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="pktmbuf_lib.html" title="5. Pktmbuf Library"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">6. </span>Graph Library and Inbuilt Nodes</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

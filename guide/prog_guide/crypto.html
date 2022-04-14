@@ -1,0 +1,248 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>7. Crypto Libraries &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8. xskdev Buffer Management" href="xskdev_buffer_mgmt.html" />
+    <link rel="prev" title="6. Graph Library and Inbuilt Nodes" href="graph_lib.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="xskdev_buffer_mgmt.html" title="8. xskdev Buffer Management"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="graph_lib.html" title="6. Graph Library and Inbuilt Nodes"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span>Crypto Libraries</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="crypto-libraries">
+<span id="crypto-prog-guide"></span><h1><span class="section-number">7. </span>Crypto Libraries<a class="headerlink" href="#crypto-libraries" title="Permalink to this headline">¶</a></h1>
+<p>CNDP does not implement or wrap any crypto API. The developer is free to choose a crypto
+implementation which satisfies their application’s requirements. OpenSSL* is an implementation that
+has support for both Intel(R) Multi-Buffer Crypto for OpenSSL* and Intel(R) QuickAssist Technology
+Engine for OpenSSL* (Intel(R) QAT Engine for OpenSSL*). The Multi-Buffer API is preferred when a
+Intel(R) QuickAssist Accelerator is not available, or in cases where offloading to an accelerator
+would yield less throughput, such as those processing predominantly small packets. The OpenSSL
+toolkit offers the developer the flexibility to choose at runtime which Engine to use, while still
+programming to the same high-level API.</p>
+<section id="openssl">
+<h2><span class="section-number">7.1. </span>OpenSSL*<a class="headerlink" href="#openssl" title="Permalink to this headline">¶</a></h2>
+<p>There are many resources available to describe how to develop applications using OpenSSL. Learn more
+at the <a class="reference external" href="https://www.openssl.org/">OpenSSL website</a> and the <a class="reference external" href="https://github.com/intel/QAT_Engine">QAT_Engine</a> repo on GitHub*.</p>
+</section>
+<section id="intel-r-multi-buffer-crypto-for-ipsec-library">
+<h2><span class="section-number">7.2. </span>Intel(R) Multi-Buffer Crypto for IPsec Library<a class="headerlink" href="#intel-r-multi-buffer-crypto-for-ipsec-library" title="Permalink to this headline">¶</a></h2>
+<p>For developers who need fast <em>software</em> crypto acceleration, the <a class="reference external" href="https://github.com/intel/intel-ipsec-mb">intel-ipsec-mb</a> library is efficient and easy to use. To develop an
+application on Ubuntu*, the libipsec-mb-dev package can be installed.</p>
+<div class="highlight-Console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y libipsec-mb-dev</span>
+</pre></div>
+</div>
+<p>To build an executable, add a dependency to the meson build file.</p>
+<div class="highlight-Console notranslate"><div class="highlight"><pre><span></span><span class="go">libipsecmb = cc.find_library(&#39;IPSec_MB&#39;)</span>
+<span class="go">executable(..., dependencies: [libipsecmb])</span>
+</pre></div>
+</div>
+<p>To use the library for, e.g. IPsec ESP Tunnel mode encryption with AES128-GCM, submit a job.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="cp">#include</span> <span class="cpf">&lt;intel-ipsec-mb.h&gt;</span><span class="cp"></span>
+
+
+<span class="k">const</span> <span class="kt">uint8_t</span> <span class="n">secret</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="p">...};</span>
+<span class="k">struct</span> <span class="nc">gcm_key_data</span> <span class="n">key</span><span class="p">;</span>
+<span class="n">JOB_AES_HMAC</span> <span class="o">*</span><span class="n">job</span><span class="p">;</span>
+<span class="n">MB_MGR</span> <span class="n">mb_mgr</span><span class="p">;</span>
+
+<span class="n">init_mb_mgr_avx</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mb_mgr</span><span class="p">);</span>
+
+<span class="n">IMB_AES128_GCM_PRE</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mb_mgr</span><span class="p">,</span> <span class="n">secret</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">);</span>
+
+<span class="n">job</span>                        <span class="o">=</span> <span class="n">IMB_GET_NEXT_JOB</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mb_mgr</span><span class="p">);</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">cipher_mode</span>           <span class="o">=</span> <span class="n">GCM</span><span class="p">;</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">hash_alg</span>              <span class="o">=</span> <span class="n">AES_GMAC</span><span class="p">;</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">chain_order</span>           <span class="o">=</span> <span class="n">CIPHER_HASH</span><span class="p">;</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">aes_enc_key_expanded</span>  <span class="o">=</span> <span class="o">&amp;</span><span class="n">key</span><span class="p">;</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">iv</span>                    <span class="o">=</span> <span class="cm">/* Salt + IV */</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">u</span><span class="p">.</span><span class="n">GCM</span><span class="p">.</span><span class="n">aad</span>             <span class="o">=</span> <span class="cm">/* SPI + [E]SN */</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">auth_tag_output</span>       <span class="o">=</span> <span class="cm">/* ICV */</span>
+<span class="n">job</span><span class="o">-&gt;</span><span class="n">cipher_direction</span>      <span class="o">=</span> <span class="n">ENCRYPT</span><span class="p">;</span>
+<span class="p">...</span>
+
+<span class="n">job</span> <span class="o">=</span> <span class="n">IMB_SUBMIT_JOB</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mb_mgr</span><span class="p">);</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">job</span><span class="p">)</span> <span class="p">{</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">job</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">!=</span> <span class="n">STS_COMPLETED</span><span class="p">)</span>
+         <span class="p">...</span> <span class="n">job</span> <span class="n">failed</span> <span class="p">...</span>
+   <span class="n">job</span> <span class="o">=</span> <span class="n">IMB_GET_COMPLETED_JOB</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mb_mgr</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">while</span> <span class="p">((</span><span class="n">job</span> <span class="o">=</span> <span class="n">IMB_FLUSH_JOB</span><span class="p">(</span><span class="o">&amp;</span><span class="n">mb_mgr</span><span class="p">)))</span>
+   <span class="k">if</span> <span class="p">(</span><span class="n">job</span><span class="o">-&gt;</span><span class="n">status</span> <span class="o">!=</span> <span class="n">STS_COMPLETED</span><span class="p">)</span>
+      <span class="p">...</span> <span class="n">job</span> <span class="n">failed</span> <span class="p">...</span>
+</pre></div>
+</div>
+<p>The CNDP pktmbuf can be manipulated to insert the outer IPv4 header, ESP header, IV, and append the
+ESP trailer and ICV.</p>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">neweth</span> <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">ether_header</span> <span class="o">*</span><span class="p">)</span><span class="n">pktmbuf_prepend</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="mi">8</span> <span class="o">+</span> <span class="mi">8</span> <span class="cm">/* IP hdr, ESP hdr, IV */</span><span class="p">);</span>
+
+<span class="n">pad</span> <span class="o">=</span> <span class="n">pktmbuf_append</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">pad_len</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">16</span> <span class="cm">/* padding, pad length, next header, ICV */</span><span class="p">);</span>
+<span class="p">...</span> <span class="n">populate</span> <span class="n">padding</span><span class="p">,</span> <span class="n">pad</span> <span class="n">lengh</span><span class="p">,</span> <span class="n">next</span> <span class="n">header</span> <span class="p">...</span>
+
+<span class="p">...</span> <span class="n">encrypt</span><span class="o">/</span><span class="n">authenticate</span> <span class="n">payload</span> <span class="p">...</span>
+
+<span class="cm">/* populate outer ip header */</span>
+<span class="n">oip</span>                  <span class="o">=</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">cne_ipv4_hdr</span> <span class="o">*</span><span class="p">)(</span><span class="n">neweth</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">oip</span><span class="o">-&gt;</span><span class="n">version_ihl</span>     <span class="o">=</span> <span class="n">CNE_IPV4_VHL_DEF</span><span class="p">;</span>
+<span class="n">oip</span><span class="o">-&gt;</span><span class="n">type_of_service</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="cm">/* length is the length of the old packet, plus new header, plus ESP trailer and ICV */</span>
+<span class="n">oip</span><span class="o">-&gt;</span><span class="n">total_length</span>    <span class="o">=</span> <span class="n">htobe16</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="o">*</span><span class="n">oip</span><span class="p">)</span> <span class="o">+</span> <span class="n">pay_len</span> <span class="o">+</span> <span class="n">pad_len</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">16</span><span class="p">);</span>
+<span class="n">oip</span><span class="o">-&gt;</span><span class="n">next_proto_id</span>   <span class="o">=</span> <span class="mi">50</span><span class="p">;</span> <span class="cm">/* ESP */</span>
+<span class="p">...</span> <span class="n">remaining</span> <span class="n">ip</span> <span class="n">header</span> <span class="n">fields</span>
+<span class="n">oip</span><span class="o">-&gt;</span><span class="n">hdr_checksum</span>    <span class="o">=</span> <span class="n">cne_ipv4_chksum</span><span class="p">(</span><span class="n">oip</span><span class="p">);</span>
+
+<span class="p">...</span> <span class="n">populate</span> <span class="n">esp</span> <span class="n">header</span> <span class="n">and</span> <span class="n">IV</span> <span class="p">...</span>
+</pre></div>
+</div>
+<p>The Security Association Database (SAD) and Security Policy Database (SPD) can be implemented using
+the CNDP hash or ACL libraries. Finally, routing decisions can be made using the CNDP RIB/FIB
+libraries.</p>
+</section>
+<section id="legal-acknowledgements">
+<h2><span class="section-number">7.3. </span>Legal Acknowledgements<a class="headerlink" href="#legal-acknowledgements" title="Permalink to this headline">¶</a></h2>
+<p>* Intel is a trademark of Intel Corporation in the U.S. or its subsidiaries. Other names and
+brands may be claimed as the property of others.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">7. Crypto Libraries</a><ul>
+<li><a class="reference internal" href="#openssl">7.1. OpenSSL*</a></li>
+<li><a class="reference internal" href="#intel-r-multi-buffer-crypto-for-ipsec-library">7.2. Intel(R) Multi-Buffer Crypto for IPsec Library</a></li>
+<li><a class="reference internal" href="#legal-acknowledgements">7.3. Legal Acknowledgements</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="graph_lib.html"
+                        title="previous chapter"><span class="section-number">6. </span>Graph Library and Inbuilt Nodes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="xskdev_buffer_mgmt.html"
+                        title="next chapter"><span class="section-number">8. </span>xskdev Buffer Management</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/crypto.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="xskdev_buffer_mgmt.html" title="8. xskdev Buffer Management"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="graph_lib.html" title="6. Graph Library and Inbuilt Nodes"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">7. </span>Crypto Libraries</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

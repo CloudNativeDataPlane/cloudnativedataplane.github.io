@@ -1,0 +1,27 @@
+var cne__tty_8h =
+[
+    [ "cne_tty_t", "structcne__tty__t.html", "structcne__tty__t" ],
+    [ "tty_setup", "cne__tty_8h.html#a05943c532b4594eef1d46241154ebb20", null ],
+    [ "tty_destroy", "cne__tty_8h.html#a963888c9d09018163fa74c05c8fad434", null ],
+    [ "tty_enable_color", "cne__tty_8h.html#ac72f2f8da441d0e42a66c41c5fdcef01", null ],
+    [ "tty_disable_color", "cne__tty_8h.html#ae36084ee393c8dca7d6f54b44fe35213", null ],
+    [ "tty_is_color_on", "cne__tty_8h.html#acef52956bdba95902e03b29d330968f4", null ],
+    [ "tty_is_inited", "cne__tty_8h.html#a7994972b4837cef67fb9d6d5028f343f", null ],
+    [ "tty_set_wchanged", "cne__tty_8h.html#acb421e875e472acf296cad3f112a7130", null ],
+    [ "tty_clear_wchanged", "cne__tty_8h.html#a47b75483ff0f75b937f6588669b6ed0b", null ],
+    [ "tty_did_wchange", "cne__tty_8h.html#ae98eb4ae8a575331a70a5bb503a226c0", null ],
+    [ "tty_window_size", "cne__tty_8h.html#a04495f80563319b3923b2506e48677dd", null ],
+    [ "tty_num_rows", "cne__tty_8h.html#a1e8686e67c4213495bc475ae9f402bd5", null ],
+    [ "tty_num_columns", "cne__tty_8h.html#a64a056e80e8231a2b6e95de9fe6e9eec", null ],
+    [ "tty_poll", "cne__tty_8h.html#a166f3fcfb2c5d527bb5159511e6cfc6c", null ],
+    [ "tty_write", "cne__tty_8h.html#ad1b44a3ea92b32531261669363e652ef", null ],
+    [ "tty_dwrite", "cne__tty_8h.html#ae4d840c63d424a3080026e3d743aabc1", null ],
+    [ "tty_fwrite", "cne__tty_8h.html#af77552f96f361b602152125eb2b6faff", null ],
+    [ "tty_read", "cne__tty_8h.html#ad0e8f982855ac9486c94bceba1fe378e", null ],
+    [ "tty_dread", "cne__tty_8h.html#adad511143820891baa1bcb16394cf9ac", null ],
+    [ "tty_fread", "cne__tty_8h.html#a14d0a68badb1eb0e63012687ae041e26", null ],
+    [ "tty_printf", "cne__tty_8h.html#a9a856c2ae8e8ecf0979c65c3011fe812", null ],
+    [ "tty_fprintf", "cne__tty_8h.html#a65ed550e2047d5851766b6e72bda2e90", null ],
+    [ "tty_vprintf", "cne__tty_8h.html#a3ac1fcc094935d5510ad2045f9326ebf", null ],
+    [ "tty_vfprintf", "cne__tty_8h.html#a08e834968f676cbad66dad0daefe91be", null ]
+];

@@ -1,0 +1,381 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>8. L3 Forwarding Graph Sample Application &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="9. Phil Sample Application" href="phil.html" />
+    <link rel="prev" title="7. Integration of the CNDP app with the AF_XDP plugins for k8s" href="k8s_dp_integration.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="phil.html" title="9. Phil Sample Application"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="k8s_dp_integration.html" title="7. Integration of the CNDP app with the AF_XDP plugins for k8s"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Sample Applications User Guides</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>L3 Forwarding Graph Sample Application</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="l3-forwarding-graph-sample-application">
+<h1><span class="section-number">8. </span>L3 Forwarding Graph Sample Application<a class="headerlink" href="#l3-forwarding-graph-sample-application" title="Permalink to this headline">¶</a></h1>
+<p>The L3 Forwarding Graph application is an example using the CNDP graph framework. The application
+performs layer 3 forwarding using nodes written for the graph framework.</p>
+<section id="overview">
+<h2><span class="section-number">8.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The application demonstrates the use of the graph framework and graph nodes <code class="docutils literal notranslate"><span class="pre">pktdev_rx</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ip4_lookup</span></code>, <code class="docutils literal notranslate"><span class="pre">ip4_rewrite</span></code>, <code class="docutils literal notranslate"><span class="pre">pktdev_tx</span></code> and <code class="docutils literal notranslate"><span class="pre">pkt_drop</span></code> to implement packet forwarding.</p>
+<p>The forwarding logic starts from Rx, followed by LPM lookup, TTL update, and finally Tx. The
+operations are implemented inside graph nodes. These nodes are interconnected using the graph
+framework. The application main loop needs to walk over graph using <code class="docutils literal notranslate"><span class="pre">cne_graph_walk()</span></code> with graph
+objects created one per worker thread.</p>
+<p>The lookup method is done by the <code class="docutils literal notranslate"><span class="pre">ip4_lookup</span></code> graph node. The ID of the output interface for the
+packet is the next hop returned by the LPM lookup. The set of LPM rules used by the application is
+statically configured and provided to <code class="docutils literal notranslate"><span class="pre">ip4_lookup</span></code> graph node and <code class="docutils literal notranslate"><span class="pre">ip4_rewrite</span></code> graph node
+using node control API <code class="docutils literal notranslate"><span class="pre">cne_node_ip4_route_add()</span></code> and <code class="docutils literal notranslate"><span class="pre">cne_node_ip4_rewrite_add()</span></code>.</p>
+<p>The sample application only supports IPv4 forwarding.</p>
+</section>
+<section id="running-the-application">
+<h2><span class="section-number">8.2. </span>Running the Application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h2>
+<p>Edit the l3fwd-graph.jsonc file to change the configuration, then run:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>sudo ./builddir/examples/l3fwd-graph/l3fwd-graph -c &lt;json-file-name&gt;
+</pre></div>
+</div>
+</section>
+<section id="explanation">
+<span id="l3-fwd-graph-explanation"></span><h2><span class="section-number">8.3. </span>Explanation<a class="headerlink" href="#explanation" title="Permalink to this headline">¶</a></h2>
+<p>The following sections describe aspects that are specific to the L3 Forwarding Graph application.</p>
+<section id="graph-node-pre-init-configuration">
+<h3><span class="section-number">8.3.1. </span>Graph Node Pre-Init Configuration<a class="headerlink" href="#graph-node-pre-init-configuration" title="Permalink to this headline">¶</a></h3>
+<p>After device configuration is complete, the lport port ids are passed to <code class="docutils literal notranslate"><span class="pre">cne_node_eth_config()</span></code>.
+This causes the <code class="docutils literal notranslate"><span class="pre">pktdev_rx</span></code> and <code class="docutils literal notranslate"><span class="pre">pktdev_tx</span></code> nodes as to be cloned as <code class="docutils literal notranslate"><span class="pre">pktdev_rx-X</span></code> and
+<code class="docutils literal notranslate"><span class="pre">pktdev_tx-X</span></code> where X represents the port id associated with the node.</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span>
+<span class="nf">initialize</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="kt">uint16_t</span> <span class="n">nb_conf</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+    <span class="n">CNE_INFO</span><span class="p">(</span><span class="s">&quot;pktmbuf_t size %ld, udata64 offset %ld</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">pktmbuf_t</span><span class="p">),</span>
+            <span class="n">offsetof</span><span class="p">(</span><span class="n">pktmbuf_t</span><span class="p">,</span> <span class="n">udata64</span><span class="p">));</span>
+
+    <span class="cm">/* Pre-init dst MACs for all ports to 02:00:00:00:00:xx */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">uint16_t</span> <span class="n">lportid</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">lportid</span> <span class="o">&lt;</span> <span class="n">pktdev_port_count</span><span class="p">();</span> <span class="n">lportid</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="nc">ether_addr</span> <span class="n">addr</span><span class="p">;</span>
+
+        <span class="n">dest_eth_addr</span><span class="p">[</span><span class="n">lportid</span><span class="p">]</span>           <span class="o">=</span> <span class="n">ETHER_LOCAL_ADMIN_ADDR</span> <span class="o">+</span> <span class="p">((</span><span class="kt">uint64_t</span><span class="p">)</span><span class="n">lportid</span> <span class="o">&lt;&lt;</span> <span class="mi">40</span><span class="p">);</span>
+        <span class="o">*</span><span class="p">(</span><span class="kt">uint64_t</span> <span class="o">*</span><span class="p">)(</span><span class="n">val_eth</span> <span class="o">+</span> <span class="n">lportid</span><span class="p">)</span> <span class="o">=</span> <span class="n">dest_eth_addr</span><span class="p">[</span><span class="n">lportid</span><span class="p">];</span>
+
+        <span class="n">pktdev_conf</span><span class="p">[</span><span class="n">nb_conf</span><span class="o">++</span><span class="p">].</span><span class="n">port_id</span> <span class="o">=</span> <span class="n">lportid</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="n">pktdev_macaddr_get</span><span class="p">(</span><span class="n">lportid</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">addr</span><span class="p">))</span>
+            <span class="n">CNE_ERR_RET</span><span class="p">(</span><span class="s">&quot;Unable to get MAC address from lport %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">lportid</span><span class="p">);</span>
+
+        <span class="n">ether_addr_copy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">ether_addr</span> <span class="o">*</span><span class="p">)(</span><span class="n">val_eth</span> <span class="o">+</span> <span class="n">lportid</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Ethdev node config, skip rx queue mapping */</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">cne_node_eth_config</span><span class="p">(</span><span class="n">pktdev_conf</span><span class="p">,</span> <span class="n">nb_conf</span><span class="p">))</span>
+        <span class="n">CNE_ERR_RET</span><span class="p">(</span><span class="s">&quot;cne_node_eth_config: failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="graph-initialization">
+<h3><span class="section-number">8.3.2. </span>Graph Initialization<a class="headerlink" href="#graph-initialization" title="Permalink to this headline">¶</a></h3>
+<p>Now a graph needs to be created with a specific set of nodes for every thread. A graph object
+returned after graph creation is a per thread object and cannot be shared between threads. Since
+<code class="docutils literal notranslate"><span class="pre">pktdev_tx-X</span></code> node is per port, it can be associated with all the graphs created as all the lcores
+should have Tx capability for every port. But <code class="docutils literal notranslate"><span class="pre">pktdev_rx-X</span></code> node is created per lport.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Graph creation will fail if the passed set of shell node patterns
+are not sufficient to meet their inter-dependency or even one node is not
+found with a given regex node pattern.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span>
+<span class="nf">initialize_graph</span><span class="p">(</span><span class="n">jcfg_thd_t</span> <span class="o">*</span><span class="n">thd</span><span class="p">,</span> <span class="n">graph_info_t</span> <span class="o">*</span><span class="n">gi</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* Rewrite data of src and dst ether addr */</span>
+    <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">patterns</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span><span class="s">&quot;ip4*&quot;</span><span class="p">,</span> <span class="s">&quot;pktdev_tx-*&quot;</span><span class="p">,</span> <span class="s">&quot;pkt_drop&quot;</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">};</span>
+    <span class="n">jcfg_lport_t</span> <span class="o">*</span><span class="n">lport</span><span class="p">;</span>
+    <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">128</span><span class="p">];</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">patterns</span><span class="p">[</span><span class="n">i</span><span class="p">];</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">add_graph_pattern</span><span class="p">(</span><span class="n">gi</span><span class="p">,</span> <span class="n">patterns</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+
+    <span class="n">fwd</span><span class="o">-&gt;</span><span class="n">nb_graphs</span><span class="o">++</span><span class="p">;</span>
+
+    <span class="n">foreach_thd_lport</span> <span class="p">(</span><span class="n">thd</span><span class="p">,</span> <span class="n">lport</span><span class="p">)</span> <span class="p">{</span>
+        <span class="n">snprintf</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="s">&quot;pktdev_rx-%u&quot;</span><span class="p">,</span> <span class="n">lport</span><span class="o">-&gt;</span><span class="n">lpid</span><span class="p">);</span>
+        <span class="n">add_graph_pattern</span><span class="p">(</span><span class="n">gi</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="n">snprintf</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">name</span><span class="p">),</span> <span class="s">&quot;worker_%d&quot;</span><span class="p">,</span> <span class="n">cne_id</span><span class="p">());</span>
+    <span class="n">CNE_INFO</span><span class="p">(</span><span class="s">&quot;Create Graph &#39;%s&#39;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+
+    <span class="n">gi</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">=</span> <span class="n">cne_graph_create</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">gi</span><span class="o">-&gt;</span><span class="n">patterns</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">gi</span><span class="o">-&gt;</span><span class="n">id</span> <span class="o">==</span> <span class="n">CNE_GRAPH_ID_INVALID</span><span class="p">)</span>
+        <span class="n">CNE_ERR_GOTO</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s">&quot;cne_graph_create(): graph_id &#39;%s&#39; for uid %u</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">cne_id</span><span class="p">());</span>
+
+    <span class="n">gi</span><span class="o">-&gt;</span><span class="n">graph</span> <span class="o">=</span> <span class="n">cne_graph_lookup</span><span class="p">(</span><span class="n">name</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">gi</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">)</span>
+        <span class="n">CNE_ERR_GOTO</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s">&quot;cne_graph_lookup(): graph &#39;%s&#39; not found</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="nl">err</span><span class="p">:</span>
+    <span class="n">cne_graph_destroy</span><span class="p">(</span><span class="n">gi</span><span class="o">-&gt;</span><span class="n">id</span><span class="p">);</span>
+    <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="forwarding-data-route-next-hop-addition">
+<h3><span class="section-number">8.3.3. </span>Forwarding data(Route, Next-Hop) addition<a class="headerlink" href="#forwarding-data-route-next-hop-addition" title="Permalink to this headline">¶</a></h3>
+<p>Once graph objects are created, node specific info like routes and rewrite
+headers are provided at run-time using the <code class="docutils literal notranslate"><span class="pre">cne_node_ip4_route_add()</span></code> and
+<code class="docutils literal notranslate"><span class="pre">cne_node_ip4_rewrite_add()</span></code> APIs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Since currently <code class="docutils literal notranslate"><span class="pre">ip4_lookup</span></code> and <code class="docutils literal notranslate"><span class="pre">ip4_rewrite</span></code> nodes don’t support
+lock-less mechanisms(RCU, etc) to add run-time forwarding data like route and
+rewrite data, forwarding data is added before packet processing loop is
+launched on a worker thread.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span>
+<span class="nf">initialize_routes</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="cm">/* Rewrite data of src and dst ether addr */</span>
+    <span class="kt">uint8_t</span> <span class="n">rewrite_data</span><span class="p">[</span><span class="mi">2</span> <span class="o">*</span> <span class="k">sizeof</span><span class="p">(</span><span class="k">struct</span> <span class="nc">ether_addr</span><span class="p">)];</span>
+    <span class="kt">uint8_t</span> <span class="n">rewrite_len</span><span class="p">;</span>
+
+    <span class="n">memset</span><span class="p">(</span><span class="o">&amp;</span><span class="n">rewrite_data</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">rewrite_data</span><span class="p">));</span>
+    <span class="n">rewrite_len</span> <span class="o">=</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">rewrite_data</span><span class="p">);</span>
+
+    <span class="cm">/* Add route to ip4 graph infra */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="kt">uint16_t</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">IPV4_L3FWD_LPM_NUM_ROUTES</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kt">char</span> <span class="n">route_str</span><span class="p">[</span><span class="n">INET6_ADDRSTRLEN</span> <span class="o">*</span> <span class="mi">4</span><span class="p">];</span>
+        <span class="kt">char</span> <span class="n">abuf</span><span class="p">[</span><span class="n">INET6_ADDRSTRLEN</span><span class="p">];</span>
+        <span class="k">struct</span> <span class="nc">in_addr</span> <span class="n">in</span><span class="p">;</span>
+        <span class="kt">uint32_t</span> <span class="n">dst_port</span><span class="p">;</span>
+
+        <span class="n">dst_port</span> <span class="o">=</span> <span class="n">ipv4_l3fwd_lpm_route_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">if_out</span><span class="p">;</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pktdev_is_valid_port</span><span class="p">(</span><span class="n">dst_port</span><span class="p">))</span>
+            <span class="k">break</span><span class="p">;</span>
+
+        <span class="n">in</span><span class="p">.</span><span class="n">s_addr</span> <span class="o">=</span> <span class="n">htonl</span><span class="p">(</span><span class="n">ipv4_l3fwd_lpm_route_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ip</span><span class="p">);</span>
+        <span class="n">snprintf</span><span class="p">(</span><span class="n">route_str</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">route_str</span><span class="p">),</span> <span class="s">&quot;%s / %d (%d)&quot;</span><span class="p">,</span>
+                <span class="n">inet_ntop</span><span class="p">(</span><span class="n">AF_INET</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">in</span><span class="p">,</span> <span class="n">abuf</span><span class="p">,</span> <span class="k">sizeof</span><span class="p">(</span><span class="n">abuf</span><span class="p">)),</span> <span class="n">ipv4_l3fwd_lpm_route_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">depth</span><span class="p">,</span>
+                <span class="n">ipv4_l3fwd_lpm_route_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">if_out</span><span class="p">);</span>
+
+        <span class="cm">/* Use route index &#39;i&#39; as next hop id */</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cne_node_ip4_route_add</span><span class="p">(</span><span class="n">ipv4_l3fwd_lpm_route_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">ip</span><span class="p">,</span>
+                                <span class="n">ipv4_l3fwd_lpm_route_array</span><span class="p">[</span><span class="n">i</span><span class="p">].</span><span class="n">depth</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span>
+                                <span class="n">CNE_NODE_IP4_LOOKUP_NEXT_REWRITE</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">CNE_ERR_RET</span><span class="p">(</span><span class="s">&quot;Unable to add ip4 route %s to graph</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">route_str</span><span class="p">);</span>
+
+        <span class="n">memcpy</span><span class="p">(</span><span class="n">rewrite_data</span><span class="p">,</span> <span class="n">val_eth</span> <span class="o">+</span> <span class="n">dst_port</span><span class="p">,</span> <span class="n">rewrite_len</span><span class="p">);</span>
+
+        <span class="cm">/* Add next hop rewrite data for id &#39;i&#39; */</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">cne_node_ip4_rewrite_add</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">rewrite_data</span><span class="p">,</span> <span class="n">rewrite_len</span><span class="p">,</span> <span class="n">dst_port</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+            <span class="n">CNE_ERR_RET</span><span class="p">(</span><span class="s">&quot;Unable to add next hop %u for route %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">route_str</span><span class="p">);</span>
+
+        <span class="n">CNE_INFO</span><span class="p">(</span><span class="s">&quot;Added route %s, next_hop %u</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">route_str</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="packet-forwarding-using-graph-walk">
+<h3><span class="section-number">8.3.4. </span>Packet Forwarding using Graph Walk<a class="headerlink" href="#packet-forwarding-using-graph-walk" title="Permalink to this headline">¶</a></h3>
+<p>Now that all the device and graph configurations are done and forwarding data is updated, the worker
+threads are launched from the main loop. The main loop needs to continuously call a non-blocking
+API <code class="docutils literal notranslate"><span class="pre">cne_graph_walk()</span></code> with it’s previously created graph object.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>cne_graph_walk() will walk over all the source nodes i.e <code class="docutils literal notranslate"><span class="pre">pktdev_rx-X</span></code>
+associated with a given graph and Receive the available packets and enqueue them
+to the following node <code class="docutils literal notranslate"><span class="pre">ip4_lookup</span></code> which enqueues them to <code class="docutils literal notranslate"><span class="pre">ip4_rewrite</span></code>
+node if LPM lookup succeeds. The <code class="docutils literal notranslate"><span class="pre">ip4_rewrite</span></code> node updates Ethernet header
+as per next-hop data and transmits the packet via port ‘Z’ by enqueuing
+to <code class="docutils literal notranslate"><span class="pre">pktdev_tx-Z</span></code> node instance in its graph object.</p>
+</div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span>
+<span class="nf">thread_func</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">arg</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">jcfg_thd_t</span> <span class="o">*</span><span class="n">thd</span> <span class="o">=</span> <span class="n">arg</span><span class="p">;</span>
+    <span class="n">graph_info_t</span> <span class="o">*</span><span class="n">gi</span><span class="p">;</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">thd</span><span class="o">-&gt;</span><span class="n">group</span><span class="o">-&gt;</span><span class="n">lcore_cnt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">pthread_setaffinity_np</span><span class="p">(</span><span class="n">pthread_self</span><span class="p">(),</span> <span class="k">sizeof</span><span class="p">(</span><span class="kt">cpu_set_t</span><span class="p">),</span> <span class="o">&amp;</span><span class="n">thd</span><span class="o">-&gt;</span><span class="n">group</span><span class="o">-&gt;</span><span class="n">lcore_bitmap</span><span class="p">);</span>
+
+    <span class="n">CNE_INFO</span><span class="p">(</span><span class="s">&quot;Assigned to lcore %d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cne_lcore_id</span><span class="p">());</span>
+
+    <span class="cm">/* Wait for main thread to initialize */</span>
+    <span class="n">pthread_barrier_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">barrier</span><span class="p">);</span>
+
+    <span class="n">gi</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">graph_info</span><span class="p">[</span><span class="n">cne_id</span><span class="p">()];</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">initialize_graph</span><span class="p">(</span><span class="n">thd</span><span class="p">,</span> <span class="n">gi</span><span class="p">))</span>
+        <span class="n">CNE_ERR_GOTO</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s">&quot;Initialize_graph() failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">initialize_routes</span><span class="p">())</span>
+        <span class="n">CNE_ERR_GOTO</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="s">&quot;Initialize_routes() failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+
+    <span class="n">CNE_INFO</span><span class="p">(</span><span class="s">&quot;Entering main loop on tid %d, graph %s</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">cne_id</span><span class="p">(),</span> <span class="n">gi</span><span class="o">-&gt;</span><span class="n">graph</span><span class="o">-&gt;</span><span class="n">name</span><span class="p">);</span>
+
+    <span class="k">while</span> <span class="p">(</span><span class="n">likely</span><span class="p">(</span><span class="o">!</span><span class="n">thd</span><span class="o">-&gt;</span><span class="n">quit</span><span class="p">))</span>
+        <span class="n">cne_graph_walk</span><span class="p">(</span><span class="n">gi</span><span class="o">-&gt;</span><span class="n">graph</span><span class="p">);</span>
+
+    <span class="k">return</span><span class="p">;</span>
+<span class="nl">err</span><span class="p">:</span>
+    <span class="n">pthread_barrier_wait</span><span class="p">(</span><span class="o">&amp;</span><span class="n">fwd</span><span class="o">-&gt;</span><span class="n">barrier</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">8. L3 Forwarding Graph Sample Application</a><ul>
+<li><a class="reference internal" href="#overview">8.1. Overview</a></li>
+<li><a class="reference internal" href="#running-the-application">8.2. Running the Application</a></li>
+<li><a class="reference internal" href="#explanation">8.3. Explanation</a><ul>
+<li><a class="reference internal" href="#graph-node-pre-init-configuration">8.3.1. Graph Node Pre-Init Configuration</a></li>
+<li><a class="reference internal" href="#graph-initialization">8.3.2. Graph Initialization</a></li>
+<li><a class="reference internal" href="#forwarding-data-route-next-hop-addition">8.3.3. Forwarding data(Route, Next-Hop) addition</a></li>
+<li><a class="reference internal" href="#packet-forwarding-using-graph-walk">8.3.4. Packet Forwarding using Graph Walk</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="k8s_dp_integration.html"
+                        title="previous chapter"><span class="section-number">7. </span>Integration of the CNDP app with the AF_XDP plugins for k8s</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="phil.html"
+                        title="next chapter"><span class="section-number">9. </span>Phil Sample Application</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/sample_app_ug/l3_forward_graph.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="phil.html" title="9. Phil Sample Application"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="k8s_dp_integration.html" title="7. Integration of the CNDP app with the AF_XDP plugins for k8s"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Sample Applications User Guides</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">8. </span>L3 Forwarding Graph Sample Application</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

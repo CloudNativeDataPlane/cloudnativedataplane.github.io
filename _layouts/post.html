@@ -1,0 +1,11 @@
+---
+layout: default
+---
+
+{% if page.author %}
+<p>{{ page.date | date: '%B %d, %Y' }} by {{ page.author }}</p>
+{% else %}
+<p>{{ page.date | date: '%B %d, %Y' }}</p>
+{% endif %}
+
+{{ content }}
