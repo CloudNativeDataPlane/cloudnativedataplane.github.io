@@ -209,59 +209,60 @@ echo 1024 &gt; /sys/devices/system/node/node1/hugepages/hugepages-2048kB/nr_huge
 </section>
 <section id="prerequisites">
 <h3><span class="section-number">2.2.3. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
-<section id="apt-proxy">
-<h4><span class="section-number">2.2.3.1. </span>apt proxy<a class="headerlink" href="#apt-proxy" title="Permalink to this headline">¶</a></h4>
-<p>If required, create a proxy.conf and configure the apt proxy settings.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cat &lt;&lt; EOF | sudo tee -a /etc/apt/apt.conf.d/proxy.conf</span>
-<span class="go">Acquire::http::Proxy &quot;http://user:password@proxy.server:port/&quot;;</span>
-<span class="go">Acquire::https::Proxy &quot;https://user:password@proxy.server:port/&quot;;</span>
-<span class="go">EOF</span>
-</pre></div>
-</div>
-<p>Optionally update apt.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<p>If behind a proxy server you may need to setup a number of configurations to allow access via the server.
+Some commands i.e. apt-get, git, ssh, curl, wget and others will need configuration to work correctly.
+Please refer to apt-get, git and other documentations to enable access through a proxy server.</p>
+<p>Optionally update apt-get.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get update</span>
 </pre></div>
 </div>
 <p>Apt-get is used to install the required packages to build CNDP and its dependencies.</p>
 </section>
-<section id="libbpf">
-<h4><span class="section-number">2.2.3.2. </span>libbpf<a class="headerlink" href="#libbpf" title="Permalink to this headline">¶</a></h4>
+<section id="build-libbpf">
+<h3><span class="section-number">2.2.4. </span>Build libbpf<a class="headerlink" href="#build-libbpf" title="Permalink to this headline">¶</a></h3>
 <p>The <a class="reference external" href="https://github.com/libbpf/libbpf">libbpf</a> is a dependency of CNDP. Starting with Ubuntu 20.10
-it can be installed using apt. For earlier Ubuntu versions, or for users who want the latest code,
-it can be installed from source.</p>
-<p><strong>Install using apt</strong></p>
+the libbpf libraries can be installed using apt-get. For earlier Ubuntu versions, or for users who
+want the latest code, it can be installed from source.</p>
+<p><strong>Install using apt-get</strong></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y libbpf-dev</span>
 </pre></div>
 </div>
 <p><strong>Or install from source</strong></p>
 <p>Install packages to build libbpf</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y build-essential pkg-config libelf-dev</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y build-essential pkg-config libelf-dev</span>
 </pre></div>
 </div>
-</section>
 <section id="clone-build-and-install-libbpf">
-<h4><span class="section-number">2.2.3.3. </span>Clone, build, and install libbpf<a class="headerlink" href="#clone-build-and-install-libbpf" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.4.1. </span>Clone, build, and install libbpf<a class="headerlink" href="#clone-build-and-install-libbpf" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/libbpf/libbpf.git</span>
-<span class="go">cd libbpf/src</span>
-<span class="go">make</span>
-<span class="go">sudo make install</span>
+<span class="go">cd libbpf</span>
+<span class="go">git checkout v0.5.0   # or you can use v0.6.1 if needing a newer version</span>
+<span class="go">make -C src</span>
+<span class="go">sudo make -C src install</span>
+<span class="go">export PKG_CONFIG_PATH=/usr/lib64/pkgconfig</span>
+</pre></div>
+</div>
+<p>Edit the file /etc/ld.so.conf.d/x86_64-linux-gnu.conf and add the line /usr/lib64 to the
+bottom of the file.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo vim /etc/ld.so.conf.d/x86_64-linux-gnu.conf   # add /usr/lib64 to file</span>
+<span class="go">sudo ldconfig     # force ldconfig to detect changes</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="build-cndp">
-<h3><span class="section-number">2.2.4. </span>Build CNDP<a class="headerlink" href="#build-cndp" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.5. </span>Build CNDP<a class="headerlink" href="#build-cndp" title="Permalink to this headline">¶</a></h3>
 <p>Install packages to build CNDP</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y build-essential libbsd-dev libelf-dev libjson-c-dev\</span>
 <span class="go"> libnuma-dev libpcap-dev meson pkg-config libnl-3-dev libnl-cli-3-dev</span>
 </pre></div>
 </div>
 <p>Optionally install packages to build documentation</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt install -y doxygen python3-sphinx</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y doxygen python3-sphinx</span>
 </pre></div>
 </div>
 <section id="clone-and-build-cndp">
-<h4><span class="section-number">2.2.4.1. </span>Clone and build CNDP<a class="headerlink" href="#clone-and-build-cndp" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.5.1. </span>Clone and build CNDP<a class="headerlink" href="#clone-and-build-cndp" title="Permalink to this headline">¶</a></h4>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/CloudNativeDataPlane/cndp.git</span>
 <span class="go">cd cndp</span>
 <span class="go">make</span>
@@ -283,11 +284,30 @@ it can be installed from source.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make docs</span>
 </pre></div>
 </div>
+<p>or to build a statically linked executable. Use the commandline make option ‘static_build=1’ to build
+libraries and executables as static binaries.</p>
+<p>When switching between static and shared builds the install directory could contain extra libraries
+in <em>usr/local/lib/x86_64-linux-gnu</em> .so libraries if building static or .a libraries if building shared.</p>
+<p>Need to do a <em>‘make uninstall clean build’</em> or <em>‘make static_build=1 uninstall clean build’</em>
+commands. If you have both types of libraries the quickest way is to do ‘rm -fr usr/local/*’ <strong>No leading ‘/’</strong>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>(Do NOT use rm -fr /usr/local/*)</strong>, note the leading <strong>‘/’</strong> should <strong>NOT</strong> be present or you can remove
+your /usr/local directory if running as root. You should not be building CNDP
+as root as too many problems like this one can happen.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make static_build=1 uninstall clean build</span>
+</pre></div>
+</div>
+<p>or use ‘rebuild’ instead of ‘clean build’ which the same thing.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make static_build=1 uninstall rebuild</span>
+</pre></div>
+</div>
 </section>
 <section id="run-cndp-examples">
-<h4><span class="section-number">2.2.4.2. </span>Run CNDP examples<a class="headerlink" href="#run-cndp-examples" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.5.2. </span>Run CNDP examples<a class="headerlink" href="#run-cndp-examples" title="Permalink to this headline">¶</a></h4>
 <section id="helloworld">
-<h5><span class="section-number">2.2.4.2.1. </span>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.2.5.2.1. </span>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h5>
 <p>The most basic example is <code class="docutils literal notranslate"><span class="pre">helloworld</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./builddir/examples/helloworld/helloworld</span>
 <span class="go">Max threads: 512, Max lcores: 32, NUMA nodes: 1, Num Threads: 1</span>
@@ -297,7 +317,7 @@ it can be installed from source.</p>
 </div>
 </section>
 <section id="cndpfwd">
-<h5><span class="section-number">2.2.4.2.2. </span>cndpfwd<a class="headerlink" href="#cndpfwd" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.2.5.2.2. </span>cndpfwd<a class="headerlink" href="#cndpfwd" title="Permalink to this headline">¶</a></h5>
 <p>An example that uses networking is <code class="docutils literal notranslate"><span class="pre">cndpfwd</span></code>. It requires the underlying network interface
 uses, e.g. AF_XDP sockets. Make sure the kernel on which you intend to run the application
 supports AF_XDP sockets, i.e. CONFIG_XDP_SOCKETS=y.</p>
@@ -327,22 +347,12 @@ launch the application, specifying the updated configuration file.</p>
 <p>Though CNDP can run on many distributions and kernels, the preferred environment is for an Ubuntu
 20.04 installation. This is chosen as its the most recent LTS version, and the kernel can be
 updated from the package manager to one which natively supports many AF_XDP features.</p>
-<section id="id2">
-<h3><span class="section-number">2.3.1. </span>Prerequisites<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
-<section id="id3">
-<h4><span class="section-number">2.3.1.1. </span>apt proxy<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
-<p>If required, create a proxy.conf and configure the apt proxy settings.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cat &lt;&lt; EOF | sudo tee -a /etc/apt/apt.conf.d/proxy.conf</span>
-<span class="go">Acquire::http::Proxy &quot;http://user:password@proxy.server:port/&quot;;</span>
-<span class="go">Acquire::https::Proxy &quot;https://user:password@proxy.server:port/&quot;;</span>
-<span class="go">EOF</span>
-</pre></div>
-</div>
-</section>
+<section id="id1">
+<h3><span class="section-number">2.3.1. </span>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
 <section id="dependencies">
-<h4><span class="section-number">2.3.1.2. </span>dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.1.1. </span>dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h4>
 <p>apt-get should now work to install the packages needed to use ansible.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt update</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get update</span>
 <span class="go">sudo apt-get install -y ansible</span>
 </pre></div>
 </div>
@@ -353,7 +363,7 @@ following these <a class="reference external" href="https://docs.ansible.com/ans
 </div>
 </section>
 <section id="ssh-key-setup">
-<h4><span class="section-number">2.3.1.3. </span>SSH Key Setup<a class="headerlink" href="#ssh-key-setup" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.1.2. </span>SSH Key Setup<a class="headerlink" href="#ssh-key-setup" title="Permalink to this headline">¶</a></h4>
 <p>Ansible uses ssh to load and run it’s modules on the target host. As such, it’s important to setup a
 SSH key and copy it to the target node (note: the target node maybe the localhost).</p>
 <p>As root on both nodes run:</p>
@@ -427,8 +437,8 @@ CNDP after the Kernel is updated and rebooted.</p></li>
 <p>You will need to manually reboot the host after using the localhost-kernel-install.yml playbook</p>
 </div>
 </section>
-<section id="id4">
-<h3><span class="section-number">2.3.4. </span>Building CNDP<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<section id="id2">
+<h3><span class="section-number">2.3.4. </span>Building CNDP<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <p>After running Ansible to install all the dependencies, CNDP can be built by typing <cite>make</cite> in the
 top level dir:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make</span>
@@ -462,17 +472,16 @@ top level dir:</p>
 <li><a class="reference internal" href="#reserving-hugepages">2.2.2.1. Reserving Hugepages</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#prerequisites">2.2.3. Prerequisites</a><ul>
-<li><a class="reference internal" href="#apt-proxy">2.2.3.1. apt proxy</a></li>
-<li><a class="reference internal" href="#libbpf">2.2.3.2. libbpf</a></li>
-<li><a class="reference internal" href="#clone-build-and-install-libbpf">2.2.3.3. Clone, build, and install libbpf</a></li>
+<li><a class="reference internal" href="#prerequisites">2.2.3. Prerequisites</a></li>
+<li><a class="reference internal" href="#build-libbpf">2.2.4. Build libbpf</a><ul>
+<li><a class="reference internal" href="#clone-build-and-install-libbpf">2.2.4.1. Clone, build, and install libbpf</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#build-cndp">2.2.4. Build CNDP</a><ul>
-<li><a class="reference internal" href="#clone-and-build-cndp">2.2.4.1. Clone and build CNDP</a></li>
-<li><a class="reference internal" href="#run-cndp-examples">2.2.4.2. Run CNDP examples</a><ul>
-<li><a class="reference internal" href="#helloworld">2.2.4.2.1. helloworld</a></li>
-<li><a class="reference internal" href="#cndpfwd">2.2.4.2.2. cndpfwd</a></li>
+<li><a class="reference internal" href="#build-cndp">2.2.5. Build CNDP</a><ul>
+<li><a class="reference internal" href="#clone-and-build-cndp">2.2.5.1. Clone and build CNDP</a></li>
+<li><a class="reference internal" href="#run-cndp-examples">2.2.5.2. Run CNDP examples</a><ul>
+<li><a class="reference internal" href="#helloworld">2.2.5.2.1. helloworld</a></li>
+<li><a class="reference internal" href="#cndpfwd">2.2.5.2.2. cndpfwd</a></li>
 </ul>
 </li>
 </ul>
@@ -480,15 +489,14 @@ top level dir:</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#installation-of-cndp-requirements-using-ansible">2.3. Installation of CNDP requirements using Ansible</a><ul>
-<li><a class="reference internal" href="#id2">2.3.1. Prerequisites</a><ul>
-<li><a class="reference internal" href="#id3">2.3.1.1. apt proxy</a></li>
-<li><a class="reference internal" href="#dependencies">2.3.1.2. dependencies</a></li>
-<li><a class="reference internal" href="#ssh-key-setup">2.3.1.3. SSH Key Setup</a></li>
+<li><a class="reference internal" href="#id1">2.3.1. Prerequisites</a><ul>
+<li><a class="reference internal" href="#dependencies">2.3.1.1. dependencies</a></li>
+<li><a class="reference internal" href="#ssh-key-setup">2.3.1.2. SSH Key Setup</a></li>
 </ul>
 </li>
 <li><a class="reference internal" href="#cndp-ansible-tree">2.3.2. CNDP Ansible tree</a></li>
 <li><a class="reference internal" href="#running-the-ansible-playbook">2.3.3. Running the Ansible playbook</a></li>
-<li><a class="reference internal" href="#id4">2.3.4. Building CNDP</a></li>
+<li><a class="reference internal" href="#id2">2.3.4. Building CNDP</a></li>
 </ul>
 </li>
 </ul>

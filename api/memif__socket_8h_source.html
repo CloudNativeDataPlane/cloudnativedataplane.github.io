@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -129,48 +129,46 @@ $(document).ready(function(){initNavTree('memif__socket_8h_source.html',''); ini
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">struct </span>cne_memif_socket_dev_list_elt {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    TAILQ_ENTRY(cne_memif_socket_dev_list_elt) next;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordtype">char</span> dev_name[PKTDEV_NAME_MAX_LEN];</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;};</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define CNE_MEMIF_SOCKET_HASH_NAME &quot;memif-sh&quot;</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define CNE_MEMIF_SOCKET_UN_SIZE \</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">    (sizeof(struct sockaddr_un) - offsetof(struct sockaddr_un, sun_path))</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">struct </span>cne_memif_socket {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">struct </span><a class="code" href="structcne__ev__handle.html">cne_ev_handle</a> ev_handle;          </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordtype">char</span> filename[CNE_MEMIF_SOCKET_UN_SIZE]; </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(, cne_memif_socket_dev_list_elt) dev_queue;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    uint8_t listener; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">/* Control message queue. */</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>cne_memif_msg_queue_elt {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    cne_memif_msg_t msg; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    TAILQ_ENTRY(cne_memif_msg_queue_elt) next;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">int</span> fd; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">struct </span>cne_memif_control_channel {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">struct </span><a class="code" href="structcne__ev__handle.html">cne_ev_handle</a> ev_handle;                  </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(, cne_memif_msg_queue_elt) msg_queue; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">struct </span>cne_memif_socket *socket;                 </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev;                          </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;};</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> cne_memif_socket_remove_device(<span class="keyword">struct</span> cne_pktdev *dev);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> cne_memif_msg_enq_disconnect(<span class="keyword">struct</span> cne_memif_control_channel *cc, <span class="keyword">const</span> <span class="keywordtype">char</span> *reason,</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                                  <span class="keywordtype">int</span> err_code);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">int</span> cne_memif_socket_init(<span class="keyword">struct</span> cne_pktdev *dev, <span class="keyword">const</span> <span class="keywordtype">char</span> *socket_filename);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">void</span> cne_memif_disconnect(<span class="keyword">struct</span> cne_pktdev *dev);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keywordtype">int</span> cne_memif_connect_server(<span class="keyword">struct</span> cne_pktdev *dev);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keywordtype">int</span> cne_memif_connect_client(<span class="keyword">struct</span> cne_pktdev *dev);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MEMIF_SOCKET_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;};</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define CNE_MEMIF_SOCKET_HASH_NAME &quot;memif-sh&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define UNIX_PATH_MAX              108</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">struct </span>cne_memif_socket {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keyword">struct </span><a class="code" href="structcne__ev__handle.html">cne_ev_handle</a> ev_handle; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">char</span> filename[UNIX_PATH_MAX];   </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(, cne_memif_socket_dev_list_elt) dev_queue;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    uint8_t listener; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">/* Control message queue. */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">struct </span>cne_memif_msg_queue_elt {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    cne_memif_msg_t msg; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    TAILQ_ENTRY(cne_memif_msg_queue_elt) next;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> fd; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">struct </span>cne_memif_control_channel {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">struct </span><a class="code" href="structcne__ev__handle.html">cne_ev_handle</a> ev_handle;                  </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(, cne_memif_msg_queue_elt) msg_queue; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">struct </span>cne_memif_socket *socket;                 </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev;                          </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">void</span> cne_memif_socket_remove_device(<span class="keyword">struct</span> cne_pktdev *dev);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> cne_memif_msg_enq_disconnect(<span class="keyword">struct</span> cne_memif_control_channel *cc, <span class="keyword">const</span> <span class="keywordtype">char</span> *reason,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                                  <span class="keywordtype">int</span> err_code);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">int</span> cne_memif_socket_init(<span class="keyword">struct</span> cne_pktdev *dev, <span class="keyword">const</span> <span class="keywordtype">char</span> *socket_filename);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">void</span> cne_memif_disconnect(<span class="keyword">struct</span> cne_pktdev *dev);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;<span class="keywordtype">int</span> cne_memif_connect_server(<span class="keyword">struct</span> cne_pktdev *dev);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">int</span> cne_memif_connect_client(<span class="keyword">struct</span> cne_pktdev *dev);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* MEMIF_SOCKET_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acne__event_8h_html"><div class="ttname"><a href="cne__event_8h.html">cne_event.h</a></div></div>
 <div class="ttc" id="apktdev__driver_8h_html_a55d2a8149d787b69126f5739cc5a9047"><div class="ttname"><a href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a></div><div class="ttdeci">TAILQ_HEAD(pktdev_driver_list, pktdev_driver)</div></div>
 <div class="ttc" id="astructcne__ev__handle_html"><div class="ttname"><a href="structcne__ev__handle.html">cne_ev_handle</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__event_8h_source.html#l00033">cne_event.h:33</a></div></div>

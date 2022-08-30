@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -111,17 +111,27 @@ $(document).ready(function(){initNavTree('pktmbuf__ptype_8h.html',''); initResiz
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">pktmbuf_ptype.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stddef.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="cne__ip_8h_source.html">net/cne_ip.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__udp_8h_source.html">net/cne_udp.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__tcp_8h_source.html">net/cne_tcp.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__sctp_8h_source.html">net/cne_sctp.h</a>&gt;</code><br />
+<code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="pktmbuf__ptype_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcne__net__hdr__lens.html">cne_net_hdr_lens</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a53855bc0c5d38fe59a5f5fcefbff978c"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a53855bc0c5d38fe59a5f5fcefbff978c">CNE_PTYPE_UNKNOWN</a>&#160;&#160;&#160;0x00000000</td></tr>
@@ -251,22 +261,24 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:af1f708d72d471ca40ce9545fba569747"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#af1f708d72d471ca40ce9545fba569747">cne_get_ptype_l2_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:af1f708d72d471ca40ce9545fba569747"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91754d54f00926e3ba4d2557de0bdc48"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a91754d54f00926e3ba4d2557de0bdc48">cne_get_ptype_l3_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:a91754d54f00926e3ba4d2557de0bdc48"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad51355716650b9560aa6134250c1443c"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#ad51355716650b9560aa6134250c1443c">cne_get_ptype_l4_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:ad51355716650b9560aa6134250c1443c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d1ec60277b11378da7f407f1eaa2d7e"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a5d1ec60277b11378da7f407f1eaa2d7e">cne_get_ptype_tunnel_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:a5d1ec60277b11378da7f407f1eaa2d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afbb9dd9a56b1024a6a90441942aa2518"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#afbb9dd9a56b1024a6a90441942aa2518">cne_get_ptype_inner_l2_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:afbb9dd9a56b1024a6a90441942aa2518"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a38ae6c68f59c98cb53b1c3a288097111"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a38ae6c68f59c98cb53b1c3a288097111">cne_get_ptype_inner_l3_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:a38ae6c68f59c98cb53b1c3a288097111"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1dfb11c829c0a10c09c5da1c6044456d"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a1dfb11c829c0a10c09c5da1c6044456d">cne_get_ptype_inner_l4_name</a> (uint32_t ptype)</td></tr>
-<tr class="separator:a1dfb11c829c0a10c09c5da1c6044456d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8c5b0bfd2eaff94b28bdc41c368bf142"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a8c5b0bfd2eaff94b28bdc41c368bf142">cne_get_ptype_name</a> (uint32_t ptype, char *buf, size_t buflen)</td></tr>
-<tr class="separator:a8c5b0bfd2eaff94b28bdc41c368bf142"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a09484ac73129825fbde65212530e07"><td class="memItemLeft" align="right" valign="top">CNDP_API uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a7a09484ac73129825fbde65212530e07">cne_get_ptype</a> (const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m, struct <a class="el" href="structcne__net__hdr__lens.html">cne_net_hdr_lens</a> *hdr_lens, uint32_t layers)</td></tr>
+<tr class="separator:a7a09484ac73129825fbde65212530e07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1128be2019bff7b51deccdf23057d95"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#ad1128be2019bff7b51deccdf23057d95">cne_get_ptype_l2_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:ad1128be2019bff7b51deccdf23057d95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a879a6848fcda99809b0548b50d2dce6e"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a879a6848fcda99809b0548b50d2dce6e">cne_get_ptype_l3_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:a879a6848fcda99809b0548b50d2dce6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4638e8525f8f9e09002b9b82b06c4cc0"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a4638e8525f8f9e09002b9b82b06c4cc0">cne_get_ptype_l4_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:a4638e8525f8f9e09002b9b82b06c4cc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af41fd85e1ea289c2965d95c70a152d56"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#af41fd85e1ea289c2965d95c70a152d56">cne_get_ptype_tunnel_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:af41fd85e1ea289c2965d95c70a152d56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace20e7038b04648ccf37c92f9df59f71"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#ace20e7038b04648ccf37c92f9df59f71">cne_get_ptype_inner_l2_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:ace20e7038b04648ccf37c92f9df59f71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a641736a3cab99d5dbc2a19b17a83215c"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a641736a3cab99d5dbc2a19b17a83215c">cne_get_ptype_inner_l3_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:a641736a3cab99d5dbc2a19b17a83215c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add6bd60e72eb7f5c84dbac139d2c1e85"><td class="memItemLeft" align="right" valign="top">CNDP_API const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#add6bd60e72eb7f5c84dbac139d2c1e85">cne_get_ptype_inner_l4_name</a> (uint32_t ptype)</td></tr>
+<tr class="separator:add6bd60e72eb7f5c84dbac139d2c1e85"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b58f5b183b1f51d0cb2a8d63e2ae18a"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf__ptype_8h.html#a3b58f5b183b1f51d0cb2a8d63e2ae18a">cne_get_ptype_name</a> (uint32_t ptype, char *buf, size_t buflen)</td></tr>
+<tr class="separator:a3b58f5b183b1f51d0cb2a8d63e2ae18a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CNE Pktmbuf Packet Types</p>
@@ -302,7 +314,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>No packet type information. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00075">75</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00094">94</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -320,7 +332,7 @@ Functions</h2></td></tr>
 <p>Ethernet packet type. It is used for outer packet for tunneling cases.</p>
 <p>Packet format: &lt;'ether type'=[0x0800|0x86DD]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00083">83</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00102">102</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -338,7 +350,7 @@ Functions</h2></td></tr>
 <p>Ethernet packet type for time sync.</p>
 <p>Packet format: &lt;'ether type'=0x88F7&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00090">90</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00109">109</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -356,7 +368,7 @@ Functions</h2></td></tr>
 <p>ARP (Address Resolution Protocol) packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0806&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00097">97</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00116">116</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -374,7 +386,7 @@ Functions</h2></td></tr>
 <p>LLDP (Link Layer Discovery Protocol) packet type.</p>
 <p>Packet format: &lt;'ether type'=0x88CC&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00104">104</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00123">123</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -392,7 +404,7 @@ Functions</h2></td></tr>
 <p>NSH (Network Service Header) packet type.</p>
 <p>Packet format: &lt;'ether type'=0x894F&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00111">111</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00130">130</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -410,7 +422,7 @@ Functions</h2></td></tr>
 <p>VLAN packet type.</p>
 <p>Packet format: &lt;'ether type'=[0x8100]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00118">118</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00137">137</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -428,7 +440,7 @@ Functions</h2></td></tr>
 <p>QinQ packet type.</p>
 <p>Packet format: &lt;'ether type'=[0x88A8]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00125">125</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00144">144</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -446,7 +458,7 @@ Functions</h2></td></tr>
 <p>PPPOE packet type.</p>
 <p>Packet format: &lt;'ether type'=[0x8863|0x8864]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00132">132</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00151">151</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +476,7 @@ Functions</h2></td></tr>
 <p>FCoE packet type.</p>
 <p>Packet format: &lt;'ether type'=[0x8906]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00139">139</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00158">158</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -482,7 +494,7 @@ Functions</h2></td></tr>
 <p>MPLS packet type.</p>
 <p>Packet format: &lt;'ether type'=[0x8847|0x8848]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00146">146</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00165">165</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -499,7 +511,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of layer 2 packet types. It is used for outer packet for tunneling cases. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00151">151</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00170">170</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -517,7 +529,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 4 packet type. It is used for outer packet for tunneling cases, and does not contain any header option.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'ihl'=5&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00161">161</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00180">180</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -535,7 +547,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 4 packet type. It is used for outer packet for tunneling cases, and contains header options.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'ihl'=[6-15], 'options'&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00171">171</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00190">190</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -553,7 +565,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 6 packet type. It is used for outer packet for tunneling cases, and does not contain any extension header.</p>
 <p>Packet format: &lt;'ether type'=0x86DD | 'version'=6, 'next header'=0x3B&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00181">181</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00200">200</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -571,7 +583,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 4 packet type. It is used for outer packet for tunneling cases, and may or maynot contain header options.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'ihl'=[5-15], &lt;'options'&gt;&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00191">191</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00210">210</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -589,7 +601,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 6 packet type. It is used for outer packet for tunneling cases, and contains extension headers.</p>
 <p>Packet format: &lt;'ether type'=0x86DD | 'version'=6, 'next header'=[0x0|0x2B|0x2C|0x32|0x33|0x3C|0x87], 'extension headers'&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00202">202</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00221">221</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -607,7 +619,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 6 packet type. It is used for outer packet for tunneling cases, and may or maynot contain extension headers.</p>
 <p>Packet format: &lt;'ether type'=0x86DD | 'version'=6, 'next header'=[0x3B|0x0|0x2B|0x2C|0x32|0x33|0x3C|0x87], &lt;'extension headers'&gt;&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00213">213</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00232">232</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -624,7 +636,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of layer 3 packet types. It is used for outer packet for tunneling cases. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00218">218</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00237">237</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -642,7 +654,7 @@ Functions</h2></td></tr>
 <p>TCP (Transmission Control Protocol) packet type. It is used for outer packet for tunneling cases.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=6, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=6&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00230">230</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00249">249</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -660,7 +672,7 @@ Functions</h2></td></tr>
 <p>UDP (User Datagram Protocol) packet type. It is used for outer packet for tunneling cases.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00242">242</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00261">261</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -679,7 +691,7 @@ Functions</h2></td></tr>
 <p>It refers to those packets of any IP types, which can be recognized as fragmented. A fragmented packet cannot be recognized as any other L4 types (CNE_PTYPE_L4_TCP, CNE_PTYPE_L4_UDP, CNE_PTYPE_L4_SCTP, CNE_PTYPE_L4_ICMP, CNE_PTYPE_L4_NONFRAG).</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'MF'=1&gt; or, &lt;'ether type'=0x0800 | 'version'=4, 'frag_offset'!=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=44&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00262">262</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00281">281</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -697,7 +709,7 @@ Functions</h2></td></tr>
 <p>SCTP (Stream Control Transmission Protocol) packet type. It is used for outer packet for tunneling cases.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=132, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=132&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00274">274</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00293">293</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -715,7 +727,7 @@ Functions</h2></td></tr>
 <p>ICMP (Internet Control Message Protocol) packet type. It is used for outer packet for tunneling cases.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=1, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=1&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00286">286</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00305">305</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -734,7 +746,7 @@ Functions</h2></td></tr>
 <p>It refers to those packets of any IP types, while cannot be recognized as any of above L4 types (CNE_PTYPE_L4_TCP, CNE_PTYPE_L4_UDP, CNE_PTYPE_L4_FRAG, CNE_PTYPE_L4_SCTP, CNE_PTYPE_L4_ICMP).</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'!=[6|17|132|1], 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'!=[6|17|44|132|1]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00302">302</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00321">321</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -752,7 +764,7 @@ Functions</h2></td></tr>
 <p>IGMP (Internet Group Management Protocol) packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=2, 'MF'=0, 'frag_offset'=0&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00310">310</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00329">329</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -769,7 +781,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of layer 4 packet types. It is used for outer packet for tunneling cases. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00315">315</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00334">334</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -787,7 +799,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) in IP (Internet Protocol) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=[4|41]&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=[4|41]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00326">326</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00345">345</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -805,7 +817,7 @@ Functions</h2></td></tr>
 <p>GRE (Generic Routing Encapsulation) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=47&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=47&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00337">337</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00356">356</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -823,7 +835,7 @@ Functions</h2></td></tr>
 <p>VXLAN (Virtual eXtensible Local Area Network) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'destination port'=4789&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=4789&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00350">350</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00369">369</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -841,7 +853,7 @@ Functions</h2></td></tr>
 <p>NVGRE (Network Virtualization using Generic Routing Encapsulation) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=47 | 'protocol type'=0x6558&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=47 | 'protocol type'=0x6558'&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00364">364</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00383">383</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -859,7 +871,7 @@ Functions</h2></td></tr>
 <p>GENEVE (Generic Network Virtualization Encapsulation) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'destination port'=6081&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=6081&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00377">377</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00396">396</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -876,7 +888,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Tunneling packet type of Teredo, VXLAN (Virtual eXtensible Local Area Network) or GRE (Generic Routing Encapsulation) could be recognized as this packet type, if they can not be recognized independently as of hardware capability. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00384">384</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00403">403</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -893,7 +905,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>GTP-C (GPRS Tunnelling Protocol) control tunneling packet type. Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'destination port'=2123&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=2123&gt; or, &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'source port'=2123&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'source port'=2123&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00404">404</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00423">423</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -910,7 +922,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>GTP-U (GPRS Tunnelling Protocol) user data tunneling packet type. Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'destination port'=2152&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=2152&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00416">416</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00435">435</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -928,7 +940,7 @@ Functions</h2></td></tr>
 <p>ESP (IP Encapsulating Security Payload) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=51&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=51&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00427">427</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00446">446</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -946,7 +958,7 @@ Functions</h2></td></tr>
 <p>L2TP (Layer 2 Tunneling Protocol) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17&gt; | 'destination port'=1701&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=1701&gt; or, &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=115&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'protocol'=115&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00446">446</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00465">465</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -964,7 +976,7 @@ Functions</h2></td></tr>
 <p>VXLAN-GPE (VXLAN Generic Protocol Extension) tunneling packet type.</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'destination port'=4790&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=4790&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00459">459</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00478">478</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -982,7 +994,7 @@ Functions</h2></td></tr>
 <p>MPLS-in-GRE tunneling packet type (RFC 4023).</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=47 | 'protocol'=0x8847&gt; or, &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=47 | 'protocol'=0x8848&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'protocol'=47 | 'protocol'=0x8847&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=47 | 'protocol'=0x8848&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00480">480</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00499">499</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1000,7 +1012,7 @@ Functions</h2></td></tr>
 <p>MPLS-in-UDP tunneling packet type (RFC 7510).</p>
 <p>Packet format: &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17 | 'destination port'=6635&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17 | 'destination port'=6635&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00493">493</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00512">512</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1017,7 +1029,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of tunneling packet types. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00497">497</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00516">516</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1035,7 +1047,7 @@ Functions</h2></td></tr>
 <p>Ethernet packet type. It is used for inner packet type only.</p>
 <p>Packet format (inner only): &lt;'ether type'=[0x800|0x86DD]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00505">505</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00524">524</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1053,7 +1065,7 @@ Functions</h2></td></tr>
 <p>Ethernet packet type with VLAN (Virtual Local Area Network) tag.</p>
 <p>Packet format (inner only): &lt;'ether type'=[0x800|0x86DD], vlan=[1-4095]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00512">512</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00531">531</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1071,7 +1083,7 @@ Functions</h2></td></tr>
 <p>QinQ packet type.</p>
 <p>Packet format: &lt;'ether type'=[0x88A8]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00519">519</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00538">538</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1088,7 +1100,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of inner layer 2 packet types. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00523">523</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00542">542</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1106,7 +1118,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 4 packet type. It is used for inner packet only, and does not contain any header option.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'ihl'=5&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00532">532</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00551">551</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1124,7 +1136,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 4 packet type. It is used for inner packet only, and contains header options.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'ihl'=[6-15], 'options'&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00541">541</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00560">560</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1142,7 +1154,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 6 packet type. It is used for inner packet only, and does not contain any extension header.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x86DD | 'version'=6, 'next header'=0x3B&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00550">550</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00569">569</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1160,7 +1172,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 4 packet type. It is used for inner packet only, and may or maynot contain header options.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'ihl'=[5-15], &lt;'options'&gt;&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00559">559</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00578">578</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1178,7 +1190,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 6 packet type. It is used for inner packet only, and contains extension headers.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x86DD | 'version'=6, 'next header'=[0x0|0x2B|0x2C|0x32|0x33|0x3C|0x87], 'extension headers'&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00569">569</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00588">588</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1196,7 +1208,7 @@ Functions</h2></td></tr>
 <p>IP (Internet Protocol) version 6 packet type. It is used for inner packet only, and may or maynot contain extension headers.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x86DD | 'version'=6, 'next header'=[0x3B|0x0|0x2B|0x2C|0x32|0x33|0x3C|0x87], &lt;'extension headers'&gt;&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00580">580</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00599">599</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1213,7 +1225,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of inner layer 3 packet types. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00584">584</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00603">603</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1231,7 +1243,7 @@ Functions</h2></td></tr>
 <p>TCP (Transmission Control Protocol) packet type. It is used for inner packet only.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=6, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=6&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00596">596</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00615">615</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1249,7 +1261,7 @@ Functions</h2></td></tr>
 <p>UDP (User Datagram Protocol) packet type. It is used for inner packet only.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=17, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=17&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00608">608</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00627">627</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1267,7 +1279,7 @@ Functions</h2></td></tr>
 <p>Fragmented IP (Internet Protocol) packet type. It is used for inner packet only, and may or maynot have layer 4 packet.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'MF'=1&gt; or, &lt;'ether type'=0x0800 | 'version'=4, 'frag_offset'!=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=44&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00623">623</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00642">642</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1285,7 +1297,7 @@ Functions</h2></td></tr>
 <p>SCTP (Stream Control Transmission Protocol) packet type. It is used for inner packet only.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=132, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=132&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00635">635</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00654">654</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1303,7 +1315,7 @@ Functions</h2></td></tr>
 <p>ICMP (Internet Control Message Protocol) packet type. It is used for inner packet only.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'protocol'=1, 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'=1&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00647">647</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00666">666</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1321,7 +1333,7 @@ Functions</h2></td></tr>
 <p>Non-fragmented IP (Internet Protocol) packet type. It is used for inner packet only, and may or maynot have other unknown layer 4 packet types.</p>
 <p>Packet format (inner only): &lt;'ether type'=0x0800 | 'version'=4, 'protocol'!=[6|17|132|1], 'MF'=0, 'frag_offset'=0&gt; or, &lt;'ether type'=0x86DD | 'version'=6, 'next header'!=[6|17|44|132|1]&gt; </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00660">660</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00679">679</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1350,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask of inner layer 4 packet types. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00664">664</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00683">683</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1367,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>All valid layer masks. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00668">668</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00687">687</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1376,7 +1388,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Check if the (outer) L3 header is IPv4. To avoid comparing IPv4 types one by one, bit 4 is selected to be used for IPv4 only. Then checking bit 4 can determine if it is an IPV4 packet. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00675">675</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00694">694</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
@@ -1397,19 +1409,70 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Check if the (outer) L3 header is IPv6. To avoid comparing IPv6 types one by one, bit 6 is selected to be used for IPv6 only. Then checking bit 6 can determine if it is an IPV6 packet. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00682">682</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf__ptype_8h_source.html#l00701">701</a> of file <a class="el" href="pktmbuf__ptype_8h_source.html">pktmbuf_ptype.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="af1f708d72d471ca40ce9545fba569747"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af1f708d72d471ca40ce9545fba569747">&#9670;&nbsp;</a></span>cne_get_ptype_l2_name()</h2>
+<a id="a7a09484ac73129825fbde65212530e07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a09484ac73129825fbde65212530e07">&#9670;&nbsp;</a></span>cne_get_ptype()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_l2_name </td>
+          <td class="memname">CNDP_API uint32_t cne_get_ptype </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structcne__net__hdr__lens.html">cne_net_hdr_lens</a> *&#160;</td>
+          <td class="paramname"><em>hdr_lens</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>layers</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Parse an Ethernet packet to get its packet type.</p>
+<p>This function parses the network headers in mbuf data and return its packet type.</p>
+<p>If it is provided by the user, it also fills a <a class="el" href="structcne__net__hdr__lens.html">cne_net_hdr_lens</a> structure that contains the lengths of the parsed network headers. Each length field is valid only if the associated packet type is set. For instance, hdr_lens-&gt;l2_len is valid only if (retval &amp; CNE_PTYPE_L2_MASK) != CNE_PTYPE_UNKNOWN.</p>
+<p>Supported packet types are: L2: Ether, VLAN, QinQ L3: IPv4, IPv6 L4: TCP, UDP, SCTP Tunnels: IPv4, IPv6, GRE, NVGRE</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>The packet mbuf to be parsed. </td></tr>
+    <tr><td class="paramname">hdr_lens</td><td>A pointer to a structure where the header lengths will be returned, or NULL. </td></tr>
+    <tr><td class="paramname">layers</td><td>List of layers to parse. The function will stop at the first empty layer. Examples:<ul>
+<li>To parse all known layers, use CNE_PTYPE_ALL_MASK.</li>
+<li>To parse only L2 and L3, use CNE_PTYPE_L2_MASK | CNE_PTYPE_L3_MASK </li>
+</ul>
+</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The packet type of the packet. </dd></dl>
+
+</div>
+</div>
+<a id="ad1128be2019bff7b51deccdf23057d95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1128be2019bff7b51deccdf23057d95">&#9670;&nbsp;</a></span>cne_get_ptype_l2_name()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API const char* cne_get_ptype_l2_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1428,14 +1491,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a91754d54f00926e3ba4d2557de0bdc48"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91754d54f00926e3ba4d2557de0bdc48">&#9670;&nbsp;</a></span>cne_get_ptype_l3_name()</h2>
+<a id="a879a6848fcda99809b0548b50d2dce6e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a879a6848fcda99809b0548b50d2dce6e">&#9670;&nbsp;</a></span>cne_get_ptype_l3_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_l3_name </td>
+          <td class="memname">CNDP_API const char* cne_get_ptype_l3_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1454,14 +1517,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad51355716650b9560aa6134250c1443c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad51355716650b9560aa6134250c1443c">&#9670;&nbsp;</a></span>cne_get_ptype_l4_name()</h2>
+<a id="a4638e8525f8f9e09002b9b82b06c4cc0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4638e8525f8f9e09002b9b82b06c4cc0">&#9670;&nbsp;</a></span>cne_get_ptype_l4_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_l4_name </td>
+          <td class="memname">CNDP_API const char* cne_get_ptype_l4_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1480,14 +1543,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a5d1ec60277b11378da7f407f1eaa2d7e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d1ec60277b11378da7f407f1eaa2d7e">&#9670;&nbsp;</a></span>cne_get_ptype_tunnel_name()</h2>
+<a id="af41fd85e1ea289c2965d95c70a152d56"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af41fd85e1ea289c2965d95c70a152d56">&#9670;&nbsp;</a></span>cne_get_ptype_tunnel_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_tunnel_name </td>
+          <td class="memname">CNDP_API const char* cne_get_ptype_tunnel_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1506,14 +1569,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="afbb9dd9a56b1024a6a90441942aa2518"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afbb9dd9a56b1024a6a90441942aa2518">&#9670;&nbsp;</a></span>cne_get_ptype_inner_l2_name()</h2>
+<a id="ace20e7038b04648ccf37c92f9df59f71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace20e7038b04648ccf37c92f9df59f71">&#9670;&nbsp;</a></span>cne_get_ptype_inner_l2_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_inner_l2_name </td>
+          <td class="memname">CNDP_API const char* cne_get_ptype_inner_l2_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1532,14 +1595,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a38ae6c68f59c98cb53b1c3a288097111"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a38ae6c68f59c98cb53b1c3a288097111">&#9670;&nbsp;</a></span>cne_get_ptype_inner_l3_name()</h2>
+<a id="a641736a3cab99d5dbc2a19b17a83215c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a641736a3cab99d5dbc2a19b17a83215c">&#9670;&nbsp;</a></span>cne_get_ptype_inner_l3_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_inner_l3_name </td>
+          <td class="memname">CNDP_API const char* cne_get_ptype_inner_l3_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1558,14 +1621,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a1dfb11c829c0a10c09c5da1c6044456d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1dfb11c829c0a10c09c5da1c6044456d">&#9670;&nbsp;</a></span>cne_get_ptype_inner_l4_name()</h2>
+<a id="add6bd60e72eb7f5c84dbac139d2c1e85"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add6bd60e72eb7f5c84dbac139d2c1e85">&#9670;&nbsp;</a></span>cne_get_ptype_inner_l4_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const char* cne_get_ptype_inner_l4_name </td>
+          <td class="memname">CNDP_API const char* cne_get_ptype_inner_l4_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em></td><td>)</td>
@@ -1584,14 +1647,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8c5b0bfd2eaff94b28bdc41c368bf142"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8c5b0bfd2eaff94b28bdc41c368bf142">&#9670;&nbsp;</a></span>cne_get_ptype_name()</h2>
+<a id="a3b58f5b183b1f51d0cb2a8d63e2ae18a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b58f5b183b1f51d0cb2a8d63e2ae18a">&#9670;&nbsp;</a></span>cne_get_ptype_name()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int cne_get_ptype_name </td>
+          <td class="memname">CNDP_API int cne_get_ptype_name </td>
           <td>(</td>
           <td class="paramtype">uint32_t&#160;</td>
           <td class="paramname"><em>ptype</em>, </td>

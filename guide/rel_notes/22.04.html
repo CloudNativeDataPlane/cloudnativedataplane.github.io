@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1. CNDP First Public Release 22.04 &#8212; Cloud Native Data Plane Latest documentation</title>
+    <title>2. CNDP First Public Release 22.04 &#8212; Cloud Native Data Plane Latest documentation</title>
     
     <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="../static/classic.css" type="text/css" />
@@ -25,8 +25,8 @@
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2. CNDP Release 22.01" href="22.01.html" />
-    <link rel="prev" title="Release Notes" href="index.html" /> 
+    <link rel="next" title="3. CNDP Release 22.01" href="22.01.html" />
+    <link rel="prev" title="1. CNDP Release 22.08" href="22.08.html" /> 
   </head><body>
 <nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
 
@@ -65,14 +65,14 @@
           <a href="../genindex.html" title="General Index"
              accesskey="I">index</a></li>
         <li class="right" >
-          <a href="22.01.html" title="2. CNDP Release 22.01"
+          <a href="22.01.html" title="3. CNDP Release 22.01"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Release Notes"
+          <a href="22.08.html" title="1. CNDP Release 22.08"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Release Notes</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>CNDP First Public Release 22.04</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>CNDP First Public Release 22.04</a></li> 
       </ul>
     </div>  
 
@@ -82,9 +82,9 @@
           <div class="body" role="main">
             
   <section id="cndp-first-public-release-22-04">
-<h1><span class="section-number">1. </span>CNDP First Public Release 22.04<a class="headerlink" href="#cndp-first-public-release-22-04" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>CNDP First Public Release 22.04<a class="headerlink" href="#cndp-first-public-release-22-04" title="Permalink to this headline">¶</a></h1>
 <section id="new-features">
-<h2><span class="section-number">1.1. </span>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Update CNI to do ethtool filter programming</strong></p></li>
 <li><p><strong>Add –no-color option to cndpfwd to remove color text</strong></p></li>
@@ -99,7 +99,7 @@
 </ul>
 </section>
 <section id="some-notable-changes">
-<h2><span class="section-number">1.2. </span>Some notable changes<a class="headerlink" href="#some-notable-changes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>Some notable changes<a class="headerlink" href="#some-notable-changes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>CNET stack depends on libnl3. On Ubuntu, the libnl-3-dev and libnl-cli-3-dev packages are
 required to build CNDP.</p></li>
@@ -110,7 +110,7 @@ demonstrate a simple QUIC application using the CNET stack.</p></li>
 </ul>
 </section>
 <section id="known-issues">
-<h2><span class="section-number">1.3. </span>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>CNET stack assumes a single IP address per logical port, which means a 1:1 mapping between IP
 address and hardware queue. This is counter-intuitive to the way IP addresses are typically
@@ -121,7 +121,7 @@ for all the lports in all the lport-groups.</p></li>
 </ul>
 </section>
 <section id="limitations">
-<h2><span class="section-number">1.4. </span>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.4. </span>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>Still need to use a full netdev (Physical Function) with CNDP at this time. Support for
 Virtual Functions and Sub-devices will follow in later releases.</p></li>
@@ -131,7 +131,7 @@ JSON decoder.</p></li>
 </ul>
 </section>
 <section id="tested-platforms-system-information">
-<h2><span class="section-number">1.5. </span>Tested Platforms System information<a class="headerlink" href="#tested-platforms-system-information" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.5. </span>Tested Platforms System information<a class="headerlink" href="#tested-platforms-system-information" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p><strong>CPU = Intel(R) Xeon(R) Gold 6139 CPU &#64; 2.30GHz</strong></p></li>
 <li><p><strong>BIOS = SE5C620.86B.00.01.0015.110720180833</strong></p></li>
@@ -141,7 +141,7 @@ JSON decoder.</p></li>
 </ul>
 </section>
 <section id="tested-nics">
-<h2><span class="section-number">1.6. </span>Tested NICs<a class="headerlink" href="#tested-nics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.6. </span>Tested NICs<a class="headerlink" href="#tested-nics" title="Permalink to this headline">¶</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Ethernet controller: Intel Corporation Ethernet Controller XL710 for 40GbE QSFP+ (rev 02)</strong></p>
 <ul class="simple">
@@ -166,23 +166,23 @@ JSON decoder.</p></li>
             </a></p>
   <h3><a href="../index.html">Table of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">1. CNDP First Public Release 22.04</a><ul>
-<li><a class="reference internal" href="#new-features">1.1. New Features</a></li>
-<li><a class="reference internal" href="#some-notable-changes">1.2. Some notable changes</a></li>
-<li><a class="reference internal" href="#known-issues">1.3. Known Issues</a></li>
-<li><a class="reference internal" href="#limitations">1.4. Limitations</a></li>
-<li><a class="reference internal" href="#tested-platforms-system-information">1.5. Tested Platforms System information</a></li>
-<li><a class="reference internal" href="#tested-nics">1.6. Tested NICs</a></li>
+<li><a class="reference internal" href="#">2. CNDP First Public Release 22.04</a><ul>
+<li><a class="reference internal" href="#new-features">2.1. New Features</a></li>
+<li><a class="reference internal" href="#some-notable-changes">2.2. Some notable changes</a></li>
+<li><a class="reference internal" href="#known-issues">2.3. Known Issues</a></li>
+<li><a class="reference internal" href="#limitations">2.4. Limitations</a></li>
+<li><a class="reference internal" href="#tested-platforms-system-information">2.5. Tested Platforms System information</a></li>
+<li><a class="reference internal" href="#tested-nics">2.6. Tested NICs</a></li>
 </ul>
 </li>
 </ul>
 
   <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Release Notes</a></p>
+  <p class="topless"><a href="22.08.html"
+                        title="previous chapter"><span class="section-number">1. </span>CNDP Release 22.08</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="22.01.html"
-                        title="next chapter"><span class="section-number">2. </span>CNDP Release 22.01</a></p>
+                        title="next chapter"><span class="section-number">3. </span>CNDP Release 22.01</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -211,14 +211,14 @@ JSON decoder.</p></li>
           <a href="../genindex.html" title="General Index"
              >index</a></li>
         <li class="right" >
-          <a href="22.01.html" title="2. CNDP Release 22.01"
+          <a href="22.01.html" title="3. CNDP Release 22.01"
              >next</a> |</li>
         <li class="right" >
-          <a href="index.html" title="Release Notes"
+          <a href="22.08.html" title="1. CNDP Release 22.08"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
           <li class="nav-item nav-item-1"><a href="index.html" >Release Notes</a> &#187;</li>
-        <li class="nav-item nav-item-this"><a href=""><span class="section-number">1. </span>CNDP First Public Release 22.04</a></li> 
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">2. </span>CNDP First Public Release 22.04</a></li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">

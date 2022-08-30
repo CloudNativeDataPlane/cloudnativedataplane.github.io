@@ -1,5 +1,6 @@
 var pktmbuf__ptype_8h =
 [
+    [ "cne_net_hdr_lens", "structcne__net__hdr__lens.html", "structcne__net__hdr__lens" ],
     [ "CNE_PTYPE_UNKNOWN", "pktmbuf__ptype_8h.html#a53855bc0c5d38fe59a5f5fcefbff978c", null ],
     [ "CNE_PTYPE_L2_ETHER", "pktmbuf__ptype_8h.html#a8de140bf0f88529ed8084dc163776adc", null ],
     [ "CNE_PTYPE_L2_ETHER_TIMESYNC", "pktmbuf__ptype_8h.html#af7acb2cce095263c89c2e32aa5418337", null ],
@@ -62,12 +63,13 @@ var pktmbuf__ptype_8h =
     [ "CNE_PTYPE_ALL_MASK", "pktmbuf__ptype_8h.html#aec151afa799369935e270922f7b2608a", null ],
     [ "CNE_ETH_IS_IPV4_HDR", "pktmbuf__ptype_8h.html#aca9890f8dddbaa947aa70cfebe741a45", null ],
     [ "CNE_ETH_IS_IPV6_HDR", "pktmbuf__ptype_8h.html#a93a278e778e0366e65b7b1dd5cc679ac", null ],
-    [ "cne_get_ptype_l2_name", "pktmbuf__ptype_8h.html#af1f708d72d471ca40ce9545fba569747", null ],
-    [ "cne_get_ptype_l3_name", "pktmbuf__ptype_8h.html#a91754d54f00926e3ba4d2557de0bdc48", null ],
-    [ "cne_get_ptype_l4_name", "pktmbuf__ptype_8h.html#ad51355716650b9560aa6134250c1443c", null ],
-    [ "cne_get_ptype_tunnel_name", "pktmbuf__ptype_8h.html#a5d1ec60277b11378da7f407f1eaa2d7e", null ],
-    [ "cne_get_ptype_inner_l2_name", "pktmbuf__ptype_8h.html#afbb9dd9a56b1024a6a90441942aa2518", null ],
-    [ "cne_get_ptype_inner_l3_name", "pktmbuf__ptype_8h.html#a38ae6c68f59c98cb53b1c3a288097111", null ],
-    [ "cne_get_ptype_inner_l4_name", "pktmbuf__ptype_8h.html#a1dfb11c829c0a10c09c5da1c6044456d", null ],
-    [ "cne_get_ptype_name", "pktmbuf__ptype_8h.html#a8c5b0bfd2eaff94b28bdc41c368bf142", null ]
+    [ "cne_get_ptype", "pktmbuf__ptype_8h.html#a7a09484ac73129825fbde65212530e07", null ],
+    [ "cne_get_ptype_l2_name", "pktmbuf__ptype_8h.html#ad1128be2019bff7b51deccdf23057d95", null ],
+    [ "cne_get_ptype_l3_name", "pktmbuf__ptype_8h.html#a879a6848fcda99809b0548b50d2dce6e", null ],
+    [ "cne_get_ptype_l4_name", "pktmbuf__ptype_8h.html#a4638e8525f8f9e09002b9b82b06c4cc0", null ],
+    [ "cne_get_ptype_tunnel_name", "pktmbuf__ptype_8h.html#af41fd85e1ea289c2965d95c70a152d56", null ],
+    [ "cne_get_ptype_inner_l2_name", "pktmbuf__ptype_8h.html#ace20e7038b04648ccf37c92f9df59f71", null ],
+    [ "cne_get_ptype_inner_l3_name", "pktmbuf__ptype_8h.html#a641736a3cab99d5dbc2a19b17a83215c", null ],
+    [ "cne_get_ptype_inner_l4_name", "pktmbuf__ptype_8h.html#add6bd60e72eb7f5c84dbac139d2c1e85", null ],
+    [ "cne_get_ptype_name", "pktmbuf__ptype_8h.html#a3b58f5b183b1f51d0cb2a8d63e2ae18a", null ]
 ];

@@ -8,6 +8,7 @@ var uid_8h =
     [ "uid_register", "uid_8h.html#a63fb75af09d8de4bbfed965ec349bcb1", null ],
     [ "uid_unregister", "uid_8h.html#a47c18fccea0855d013ebddb6b8c7e943", null ],
     [ "uid_alloc", "uid_8h.html#ae68fc6484c166d36296f9513168a5064", null ],
-    [ "uid_free", "uid_8h.html#ada752db9e09fbc3a4e1fdf764e030213", null ],
+    [ "uid_free", "uid_8h.html#ab0f3c3c081a795363f7fe29e46bc9379", null ],
+    [ "uid_test", "uid_8h.html#aa73c63d0a0b5fe1e4210f4e7c7be4109", null ],
     [ "uid_dump", "uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a", null ]
 ];

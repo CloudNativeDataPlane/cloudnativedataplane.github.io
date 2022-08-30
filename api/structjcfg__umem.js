@@ -10,5 +10,5 @@ var structjcfg__umem =
     [ "idx", "structjcfg__umem.html#a3621634c7d41edf167a313cdfe0648b6", null ],
     [ "shared_umem", "structjcfg__umem.html#ad749e81bb9c9891e012d6efd1a677ce1", null ],
     [ "region_cnt", "structjcfg__umem.html#af2ff8bd84ac49642ff923abee2ed6056", null ],
-    [ "rinfo", "structjcfg__umem.html#aab8b3484b7ca6e5fdbc6f098d9be7e3d", null ]
+    [ "rinfo", "structjcfg__umem.html#ad3e35105f18708750062f9b080406337", null ]
 ];

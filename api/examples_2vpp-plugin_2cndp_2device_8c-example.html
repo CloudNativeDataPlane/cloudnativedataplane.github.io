@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -140,6 +140,10 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line"><span class="preprocessor">#include &lt;cndp/netdev_funcs.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;vppinfra/unix.h&gt;</span></div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 0</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vnet/interface/rx_queue_funcs.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
 <div class="line">cndp_main_t cndp_main;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> cndp_delete_dev (vlib_main_t *vm, u32 sw_if_index)</div>
@@ -164,8 +168,11 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line">  <span class="keywordflow">if</span> (d-&gt;hw_if_index)</div>
 <div class="line">    {</div>
 <div class="line">      vnet_hw_interface_set_flags (vnm, d-&gt;hw_if_index, 0);</div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 1</span></div>
+<div class="line">      <span class="comment">/* VPP 21.06 changes how rx queues are processed */</span></div>
 <div class="line">      vec_foreach (lport, d-&gt;lports)</div>
 <div class="line">          vnet_hw_interface_unassign_rx_thread (vnm, d-&gt;hw_if_index, lport-&gt;qid);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">      ethernet_delete_interface (vnm, d-&gt;hw_if_index);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
@@ -276,6 +283,24 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line">  vlib_buffer_reset (b);</div>
 <div class="line">}</div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">static</span> clib_error_t *register_interface (vnet_main_t *vnm, cndp_device_t *cd)</div>
+<div class="line">{</div>
+<div class="line"><span class="preprocessor">#if USE_2110_ETHERNET_REGISTER_INTERFACE == 1</span></div>
+<div class="line">  <span class="comment">/* VPP 22.02 changes how interfaces are registered */</span></div>
+<div class="line">  <span class="keywordflow">return</span> ethernet_register_interface (vnm, cndp_device_class.index,</div>
+<div class="line">                                      cd-&gt;instance, cd-&gt;mac.ether_addr_octet,</div>
+<div class="line">                                      &amp;cd-&gt;hw_if_index, NULL);</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line">  vnet_eth_interface_registration_t eir = {};</div>
+<div class="line"> </div>
+<div class="line">  eir.dev_class_index = cndp_device_class.index;</div>
+<div class="line">  eir.dev_instance = cd-&gt;instance;</div>
+<div class="line">  eir.address = cd-&gt;mac.ether_addr_octet,</div>
+<div class="line">  cd-&gt;hw_if_index = vnet_eth_register_interface (vnm, &amp;eir);</div>
+<div class="line">  <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line">}</div>
+<div class="line"> </div>
 <div class="line">clib_error_t *cndp_create_dev (vlib_main_t *vm, u8 *ifname, u32 nb_qs,</div>
 <div class="line">                               u32 offset)</div>
 <div class="line">{</div>
@@ -348,7 +373,7 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line">      p_config-&gt;flags |= <a name="a4"></a><a class="code" href="cne__lport_8h.html#a913048b00a3e1331f53a4d07d688b2a2">LPORT_USER_MANAGED_BUFFERS</a>;</div>
 <div class="line">      p_config-&gt;flags |= <a name="a5"></a><a class="code" href="cne__lport_8h.html#a1583281ebd372126d2c43232f18692ea">LPORT_UMEM_UNALIGNED_BUFFERS</a>;</div>
 <div class="line"> </div>
-<div class="line">      <a name="a6"></a><a class="code" href="cne__common_8h.html#a31c4030d5159ac14de21bbf49e05cbfc">CNE_DEFAULT_SET</a> (p_config-&gt;bufcnt, 0, <a name="a7"></a><a class="code" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ae7096018275cdb1fc616c1207558f7f4">DEFAULT_MBUF_COUNT</a>);</div>
+<div class="line">      <a name="a6"></a><a class="code" href="cne__common_8h.html#a31c4030d5159ac14de21bbf49e05cbfc">CNE_DEFAULT_SET</a> (p_config-&gt;bufcnt, 0, <a name="a7"></a><a class="code" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddae7096018275cdb1fc616c1207558f7f4">DEFAULT_MBUF_COUNT</a>);</div>
 <div class="line">      <a class="code" href="cne__common_8h.html#a31c4030d5159ac14de21bbf49e05cbfc">CNE_DEFAULT_SET</a> (p_config-&gt;rx_nb_desc, 0,</div>
 <div class="line">                       XSK_RING_PROD__DEFAULT_NUM_DESCS);</div>
 <div class="line">      <a class="code" href="cne__common_8h.html#a31c4030d5159ac14de21bbf49e05cbfc">CNE_DEFAULT_SET</a> (p_config-&gt;tx_nb_desc, 0,</div>
@@ -396,9 +421,7 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line">      <span class="keywordflow">goto</span> cleanup_xskdev;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">  error = ethernet_register_interface (vnm, cndp_device_class.index,</div>
-<div class="line">                                       cd-&gt;instance, cd-&gt;mac.ether_addr_octet,</div>
-<div class="line">                                       &amp;cd-&gt;hw_if_index, NULL);</div>
+<div class="line">  error = register_interface (vnm, cd);</div>
 <div class="line">  <span class="keywordflow">if</span> (error)</div>
 <div class="line">    {</div>
 <div class="line">      <span class="keywordflow">goto</span> cleanup_xskdev;</div>
@@ -416,8 +439,13 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line"> </div>
 <div class="line">  cd-&gt;sw_if_index = sw-&gt;sw_if_index;</div>
 <div class="line"> </div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 1</span></div>
+<div class="line">  <span class="comment">/* VPP 21.06 changes how rx queues are processed */</span></div>
 <div class="line">  vnet_hw_interface_set_input_node (vnm, cd-&gt;hw_if_index,</div>
 <div class="line">                                    cndp_input_node.index);</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line">  vnet_hw_if_set_input_node (vnm, cd-&gt;hw_if_index, cndp_input_node.index);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">  vnet_hw_interface_set_flags (vnm, cd-&gt;hw_if_index,</div>
 <div class="line">                               VNET_HW_INTERFACE_FLAG_LINK_UP);</div>
@@ -426,16 +454,33 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nb_qs; i++)</div>
 <div class="line">    {</div>
 <div class="line">      <span class="keywordtype">int</span> qid = offset + i;</div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 0</span></div>
+<div class="line">      u32 queue_index;</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+<div class="line"> </div>
 <div class="line">      <span class="keywordflow">if</span> (tm-&gt;n_vlib_mains == 1)</div>
 <div class="line">        thread_index = ~0; <span class="comment">/* any cpu */</span></div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 1</span></div>
+<div class="line">      <span class="comment">/* VPP 21.06 changes how rx queues are processed */</span></div>
 <div class="line">      vnet_hw_interface_assign_rx_thread (vnm, cd-&gt;hw_if_index, qid,</div>
 <div class="line">                                          thread_index++);</div>
 <div class="line">      vnet_hw_interface_set_rx_mode (vnm, cd-&gt;hw_if_index, qid,</div>
 <div class="line">                                     VNET_HW_IF_RX_MODE_POLLING);</div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line">      queue_index = vnet_hw_if_register_rx_queue (vnm, cd-&gt;hw_if_index, qid,</div>
+<div class="line">                                                  thread_index++);</div>
+<div class="line">      vnet_hw_if_set_rx_queue_mode (vnm, queue_index,</div>
+<div class="line">                                    VNET_HW_IF_RX_MODE_POLLING);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">      thread_index = (thread_index &gt; vdm-&gt;last_worker_thread_index)</div>
 <div class="line">                         ? vdm-&gt;first_worker_thread_index</div>
 <div class="line">                         : thread_index;</div>
 <div class="line">    }</div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 0</span></div>
+<div class="line">  <span class="comment">/* VPP 21.06 changes how rx queues are processed */</span></div>
+<div class="line">  vnet_hw_if_update_runtime_data (vnm, cd-&gt;hw_if_index);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">/* buffer template */</span></div>
 <div class="line">  vlib_buffer_t *bt = &amp;cd-&gt;buffer_template;</div>
@@ -508,12 +553,12 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2device_8c-
 <div class="ttc" id="acne_8h_html_a2dd46e2096148023d060831f7868b74a"><div class="ttname"><a href="cne_8h.html#a2dd46e2096148023d060831f7868b74a">cne_init</a></div><div class="ttdeci">CNDP_API int cne_init(void)</div></div>
 <div class="ttc" id="acne_8h_html_aede2592588bf0890de26de8798ece005"><div class="ttname"><a href="cne_8h.html#aede2592588bf0890de26de8798ece005">cne_register</a></div><div class="ttdeci">CNDP_API int cne_register(const char *name)</div></div>
 <div class="ttc" id="acne__common_8h_html_a31c4030d5159ac14de21bbf49e05cbfc"><div class="ttname"><a href="cne__common_8h.html#a31c4030d5159ac14de21bbf49e05cbfc">CNE_DEFAULT_SET</a></div><div class="ttdeci">#define CNE_DEFAULT_SET(x, y, z)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00067">cne_common.h:67</a></div></div>
-<div class="ttc" id="acne__common_8h_html_afa19e4373ad95aff9c2473b2a3da0299"><div class="ttname"><a href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a></div><div class="ttdeci">#define __cne_always_inline</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00213">cne_common.h:213</a></div></div>
-<div class="ttc" id="acne__lport_8h_html_a1583281ebd372126d2c43232f18692ea"><div class="ttname"><a href="cne__lport_8h.html#a1583281ebd372126d2c43232f18692ea">LPORT_UMEM_UNALIGNED_BUFFERS</a></div><div class="ttdeci">#define LPORT_UMEM_UNALIGNED_BUFFERS</div><div class="ttdef"><b>Definition:</b> <a href="cne__lport_8h_source.html#l00099">cne_lport.h:99</a></div></div>
-<div class="ttc" id="acne__lport_8h_html_a913048b00a3e1331f53a4d07d688b2a2"><div class="ttname"><a href="cne__lport_8h.html#a913048b00a3e1331f53a4d07d688b2a2">LPORT_USER_MANAGED_BUFFERS</a></div><div class="ttdeci">#define LPORT_USER_MANAGED_BUFFERS</div><div class="ttdef"><b>Definition:</b> <a href="cne__lport_8h_source.html#l00098">cne_lport.h:98</a></div></div>
+<div class="ttc" id="acne__common_8h_html_afa19e4373ad95aff9c2473b2a3da0299"><div class="ttname"><a href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a></div><div class="ttdeci">#define __cne_always_inline</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00218">cne_common.h:218</a></div></div>
+<div class="ttc" id="acne__lport_8h_html_a1583281ebd372126d2c43232f18692ea"><div class="ttname"><a href="cne__lport_8h.html#a1583281ebd372126d2c43232f18692ea">LPORT_UMEM_UNALIGNED_BUFFERS</a></div><div class="ttdeci">#define LPORT_UMEM_UNALIGNED_BUFFERS</div><div class="ttdef"><b>Definition:</b> <a href="cne__lport_8h_source.html#l00098">cne_lport.h:98</a></div></div>
+<div class="ttc" id="acne__lport_8h_html_a913048b00a3e1331f53a4d07d688b2a2"><div class="ttname"><a href="cne__lport_8h.html#a913048b00a3e1331f53a4d07d688b2a2">LPORT_USER_MANAGED_BUFFERS</a></div><div class="ttdeci">#define LPORT_USER_MANAGED_BUFFERS</div><div class="ttdef"><b>Definition:</b> <a href="cne__lport_8h_source.html#l00097">cne_lport.h:97</a></div></div>
 <div class="ttc" id="acne__lport_8h_html_aae210b02aee05858e19157c1662e425c"><div class="ttname"><a href="cne__lport_8h.html#aae210b02aee05858e19157c1662e425c">lport_cfg_t</a></div><div class="ttdeci">struct lport_cfg lport_cfg_t</div></div>
 <div class="ttc" id="anetdev__funcs_8h_html_a747503c2be5c2ed07b719bcda9034754"><div class="ttname"><a href="netdev__funcs_8h.html#a747503c2be5c2ed07b719bcda9034754">netdev_get_mac_addr</a></div><div class="ttdeci">CNDP_API int netdev_get_mac_addr(const char *ifname, struct ether_addr *eth_addr)</div></div>
-<div class="ttc" id="apktmbuf_8h_html_afccd240f973cf154952fb917c9209719ae7096018275cdb1fc616c1207558f7f4"><div class="ttname"><a href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ae7096018275cdb1fc616c1207558f7f4">DEFAULT_MBUF_COUNT</a></div><div class="ttdeci">@ DEFAULT_MBUF_COUNT</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00055">pktmbuf.h:55</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_ac205be2172292384dd687b5471a87eddae7096018275cdb1fc616c1207558f7f4"><div class="ttname"><a href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddae7096018275cdb1fc616c1207558f7f4">DEFAULT_MBUF_COUNT</a></div><div class="ttdeci">@ DEFAULT_MBUF_COUNT</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00055">pktmbuf.h:55</a></div></div>
 <div class="ttc" id="axskdev_8h_html_a1358aa0619cfd313b8f6e83a60ab2413"><div class="ttname"><a href="xskdev_8h.html#a1358aa0619cfd313b8f6e83a60ab2413">xskdev_socket_create</a></div><div class="ttdeci">CNDP_API xskdev_info_t * xskdev_socket_create(struct lport_cfg *c)</div></div>
 <div class="ttc" id="axskdev_8h_html_a4395c6409fc445e6fb6791cf2b904d93"><div class="ttname"><a href="xskdev_8h.html#a4395c6409fc445e6fb6791cf2b904d93">xskdev_socket_destroy</a></div><div class="ttdeci">CNDP_API void xskdev_socket_destroy(xskdev_info_t *xi)</div></div>
 </div><!-- fragment --> </div><!-- contents -->

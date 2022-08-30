@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -585,8 +585,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">    &amp;on_generate_resumption_token};</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">send_packets_default(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *dest, <span class="keyword">struct</span> iovec *packets,</div>
-<div class="line">                     <span class="keywordtype">size_t</span> num_packets)</div>
+<div class="line">send_packets_default(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *dest, <span class="keyword">struct</span> iovec *packets, <span class="keywordtype">size_t</span> num_packets)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i != num_packets; ++i) {</div>
 <div class="line">        <a name="_a0"></a><a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *m;</div>
@@ -594,13 +593,13 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">        <span class="keywordflow">if</span> (verbosity &gt;= 2)</div>
 <div class="line">            <a name="a1"></a><a class="code" href="hexdump_8h.html#ad43b85b23d613f2633e4c2daaa2762b1">cne_hexdump</a>(NULL, <span class="stringliteral">&quot;sendmsg&quot;</span>, packets[i].iov_base, packets[i].iov_len);</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span> (<a name="a2"></a><a class="code" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a>(ch-&gt;ch_idx, &amp;m, 1) == 0)</div>
+<div class="line">        <span class="keywordflow">if</span> (<a name="a2"></a><a class="code" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a>(0, &amp;m, 1) == 0)</div>
 <div class="line">            <a name="a3"></a><a class="code" href="cne__log_8h.html#a1d0beb10fedcde55b30a10c41e565045">CNE_RET</a>(<span class="stringliteral">&quot;Unable to allocate mbufs\n&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span> (<a name="a4"></a><a class="code" href="pktmbuf_8h.html#a4ae00805a563b09f5be88b09bba6107e">pktmbuf_write</a>(packets[i].iov_base, packets[i].iov_len, m, 0) == NULL)</div>
+<div class="line">        <span class="keywordflow">if</span> (<a name="a4"></a><a class="code" href="pktmbuf_8h.html#aa531e514fe3bd73404257ed569170e5b">pktmbuf_write</a>(packets[i].iov_base, packets[i].iov_len, m, 0) == NULL)</div>
 <div class="line">            <a class="code" href="cne__log_8h.html#a1d0beb10fedcde55b30a10c41e565045">CNE_RET</a>(<span class="stringliteral">&quot;Unable to copy data into mbuf\n&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span> (<a name="a5"></a><a class="code" href="cnet__chnl_8h.html#afafde20efd6589632eb9b95a78fd6226">chnl_sendto</a>(ch, dest, &amp;m, 1) &lt; 0)</div>
+<div class="line">        <span class="keywordflow">if</span> (<a name="a5"></a><a class="code" href="cnet__chnl_8h.html#aa8eb33f9b15b4992e170214ca214fe33">chnl_sendto</a>(cd, dest, &amp;m, 1) &lt; 0)</div>
 <div class="line">            perror(<span class="stringliteral">&quot;sendmsg failed&quot;</span>);</div>
 <div class="line">    }</div>
 <div class="line">}</div>
@@ -652,18 +651,18 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">static</span> void (*send_packets)(<span class="keyword">struct </span>chnl *ch, <span class="keyword">struct </span>sockaddr *, <span class="keyword">struct </span>iovec *,</div>
+<div class="line"><span class="keyword">static</span> void (*send_packets)(<span class="keywordtype">int</span> cd, <span class="keyword">struct </span>sockaddr *, <span class="keyword">struct </span>iovec *,</div>
 <div class="line">                            size_t) = send_packets_default;</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span></div>
-<div class="line">send_one_packet(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *dest, <span class="keyword">const</span> <span class="keywordtype">void</span> *payload, <span class="keywordtype">size_t</span> payload_len)</div>
+<div class="line">send_one_packet(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *dest, <span class="keyword">const</span> <span class="keywordtype">void</span> *payload, <span class="keywordtype">size_t</span> payload_len)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">struct </span>iovec vec = {.iov_base = (<span class="keywordtype">void</span> *)payload, .iov_len = payload_len};</div>
-<div class="line">    send_packets(ch, dest, &amp;vec, 1);</div>
+<div class="line">    send_packets(cd, dest, &amp;vec, 1);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">send_pending(<span class="keyword">struct</span> chnl *ch, quicly_conn_t *conn)</div>
+<div class="line">send_pending(<span class="keywordtype">int</span> cd, quicly_conn_t *conn)</div>
 <div class="line">{</div>
 <div class="line">    quicly_address_t dest, src;</div>
 <div class="line">    <span class="keyword">struct </span>iovec packets[MAX_BURST_PACKETS];</div>
@@ -674,7 +673,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> ((ret = quicly_send(conn, &amp;dest, &amp;src, packets, &amp;num_packets, buf, <span class="keyword">sizeof</span>(buf))) == 0 &amp;&amp;</div>
 <div class="line">        num_packets != 0)</div>
-<div class="line">        send_packets(ch, &amp;dest.sa, packets, num_packets);</div>
+<div class="line">        send_packets(cd, &amp;dest.sa, packets, num_packets);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> ret;</div>
 <div class="line">}</div>
@@ -721,38 +720,10 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">run_client(<span class="keyword">struct</span> chnl *ch, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *mbuf)</div>
+<div class="line">run_client(<span class="keywordtype">int</span> cd, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *mbuf)</div>
 <div class="line">{</div>
 <div class="line">    quicly_conn_t *conn = NULL;</div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#if 0</span></div>
-<div class="line">    <span class="keyword">struct </span>timeval *tv, tvbuf;</div>
-<div class="line">    <span class="keywordflow">do</span> {</div>
-<div class="line">        int64_t timeout_at = conn != NULL ? quicly_get_first_timeout(conn) : INT64_MAX;</div>
-<div class="line">        <span class="keywordflow">if</span> (enqueue_requests_at &lt; timeout_at)</div>
-<div class="line">            timeout_at = enqueue_requests_at;</div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span> (timeout_at != INT64_MAX) {</div>
-<div class="line">            quicly_context_t *ctx = quicly_get_context(conn);</div>
-<div class="line">            int64_t delta         = timeout_at - ctx-&gt;now-&gt;cb(ctx-&gt;now);</div>
-<div class="line">            <span class="keywordflow">if</span> (delta &gt; 0) {</div>
-<div class="line">                tvbuf.tv_sec  = delta / 1000;</div>
-<div class="line">                tvbuf.tv_usec = (delta % 1000) * 1000;</div>
-<div class="line">            } <span class="keywordflow">else</span> {</div>
-<div class="line">                tvbuf.tv_sec  = 0;</div>
-<div class="line">                tvbuf.tv_usec = 0;</div>
-<div class="line">            }</div>
-<div class="line">            tv = &amp;tvbuf;</div>
-<div class="line">        } <span class="keywordflow">else</span></div>
-<div class="line">            tv = NULL;</div>
-<div class="line"> </div>
-<div class="line">        FD_ZERO(&amp;readfds);</div>
-<div class="line">        FD_SET(fd, &amp;readfds);</div>
-<div class="line">    } <span class="keywordflow">while</span> (select(fd + 1, &amp;readfds, NULL, NULL, tv) == -1 &amp;&amp; errno == EINTR);</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">if</span> (enqueue_requests_at &lt;= ctx.now-&gt;cb(ctx.now))</div>
-<div class="line">        enqueue_requests(conn);</div>
-<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">    uint8_t buf[ctx.transport_params.max_udp_payload_size];</div>
 <div class="line">    <span class="keyword">struct </span>sockaddr sa;</div>
 <div class="line">    ssize_t rret = <a name="a6"></a><a class="code" href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a>(mbuf);</div>
@@ -777,7 +748,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">if</span> (conn != NULL) {</div>
-<div class="line">        <span class="keywordtype">int</span> ret = send_pending(ch, conn);</div>
+<div class="line">        <span class="keywordtype">int</span> ret = send_pending(cd, conn);</div>
 <div class="line">        <span class="keywordflow">if</span> (ret != 0) {</div>
 <div class="line">            quicly_free(conn);</div>
 <div class="line">            conn = NULL;</div>
@@ -870,42 +841,12 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">run_server(<span class="keyword">struct</span> chnl *ch, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *mbuf)</div>
+<div class="line">run_server(<span class="keywordtype">int</span> cd, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *mbuf)</div>
 <div class="line">{</div>
-<div class="line"><span class="preprocessor">#if 0</span></div>
-<div class="line">    <span class="keyword">struct </span>timeval *tv, tvbuf;</div>
-<div class="line"> </div>
-<div class="line">    <span class="keywordflow">do</span> {</div>
-<div class="line">        int64_t timeout_at = INT64_MAX;</div>
-<div class="line"> </div>
-<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i != num_conns; ++i) {</div>
-<div class="line">            int64_t conn_to = quicly_get_first_timeout(conns[i]);</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordflow">if</span> (conn_to &lt; timeout_at)</div>
-<div class="line">                timeout_at = conn_to;</div>
-<div class="line">        }</div>
-<div class="line">        <span class="keywordflow">if</span> (timeout_at != INT64_MAX) {</div>
-<div class="line">            int64_t delta = timeout_at - ctx.now-&gt;cb(ctx.now);</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordflow">if</span> (delta &gt; 0) {</div>
-<div class="line">                tvbuf.tv_sec  = delta / 1000;</div>
-<div class="line">                tvbuf.tv_usec = (delta % 1000) * 1000;</div>
-<div class="line">            } <span class="keywordflow">else</span> {</div>
-<div class="line">                tvbuf.tv_sec  = 0;</div>
-<div class="line">                tvbuf.tv_usec = 0;</div>
-<div class="line">            }</div>
-<div class="line">            tv = &amp;tvbuf;</div>
-<div class="line">        } <span class="keywordflow">else</span></div>
-<div class="line">            tv = NULL;</div>
-<div class="line"> </div>
-<div class="line">        FD_ZERO(&amp;readfds);</div>
-<div class="line">        FD_SET(fd, &amp;readfds);</div>
-<div class="line">    } <span class="keywordflow">while</span> (select(fd + 1, &amp;readfds, NULL, NULL, tv) == -1 &amp;&amp; errno == EINTR);</div>
-<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">    uint8_t *buf = <a class="code" href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a>(mbuf, uint8_t *);</div>
 <div class="line">    quicly_address_t remote;</div>
 <div class="line">    <span class="keywordtype">size_t</span> len               = <a class="code" href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a>(mbuf);</div>
-<div class="line">    <span class="keyword">struct </span>cnet_metadata *md = cnet_mbuf_metadata(mbuf);</div>
+<div class="line">    <span class="keyword">struct </span>cnet_metadata *md = <a name="a8"></a><a class="code" href="pktmbuf_8h.html#a4c8ba493b2f1752a05f261df112925e4">pktmbuf_metadata</a>(mbuf);</div>
 <div class="line">    <span class="keyword">struct </span>sockaddr_in *sa   = (<span class="keyword">struct </span>sockaddr_in *)&amp;remote.sa;</div>
 <div class="line"> </div>
 <div class="line">    sa-&gt;sin_family      = AF_INET;</div>
@@ -930,7 +871,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">                                                    quicly_supported_versions, payload);</div>
 <div class="line"> </div>
 <div class="line">                assert(payload_len != SIZE_MAX);</div>
-<div class="line">                send_one_packet(ch, &amp;remote.sa, payload, payload_len);</div>
+<div class="line">                send_one_packet(cd, &amp;remote.sa, payload, payload_len);</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            }</div>
 <div class="line"> </div>
@@ -967,13 +908,13 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">                            (ret == 0 &amp;&amp; token_buf.type == QUICLY_ADDRESS_TOKEN_TYPE_RETRY))) {</div>
 <div class="line">                    <span class="comment">/* Token that looks like retry was unusable, and we require retry.</span></div>
 <div class="line"><span class="comment">                     * There&#39;s no chance of the handshake succeeding. Therefore, send</span></div>
-<div class="line"><span class="comment">                     * close without aquiring state. */</span></div>
+<div class="line"><span class="comment">                     * close without acquiring state. */</span></div>
 <div class="line">                    uint8_t payload[ctx.transport_params.max_udp_payload_size];</div>
 <div class="line">                    <span class="keywordtype">size_t</span> payload_len = quicly_send_close_invalid_token(</div>
 <div class="line">                        &amp;ctx, packet.version, packet.cid.src, packet.cid.dest.encrypted, err_desc,</div>
 <div class="line">                        payload);</div>
 <div class="line">                    assert(payload_len != SIZE_MAX);</div>
-<div class="line">                    send_one_packet(ch, &amp;remote.sa, payload, payload_len);</div>
+<div class="line">                    send_one_packet(cd, &amp;remote.sa, payload, payload_len);</div>
 <div class="line">                }</div>
 <div class="line">            }</div>
 <div class="line">            <span class="keywordflow">if</span> (enforce_retry &amp;&amp; token == NULL &amp;&amp; packet.cid.dest.encrypted.len &gt;= 8) {</div>
@@ -989,7 +930,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">                    packet.cid.dest.encrypted, ptls_iovec_init(NULL, 0), ptls_iovec_init(NULL, 0),</div>
 <div class="line">                    NULL, payload);</div>
 <div class="line">                assert(payload_len != SIZE_MAX);</div>
-<div class="line">                send_one_packet(ch, &amp;remote.sa, payload, payload_len);</div>
+<div class="line">                send_one_packet(cd, &amp;remote.sa, payload, payload_len);</div>
 <div class="line">                <span class="keywordflow">break</span>;</div>
 <div class="line">            } <span class="keywordflow">else</span> {</div>
 <div class="line">                <span class="comment">/* new connection */</span></div>
@@ -1017,14 +958,14 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">                <span class="keywordtype">size_t</span> payload_len =</div>
 <div class="line">                    quicly_send_stateless_reset(&amp;ctx, packet.cid.dest.encrypted.base, payload);</div>
 <div class="line">                assert(payload_len != SIZE_MAX);</div>
-<div class="line">                send_one_packet(ch, &amp;remote.sa, payload, payload_len);</div>
+<div class="line">                send_one_packet(cd, &amp;remote.sa, payload, payload_len);</div>
 <div class="line">            }</div>
 <div class="line">        }</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i != num_conns; ++i) {</div>
 <div class="line">        <span class="keywordflow">if</span> (quicly_get_first_timeout(conns[i]) &lt;= ctx.now-&gt;cb(ctx.now)) {</div>
-<div class="line">            <span class="keywordflow">if</span> (send_pending(ch, conns[i]) != 0) {</div>
+<div class="line">            <span class="keywordflow">if</span> (send_pending(cd, conns[i]) != 0) {</div>
 <div class="line">                dump_stats(stderr, conns[i]);</div>
 <div class="line">                quicly_free(conns[i]);</div>
 <div class="line">                memmove(conns + i, conns + i + 1, (num_conns - i - 1) * <span class="keyword">sizeof</span>(*conns));</div>
@@ -1247,13 +1188,21 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span></div>
-<div class="line">quic_recv_callback(<span class="keyword">struct</span> chnl *ch, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs, uint16_t nb_mbufs)</div>
+<div class="line">quic_callback(<span class="keywordtype">int</span> ctype <a name="a9"></a><a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">int</span> cd)</div>
 <div class="line">{</div>
-<div class="line">    CNE_DEBUG(<span class="stringliteral">&quot;Received %d packets\n&quot;</span>, nb_mbufs);</div>
+<div class="line">    <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *mbufs[128];</div>
+<div class="line">    <span class="keywordtype">int</span> nb_mbufs;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nb_mbufs; i++) {</div>
-<div class="line">        <span class="keywordflow">if</span> ((is_server) ? run_server(ch, mbufs[i]) : run_client(ch, mbufs[i]) &lt; 0)</div>
-<div class="line">            <span class="keywordflow">break</span>;</div>
+<div class="line">    nb_mbufs = <a name="a10"></a><a class="code" href="cnet__chnl_8h.html#a22022a742413830c3d48d3ffb1474ca9">chnl_recv</a>(cd, mbufs, 128);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (nb_mbufs &gt; 0) {</div>
+<div class="line">        CNE_DEBUG(<span class="stringliteral">&quot;Received %d packets\n&quot;</span>, nb_mbufs);</div>
+<div class="line"> </div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; nb_mbufs; i++)</div>
+<div class="line">            <span class="keywordflow">if</span> ((is_server) ? run_server(cd, mbufs[i]) : run_client(cd, mbufs[i]) &lt; 0)</div>
+<div class="line">                <span class="keywordflow">break</span>;</div>
+<div class="line"> </div>
+<div class="line">        <a name="a11"></a><a class="code" href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a>(mbufs, nb_mbufs);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
@@ -1611,7 +1560,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (resolve_address((<span class="keywordtype">void</span> *)&amp;cinfo-&gt;sa, &amp;cinfo-&gt;salen, host, port, AF_INET, SOCK_DGRAM,</div>
 <div class="line">                        IPPROTO_UDP) != 0)</div>
-<div class="line">        <a name="a8"></a><a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;Unable to resolve host address\n&quot;</span>);</div>
+<div class="line">        <a name="a12"></a><a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;Unable to resolve host address\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    is_server = ctx.tls-&gt;certificates.count;</div>
 <div class="line"> </div>
@@ -1624,23 +1573,23 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">open_quic_channel(<span class="keywordtype">void</span>)</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">struct </span>chnl *ch = NULL;</div>
 <div class="line">    uint32_t opt;</div>
+<div class="line">    <span class="keywordtype">int</span> cd;</div>
 <div class="line"> </div>
-<div class="line">    ch = <a name="a9"></a><a class="code" href="cnet__chnl_8h.html#a28315ad2845a0bc643d143d72090ea30">channel</a>(cinfo-&gt;sa.ss_family, SOCK_DGRAM, 0, quic_recv_callback);</div>
-<div class="line">    <span class="keywordflow">if</span> (!ch)</div>
-<div class="line">        <a name="a10"></a><a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;chnl_socket call failed\n&quot;</span>);</div>
+<div class="line">    cd = <a name="a13"></a><a class="code" href="cnet__chnl_8h.html#a68bf1afb55dbd6fb59b05a9c3f088b6f">channel</a>(cinfo-&gt;sa.ss_family, SOCK_DGRAM, 0, quic_callback);</div>
+<div class="line">    <span class="keywordflow">if</span> (cd &lt; 0)</div>
+<div class="line">        <a name="a14"></a><a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;channel() call failed\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    opt = 1;</div>
-<div class="line">    <span class="keywordflow">if</span> (chnl_set_opt(ch, SO_CHANNEL, SO_REUSEADDR, &amp;opt, <span class="keyword">sizeof</span>(uint32_t)) &lt; 0)</div>
+<div class="line">    <span class="keywordflow">if</span> (<a name="a15"></a><a class="code" href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">chnl_set_opt</a>(cd, SO_CHANNEL, SO_REUSEADDR, &amp;opt, <span class="keyword">sizeof</span>(uint32_t)) &lt; 0)</div>
 <div class="line">        <a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;Setting Reuseaddr failed\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    opt = 1;</div>
-<div class="line">    <span class="keywordflow">if</span> (chnl_set_opt(ch, 0, SO_UDP_CHKSUM, &amp;opt, <span class="keyword">sizeof</span>(uint32_t)) &lt; 0)</div>
+<div class="line">    <span class="keywordflow">if</span> (<a class="code" href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">chnl_set_opt</a>(cd, 0, SO_UDP_CHKSUM, &amp;opt, <span class="keyword">sizeof</span>(uint32_t)) &lt; 0)</div>
 <div class="line">        <a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;Setting UDP checksum failed\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (is_server) {</div>
-<div class="line">        <span class="keywordflow">if</span> (<a name="a11"></a><a class="code" href="cnet__chnl_8h.html#aaf7ce6a412157bf7187a8aeca090de1d">chnl_bind</a>(ch, (<span class="keyword">struct</span> sockaddr *)&amp;cinfo-&gt;sa, cinfo-&gt;salen) &lt; 0)</div>
+<div class="line">        <span class="keywordflow">if</span> (<a name="a16"></a><a class="code" href="cnet__chnl_8h.html#a4c1a0264223397137793f50ffa8f20cc">chnl_bind</a>(cd, (<span class="keyword">struct</span> sockaddr *)&amp;cinfo-&gt;sa, cinfo-&gt;salen) &lt; 0)</div>
 <div class="line">            <a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;bind failed\n&quot;</span>);</div>
 <div class="line">    } <span class="keywordflow">else</span> {</div>
 <div class="line">        <span class="keyword">struct </span>sockaddr_in local = {0};</div>
@@ -1648,7 +1597,7 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">        <span class="keywordtype">int</span> ret;</div>
 <div class="line"> </div>
 <div class="line">        local.sin_family = AF_INET;</div>
-<div class="line">        <span class="keywordflow">if</span> (<a class="code" href="cnet__chnl_8h.html#aaf7ce6a412157bf7187a8aeca090de1d">chnl_bind</a>(ch, (<span class="keyword">struct</span> sockaddr *)&amp;local, <span class="keyword">sizeof</span>(local)) != 0)</div>
+<div class="line">        <span class="keywordflow">if</span> (<a class="code" href="cnet__chnl_8h.html#a4c1a0264223397137793f50ffa8f20cc">chnl_bind</a>(cd, (<span class="keyword">struct</span> sockaddr *)&amp;local, <span class="keyword">sizeof</span>(local)) != 0)</div>
 <div class="line">            <a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;bind failed to local address\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">        ret =</div>
@@ -1657,33 +1606,38 @@ $(document).ready(function(){initNavTree('examples_2cnet-quic_2quic-cli_8c-examp
 <div class="line">        assert(ret == 0);</div>
 <div class="line">        ++next_cid.master_id;</div>
 <div class="line">        enqueue_requests(conn);</div>
-<div class="line">        send_pending(ch, conn);</div>
+<div class="line">        send_pending(cd, conn);</div>
 <div class="line">    }</div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">err:</div>
-<div class="line">    <a name="a12"></a><a class="code" href="cnet__chnl_8h.html#af09d004708880cd3c183d7694d85a633">chnl_shutdown</a>(ch, SHUT_RDWR);</div>
+<div class="line">    <a name="a17"></a><a class="code" href="cnet__chnl_8h.html#a1aaad35546630b7a0c56440d7eed2650">chnl_shutdown</a>(cd, SHUT_RDWR);</div>
 <div class="line">    <span class="keywordflow">return</span> -1;</div>
 <div class="line">}</div>
-<div class="ttc" id="acne__log_8h_html_a1d0beb10fedcde55b30a10c41e565045"><div class="ttname"><a href="cne__log_8h.html#a1d0beb10fedcde55b30a10c41e565045">CNE_RET</a></div><div class="ttdeci">#define CNE_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00211">cne_log.h:211</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00223">cne_log.h:223</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00246">cne_log.h:246</a></div></div>
+<div class="ttc" id="acne__common_8h_html_a110ce74779a3879ca9ba9167c968cf27"><div class="ttname"><a href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a></div><div class="ttdeci">#define __cne_unused</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00144">cne_common.h:144</a></div></div>
+<div class="ttc" id="acne__log_8h_html_a1d0beb10fedcde55b30a10c41e565045"><div class="ttname"><a href="cne__log_8h.html#a1d0beb10fedcde55b30a10c41e565045">CNE_RET</a></div><div class="ttdeci">#define CNE_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00238">cne_log.h:238</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00250">cne_log.h:250</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00273">cne_log.h:273</a></div></div>
 <div class="ttc" id="acnet_8h_html"><div class="ttname"><a href="cnet_8h.html">cnet.h</a></div></div>
 <div class="ttc" id="acnet__chnl_8h_html"><div class="ttname"><a href="cnet__chnl_8h.html">cnet_chnl.h</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a28315ad2845a0bc643d143d72090ea30"><div class="ttname"><a href="cnet__chnl_8h.html#a28315ad2845a0bc643d143d72090ea30">channel</a></div><div class="ttdeci">CNDP_API struct chnl * channel(int domain, int type, int proto, chnl_cb_t cb)</div><div class="ttdoc">The routine to create a channel structure similar to 'socket()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_aaf7ce6a412157bf7187a8aeca090de1d"><div class="ttname"><a href="cnet__chnl_8h.html#aaf7ce6a412157bf7187a8aeca090de1d">chnl_bind</a></div><div class="ttdeci">CNDP_API int chnl_bind(struct chnl *ch, struct sockaddr *addr, int addrlen)</div><div class="ttdoc">Bind an address to a channel similar to 'bind()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_af09d004708880cd3c183d7694d85a633"><div class="ttname"><a href="cnet__chnl_8h.html#af09d004708880cd3c183d7694d85a633">chnl_shutdown</a></div><div class="ttdeci">CNDP_API int chnl_shutdown(struct chnl *ch, int how)</div><div class="ttdoc">Shutdown a channel connection similar to 'shutdown()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_afafde20efd6589632eb9b95a78fd6226"><div class="ttname"><a href="cnet__chnl_8h.html#afafde20efd6589632eb9b95a78fd6226">chnl_sendto</a></div><div class="ttdeci">CNDP_API int chnl_sendto(struct chnl *ch, struct sockaddr *sa, pktmbuf_t **mbufs, uint16_t nb_mbufs)</div><div class="ttdoc">Send data to a channel similar to 'sendto()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a1aaad35546630b7a0c56440d7eed2650"><div class="ttname"><a href="cnet__chnl_8h.html#a1aaad35546630b7a0c56440d7eed2650">chnl_shutdown</a></div><div class="ttdeci">CNDP_API int chnl_shutdown(int cd, int how)</div><div class="ttdoc">Shutdown a channel connection similar to 'shutdown()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a22022a742413830c3d48d3ffb1474ca9"><div class="ttname"><a href="cnet__chnl_8h.html#a22022a742413830c3d48d3ffb1474ca9">chnl_recv</a></div><div class="ttdeci">CNDP_API int chnl_recv(int cd, pktmbuf_t **mbufs, size_t len)</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a4c1a0264223397137793f50ffa8f20cc"><div class="ttname"><a href="cnet__chnl_8h.html#a4c1a0264223397137793f50ffa8f20cc">chnl_bind</a></div><div class="ttdeci">CNDP_API int chnl_bind(int cd, struct sockaddr *addr, int addrlen)</div><div class="ttdoc">Bind an address to a channel similar to 'bind()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a68bf1afb55dbd6fb59b05a9c3f088b6f"><div class="ttname"><a href="cnet__chnl_8h.html#a68bf1afb55dbd6fb59b05a9c3f088b6f">channel</a></div><div class="ttdeci">CNDP_API int channel(int domain, int type, int proto, chnl_cb_t cb)</div><div class="ttdoc">The routine to create a channel structure similar to 'socket()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_aa8eb33f9b15b4992e170214ca214fe33"><div class="ttname"><a href="cnet__chnl_8h.html#aa8eb33f9b15b4992e170214ca214fe33">chnl_sendto</a></div><div class="ttdeci">CNDP_API int chnl_sendto(int cd, struct sockaddr *sa, pktmbuf_t **mbufs, uint16_t nb_mbufs)</div><div class="ttdoc">Send data to a channel similar to 'sendto()'.</div></div>
 <div class="ttc" id="acnet__chnl__opt_8h_html"><div class="ttname"><a href="cnet__chnl__opt_8h.html">cnet_chnl_opt.h</a></div></div>
+<div class="ttc" id="acnet__chnl__opt_8h_html_aaa0749f638d118156c993f1e5de5564d"><div class="ttname"><a href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">chnl_set_opt</a></div><div class="ttdeci">CNDP_API int chnl_set_opt(int cd, int level, int optname, const void *optval, int optlen)</div><div class="ttdoc">Set a channel option.</div></div>
 <div class="ttc" id="acnet__meta_8h_html"><div class="ttname"><a href="cnet__meta_8h.html">cnet_meta.h</a></div></div>
 <div class="ttc" id="acnet__netif_8h_html"><div class="ttname"><a href="cnet__netif_8h.html">cnet_netif.h</a></div></div>
 <div class="ttc" id="acnet__netlink_8h_html"><div class="ttname"><a href="cnet__netlink_8h.html">cnet_netlink.h</a></div></div>
 <div class="ttc" id="ahexdump_8h_html"><div class="ttname"><a href="hexdump_8h.html">hexdump.h</a></div></div>
 <div class="ttc" id="ahexdump_8h_html_ad43b85b23d613f2633e4c2daaa2762b1"><div class="ttname"><a href="hexdump_8h.html#ad43b85b23d613f2633e4c2daaa2762b1">cne_hexdump</a></div><div class="ttdeci">CNDP_API void cne_hexdump(FILE *f, const char *title, const void *buf, unsigned int len)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a3b4e99e57c23cbe92863182322cb1d6b"><div class="ttname"><a href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a></div><div class="ttdeci">CNDP_API int pktdev_buf_alloc(int lport_id, pktmbuf_t **bufs, uint16_t nb_bufs)</div></div>
-<div class="ttc" id="apktmbuf_8h_html_a034b66bc273e1340547cb7288685ad2f"><div class="ttname"><a href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a></div><div class="ttdeci">#define pktmbuf_data_len(m)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00337">pktmbuf.h:337</a></div></div>
-<div class="ttc" id="apktmbuf_8h_html_a4ae00805a563b09f5be88b09bba6107e"><div class="ttname"><a href="pktmbuf_8h.html#a4ae00805a563b09f5be88b09bba6107e">pktmbuf_write</a></div><div class="ttdeci">static const void * pktmbuf_write(void *buf, uint32_t len, pktmbuf_t *m, uint32_t off)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l01053">pktmbuf.h:1053</a></div></div>
-<div class="ttc" id="apktmbuf_8h_html_a77fa2b918e3052b564b228868d58c198"><div class="ttname"><a href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a></div><div class="ttdeci">#define pktmbuf_mtod(m, t)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00383">pktmbuf.h:383</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_a034b66bc273e1340547cb7288685ad2f"><div class="ttname"><a href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a></div><div class="ttdeci">#define pktmbuf_data_len(m)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00370">pktmbuf.h:370</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_a4c8ba493b2f1752a05f261df112925e4"><div class="ttname"><a href="pktmbuf_8h.html#a4c8ba493b2f1752a05f261df112925e4">pktmbuf_metadata</a></div><div class="ttdeci">static void * pktmbuf_metadata(const pktmbuf_t *m)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l01209">pktmbuf.h:1209</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_a77fa2b918e3052b564b228868d58c198"><div class="ttname"><a href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a></div><div class="ttdeci">#define pktmbuf_mtod(m, t)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00416">pktmbuf.h:416</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_aa27ef3ac37cc4956e9722415637f1cfe"><div class="ttname"><a href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a></div><div class="ttdeci">static void pktmbuf_free_bulk(pktmbuf_t **mbufs, unsigned int count)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00801">pktmbuf.h:801</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_aa531e514fe3bd73404257ed569170e5b"><div class="ttname"><a href="pktmbuf_8h.html#aa531e514fe3bd73404257ed569170e5b">pktmbuf_write</a></div><div class="ttdeci">static const void * pktmbuf_write(const void *buf, uint32_t len, pktmbuf_t *m, uint32_t off)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l01097">pktmbuf.h:1097</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

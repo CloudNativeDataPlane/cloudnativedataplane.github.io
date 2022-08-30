@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -167,7 +167,7 @@ $(document).ready(function(){initNavTree('acl_8h_source.html',''); initResizable
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"> * Each transition is 64 bit value with the following format:</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"> * | node_type_specific : 32 | node_type : 3 | node_addr : 29 |</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"> * For all node types except CNE_ACL_NODE_MATCH, node_addr is an index</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> * to the start of the node in the transtions array.</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"> * to the start of the node in the transitions array.</span></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"> * Few different node types are used:</span></div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment"> * CNE_ACL_NODE_MATCH:</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"> * node_addr value is and index into an array that contains the return value</span></div>
@@ -188,7 +188,7 @@ $(document).ready(function(){initNavTree('acl_8h_source.html',''); initResizable
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="comment"> * CNE_ACL_NODE_SINGLE:</span></div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="comment"> * always transitions to the same node regardless of the input value.</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="comment"> * CNE_ACL_NODE_DFA:</span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * that node consits of up to 256 transitions.</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"> * that node consists of up to 256 transitions.</span></div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="comment"> * In attempt to conserve space all transitions are divided into 4 consecutive</span></div>
 <div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="comment"> * groups, by 64 transitions per group:</span></div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="comment"> * group64[i] contains transitions[i * 64, .. i * 64 + 63].</span></div>

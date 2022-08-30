@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -402,7 +402,7 @@ Variables</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>How many cthread objects to pre-allocate as the system grows applies to cthreads + stacks, TLS, mutexs, cond vars.</p>
+<p>How many cthread objects to pre-allocate as the system grows applies to cthreads + stacks, TLS, mutexes, cond vars.</p>
 <dl class="section see"><dt>See also</dt><dd>_cthread_alloc() </dd>
 <dd>
 _cond_alloc() </dd>
@@ -1330,7 +1330,7 @@ _mutex_alloc() </dd></dl>
       </table>
 </div><div class="memdoc">
 <p>Set cthread TLS</p>
-<p>This function is modelled on pthread_set_sepcific() It associates a thread-specific value with a key obtained via a previous call to <a class="el" href="cthread__api_8h.html#a82a29c37f15fa14b8ebaf8ff87873da2">cthread_key_create()</a>. Different threads may bind different values to the same key. These values are typically pointers to dynamically allocated memory that have been reserved by the calling thread. Calling cthread_setspecific with a key value not obtained from cthread_key_create or after the key has been deleted with cthread_key_delete will result in undefined behaviour.</p>
+<p>This function is modelled on pthread_set_specific() It associates a thread-specific value with a key obtained via a previous call to <a class="el" href="cthread__api_8h.html#a82a29c37f15fa14b8ebaf8ff87873da2">cthread_key_create()</a>. Different threads may bind different values to the same key. These values are typically pointers to dynamically allocated memory that have been reserved by the calling thread. Calling cthread_setspecific with a key value not obtained from cthread_key_create or after the key has been deleted with cthread_key_delete will result in undefined behaviour.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">key</td><td>The key for which data is to be set </td></tr>
@@ -1970,7 +1970,7 @@ _mutex_alloc() </dd></dl>
 <p>This function destroys a semaphore that was created with <a class="el" href="cthread__api_8h.html#a904e9af749c2b5d3c556db0f32ebc65c">cthread_sema_init()</a> and releases its resources.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sema</td><td>Pointer to pointer to the semaphore to be destroyed </td></tr>
+    <tr><td class="paramname">sema</td><td>Pointer to the semaphore to be destroyed </td></tr>
   </table>
   </dd>
 </dl>
@@ -1996,7 +1996,7 @@ _mutex_alloc() </dd></dl>
 <p>Reset a semaphore to initialized state.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sema</td><td>Pointer to pointer to the semaphore to be reset </td></tr>
+    <tr><td class="paramname">sema</td><td>Pointer to the semaphore to be reset </td></tr>
   </table>
   </dd>
 </dl>
@@ -2033,7 +2033,7 @@ _mutex_alloc() </dd></dl>
 <p>The function blocks the current thread waiting on the semaphore specified by s. The waiting thread unblocks only after another thread calls cthread_sema_signal specifying the same semaphore.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>Pointer to pointer to the semaphore on which to wait </td></tr>
+    <tr><td class="paramname">s</td><td>Pointer to the semaphore on which to wait </td></tr>
     <tr><td class="paramname">m</td><td>Mutex to release or NULL if no mutex. </td></tr>
   </table>
   </dd>
@@ -2077,7 +2077,7 @@ _mutex_alloc() </dd></dl>
 <p>The function blocks the current thread waiting on the semaphore specified by s. The waiting thread unblocks only after another thread calls cthread_sema_signal specifying the same semaphore, or abstime elapses.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>Pointer to pointer to the semaphore to be waited on </td></tr>
+    <tr><td class="paramname">s</td><td>Pointer to the semaphore to be waited on </td></tr>
     <tr><td class="paramname">m</td><td>Mutex to release or NULL if no mutex. </td></tr>
     <tr><td class="paramname">abstime</td><td>Timespec used for timeout value. </td></tr>
   </table>
@@ -2106,7 +2106,7 @@ _mutex_alloc() </dd></dl>
 <p>The function unblocks one thread waiting for the semaphore.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>Pointer to pointer to the semaphore to be signalled </td></tr>
+    <tr><td class="paramname">s</td><td>Pointer to the semaphore to be signalled </td></tr>
   </table>
   </dd>
 </dl>
@@ -2133,7 +2133,7 @@ _mutex_alloc() </dd></dl>
 <p>The function unblocks all threads waiting for the semaphore.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>Pointer to pointer to the semaphore to be flushed </td></tr>
+    <tr><td class="paramname">s</td><td>Pointer to the semaphore to be flushed </td></tr>
   </table>
   </dd>
 </dl>
@@ -2160,7 +2160,7 @@ _mutex_alloc() </dd></dl>
 <p>The function unblocks all threads waiting for the semaphore.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>Pointer to pointer to the semaphore to be flushed </td></tr>
+    <tr><td class="paramname">s</td><td>Pointer to the semaphore to be flushed </td></tr>
   </table>
   </dd>
 </dl>

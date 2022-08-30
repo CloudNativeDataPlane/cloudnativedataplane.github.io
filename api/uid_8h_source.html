@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -124,11 +124,11 @@ $(document).ready(function(){initNavTree('uid_8h_source.html',''); initResizable
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span>         <span class="comment">// for FILE</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>        <span class="comment">// for uint16_t</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#define UID_INITIAL_NAME    &quot;Initial-UID&quot;</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="uid_8h.html#a540b2f03c9b9a640c3a649b886aaca9f">   24</a></span>&#160;<span class="preprocessor">#define DEFAULT_MAX_THREADS 512 </span></div>
@@ -145,15 +145,17 @@ $(document).ready(function(){initNavTree('uid_8h_source.html',''); initResizable
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
 <div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="uid_8h.html#ae68fc6484c166d36296f9513168a5064">   88</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="uid_8h.html#ae68fc6484c166d36296f9513168a5064">uid_alloc</a>(<a class="code" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> _e);</div>
 <div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="uid_8h.html#ada752db9e09fbc3a4e1fdf764e030213">  100</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="uid_8h.html#ada752db9e09fbc3a4e1fdf764e030213">uid_free</a>(<a class="code" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> _e, <span class="keywordtype">int</span> idx);</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a">  108</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a">uid_dump</a>(FILE *f);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _UID_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="uid_8h.html#ab0f3c3c081a795363f7fe29e46bc9379">   98</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="uid_8h.html#ab0f3c3c081a795363f7fe29e46bc9379">uid_free</a>(<a class="code" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> _e, <span class="keywordtype">int</span> idx);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="uid_8h.html#aa73c63d0a0b5fe1e4210f4e7c7be4109">  110</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="uid_8h.html#aa73c63d0a0b5fe1e4210f4e7c7be4109">uid_test</a>(<a class="code" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> *e, <span class="keywordtype">int</span> uid);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a">  118</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a">uid_dump</a>(FILE *f);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160; </div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _UID_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="auid_8h_html_a112c1a77ad4cf07c647cca171d1e499a"><div class="ttname"><a href="uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a">uid_dump</a></div><div class="ttdeci">CNDP_API void uid_dump(FILE *f)</div></div>
 <div class="ttc" id="auid_8h_html_a24d258b3c5807ff631fe20c71842b8d4"><div class="ttname"><a href="uid_8h.html#a24d258b3c5807ff631fe20c71842b8d4">uid_find_by_name</a></div><div class="ttdeci">CNDP_API u_id_t uid_find_by_name(const char *name)</div></div>
@@ -161,8 +163,9 @@ $(document).ready(function(){initNavTree('uid_8h_source.html',''); initResizable
 <div class="ttc" id="auid_8h_html_a5d88bb14ddb857f454bcdc9ac0451f35"><div class="ttname"><a href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a></div><div class="ttdeci">void * u_id_t</div><div class="ttdef"><b>Definition:</b> <a href="uid_8h_source.html#l00026">uid.h:26</a></div></div>
 <div class="ttc" id="auid_8h_html_a63fb75af09d8de4bbfed965ec349bcb1"><div class="ttname"><a href="uid_8h.html#a63fb75af09d8de4bbfed965ec349bcb1">uid_register</a></div><div class="ttdeci">CNDP_API u_id_t uid_register(const char *name, uint16_t cnt)</div></div>
 <div class="ttc" id="auid_8h_html_a77d7daa44e779e4b20b9de70f254ac11"><div class="ttname"><a href="uid_8h.html#a77d7daa44e779e4b20b9de70f254ac11">uid_allocated</a></div><div class="ttdeci">CNDP_API uint16_t uid_allocated(u_id_t _e)</div></div>
+<div class="ttc" id="auid_8h_html_aa73c63d0a0b5fe1e4210f4e7c7be4109"><div class="ttname"><a href="uid_8h.html#aa73c63d0a0b5fe1e4210f4e7c7be4109">uid_test</a></div><div class="ttdeci">CNDP_API int uid_test(u_id_t *e, int uid)</div></div>
 <div class="ttc" id="auid_8h_html_aa82a5ce46f21b9cdc3e34a5743349689"><div class="ttname"><a href="uid_8h.html#aa82a5ce46f21b9cdc3e34a5743349689">uid_max_ids</a></div><div class="ttdeci">CNDP_API uint16_t uid_max_ids(u_id_t _e)</div></div>
-<div class="ttc" id="auid_8h_html_ada752db9e09fbc3a4e1fdf764e030213"><div class="ttname"><a href="uid_8h.html#ada752db9e09fbc3a4e1fdf764e030213">uid_free</a></div><div class="ttdeci">CNDP_API int uid_free(u_id_t _e, int idx)</div></div>
+<div class="ttc" id="auid_8h_html_ab0f3c3c081a795363f7fe29e46bc9379"><div class="ttname"><a href="uid_8h.html#ab0f3c3c081a795363f7fe29e46bc9379">uid_free</a></div><div class="ttdeci">CNDP_API void uid_free(u_id_t _e, int idx)</div></div>
 <div class="ttc" id="auid_8h_html_ae68fc6484c166d36296f9513168a5064"><div class="ttname"><a href="uid_8h.html#ae68fc6484c166d36296f9513168a5064">uid_alloc</a></div><div class="ttdeci">CNDP_API int uid_alloc(u_id_t _e)</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

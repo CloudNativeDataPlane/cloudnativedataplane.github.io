@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -115,7 +115,7 @@ $(document).ready(function(){initNavTree('cli__history_8h_source.html',''); init
 </div><!--header-->
 <div class="contents">
 <a href="cli__history_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* SPDX-License-Identifier: BSD-3-Clause</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) &lt;2019-2021&gt; Intel Corporation.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2019-2022 Intel Corporation.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef _CLI_HISTORY_H_</span></div>
@@ -133,7 +133,7 @@ $(document).ready(function(){initNavTree('cli__history_8h_source.html',''); init
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">enum</span> {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    CLI_DEFAULT_HISTORY = -1, </div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="cli__history_8h.html#ae33c78feb670de33d2abf21ec0624531ab930cb27b318a2b203c69cf13505e3a6">   26</a></span>&#160;    <a class="code" href="cli__history_8h.html#ae33c78feb670de33d2abf21ec0624531ab930cb27b318a2b203c69cf13505e3a6">CLI_NO_HISTORY</a>      = 0,  </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="cli__history_8h.html#a3babbf89cae9b856a12864a41506efbdab930cb27b318a2b203c69cf13505e3a6">   26</a></span>&#160;    <a class="code" href="cli__history_8h.html#a3babbf89cae9b856a12864a41506efbdab930cb27b318a2b203c69cf13505e3a6">CLI_NO_HISTORY</a>      = 0,  </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;};</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="keyword">struct </span>cli_hist {</div>
@@ -176,13 +176,13 @@ $(document).ready(function(){initNavTree('cli__history_8h_source.html',''); init
 <div class="ttc" id="acli__history_8h_html_a0b7c644d0f2cc21745477bc3bdcb46f3"><div class="ttname"><a href="cli__history_8h.html#a0b7c644d0f2cc21745477bc3bdcb46f3">cli_history_clear</a></div><div class="ttdeci">void cli_history_clear(void)</div></div>
 <div class="ttc" id="acli__history_8h_html_a2516457c8ca9edfc7146dbd85ddf64e7"><div class="ttname"><a href="cli__history_8h.html#a2516457c8ca9edfc7146dbd85ddf64e7">cli_set_history</a></div><div class="ttdeci">CNDP_API int cli_set_history(uint32_t nb_hist)</div></div>
 <div class="ttc" id="acli__history_8h_html_a32592924cf4ca92dd6b71dbb88c56390"><div class="ttname"><a href="cli__history_8h.html#a32592924cf4ca92dd6b71dbb88c56390">cli_history_next</a></div><div class="ttdeci">CNDP_API char * cli_history_next(void)</div></div>
+<div class="ttc" id="acli__history_8h_html_a3babbf89cae9b856a12864a41506efbdab930cb27b318a2b203c69cf13505e3a6"><div class="ttname"><a href="cli__history_8h.html#a3babbf89cae9b856a12864a41506efbdab930cb27b318a2b203c69cf13505e3a6">CLI_NO_HISTORY</a></div><div class="ttdeci">@ CLI_NO_HISTORY</div><div class="ttdef"><b>Definition:</b> <a href="cli__history_8h_source.html#l00026">cli_history.h:26</a></div></div>
 <div class="ttc" id="acli__history_8h_html_a8f1cdf2e25c9d6ad6d7852f28fcb9f29"><div class="ttname"><a href="cli__history_8h.html#a8f1cdf2e25c9d6ad6d7852f28fcb9f29">cli_hist_alloc</a></div><div class="ttdeci">CNDP_API struct cli_hist * cli_hist_alloc(void)</div></div>
 <div class="ttc" id="acli__history_8h_html_a96693122081771a09ba711e86c3b3e85"><div class="ttname"><a href="cli__history_8h.html#a96693122081771a09ba711e86c3b3e85">cli_history_dump</a></div><div class="ttdeci">CNDP_API void cli_history_dump(void)</div></div>
 <div class="ttc" id="acli__history_8h_html_ad475ca7a4192f29fd120aef333fba19a"><div class="ttname"><a href="cli__history_8h.html#ad475ca7a4192f29fd120aef333fba19a">cli_hist_free</a></div><div class="ttdeci">CNDP_API void cli_hist_free(struct cli_hist *hist)</div></div>
 <div class="ttc" id="acli__history_8h_html_ad529536553a25330ea71e562e099411f"><div class="ttname"><a href="cli__history_8h.html#ad529536553a25330ea71e562e099411f">cli_history_reset</a></div><div class="ttdeci">CNDP_API void cli_history_reset(void)</div></div>
 <div class="ttc" id="acli__history_8h_html_add0bb32fa8e50a1bc91cdc11cd79f5d7"><div class="ttname"><a href="cli__history_8h.html#add0bb32fa8e50a1bc91cdc11cd79f5d7">cli_history_del</a></div><div class="ttdeci">CNDP_API void cli_history_del(void)</div></div>
 <div class="ttc" id="acli__history_8h_html_add4437caff5ccdcf5f8f93c7225f950a"><div class="ttname"><a href="cli__history_8h.html#add4437caff5ccdcf5f8f93c7225f950a">cli_history_add</a></div><div class="ttdeci">CNDP_API void cli_history_add(char *line)</div></div>
-<div class="ttc" id="acli__history_8h_html_ae33c78feb670de33d2abf21ec0624531ab930cb27b318a2b203c69cf13505e3a6"><div class="ttname"><a href="cli__history_8h.html#ae33c78feb670de33d2abf21ec0624531ab930cb27b318a2b203c69cf13505e3a6">CLI_NO_HISTORY</a></div><div class="ttdeci">@ CLI_NO_HISTORY</div><div class="ttdef"><b>Definition:</b> <a href="cli__history_8h_source.html#l00026">cli_history.h:26</a></div></div>
 <div class="ttc" id="acli__history_8h_html_ae67d5ecce38adfe5effd042e767d7854"><div class="ttname"><a href="cli__history_8h.html#ae67d5ecce38adfe5effd042e767d7854">cli_history_line</a></div><div class="ttdeci">CNDP_API char * cli_history_line(int lineno)</div></div>
 <div class="ttc" id="acli__history_8h_html_aef9bff5c0b9d758167a212af52eb0fd8"><div class="ttname"><a href="cli__history_8h.html#aef9bff5c0b9d758167a212af52eb0fd8">cli_history_delete</a></div><div class="ttdeci">CNDP_API void cli_history_delete(void)</div></div>
 <div class="ttc" id="acli__history_8h_html_afe62e940d8e2f6c9c2eb8a912e479264"><div class="ttname"><a href="cli__history_8h.html#afe62e940d8e2f6c9c2eb8a912e479264">cli_history_prev</a></div><div class="ttdeci">CNDP_API char * cli_history_prev(void)</div></div>

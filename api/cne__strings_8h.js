@@ -5,6 +5,8 @@ var cne__strings_8h =
     [ "strtrim", "cne__strings_8h.html#a80dd8a6b5881ca22a0f1d32a6fca6413", null ],
     [ "cne_strtok", "cne__strings_8h.html#a0c4384d54350da5fadda8e01c9c0c51f", null ],
     [ "cne_strqtok", "cne__strings_8h.html#aed036854e8fb0cc88c33a2a646d1a47d", null ],
+    [ "cne_strtolower", "cne__strings_8h.html#aa6e2dae38efdb8314503762252c4fa10", null ],
+    [ "cne_strtoupper", "cne__strings_8h.html#aacb1820ddb09898a54729f1d63046c59", null ],
     [ "cne_stropt", "cne__strings_8h.html#a916280eb733cecb428409fadcccfb237", null ],
     [ "cne_strdupf", "cne__strings_8h.html#aa95283bbbcce562b1e85231a1cefcd96", null ],
     [ "cne_strcnt", "cne__strings_8h.html#a35a2c7e95c69894f2ad4dc0060eeef2d", null ],

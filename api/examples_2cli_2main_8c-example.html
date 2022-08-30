@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -148,7 +148,7 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="line">__on_exit(<span class="keywordtype">int</span> val, <span class="keywordtype">void</span> *arg <a name="a0"></a><a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">int</span> exit_type)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">switch</span> (exit_type) {</div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a1"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a1"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a>:</div>
 <div class="line">        <span class="comment">/* Terminate the application if not USR1 signal, allows for GDB breakpoint setting */</span></div>
 <div class="line">        <span class="keywordflow">if</span> (val == SIGUSR1)</div>
 <div class="line">            <span class="keywordflow">return</span>;</div>
@@ -159,14 +159,14 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="line">        app_stopped.d = 1;</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a5"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a5"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a>:</div>
 <div class="line">        <span class="keywordflow">if</span> (val)</div>
 <div class="line">            <a class="code" href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a>(99, 1, <span class="stringliteral">&quot;\n&gt;&gt;&gt; [cyan]Terminating with status [green]%d[]\n&quot;</span>, val);</div>
 <div class="line">        <a class="code" href="csock_8h.html#af1e116bfb4c48ad440c0fe4e37ad5ff5">csock_close</a>(accept_c);</div>
 <div class="line">        <a class="code" href="cli_8h.html#a47f27ebf6a99c10e0a22b7a6d85df57d">cli_set_quit_flag</a>();</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a6"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a6"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a>:</div>
 <div class="line">        <a class="code" href="csock_8h.html#af1e116bfb4c48ad440c0fe4e37ad5ff5">csock_close</a>(accept_c);</div>
 <div class="line">        <a class="code" href="cli_8h.html#a47f27ebf6a99c10e0a22b7a6d85df57d">cli_set_quit_flag</a>();</div>
 <div class="line">        app_stopped.d = 1;</div>
@@ -312,7 +312,7 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="line">        { NULL, 0, 0, 0 }</div>
 <div class="line">    };</div>
 <div class="line">    <span class="comment">// clang-format on</span></div>
-<div class="line">    <span class="keywordtype">char</span> host_str[<a name="a30"></a><a class="code" href="csock_8h.html#aa94c5fdcac6a4b26211b612c3edc04ffa305c3bd4f9062d6ee1667d8f4b1e1504">CSOCK_MAX_SOCK_INFO_LENGTH</a>] = {0};</div>
+<div class="line">    <span class="keywordtype">char</span> host_str[<a name="a30"></a><a class="code" href="csock_8h.html#a0ac0b7994a7d738aa77d2c1cfe8d6d13a305c3bd4f9062d6ee1667d8f4b1e1504">CSOCK_MAX_SOCK_INFO_LENGTH</a>] = {0};</div>
 <div class="line">    <a name="_a31"></a><a class="code" href="structcsock__cfg.html">csock_cfg_t</a> cfg                           = {0};</div>
 <div class="line">    <span class="keywordtype">int</span> option_index, opt;</div>
 <div class="line"> </div>
@@ -335,7 +335,7 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="line"> </div>
 <div class="line">    <a name="a34"></a><a class="code" href="cne_8h.html#ae44241df5dc9d02f736816190d3d42c5">cne_on_exit</a>(__on_exit, NULL, NULL, 0);</div>
 <div class="line"> </div>
-<div class="line">    cfg.<a name="a35"></a><a class="code" href="structcsock__cfg.html#a773b39d480759f67926cb18ae2219281">flags</a>     = <a name="a36"></a><a class="code" href="csock_8h.html#aa94c5fdcac6a4b26211b612c3edc04ffa197a7e1259530ff9ea001265ab9500e5">CSOCK_IS_SERVER</a>;</div>
+<div class="line">    cfg.<a name="a35"></a><a class="code" href="structcsock__cfg.html#a773b39d480759f67926cb18ae2219281">flags</a>     = <a name="a36"></a><a class="code" href="csock_8h.html#a0ac0b7994a7d738aa77d2c1cfe8d6d13a197a7e1259530ff9ea001265ab9500e5">CSOCK_IS_SERVER</a>;</div>
 <div class="line">    cfg.<a name="a37"></a><a class="code" href="structcsock__cfg.html#ad47481fe4351690e1580835d49ac4772">host_addr</a> = host_str;</div>
 <div class="line">    cfg.<a name="a38"></a><a class="code" href="structcsock__cfg.html#a3c96745558269f373f6a034922edaf33">client_fn</a> = client_handler;</div>
 <div class="line"> </div>
@@ -357,8 +357,8 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="line">    <span class="keywordflow">return</span> -1;</div>
 <div class="line">}</div>
 <div class="ttc" id="acli_8h_html"><div class="ttname"><a href="cli_8h.html">cli.h</a></div></div>
-<div class="ttc" id="acli_8h_html_a15f59cc70c25ca4987725bffc3513af6"><div class="ttname"><a href="cli_8h.html#a15f59cc70c25ca4987725bffc3513af6">cli_root_node</a></div><div class="ttdeci">static struct cli_node * cli_root_node(void)</div><div class="ttdef"><b>Definition:</b> <a href="cli_8h_source.html#l00561">cli.h:561</a></div></div>
-<div class="ttc" id="acli_8h_html_a35aeed8da3ae396f19a01f8a3c7a5cf5"><div class="ttname"><a href="cli_8h.html#a35aeed8da3ae396f19a01f8a3c7a5cf5">cli_path_string</a></div><div class="ttdeci">static char * cli_path_string(struct cli_node *node, char *path)</div><div class="ttdef"><b>Definition:</b> <a href="cli_8h_source.html#l00475">cli.h:475</a></div></div>
+<div class="ttc" id="acli_8h_html_a15f59cc70c25ca4987725bffc3513af6"><div class="ttname"><a href="cli_8h.html#a15f59cc70c25ca4987725bffc3513af6">cli_root_node</a></div><div class="ttdeci">static struct cli_node * cli_root_node(void)</div><div class="ttdef"><b>Definition:</b> <a href="cli_8h_source.html#l00560">cli.h:560</a></div></div>
+<div class="ttc" id="acli_8h_html_a35aeed8da3ae396f19a01f8a3c7a5cf5"><div class="ttname"><a href="cli_8h.html#a35aeed8da3ae396f19a01f8a3c7a5cf5">cli_path_string</a></div><div class="ttdeci">static char * cli_path_string(struct cli_node *node, char *path)</div><div class="ttdef"><b>Definition:</b> <a href="cli_8h_source.html#l00474">cli.h:474</a></div></div>
 <div class="ttc" id="acli_8h_html_a4193ce843f261e135341e11f15855303"><div class="ttname"><a href="cli_8h.html#a4193ce843f261e135341e11f15855303">cli_default_tree_init</a></div><div class="ttdeci">CNDP_API int cli_default_tree_init(void)</div></div>
 <div class="ttc" id="acli_8h_html_a421ec791eb364d45efc61ae786783b91"><div class="ttname"><a href="cli_8h.html#a421ec791eb364d45efc61ae786783b91">cli_start</a></div><div class="ttdeci">CNDP_API void cli_start(const char *msg)</div></div>
 <div class="ttc" id="acli_8h_html_a47f27ebf6a99c10e0a22b7a6d85df57d"><div class="ttname"><a href="cli_8h.html#a47f27ebf6a99c10e0a22b7a6d85df57d">cli_set_quit_flag</a></div><div class="ttdeci">CNDP_API void cli_set_quit_flag(void)</div></div>
@@ -367,19 +367,19 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="ttc" id="acli_8h_html_a80526fe2f5840e0c2c4029158d61b2dd"><div class="ttname"><a href="cli_8h.html#a80526fe2f5840e0c2c4029158d61b2dd">cli_create</a></div><div class="ttdeci">CNDP_API int cli_create(struct cli_cfg *cfg)</div></div>
 <div class="ttc" id="acli_8h_html_a8fedcc7d2be1ed98cbd1963e6b1be0f5"><div class="ttname"><a href="cli_8h.html#a8fedcc7d2be1ed98cbd1963e6b1be0f5">cli_add_tree</a></div><div class="ttdeci">CNDP_API int cli_add_tree(struct cli_node *dir, struct cli_tree *tree)</div></div>
 <div class="ttc" id="acli_8h_html_a963a16e15423a2010c3ba7ad52d22aa5"><div class="ttname"><a href="cli_8h.html#a963a16e15423a2010c3ba7ad52d22aa5">cli_add_bin_path</a></div><div class="ttdeci">CNDP_API int cli_add_bin_path(const char *path)</div></div>
-<div class="ttc" id="acli_8h_html_ac112cb168baf6a5196a1d653ff3b4215"><div class="ttname"><a href="cli_8h.html#ac112cb168baf6a5196a1d653ff3b4215">c_dir</a></div><div class="ttdeci">#define c_dir(n)</div><div class="ttdef"><b>Definition:</b> <a href="cli_8h_source.html#l00240">cli.h:240</a></div></div>
+<div class="ttc" id="acli_8h_html_ac112cb168baf6a5196a1d653ff3b4215"><div class="ttname"><a href="cli_8h.html#ac112cb168baf6a5196a1d653ff3b4215">c_dir</a></div><div class="ttdeci">#define c_dir(n)</div><div class="ttdef"><b>Definition:</b> <a href="cli_8h_source.html#l00239">cli.h:239</a></div></div>
 <div class="ttc" id="acli_8h_html_acdf842c97e00dc5de0e8792ef8e50ca7"><div class="ttname"><a href="cli_8h.html#acdf842c97e00dc5de0e8792ef8e50ca7">cli_set_prompt</a></div><div class="ttdeci">CNDP_API cli_prompt_t cli_set_prompt(cli_prompt_t prompt)</div></div>
 <div class="ttc" id="acne_8h_html_a2dd46e2096148023d060831f7868b74a"><div class="ttname"><a href="cne_8h.html#a2dd46e2096148023d060831f7868b74a">cne_init</a></div><div class="ttdeci">CNDP_API int cne_init(void)</div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a></div><div class="ttdeci">@ CNE_CALLED_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00028">cne.h:28</a></div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a></div><div class="ttdeci">@ CNE_USER_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00029">cne.h:29</a></div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a></div><div class="ttdeci">@ CNE_CAUGHT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00027">cne.h:27</a></div></div>
 <div class="ttc" id="acne_8h_html_ae44241df5dc9d02f736816190d3d42c5"><div class="ttname"><a href="cne_8h.html#ae44241df5dc9d02f736816190d3d42c5">cne_on_exit</a></div><div class="ttdeci">CNDP_API int cne_on_exit(on_exit_fn_t exit_fn, void *arg, int *signals, int nb_signals)</div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a></div><div class="ttdeci">@ CNE_CALLED_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00028">cne.h:28</a></div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a></div><div class="ttdeci">@ CNE_USER_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00029">cne.h:29</a></div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a></div><div class="ttdeci">@ CNE_CAUGHT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00027">cne.h:27</a></div></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="acne__common_8h_html_a110ce74779a3879ca9ba9167c968cf27"><div class="ttname"><a href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a></div><div class="ttdeci">#define __cne_unused</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00144">cne_common.h:144</a></div></div>
 <div class="ttc" id="acne__common_8h_html_a963b3b9942355c4a426bfbcccc08e8dd"><div class="ttname"><a href="cne__common_8h.html#a963b3b9942355c4a426bfbcccc08e8dd">CNE_SET_USED</a></div><div class="ttdeci">#define CNE_SET_USED(x)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00150">cne_common.h:150</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ab79528d783865a994a7245d7350240e9"><div class="ttname"><a href="cne__log_8h.html#ab79528d783865a994a7245d7350240e9">CNE_NULL_RET</a></div><div class="ttdeci">#define CNE_NULL_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00235">cne_log.h:235</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00246">cne_log.h:246</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ab79528d783865a994a7245d7350240e9"><div class="ttname"><a href="cne__log_8h.html#ab79528d783865a994a7245d7350240e9">CNE_NULL_RET</a></div><div class="ttdeci">#define CNE_NULL_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00262">cne_log.h:262</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00273">cne_log.h:273</a></div></div>
 <div class="ttc" id="acne__lport_8h_html"><div class="ttname"><a href="cne__lport_8h.html">cne_lport.h</a></div></div>
 <div class="ttc" id="acne__mmap_8h_html"><div class="ttname"><a href="cne__mmap_8h.html">cne_mmap.h</a></div></div>
 <div class="ttc" id="acne__stdio_8h_html_ab638714dd6596ee2a904abf94cdb0528"><div class="ttname"><a href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a></div><div class="ttdeci">CNDP_API int cne_printf_pos(int16_t r, int16_t c, const char *fmt,...)</div></div>
@@ -388,9 +388,9 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="ttc" id="acne__tty_8h_html_a963888c9d09018163fa74c05c8fad434"><div class="ttname"><a href="cne__tty_8h.html#a963888c9d09018163fa74c05c8fad434">tty_destroy</a></div><div class="ttdeci">CNDP_API void tty_destroy(void)</div></div>
 <div class="ttc" id="acsock_8h_html"><div class="ttname"><a href="csock_8h.html">csock.h</a></div></div>
 <div class="ttc" id="acsock_8h_html_a03d82c4e767e9747f9ff4b63a766147e"><div class="ttname"><a href="csock_8h.html#a03d82c4e767e9747f9ff4b63a766147e">csock_t</a></div><div class="ttdeci">void csock_t</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00048">csock.h:48</a></div></div>
+<div class="ttc" id="acsock_8h_html_a0ac0b7994a7d738aa77d2c1cfe8d6d13a197a7e1259530ff9ea001265ab9500e5"><div class="ttname"><a href="csock_8h.html#a0ac0b7994a7d738aa77d2c1cfe8d6d13a197a7e1259530ff9ea001265ab9500e5">CSOCK_IS_SERVER</a></div><div class="ttdeci">@ CSOCK_IS_SERVER</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00040">csock.h:40</a></div></div>
+<div class="ttc" id="acsock_8h_html_a0ac0b7994a7d738aa77d2c1cfe8d6d13a305c3bd4f9062d6ee1667d8f4b1e1504"><div class="ttname"><a href="csock_8h.html#a0ac0b7994a7d738aa77d2c1cfe8d6d13a305c3bd4f9062d6ee1667d8f4b1e1504">CSOCK_MAX_SOCK_INFO_LENGTH</a></div><div class="ttdeci">@ CSOCK_MAX_SOCK_INFO_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00036">csock.h:36</a></div></div>
 <div class="ttc" id="acsock_8h_html_a9fef533ecbfb9cda8d32b7734de39fc9"><div class="ttname"><a href="csock_8h.html#a9fef533ecbfb9cda8d32b7734de39fc9">csock_server_start</a></div><div class="ttdeci">CSOCK_API int csock_server_start(csock_t *c)</div></div>
-<div class="ttc" id="acsock_8h_html_aa94c5fdcac6a4b26211b612c3edc04ffa197a7e1259530ff9ea001265ab9500e5"><div class="ttname"><a href="csock_8h.html#aa94c5fdcac6a4b26211b612c3edc04ffa197a7e1259530ff9ea001265ab9500e5">CSOCK_IS_SERVER</a></div><div class="ttdeci">@ CSOCK_IS_SERVER</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00040">csock.h:40</a></div></div>
-<div class="ttc" id="acsock_8h_html_aa94c5fdcac6a4b26211b612c3edc04ffa305c3bd4f9062d6ee1667d8f4b1e1504"><div class="ttname"><a href="csock_8h.html#aa94c5fdcac6a4b26211b612c3edc04ffa305c3bd4f9062d6ee1667d8f4b1e1504">CSOCK_MAX_SOCK_INFO_LENGTH</a></div><div class="ttdeci">@ CSOCK_MAX_SOCK_INFO_LENGTH</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00036">csock.h:36</a></div></div>
 <div class="ttc" id="acsock_8h_html_aaeaaad3d2a9f34d0705c9e0fdabdd5ef"><div class="ttname"><a href="csock_8h.html#aaeaaad3d2a9f34d0705c9e0fdabdd5ef">csock_get_fd</a></div><div class="ttdeci">CSOCK_API int csock_get_fd(csock_t *c)</div></div>
 <div class="ttc" id="acsock_8h_html_ab14cbdbe090c529b99e29a6e8a00fd3b"><div class="ttname"><a href="csock_8h.html#ab14cbdbe090c529b99e29a6e8a00fd3b">csock_destroy</a></div><div class="ttdeci">CSOCK_API void csock_destroy(csock_t *c)</div></div>
 <div class="ttc" id="acsock_8h_html_ac7498860fc2e63ccfd31dbe8184e9194"><div class="ttname"><a href="csock_8h.html#ac7498860fc2e63ccfd31dbe8184e9194">csock_create</a></div><div class="ttdeci">CSOCK_API csock_t * csock_create(csock_cfg_t *cfg)</div></div>
@@ -401,10 +401,10 @@ $(document).ready(function(){initNavTree('examples_2cli_2main_8c-example.html','
 <div class="ttc" id="astructcsock__cfg_html_a3c96745558269f373f6a034922edaf33"><div class="ttname"><a href="structcsock__cfg.html#a3c96745558269f373f6a034922edaf33">csock_cfg::client_fn</a></div><div class="ttdeci">csock_client_fn_t * client_fn</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00082">csock.h:82</a></div></div>
 <div class="ttc" id="astructcsock__cfg_html_a773b39d480759f67926cb18ae2219281"><div class="ttname"><a href="structcsock__cfg.html#a773b39d480759f67926cb18ae2219281">csock_cfg::flags</a></div><div class="ttdeci">uint32_t flags</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00079">csock.h:79</a></div></div>
 <div class="ttc" id="astructcsock__cfg_html_ad47481fe4351690e1580835d49ac4772"><div class="ttname"><a href="structcsock__cfg.html#ad47481fe4351690e1580835d49ac4772">csock_cfg::host_addr</a></div><div class="ttdeci">char * host_addr</div><div class="ttdef"><b>Definition:</b> <a href="csock_8h_source.html#l00080">csock.h:80</a></div></div>
-<div class="ttc" id="astructmmap__sizes__t_html"><div class="ttname"><a href="structmmap__sizes__t.html">mmap_sizes_t</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__mmap_8h_source.html#l00038">cne_mmap.h:38</a></div></div>
-<div class="ttc" id="astructmmap__stats__t_html"><div class="ttname"><a href="structmmap__stats__t.html">mmap_stats_t</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__mmap_8h_source.html#l00049">cne_mmap.h:49</a></div></div>
+<div class="ttc" id="astructmmap__sizes__t_html"><div class="ttname"><a href="structmmap__sizes__t.html">mmap_sizes_t</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__mmap_8h_source.html#l00039">cne_mmap.h:39</a></div></div>
+<div class="ttc" id="astructmmap__stats__t_html"><div class="ttname"><a href="structmmap__stats__t.html">mmap_stats_t</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__mmap_8h_source.html#l00050">cne_mmap.h:50</a></div></div>
 <div class="ttc" id="astructpktdev__info_html"><div class="ttname"><a href="structpktdev__info.html">pktdev_info</a></div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00079">pktdev.h:79</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 <div class="ttc" id="astructtxbuff_html"><div class="ttname"><a href="structtxbuff.html">txbuff</a></div><div class="ttdef"><b>Definition:</b> <a href="txbuff_8h_source.html#l00044">txbuff.h:44</a></div></div>
 <div class="ttc" id="astructtxbuff_html_aaba88b24a21a6c70c895c0d55f4a69a0"><div class="ttname"><a href="structtxbuff.html#aaba88b24a21a6c70c895c0d55f4a69a0">txbuff::size</a></div><div class="ttdeci">uint16_t size</div><div class="ttdef"><b>Definition:</b> <a href="txbuff_8h_source.html#l00053">txbuff.h:53</a></div></div>
 <div class="ttc" id="atxbuff_8h_html"><div class="ttname"><a href="txbuff_8h.html">txbuff.h</a></div></div>

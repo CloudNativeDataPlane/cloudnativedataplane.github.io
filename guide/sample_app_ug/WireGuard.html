@@ -132,9 +132,7 @@ below diagram. This uses custom Wireguard CNDP application described in
 </pre></div>
 </div>
 <p>Apply the Wireguard CNDP patches in lang/rs/wireguard/patch. Ignore the whitespace warning errors.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git am 0001-Integarte-CNDP-Cloud-Native-Data-Plane-with-Wireguar.patch</span>
-<span class="go">git am 0002-Rename-variable-private-to-priv_-to-fix-build-error.patch</span>
-<span class="go">git am 0003-Remove-extra-argument-from-pktmbuf_dump.patch</span>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git am *.patch</span>
 </pre></div>
 </div>
 <p>Build Wireguard with CNDP</p>

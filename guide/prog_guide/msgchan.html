@@ -1,0 +1,204 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>5. MsgChan Library &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6. Pktmbuf Library" href="pktmbuf_lib.html" />
+    <link rel="prev" title="4. Mempool Library" href="mempool_lib.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="pktmbuf_lib.html" title="6. Pktmbuf Library"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="mempool_lib.html" title="4. Mempool Library"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>MsgChan Library</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="msgchan-library">
+<span id="id1"></span><h1><span class="section-number">5. </span>MsgChan Library<a class="headerlink" href="#msgchan-library" title="Permalink to this headline">¶</a></h1>
+<p>The msgchan library allows the user to create a pipe like message channel in user space using the
+lockless rings. The user can send and receive messages between different threads and between other
+languages. One goal is to have a Go binding to allow for passing messages between Go and CNDP.</p>
+<ul class="simple">
+<li><p>Uses a lockless rings in FIFO mode</p></li>
+<li><p>Refer to the lockless library for more information</p></li>
+<li><p>Message objects can be pointers or elements of multiple of 8 byte in size</p></li>
+<li><p>Lockless implementation</p></li>
+<li><p>Multi-consumer or single-consumer dequeue</p></li>
+<li><p>Multi-producer or single-producer enqueue</p></li>
+<li><p>Burst dequeue - Dequeue the maximum available objects if the specified count cannot be fulfilled</p></li>
+<li><p>Burst enqueue - Enqueue the maximum available objects if the specified count cannot be fulfilled</p></li>
+</ul>
+<p>The advantages of this data structure is to create a simple message channel between different
+languages/threads.</p>
+<ul class="simple">
+<li><p>Create a pipe like message channel in user space for easy setup and simple interfaces. Most of the advantage of this data structure come from the lockless ring implementation.</p></li>
+<li><p>Handling the connections between multiple threads is managed within the msgchan code and not requiring the user to manage.</p></li>
+</ul>
+<section id="use-cases">
+<h2><span class="section-number">5.1. </span>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
+<p>Use cases for the MsgChan library include:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Communication between application threads in CNDP</p></li>
+<li><p>Allow threads to attach to an existing msgchan, creating children message channels.</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="anatomy-of-a-msgchan">
+<h2><span class="section-number">5.2. </span>Anatomy of a MsgChan<a class="headerlink" href="#anatomy-of-a-msgchan" title="Permalink to this headline">¶</a></h2>
+<p>Creating a MsgChan is a simple call to mc_create(const char *name, int size, uint32_t flags).
+Giving the name of the channel to create or attach to as a child msgchan. The parent msgchan
+is the first one to be created and any other attempts to create the message channel will create
+a child msgchan if allowed.</p>
+<p>A msgchan is identified by a unique name. It’s important that the application uses unique names
+or the same name string to create children msgchan’s to be created.</p>
+<p>The size value is the number of entries in the rings for communicating between threads. A entry
+8 bytes in size, which is good for a pointer or you can encode data into the 8 bytes. If your
+message will fit in 8 bytes.</p>
+<p>The flags are used to define the type of lockless rings to be created, Multi-producer or
+single consumer type rings. Look at the ring library to understand the flags. The flags value
+also has one more flags MC_NO_CHILD_CREATE flag, which disallows a child msgchan to be created.</p>
+<p>Using mc_send() and mc_recv() calls allows the two threads to communicate over the rings. The
+parent and children of the parent share the lockless rings. If more then one child then you must
+pass the correct flags value meaning values i.e. RING_F_SP_ENQ and/or RING_F_SC_DEQ. The default
+configuration is multi-producer and multi-consumer ring when flags is 0. If only one child
+then single-producer and single consumer (RING_F_SP_ENQ/RING_F_SP_DEQ) can be passed into the call.</p>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">5. MsgChan Library</a><ul>
+<li><a class="reference internal" href="#use-cases">5.1. Use Cases</a></li>
+<li><a class="reference internal" href="#anatomy-of-a-msgchan">5.2. Anatomy of a MsgChan</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="mempool_lib.html"
+                        title="previous chapter"><span class="section-number">4. </span>Mempool Library</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="pktmbuf_lib.html"
+                        title="next chapter"><span class="section-number">6. </span>Pktmbuf Library</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/msgchan.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="pktmbuf_lib.html" title="6. Pktmbuf Library"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="mempool_lib.html" title="4. Mempool Library"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">5. </span>MsgChan Library</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

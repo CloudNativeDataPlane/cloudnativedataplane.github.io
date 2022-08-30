@@ -10,7 +10,7 @@ var mempool_8h =
     [ "mempool_destroy", "mempool_8h.html#a3dfa74aabbf41ea5252211b5e9409a62", null ],
     [ "mempool_populate", "mempool_8h.html#a7baddc977e012fe614b0de51381fa43f", null ],
     [ "mempool_obj_iter", "mempool_8h.html#a4983224f50626842ca4e4dade8c32d9e", null ],
-    [ "mempool_dump", "mempool_8h.html#a7dca4474afb23289d37db6e90efee608", null ],
+    [ "mempool_dump", "mempool_8h.html#aef3982d91a966b1b3e70731bcf170194", null ],
     [ "mempool_default_cache", "mempool_8h.html#a46ef1eda4c7001afd714f3075800e144", null ],
     [ "mempool_generic_put", "mempool_8h.html#af49f87d50ed7d248cbb6fef1c86fff01", null ],
     [ "mempool_put_bulk", "mempool_8h.html#aa40c5399b4116229e6d5b234bc01f0e9", null ],
@@ -27,5 +27,7 @@ var mempool_8h =
     [ "mempool_objcnt", "mempool_8h.html#a10836c19d30664e7338f6dde0baa0a58", null ],
     [ "mempool_objsz", "mempool_8h.html#aa2345b488d9a6828067d50656e67afe0", null ],
     [ "mempool_cache_sz", "mempool_8h.html#ade23d67cfb73a5f324024337cb667643", null ],
-    [ "mempool_cache_len", "mempool_8h.html#a28fced9da83ec279f4b807d5d7235a3d", null ]
+    [ "mempool_cache_len", "mempool_8h.html#a28fced9da83ec279f4b807d5d7235a3d", null ],
+    [ "mempool_obj_index", "mempool_8h.html#a61f69ed300635dede7e422c58c2cdad4", null ],
+    [ "mempool_obj_at_index", "mempool_8h.html#a2a061ce45e77d86e06e296c1f38e43ee", null ]
 ];

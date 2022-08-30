@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -119,7 +119,6 @@ $(document).ready(function(){initNavTree('pktdev_8h.html',''); initResizable(); 
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
-<code>#include &lt;net/ethernet.h&gt;</code><br />
 <code>#include &lt;errno.h&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -181,7 +180,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Fallback default preferred Rx/Tx lport parameters. These are used if an application requests default parameters but the PMD does not provide preferred values. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00036">36</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00035">35</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
 
 </div>
 </div>
@@ -249,11 +248,11 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of packets actually retrieved, which is the number of pointers to <em>pktmbuf</em> structures effectively supplied to the <em>rx_pkts</em> array. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of packets actually retrieved, which is the number of pointers to <em>pktmbuf</em> structures effectively supplied to the <em>rx_pkts</em> array. returns 0xFFFF on admin_state_down </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a18">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a4">examples/cndpfwd/main.c</a>, and <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a16">examples/dlb_test/dlb_test.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00182">182</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00183">183</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
 
 </div>
 </div>
@@ -316,11 +315,11 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of output packets actually stored in transmit descriptors of the transmit ring. The return value can be less than the value of the <em>tx_pkts</em> parameter when the transmit ring is full or has been filled up. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of output packets actually stored in transmit descriptors of the transmit ring. The return value can be less than the value of the <em>tx_pkts</em> parameter when the transmit ring is full or has been filled up. returns 0xFFFF on admin_state_down </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a6">examples/cndpfwd/main.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00256">256</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00258">258</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
 
 </div>
 </div>
@@ -388,7 +387,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00328">328</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00330">330</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
 
 </div>
 </div>
@@ -425,7 +424,7 @@ Functions</h2></td></tr>
 <dl class="section return"><dt>Returns</dt><dd>The MAC addresses will be swapped. </dd></dl>
 <p>shuffle mask be used to shuffle the 16 bytes. byte 0-5 wills be swapped with byte 6-11. byte 12-15 will keep unchanged.</p>
 
-<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00349">349</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev_8h_source.html#l00351">351</a> of file <a class="el" href="pktdev_8h_source.html">pktdev.h</a>.</p>
 
 </div>
 </div>

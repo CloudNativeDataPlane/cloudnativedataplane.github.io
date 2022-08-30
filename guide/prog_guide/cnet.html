@@ -1,0 +1,524 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>10. CNET Stack Library &#8212; Cloud Native Data Plane Latest documentation</title>
+    
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
+<link href="/assets/css/custom_sphinx.css" rel="stylesheet" type="text/css" />
+<link href="/assets/images/favicon.png" rel="icon" type="image/x-icon">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    
+    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script src="../static/jquery.js"></script>
+    <script src="../static/underscore.js"></script>
+    <script src="../static/doctools.js"></script>
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="11. Glossary" href="glossary.html" />
+    <link rel="prev" title="9. xskdev Buffer Management" href="xskdev_buffer_mgmt.html" /> 
+  </head><body>
+<nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
+
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <a class="navbar-brand" href="/" aria-label="CNDP">
+    <img src="/assets/images/CNDP_logo_tiny.png" alt="CNDP">
+  </a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <div class="navbar-nav mr-auto">
+      <a class="nav-link header-link" href="/blog/">Blog</a>
+      <a class="nav-link header-link" href="/community/">Community</a>
+      <a class="nav-link header-link" href="/dev/">Development</a>
+      <a class="nav-link header-link" href="/doc/">Documentation</a>
+    </div>
+
+    <div class="navbar-nav ms-auto me-3">
+      <a class="nav-link header-link" href="https://github.com/CloudNativeDataPlane/cndp">
+        <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+      </a>
+    </div>
+
+  </div>
+
+</nav>
+    
+
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="11. Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="xskdev_buffer_mgmt.html" title="9. xskdev Buffer Management"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" accesskey="U">Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">10. </span>CNET Stack Library</a></li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <section id="cnet-stack-library">
+<span id="cnet-library"></span><h1><span class="section-number">10. </span>CNET Stack Library<a class="headerlink" href="#cnet-stack-library" title="Permalink to this headline">¶</a></h1>
+<section id="overview">
+<h2><span class="section-number">10.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The CNET graph node library uses a set of graph nodes to create a UDP/TCP/IPv4 network stack in
+user space. One goal is to provide a network stack for applications in CNDP as the developer
+may have been using the Linux network stack via the socket interface.</p>
+<p>The CNET stack uses a socket like interface called channels to make it familiar to the developer,
+but does have a number of differences. One of the differences is that channels support sending
+multiple packets in a single transmission, and another is channels support receiving multiple
+packets at a time using a function pointer callback.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>CNET Stack <em>TCP</em> support is <strong>experimental</strong> for release 22.08.</p>
+</div>
+<figure class="align-default" id="id1">
+<span id="figure-cndp-system-overview"></span><img alt="../images/cndp_system_overview.svg" src="../images/cndp_system_overview.svg" /><figcaption>
+<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">CNDP System Overview</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>A CNDP application runs in user-space inside a container or non-container environment (bare-metal)
+and provides a set of libraries for the application developer. Please refer to the
+<a class="reference internal" href="overview.html#cndp-overview"><span class="std std-ref">CNDP Overview</span></a>.</p>
+<p>A number of libraries are available in CNDP and some are used in the CNET stack to provide better
+performance and functionality for the application developers please refer to
+<a class="reference internal" href="overview.html#cndp-components"><span class="std std-ref">CNDP Components</span></a> as needed.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>cnet-graph</em> example is a reasonable source on how to create an application that
+uses the CNET graph nodes. The <em>l3fwd-graph</em> example uses a different set of graph nodes then
+CNET stack, but provides another solution for a very simple packet processing application.</p>
+</div>
+</section>
+<section id="cnet-pod-container-overview">
+<h2><span class="section-number">10.2. </span>CNET Pod/Container Overview<a class="headerlink" href="#cnet-pod-container-overview" title="Permalink to this headline">¶</a></h2>
+<p>The following CNET stack overview shows the pod/container view and where CNDP components will
+be placed in a pod/container. The <em>Sidecar</em> container is used to configure and obtain statistics
+for the CNDP application. The <em>Sidecar</em> container is <em>optional</em> and is not used in all applications
+use cases.</p>
+<figure class="align-default" id="id2">
+<span id="figure-cnet-overview"></span><img alt="../images/cnet_overview.svg" src="../images/cnet_overview.svg" /><figcaption>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">CNET Pod/Container Overview</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<p>The CNET stack splits some of the processing of packets between the Linux kernel and the CNDP
+application. Packets like ARP requests are handled by the Linux stack and if an ARP request is
+received by the application it will need to be punted to the kernel for more processing. Other
+packets not being processed by the CNET stack will be dropped or punted to the Linux kernel
+via the <em>punt_kernel</em> node.</p>
+<p>Because packets like ARP requests are being processed by the Linux stack and updating the Linux
+ARP table we need a method to get this information to the CNET stack. The method being used
+is the <em>Netlink</em> messages. When the kernel learns a new ARP address a <em>Netlink</em> message is sent
+and the CNET stack receives these messages and updates the CNET internal tables.</p>
+<p>A number of different <em>Netlink</em> messages are processed by the CNET stack to update ARP, routes and
+interface information. This to allows CNET to learn about the system and allow the operator
+to use standard Linux command line and tools i.e. ifconfig, ip, route, … to configure the CNET stack.
+The <em>Netlink</em> message processing is handled by a different thread within the application and is not
+directly attached to the CNET graph node instances.</p>
+</section>
+<section id="cnet-graph-nodes">
+<h2><span class="section-number">10.3. </span>CNET Graph nodes<a class="headerlink" href="#cnet-graph-nodes" title="Permalink to this headline">¶</a></h2>
+<p>The CNET library contains support for UDP/TCP/IPv4 and IPv6 in the future. We have a number
+of different graph nodes in CNET and creating your own graph node is very straight forward.
+Please refer to <a class="reference internal" href="graph_lib.html#graph-library"><span class="std std-ref">Graph Library</span></a> for more information on graph nodes.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The packet drop node has been removed from the figure below to simplify the picture as most
+of the nodes will call packet drop if needed.</p>
+</div>
+<figure class="align-default" id="id3">
+<span id="figure-cnet"></span><img alt="../images/cnet.svg" src="../images/cnet.svg" /><figcaption>
+<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">CNET Graph Node Layout</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="cnet-nodes">
+<h3><span class="section-number">10.3.1. </span>CNET nodes<a class="headerlink" href="#cnet-nodes" title="Permalink to this headline">¶</a></h3>
+<p>Each CNET instance (one per defined thread) is created with a set of nodes with each node handling
+a number of packets at a time. Packets are processed from the inputs to the output nodes in
+the <a class="reference internal" href="#figure-cnet"><span class="std std-ref">CNET Graph Nodes</span></a> in a single thread.</p>
+<p>Input nodes like <em>eth_rx-N</em>, <em>kernel_recv</em> are called <em>source</em> nodes and are called each
+time the graph is walked to get more packets to process. The <em>udp_output</em> and <em>tcp_output</em> nodes
+are a special type of <em>source</em> node and are only called when the graph is walked when packets are
+added to the nodes. The CNET stack uses these nodes to place outbound packet data from the
+application via the <em>channel</em> APIs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <em>chnl_callback</em> node calls back into the application using the same thread as the
+CNET graph instance. Processing of packets needs to be done within the CNET stack thread
+to avoid locks and race conditions.</p>
+</div>
+</section>
+<section id="input-nodes">
+<h3><span class="section-number">10.3.2. </span>Input Nodes<a class="headerlink" href="#input-nodes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><strong>eth_rx-N</strong> is the Ethernet input node and is a <em>source node</em>, which means it is called repeatedly.</p>
+<ul>
+<li><p><strong>Note</strong>: More then one eth_rx-N node (i.e. eth_rx-0, eth_rx-1, …) are allowed per graph.</p></li>
+</ul>
+</li>
+<li><p><strong>eth_tx-N</strong> is the Ethernet output node and is called anytime packets are added to the node.</p>
+<ul>
+<li><p><strong>Note</strong>: More then one output node may be present (i.e. eth_tx-0, eth_tx-1, …) are allowed per graph.</p></li>
+</ul>
+</li>
+<li><p><strong>kernel_recv</strong> is another source node and is called to receive packets from the kernel.</p></li>
+<li><p><strong>ptype</strong> is the node to determine the packet type i.e. UDP/IPv4, TCP/IPv4, … and the next node to call.</p></li>
+<li><p><strong>gtpu_input</strong> is the node to support GTPU packets (<strong>WiP</strong>)</p></li>
+<li><p><strong>ip4_input</strong> is the IPv4 input node for processing IPv4 packets, IPv6 node will be at this same level.</p></li>
+<li><p><strong>ip4_forward</strong> is the IPv4 forwarding node for packets that have been received and can be quickly forwarded.</p></li>
+<li><p><strong>ip4_proto</strong> is the node to determine the next node for L4 protocols i.e. UDP or TCP.</p></li>
+<li><p><strong>tcp_input</strong> is the starting node to process TCP packets, which each packet is processed in the <em>cnet_tcp_input</em> function.</p></li>
+<li><p><strong>udp_input</strong> is the starting node to process UDP packet, which each packet determined if it is to be processed by the graph instance.</p></li>
+<li><p><strong>chnl_recv</strong> is the node to help send packet data processed by UDP or TCP to the application via the <em>chnl_callback</em> node.</p></li>
+<li><p><strong>punt_kernel</strong> is the node to send packets to the kernel to be processed if the packet is not being processed by the application.</p>
+<ul>
+<li><p>Sending these packets to the kernel allows other processes waiting for packets on standard linux sockets to process the packets.</p></li>
+</ul>
+</li>
+<li><p><strong>arp_request</strong> is the node used to send packets to the Linux kernel stack if the ARP entry is not known by CNET.</p>
+<ul>
+<li><p>ARP packet processing is handled by the Linux kernel and not by CNET. When the CNET stack needs a destination MAC address, and it is not known, an ARP request is sent by the Linux stack.</p></li>
+</ul>
+</li>
+<li><p><strong>chnl_callback</strong> is the node to callback into the application to allow for more packet data processing to continue.</p>
+<ul>
+<li><p>When a channel is created a callback routine is given to allow the CNET to callback into the application to help complete the connection or data processing.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="anatomy-of-cnet-processing">
+<h2><span class="section-number">10.4. </span>Anatomy of CNET processing<a class="headerlink" href="#anatomy-of-cnet-processing" title="Permalink to this headline">¶</a></h2>
+<p>The anatomy of the CNET stack is complex, but most of the processing and configuration is defined by
+the <a class="reference internal" href="graph_lib.html#graph-library"><span class="std std-ref">Graph Library</span></a>, but a number of internal structures and designs should be understood.
+One of the design details is the CNET stack uses a couple thread local variables <em>this_cnet</em> and <em>this_stk</em>
+to help avoid passing these values in the APIs.</p>
+<p>The <a class="reference internal" href="#figure-cnet-structure"><span class="std std-ref">CNET Structure</span></a> is a single global structure containing information about
+all of the <a class="reference internal" href="#figure-cnet-stack-structure"><span class="std std-ref">Stack Structures (stk_t)</span></a>. Each stack instance is independent of each
+other except for the needed information from the <em>cnet</em> structure. The <em>stk_t</em> structure contains information
+about each graph instance, which contains a set of graph nodes for the given stack instance. Each graph instance
+can contain different graph nodes. The cnet-graph example always has the same set of graph nodes in each instance.
+An application could have different graph layouts for each instance of a graph, but <em>cnet-graph</em> will always
+have the same set of the same graph nodes in each instance of a graph.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the internals of the <em>cnet</em> and <em>stk_t</em> structures refer to the <em>Doxygen</em> created API
+documentation. The <em>channel</em> APIs are also defined in the documentation.</p>
+</div>
+<p>The application uses the Channel APIs to create connections or setup listening connections similar
+to the socket API. Using APIs like <em>channel()</em>, <em>chnl_recv()</em>, <em>chnl_send()</em>, <em>chnl_bind()</em>, <em>chnl_listen()</em>,
+<em>chnl_connect()</em>, <em>chnl_open()</em> and <em>chnl_accept()</em> are a few of the APIs to use for creating connections. The
+APIs look similar to standard <em>Socket</em> APIs.</p>
+<figure class="align-default" id="id4">
+<span id="figure-cnet-stack-view"></span><img alt="../images/cnet_stack_view.svg" src="../images/cnet_stack_view.svg" /><figcaption>
+<p><span class="caption-number">Fig. 10.4 </span><span class="caption-text">CNET Stack High Level View</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+<section id="cnet-structure">
+<h3><span class="section-number">10.4.1. </span>CNET Structure<a class="headerlink" href="#cnet-structure" title="Permalink to this headline">¶</a></h3>
+<p>The CNET structure <a class="reference internal" href="#figure-cnet-structure"><span class="std std-ref">CNET Structure</span></a> contains a number of fields to describe
+the information to control the CNET stack. This structure is created once for all stack instances.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<span id="figure-cnet-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.1 </span><span class="caption-text">CNET Structure layout</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">cnet</span> <span class="p">{</span>
+        <span class="n">CNE_ATOMIC</span><span class="p">(</span><span class="kt">uint_fast16_t</span><span class="p">)</span> <span class="n">stk_order</span><span class="p">;</span> <span class="cm">/**&lt; Order of the stack initializations */</span>
+        <span class="kt">uint16_t</span> <span class="n">nb_ports</span><span class="p">;</span>                   <span class="cm">/**&lt; Number of ports in the system */</span>
+        <span class="kt">uint32_t</span> <span class="n">num_chnls</span><span class="p">;</span>                  <span class="cm">/**&lt; Number of channels in system */</span>
+        <span class="kt">uint32_t</span> <span class="n">num_routes</span><span class="p">;</span>                 <span class="cm">/**&lt; Number of routes */</span>
+        <span class="kt">uint32_t</span> <span class="n">num_arps</span><span class="p">;</span>                   <span class="cm">/**&lt; Number of ARP entries */</span>
+        <span class="kt">uint16_t</span> <span class="n">flags</span><span class="p">;</span>                      <span class="cm">/**&lt; Flags */</span>
+        <span class="n">u_id_t</span> <span class="n">chnl_uids</span><span class="p">;</span>                    <span class="cm">/**&lt; UID for channel descriptor like values */</span>
+        <span class="kt">void</span> <span class="o">**</span><span class="n">chnl_descriptors</span><span class="p">;</span>             <span class="cm">/**&lt; List of channel descriptors pointers */</span>
+        <span class="kt">void</span> <span class="o">*</span><span class="n">netlink_info</span><span class="p">;</span>                  <span class="cm">/**&lt; Netlink information structure */</span>
+        <span class="k">struct</span> <span class="nc">stk_s</span> <span class="o">**</span><span class="n">stks</span><span class="p">;</span>                 <span class="cm">/**&lt; Vector list of stk_entry pointers */</span>
+        <span class="k">struct</span> <span class="nc">drv_entry</span> <span class="o">**</span><span class="n">drvs</span><span class="p">;</span>             <span class="cm">/**&lt; Vector list of drv_entry pointers */</span>
+        <span class="k">struct</span> <span class="nc">netif</span> <span class="o">**</span><span class="n">netifs</span><span class="p">;</span>               <span class="cm">/**&lt; List of active netif structures */</span>
+        <span class="k">struct</span> <span class="nc">cne_mempool</span> <span class="o">*</span><span class="n">rt4_obj</span><span class="p">;</span>         <span class="cm">/**&lt; Route IPv4 table pointer */</span>
+        <span class="k">struct</span> <span class="nc">cne_mempool</span> <span class="o">*</span><span class="n">arp_obj</span><span class="p">;</span>         <span class="cm">/**&lt; ARP object structures */</span>
+        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">rt4_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; Pointer to the IPv4 FIB information structure */</span>
+        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">arp_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; ARP FIB table pointer */</span>
+        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">pcb_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; PCB FIB table pointer */</span>
+        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">tcb_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; TCB FIB table pointer */</span>
+    <span class="p">}</span> <span class="n">__cne_cache_aligned</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>The <strong>netlink_info</strong> is the opaque pointer to the <em>Netlink</em> information and is used with the <em>netlink</em>
+library to manage the messages from the kernel. The next set of entries <em>nb_ports</em>, <em>num_chnls</em>,
+<em>num_routes</em> and <em>num_arps</em> are values set at startup time to define and limit the
+number of items created.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><strong>nb_ports</strong> defines the number of ports assigned to the application for the stack to use.</p></li>
+<li><p><strong>num_chnls</strong> defines the number of channel structures allowed in the stack.</p></li>
+<li><p><strong>num_routes</strong> defines the number of routes structures allowed in the stack.</p></li>
+<li><p><strong>num_arps</strong> defines the number of ARP structures allowed in the stack.</p></li>
+</ul>
+</div></blockquote>
+<p>The <strong>flags</strong> field defines a simple set of flags that can be used by the stack. The two currently
+defined are <em>CNET_PUNT_ENABLED</em> and <em>CNET_TCP_ENABLED</em> to control if we support punting packets to the
+Linux kernel stack and if TCP support has been enabled. These flags are setup enabled/disabled in the
+<em>meson_options.txt</em> file.</p>
+<p>The <strong>chnl_uids</strong> (i.e., UIDs) is the bitmap to alloc/free channel descriptor values, similar to
+file descriptors in Linux and other systems. The channel descriptor value is a number between 0 to N.
+When a channel is created a channel descriptor is allocated and used by the application to identify
+the opened channel. The channel APIs use the channel descriptor.</p>
+<p>The <strong>chnl_descriptors</strong> is a list of all current channels and used to locate/translate the channel descriptor
+values to a chnl structure pointer. The lookup table is global per CNET application. The <strong>stk_order</strong> is an
+atomic variable to help in initialization of each stack instance in a specific order 0 - N. The <strong>stks</strong> is
+the list of pointers to each stack instance. The <strong>drvs</strong> is the list of driver instances used by the
+CNET stack. The <strong>netifs</strong> is the list of network interfaces attached to the CNET stack i.e, netdev or
+system network interfaces.</p>
+<p>The <strong>rt4_obj</strong> and <strong>arp_obj</strong> are mempools holding the number of IPv4 route structures and ARP structures
+to enable allocating/freeing these entries quickly, plus limiting the number of each item. The <em>fib</em>
+entries rt4, arp, pcb and tcb are used to locate these entries quickly using the <em>FIB</em> LPM library.</p>
+</section>
+<section id="cnet-stack-structure">
+<h3><span class="section-number">10.4.2. </span>CNET Stack Structure<a class="headerlink" href="#cnet-stack-structure" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="#figure-cnet-stack-structure"><span class="std std-ref">CNET stack structure</span></a> is created one per thread and graph node set.
+The structure contains many values and information about the given instance it defines.</p>
+<div class="literal-block-wrapper docutils container" id="id6">
+<span id="figure-cnet-stack-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.2 </span><span class="caption-text">CNET Stack Structure layout</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">typedef</span> <span class="k">struct</span> <span class="nc">stk_s</span> <span class="p">{</span>
+        <span class="n">pthread_mutex_t</span> <span class="n">mutex</span><span class="p">;</span>              <span class="cm">/**&lt; Stack Mutex */</span>
+        <span class="kt">uint16_t</span> <span class="n">idx</span><span class="p">;</span>                       <span class="cm">/**&lt; Index number of stack instance */</span>
+        <span class="kt">uint16_t</span> <span class="n">lid</span><span class="p">;</span>                       <span class="cm">/**&lt; lcore ID for the stack instance */</span>
+        <span class="kt">uint16_t</span> <span class="n">reserved</span><span class="p">;</span>                  <span class="cm">/**&lt; Reserved for future use */</span>
+        <span class="kt">pid_t</span> <span class="n">tid</span><span class="p">;</span>                          <span class="cm">/**&lt; Thread process id */</span>
+        <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>                      <span class="cm">/**&lt; Name of the network instance */</span>
+        <span class="k">struct</span> <span class="nc">cne_graph</span> <span class="o">*</span><span class="n">graph</span><span class="p">;</span>            <span class="cm">/**&lt; Graph structure pointer for this instance */</span>
+        <span class="k">struct</span> <span class="nc">cne_node</span> <span class="o">*</span><span class="n">tx_node</span><span class="p">;</span>           <span class="cm">/**&lt; TX node pointer used for sending packets */</span>
+        <span class="n">bitstr_t</span> <span class="o">*</span><span class="n">tcbs</span><span class="p">;</span>                     <span class="cm">/**&lt; Bitmap of active TCB structures based on mempool index */</span>
+        <span class="kt">uint32_t</span> <span class="n">tcp_now</span><span class="p">;</span>                   <span class="cm">/**&lt; TCP now timer tick on slow timeout */</span>
+        <span class="kt">uint32_t</span> <span class="n">gflags</span><span class="p">;</span>                    <span class="cm">/**&lt; Global flags */</span>
+        <span class="kt">uint64_t</span> <span class="n">ticks</span><span class="p">;</span>                     <span class="cm">/**&lt; Number of ticks from start */</span>
+        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">tcb_objs</span><span class="p">;</span>                <span class="cm">/**&lt; List of free TCB structures */</span>
+        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">seg_objs</span><span class="p">;</span>                <span class="cm">/**&lt; List of free Segment structures */</span>
+        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">pcb_objs</span><span class="p">;</span>                <span class="cm">/**&lt; PCB cnet_objpool pointer */</span>
+        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">chnl_objs</span><span class="p">;</span>               <span class="cm">/**&lt; Channel cnet_objpool pointer */</span>
+        <span class="k">struct</span> <span class="nc">protosw_entry</span> <span class="o">**</span><span class="n">protosw_vec</span><span class="p">;</span> <span class="cm">/**&lt; protosw vector entries */</span>
+        <span class="k">struct</span> <span class="nc">icmp_entry</span> <span class="o">*</span><span class="n">icmp</span><span class="p">;</span>            <span class="cm">/**&lt; ICMP information */</span>
+        <span class="k">struct</span> <span class="nc">icmp6_entry</span> <span class="o">*</span><span class="n">icmp6</span><span class="p">;</span>          <span class="cm">/**&lt; ICMP6 information */</span>
+        <span class="k">struct</span> <span class="nc">ipv4_entry</span> <span class="o">*</span><span class="n">ipv4</span><span class="p">;</span>            <span class="cm">/**&lt; IPv4 information */</span>
+        <span class="k">struct</span> <span class="nc">ipv6_entry</span> <span class="o">*</span><span class="n">ipv6</span><span class="p">;</span>            <span class="cm">/**&lt; IPv6 information */</span>
+        <span class="k">struct</span> <span class="nc">tcp_entry</span> <span class="o">*</span><span class="n">tcp</span><span class="p">;</span>              <span class="cm">/**&lt; TCP information */</span>
+        <span class="k">struct</span> <span class="nc">raw_entry</span> <span class="o">*</span><span class="n">raw</span><span class="p">;</span>              <span class="cm">/**&lt; Raw information */</span>
+        <span class="k">struct</span> <span class="nc">udp_entry</span> <span class="o">*</span><span class="n">udp</span><span class="p">;</span>              <span class="cm">/**&lt; UDP information */</span>
+        <span class="k">struct</span> <span class="nc">chnl_optsw</span> <span class="o">**</span><span class="n">chnlopt</span><span class="p">;</span>        <span class="cm">/**&lt; Channel Option pointers */</span>
+        <span class="k">struct</span> <span class="nc">cne_timer</span> <span class="n">tcp_timer</span><span class="p">;</span>         <span class="cm">/**&lt; TCP Timer structure */</span>
+        <span class="k">struct</span> <span class="nc">tcp_stats</span> <span class="o">*</span><span class="n">tcp_stats</span><span class="p">;</span>        <span class="cm">/**&lt; TCP statistics */</span>
+    <span class="p">}</span> <span class="n">stk_t</span> <span class="n">__cne_cache_aligned</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>The <strong>name</strong> field is the name of the stack instance, which is unique in the system. The <strong>graph</strong> pointer
+is the pointer to the Graph instance. The <strong>tx_node</strong> is the output graph node to be able to send transmit
+traffic to the transmit node. When needing to send packets from the application or protocol the pointer
+gives access to the graph node to enqueue the data packets.</p>
+<p>The <strong>chnls</strong> linked list is used to keep track of allocate and create channel structures. The CNET stack needs
+to be able to locate channel structures, which come and go while the stack is running. The <strong>tcbs</strong> is also
+a linked list of <em>TCB</em> structures to locate for processing (TCP Control Block).</p>
+<p>The <strong>tcbs</strong> bitmap keeps track of the active TCB structures mainly used to dump out the set of active TCBs
+using the object index into the mempool as the bitmap index value. The <strong>tcb_objs</strong>, <strong>seg_objs</strong> <strong>pcb_objs</strong>
+and <strong>chnl_objs</strong> mempool structure are used to allocate and free these object quickly.</p>
+<p>The protocol specific structure pointers (i.e., <strong>icmp</strong>, <strong>ipv4</strong>, <strong>udp</strong>, <strong>tcp</strong>, …) hold the protocol
+specific information. These entries are created as each protocol is initialized. The TCP protocol requires
+a timer to manage connections. The <strong>tcp_timer</strong> pointer is the <em>cne_timer</em> structure pointer handling
+stack timeouts. The last entry <strong>tcp_stats</strong> is the TCP specific statistics, which are always collected.</p>
+</section>
+<section id="cnet-channel-structure">
+<h3><span class="section-number">10.4.3. </span>CNET Channel Structure<a class="headerlink" href="#cnet-channel-structure" title="Permalink to this headline">¶</a></h3>
+<p>The <a class="reference internal" href="#figure-cnet-chnl-structure"><span class="std std-ref">CNET Chnl structure</span></a> is created for passive and active open connections.
+The structure is used to manage the connection plus store the data connected to the channel.</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<span id="figure-cnet-chnl-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.3 </span><span class="caption-text">CNET Channel Structure layout</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">chnl</span> <span class="p">{</span>
+        <span class="kt">uint16_t</span> <span class="n">stk_id</span><span class="p">;</span>                <span class="cm">/**&lt; Stack instance ID value */</span>
+        <span class="kt">uint16_t</span> <span class="n">ch_options</span><span class="p">;</span>            <span class="cm">/**&lt; Options for channel */</span>
+        <span class="kt">uint16_t</span> <span class="n">ch_state</span><span class="p">;</span>              <span class="cm">/**&lt; Current state of channel */</span>
+        <span class="kt">uint16_t</span> <span class="n">ch_error</span><span class="p">;</span>              <span class="cm">/**&lt; Error value */</span>
+        <span class="kt">int</span> <span class="n">ch_cd</span><span class="p">;</span>                      <span class="cm">/**&lt; Channel descriptor index value */</span>
+        <span class="n">pthread_mutex_t</span> <span class="n">ch_mutex</span><span class="p">;</span>       <span class="cm">/**&lt; Mutex for buffer */</span>
+        <span class="k">struct</span> <span class="nc">pcb_entry</span> <span class="o">*</span><span class="n">ch_pcb</span><span class="p">;</span>       <span class="cm">/**&lt; Pointer to the PCB */</span>
+        <span class="k">struct</span> <span class="nc">protosw_entry</span> <span class="o">*</span><span class="n">ch_proto</span><span class="p">;</span> <span class="cm">/**&lt; Current proto value */</span>
+        <span class="n">chnl_cb_t</span> <span class="n">ch_callback</span><span class="p">;</span>          <span class="cm">/**&lt; Channel callback routine */</span>
+        <span class="k">struct</span> <span class="nc">cne_node</span> <span class="o">*</span><span class="n">ch_node</span><span class="p">;</span>       <span class="cm">/**&lt; Next Node pointer */</span>
+        <span class="k">struct</span> <span class="nc">chnl_buf</span> <span class="n">ch_rcv</span><span class="p">;</span>         <span class="cm">/**&lt; Receive buffer */</span>
+        <span class="k">struct</span> <span class="nc">chnl_buf</span> <span class="n">ch_snd</span><span class="p">;</span>         <span class="cm">/**&lt; Transmit buffer */</span>
+    <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<p>The <strong>chnl</strong> structure is an internal structure to help manage and process connections for UDP and TCP protocols.
+Each chnl structure is allocated and attached to a stack instance and not shared between threads/stack instances.</p>
+<p>The <strong>stk_id</strong> is used to denote which stack structure the <strong>chnl</strong> structure is associated with. The
+<strong>ch_options</strong> is a bit field of values to a channel instanace. The some of the flags are <em>SO_BROADCAST</em>,
+<em>SO_REUSEADDR</em>, <em>SO_REUSEPORT</em> and some others. The <strong>ch_state</strong> is the current state of channel, which
+includes <em>ISCONNECTED</em>, <em>ISCONNECTING</em>, <em>_ISDISCONNECTING</em> and other internal flags. The <strong>ch_error</strong> value is
+the error that occured previously and was not reported. The value is then reported in other calls or request in
+the <em>chnl_opt_get*</em> request. The <strong>ch_cd</strong> is the channel descriptor associated with this channel structure.</p>
+<p>The <strong>ch_pcb</strong> is the PCB (Process Control Block) attached to this channel structure. The <em>PCB</em> structure will
+be defined <a class="reference internal" href="#figure-pcb-structure"><span class="std std-ref">Process Control Block</span></a>. The <strong>ch_proto</strong> structure contains a number
+of function pointers to connect the channel with the protocol specific protocol routines.</p>
+<p>The <strong>ch_callback</strong> is the function pointer to the application function defined in the <em>channel</em> API. The
+callback function is called for receiving data and helping inform the application about connections coming
+and going. The primary reason for callback is receiving packet data needs to be handled in the thread context
+as the stack instance to help eliminate the need for some types of locking.</p>
+<p>The <strong>ch_node</strong> is the node associated with the transmit channel structure or the next node to allow the
+application thread to enqueue packet data into a given CNET graph instance. The <strong>ch_rcv</strong> and <strong>ch_snd</strong> are
+used to receive and send data to/from the application.</p>
+<p>The <a class="reference internal" href="#figure-cnet-chnl-buffer"><span class="std std-ref">CNET Chnl Buffer structure</span></a> is part of the Chnl structure and manages the
+channel data.</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<span id="figure-cnet-chnl-buffer"></span><div class="code-block-caption"><span class="caption-number">Listing 10.4 </span><span class="caption-text">CNET Channel Buffer layout</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">chnl_buf</span> <span class="p">{</span>
+        <span class="n">pktmbuf_t</span> <span class="o">**</span><span class="n">cb_vec</span><span class="p">;</span>     <span class="cm">/**&lt; Vector of mbuf pointers */</span>
+        <span class="kt">uint32_t</span> <span class="n">cb_cc</span><span class="p">;</span>         <span class="cm">/**&lt; actual chars in buffer */</span>
+        <span class="kt">uint32_t</span> <span class="n">cb_hiwat</span><span class="p">;</span>      <span class="cm">/**&lt; high water mark */</span>
+        <span class="kt">uint32_t</span> <span class="n">cb_lowat</span><span class="p">;</span>      <span class="cm">/**&lt; low water mark */</span>
+        <span class="kt">uint32_t</span> <span class="n">cb_size</span><span class="p">;</span>       <span class="cm">/**&lt; protocol send/receive size */</span>
+    <span class="p">};</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="protocol-control-block-pcb">
+<h3><span class="section-number">10.4.4. </span>Protocol Control Block (PCB)<a class="headerlink" href="#protocol-control-block-pcb" title="Permalink to this headline">¶</a></h3>
+<p>The <em>PCB</em> structure contains information about the protocol connection and which network interface is connected
+to the given instance of a connection. The <em>PCB</em> is used by the protocol packet handling to locate an active
+connection as in a listening connection.</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<span id="figure-pcb-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.5 </span><span class="caption-text">CNET Protocol Control Block</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">pcb_key</span> <span class="p">{</span>
+        <span class="k">struct</span> <span class="nc">in_caddr</span> <span class="n">faddr</span><span class="p">;</span> <span class="cm">/**&lt; foreign IP address */</span>
+        <span class="k">struct</span> <span class="nc">in_caddr</span> <span class="n">laddr</span><span class="p">;</span> <span class="cm">/**&lt; local IP address */</span>
+    <span class="p">}</span> <span class="n">__cne_aligned</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span>
+
+    <span class="k">struct</span> <span class="nc">pcb_entry</span> <span class="p">{</span>
+        <span class="n">TAILQ_ENTRY</span><span class="p">(</span><span class="n">pcb_entry</span><span class="p">)</span> <span class="n">next</span><span class="p">;</span> <span class="cm">/**&lt; Pointer to the next pcb_entry in a list */</span>
+        <span class="k">struct</span> <span class="nc">pcb_key</span> <span class="n">key</span><span class="p">;</span>          <span class="cm">/**&lt; Key values for PCB entry */</span>
+        <span class="k">struct</span> <span class="nc">netif</span> <span class="o">*</span><span class="n">netif</span><span class="p">;</span>         <span class="cm">/**&lt; Netif pointer */</span>
+        <span class="k">struct</span> <span class="nc">chnl</span> <span class="o">*</span><span class="n">ch</span><span class="p">;</span>             <span class="cm">/**&lt; Channel pointer */</span>
+        <span class="k">struct</span> <span class="nc">tcb_entry</span> <span class="o">*</span><span class="n">tcb</span><span class="p">;</span>       <span class="cm">/**&lt; TCB pointer */</span>
+        <span class="kt">uint16_t</span> <span class="n">opt_flag</span><span class="p">;</span>           <span class="cm">/**&lt; Option flags */</span>
+        <span class="kt">uint8_t</span> <span class="n">ttl</span><span class="p">;</span>                 <span class="cm">/**&lt; Time to live */</span>
+        <span class="kt">uint8_t</span> <span class="n">tos</span><span class="p">;</span>                 <span class="cm">/**&lt; TOS value */</span>
+        <span class="kt">uint8_t</span> <span class="n">closed</span><span class="p">;</span>              <span class="cm">/**&lt; Closed flag */</span>
+        <span class="kt">uint8_t</span> <span class="n">ip_proto</span><span class="p">;</span>            <span class="cm">/**&lt; IP protocol number */</span>
+    <span class="p">}</span> <span class="n">__cne_cache_aligned</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<p>The <strong>pcb_key</strong> structure defines the local and foreign addresses (note: it currently only handles IPv4
+addresses), which define a connection and is how the connection is found by the protocol processing.
+The <strong>next</strong> structure is a linked list of <em>PCBs</em> attached to <em>half open</em> or <em>backlog</em> queues for
+application/protocols to locate an active <em>PCBs</em>.</p>
+</section>
+</section>
+</section>
+
+
+            <div class="clearer"></div>
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+            <p class="logo"><a href="../index.html">
+              <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
+            </a></p>
+  <h3><a href="../index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">10. CNET Stack Library</a><ul>
+<li><a class="reference internal" href="#overview">10.1. Overview</a></li>
+<li><a class="reference internal" href="#cnet-pod-container-overview">10.2. CNET Pod/Container Overview</a></li>
+<li><a class="reference internal" href="#cnet-graph-nodes">10.3. CNET Graph nodes</a><ul>
+<li><a class="reference internal" href="#cnet-nodes">10.3.1. CNET nodes</a></li>
+<li><a class="reference internal" href="#input-nodes">10.3.2. Input Nodes</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#anatomy-of-cnet-processing">10.4. Anatomy of CNET processing</a><ul>
+<li><a class="reference internal" href="#cnet-structure">10.4.1. CNET Structure</a></li>
+<li><a class="reference internal" href="#cnet-stack-structure">10.4.2. CNET Stack Structure</a></li>
+<li><a class="reference internal" href="#cnet-channel-structure">10.4.3. CNET Channel Structure</a></li>
+<li><a class="reference internal" href="#protocol-control-block-pcb">10.4.4. Protocol Control Block (PCB)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="xskdev_buffer_mgmt.html"
+                        title="previous chapter"><span class="section-number">9. </span>xskdev Buffer Management</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="glossary.html"
+                        title="next chapter"><span class="section-number">11. </span>Glossary</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../sources/prog_guide/cnet.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="glossary.html" title="11. Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="xskdev_buffer_mgmt.html" title="9. xskdev Buffer Management"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="index.html" >Programmer’s Guide</a> &#187;</li>
+        <li class="nav-item nav-item-this"><a href=""><span class="section-number">10. </span>CNET Stack Library</a></li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+    </div>
+  </body>
+</html>

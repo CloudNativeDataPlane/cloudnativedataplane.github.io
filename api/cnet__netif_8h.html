@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -120,7 +120,7 @@ $(document).ready(function(){initNavTree('cnet__netif_8h.html',''); initResizabl
 <div class="textblock"><code>#include &lt;net/if.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__atomic_8h_source.html">cne_atomic.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="pktdev_8h_source.html">pktdev.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="cnet__inet_8h_source.html">cnet_inet.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__inet_8h_source.html">cne_inet.h</a>&gt;</code><br />
 <code>#include &lt;stddef.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&quot;</code><br />
@@ -229,6 +229,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a8de205c648fb48dc31974f33aef2f2e8"><td class="memItemLeft" align="right" valign="top">CNDP_API struct netif *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__netif_8h.html#a8de205c648fb48dc31974f33aef2f2e8">cnet_netif_find_by_netdev</a> (char *netdev_name)</td></tr>
 <tr class="memdesc:a8de205c648fb48dc31974f33aef2f2e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the netif structure by the netdev name.  <a href="cnet__netif_8h.html#a8de205c648fb48dc31974f33aef2f2e8">More...</a><br /></td></tr>
 <tr class="separator:a8de205c648fb48dc31974f33aef2f2e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a326e65af0f973d5d49f010ab53d78496"><td class="memItemLeft" align="right" valign="top">CNDP_API struct netif *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__netif_8h.html#a326e65af0f973d5d49f010ab53d78496">cnet_netif_find_by_lport</a> (int lport)</td></tr>
+<tr class="memdesc:a326e65af0f973d5d49f010ab53d78496"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the netif structure by the lport id.  <a href="cnet__netif_8h.html#a326e65af0f973d5d49f010ab53d78496">More...</a><br /></td></tr>
+<tr class="separator:a326e65af0f973d5d49f010ab53d78496"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee7310c1b7897d12fd549e345e774925"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__netif_8h.html#aee7310c1b7897d12fd549e345e774925">cnet_is_ifname_valid</a> (char *ifname)</td></tr>
 <tr class="memdesc:aee7310c1b7897d12fd549e345e774925"><td class="mdescLeft">&#160;</td><td class="mdescRight">Is the ifname a valid interface name.  <a href="cnet__netif_8h.html#aee7310c1b7897d12fd549e345e774925">More...</a><br /></td></tr>
 <tr class="separator:aee7310c1b7897d12fd549e345e774925"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1214,6 +1217,33 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL on error or pointer to netif structure </dd></dl>
+
+</div>
+</div>
+<a id="a326e65af0f973d5d49f010ab53d78496"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a326e65af0f973d5d49f010ab53d78496">&#9670;&nbsp;</a></span>cnet_netif_find_by_lport()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API struct netif* cnet_netif_find_by_lport </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>lport</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Find the netif structure by the lport id. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lport</td><td>The lport id value to help locate the netif pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL on error or pointer to netif structure. </dd></dl>
 
 </div>
 </div>

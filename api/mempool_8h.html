@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -159,8 +159,8 @@ Functions</h2></td></tr>
 <tr class="separator:a7baddc977e012fe614b0de51381fa43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4983224f50626842ca4e4dade8c32d9e"><td class="memItemLeft" align="right" valign="top">CNDP_API uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#a4983224f50626842ca4e4dade8c32d9e">mempool_obj_iter</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp, <a class="el" href="mempool_8h.html#a06d27eb15de2a5f46b6806a819331275">mempool_obj_cb_t</a> *obj_cb, void *obj_cb_arg)</td></tr>
 <tr class="separator:a4983224f50626842ca4e4dade8c32d9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7dca4474afb23289d37db6e90efee608"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#a7dca4474afb23289d37db6e90efee608">mempool_dump</a> (FILE *f, <a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp)</td></tr>
-<tr class="separator:a7dca4474afb23289d37db6e90efee608"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef3982d91a966b1b3e70731bcf170194"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#aef3982d91a966b1b3e70731bcf170194">mempool_dump</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp)</td></tr>
+<tr class="separator:aef3982d91a966b1b3e70731bcf170194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a46ef1eda4c7001afd714f3075800e144"><td class="memItemLeft" align="right" valign="top">CNDP_API struct <a class="el" href="structmempool__cache.html">mempool_cache</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#a46ef1eda4c7001afd714f3075800e144">mempool_default_cache</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp)</td></tr>
 <tr class="separator:a46ef1eda4c7001afd714f3075800e144"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af49f87d50ed7d248cbb6fef1c86fff01"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#af49f87d50ed7d248cbb6fef1c86fff01">mempool_generic_put</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp, void *const *obj_table, unsigned int n, struct <a class="el" href="structmempool__cache.html">mempool_cache</a> *cache)</td></tr>
@@ -195,6 +195,10 @@ Functions</h2></td></tr>
 <tr class="separator:ade23d67cfb73a5f324024337cb667643"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a28fced9da83ec279f4b807d5d7235a3d"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#a28fced9da83ec279f4b807d5d7235a3d">mempool_cache_len</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp, int idx)</td></tr>
 <tr class="separator:a28fced9da83ec279f4b807d5d7235a3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61f69ed300635dede7e422c58c2cdad4"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#a61f69ed300635dede7e422c58c2cdad4">mempool_obj_index</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp, void *obj)</td></tr>
+<tr class="separator:a61f69ed300635dede7e422c58c2cdad4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a061ce45e77d86e06e296c1f38e43ee"><td class="memItemLeft" align="right" valign="top">CNDP_API void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mempool_8h.html#a2a061ce45e77d86e06e296c1f38e43ee">mempool_obj_at_index</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp, int idx)</td></tr>
+<tr class="separator:a2a061ce45e77d86e06e296c1f38e43ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CNE Mempool.</p>
@@ -459,8 +463,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a7dca4474afb23289d37db6e90efee608"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7dca4474afb23289d37db6e90efee608">&#9670;&nbsp;</a></span>mempool_dump()</h2>
+<a id="aef3982d91a966b1b3e70731bcf170194"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef3982d91a966b1b3e70731bcf170194">&#9670;&nbsp;</a></span>mempool_dump()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -468,26 +472,15 @@ Functions</h2></td></tr>
         <tr>
           <td class="memname">CNDP_API void mempool_dump </td>
           <td>(</td>
-          <td class="paramtype">FILE *&#160;</td>
-          <td class="paramname"><em>f</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
           <td class="paramtype"><a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *&#160;</td>
-          <td class="paramname"><em>mp</em>&#160;</td>
-        </tr>
-        <tr>
+          <td class="paramname"><em>mp</em></td><td>)</td>
           <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Dump the status of the mempool to a file.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">f</td><td>A pointer to a file for output </td></tr>
     <tr><td class="paramname">mp</td><td>A pointer to the mempool structure. </td></tr>
   </table>
   </dd>
@@ -1075,6 +1068,80 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of entries in the cache or -1 on error </dd></dl>
+
+</div>
+</div>
+<a id="a61f69ed300635dede7e422c58c2cdad4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61f69ed300635dede7e422c58c2cdad4">&#9670;&nbsp;</a></span>mempool_obj_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int mempool_obj_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *&#160;</td>
+          <td class="paramname"><em>mp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>obj</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Determine the object index value in the mempool.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mp</td><td>The mempool_t pointer to use to calculate the object index. </td></tr>
+    <tr><td class="paramname">obj</td><td>The object pointer to use in calculation </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 on error or object index value. </dd></dl>
+
+</div>
+</div>
+<a id="a2a061ce45e77d86e06e296c1f38e43ee"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a061ce45e77d86e06e296c1f38e43ee">&#9670;&nbsp;</a></span>mempool_obj_at_index()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API void* mempool_obj_at_index </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *&#160;</td>
+          <td class="paramname"><em>mp</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>idx</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the object pointer for the given mempool_t and index value</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mp</td><td>The mempool_t pointer to use to calculate the object address. </td></tr>
+    <tr><td class="paramname">idx</td><td>The index value into the mempool buffer array. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL on error or pointer to object. </dd></dl>
 
 </div>
 </div>

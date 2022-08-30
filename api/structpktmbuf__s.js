@@ -3,6 +3,7 @@ var structpktmbuf__s =
     [ "pooldata", "structpktmbuf__s.html#a9a2996ec05d26dfa5baf3f9817f69088", null ],
     [ "buf_addr", "structpktmbuf__s.html#a9db3d388a1381e68e509017a6e7d0f12", null ],
     [ "hash", "structpktmbuf__s.html#a11ecb029164e055f28f4123ce3748862", null ],
+    [ "meta_index", "structpktmbuf__s.html#a440b14a5baa7cac59d3e1e5eec3b2927", null ],
     [ "data_off", "structpktmbuf__s.html#a5f09d9f050569b908220c3470fa37574", null ],
     [ "lport", "structpktmbuf__s.html#a6f925c9e95620edf72f6801253c466fc", null ],
     [ "buf_len", "structpktmbuf__s.html#a7ae671bb1805f6f7313b9301aca17eb6", null ],
@@ -16,6 +17,7 @@ var structpktmbuf__s =
     [ "inner_l2_type", "structpktmbuf__s.html#a00d934e0c394b98b8963f4528644cacd", null ],
     [ "inner_l3_type", "structpktmbuf__s.html#a97bf0c93575a25c5427a6e485bad2f96", null ],
     [ "inner_l4_type", "structpktmbuf__s.html#a8c0ab26ed3a8610ce320cdcd15274fa3", null ],
+    [ "refcnt", "structpktmbuf__s.html#aeabb0685e90361917a58870b588e2e6f", null ],
     [ "tx_offload", "structpktmbuf__s.html#ac8d669ccf5d84b2e074020d265012d29", null ],
     [ "l2_len", "structpktmbuf__s.html#aa25a7c259438b9eba28bcedc33846620", null ],
     [ "l3_len", "structpktmbuf__s.html#a82a34cb6d5935a8c0f043f2783d6b42d", null ],
@@ -25,6 +27,5 @@ var structpktmbuf__s =
     [ "outer_l2_len", "structpktmbuf__s.html#ae2867dcd6148e34a344ee638d0967d70", null ],
     [ "ol_flags", "structpktmbuf__s.html#a319d580a6e1ef13692631d7b0d6d5c98", null ],
     [ "userptr", "structpktmbuf__s.html#aa805eaae1dccaca07be601ef1bf1905c", null ],
-    [ "udata64", "structpktmbuf__s.html#adef111288490c207b1ee6aa317bc9cd9", null ],
-    [ "refcnt", "structpktmbuf__s.html#aeabb0685e90361917a58870b588e2e6f", null ]
+    [ "udata64", "structpktmbuf__s.html#adef111288490c207b1ee6aa317bc9cd9", null ]
 ];

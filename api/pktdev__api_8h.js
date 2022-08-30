@@ -26,7 +26,6 @@ var pktdev__api_8h =
     [ "pktdev_get", "pktdev__api_8h.html#a26eded5e43bb2f11849ec5cbc7c43c4d", null ],
     [ "pktdev_portid", "pktdev__api_8h.html#a9f89de457ba7df110d14c825c5921505", null ],
     [ "pktdev_port_setup", "pktdev__api_8h.html#aefbbc79841de0f4b46c98b682899da4f", null ],
-    [ "pktdev_port_remove", "pktdev__api_8h.html#a3d3bbfe8424540db471e02ff4b22c931", null ],
     [ "lport_cfg_dump", "pktdev__api_8h.html#ac9a216ff9c7607440557ed9a6753b144", null ],
     [ "pktdev_admin_state", "pktdev__api_8h.html#ad27199266508b658f01070e1a6631509", null ],
     [ "pktdev_admin_state_set", "pktdev__api_8h.html#aaafe9935ae6059897d39be5c92f2fb25", null ],

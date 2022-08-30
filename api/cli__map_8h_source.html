@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -115,40 +115,39 @@ $(document).ready(function(){initNavTree('cli__map_8h_source.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <a href="cli__map_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* SPDX-License-Identifier: BSD-3-Clause</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) &lt;2019-2021&gt; Intel Corporation.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2019-2022 Intel Corporation.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#ifndef _CLI_MAP_H_</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#define _CLI_MAP_H_</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;netinet/in.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span>        <span class="comment">// for CNDP_API</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">struct </span>cli_map {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keywordtype">int</span> index;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a27f88e26df3b4f1141a38764b9b205f2">   52</a></span>&#160;CNDP_API <span class="keyword">struct </span>cli_map *<a class="code" href="cli__map_8h.html#a27f88e26df3b4f1141a38764b9b205f2">cli_mapping</a>(<span class="keyword">struct</span> cli_map *maps, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a2d548477f5e2041e72d319d4c33f8f28">   62</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__map_8h.html#a2d548477f5e2041e72d319d4c33f8f28">cli_map_show</a>(<span class="keyword">struct</span> cli_map *m);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a8f05524d3c92cf878da7f55d760575e9">   76</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__map_8h.html#a8f05524d3c92cf878da7f55d760575e9">cli_maps_show</a>(<span class="keyword">struct</span> cli_map *maps, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a1295f976b62ad9b81d52672b2966b86f">   90</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__map_8h.html#a1295f976b62ad9b81d52672b2966b86f">cli_map_dump</a>(<span class="keyword">struct</span> cli_map *maps, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a67aadc403f22b3a0de82d09ae733d523">  104</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__map_8h.html#a67aadc403f22b3a0de82d09ae733d523">cli_map_list_search</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, <span class="keywordtype">char</span> *item, <span class="keywordtype">int</span> index);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CLI_MAP_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span>        <span class="comment">// for CNDP_API</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">struct </span>cli_map {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> index;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *fmt;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a27f88e26df3b4f1141a38764b9b205f2">   51</a></span>&#160;CNDP_API <span class="keyword">struct </span>cli_map *<a class="code" href="cli__map_8h.html#a27f88e26df3b4f1141a38764b9b205f2">cli_mapping</a>(<span class="keyword">struct</span> cli_map *maps, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a2d548477f5e2041e72d319d4c33f8f28">   61</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__map_8h.html#a2d548477f5e2041e72d319d4c33f8f28">cli_map_show</a>(<span class="keyword">struct</span> cli_map *m);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a8f05524d3c92cf878da7f55d760575e9">   75</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__map_8h.html#a8f05524d3c92cf878da7f55d760575e9">cli_maps_show</a>(<span class="keyword">struct</span> cli_map *maps, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a1295f976b62ad9b81d52672b2966b86f">   89</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__map_8h.html#a1295f976b62ad9b81d52672b2966b86f">cli_map_dump</a>(<span class="keyword">struct</span> cli_map *maps, <span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="cli__map_8h.html#a67aadc403f22b3a0de82d09ae733d523">  103</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__map_8h.html#a67aadc403f22b3a0de82d09ae733d523">cli_map_list_search</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *fmt, <span class="keywordtype">char</span> *item, <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* CLI_MAP_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acli__map_8h_html_a1295f976b62ad9b81d52672b2966b86f"><div class="ttname"><a href="cli__map_8h.html#a1295f976b62ad9b81d52672b2966b86f">cli_map_dump</a></div><div class="ttdeci">CNDP_API void cli_map_dump(struct cli_map *maps, int argc, char **argv)</div></div>
 <div class="ttc" id="acli__map_8h_html_a27f88e26df3b4f1141a38764b9b205f2"><div class="ttname"><a href="cli__map_8h.html#a27f88e26df3b4f1141a38764b9b205f2">cli_mapping</a></div><div class="ttdeci">CNDP_API struct cli_map * cli_mapping(struct cli_map *maps, int argc, char **argv)</div></div>
 <div class="ttc" id="acli__map_8h_html_a2d548477f5e2041e72d319d4c33f8f28"><div class="ttname"><a href="cli__map_8h.html#a2d548477f5e2041e72d319d4c33f8f28">cli_map_show</a></div><div class="ttdeci">CNDP_API void cli_map_show(struct cli_map *m)</div></div>

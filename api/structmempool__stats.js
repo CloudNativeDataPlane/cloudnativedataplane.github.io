@@ -5,7 +5,5 @@ var structmempool__stats =
     [ "get_success_bulk", "structmempool__stats.html#ac3da8bf5d405f9218c23a13cc7bc8e3b", null ],
     [ "get_success_objs", "structmempool__stats.html#a3938f157bf39a4944dace26f074f3498", null ],
     [ "get_fail_bulk", "structmempool__stats.html#afd242097e1776f91a67e11d45e850287", null ],
-    [ "get_fail_objs", "structmempool__stats.html#ac99430d7e5dd7269491afb1a41762416", null ],
-    [ "get_success_blks", "structmempool__stats.html#a6491bbd58c97ac46f541feebbc0b1cad", null ],
-    [ "get_fail_blks", "structmempool__stats.html#aae8609bb778df2103badc26f8b81472e", null ]
+    [ "get_fail_objs", "structmempool__stats.html#ac99430d7e5dd7269491afb1a41762416", null ]
 ];

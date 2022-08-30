@@ -1,5 +1,6 @@
 var cnet__tcp_8h =
 [
+    [ "tcp_stats", "structtcp__stats.html", "structtcp__stats" ],
     [ "TCP_MIN_MSS", "cnet__tcp_8h.html#aedd7de15002fd15efa1df5e0fcf0f68e", null ],
     [ "TCP_MSS", "cnet__tcp_8h.html#af1ab7bb27860aa3677c387a2f3ba317b", null ],
     [ "TCP_NORMAL_MSS", "cnet__tcp_8h.html#aad5dd493f167477f9489d403967b181e", null ],
@@ -28,8 +29,30 @@ var cnet__tcp_8h =
     [ "TCP_RTTVAR_SHIFT", "cnet__tcp_8h.html#ace78d0af0ff1c4d85b44ca669fa290e5", null ],
     [ "TCP_ISSINCR", "cnet__tcp_8h.html#a77e12f485d89e0a62ed85df1b8aefb97", null ],
     [ "TCP_SLOWHZ", "cnet__tcp_8h.html#a80156f7996a04aa286bb392963877e4d", null ],
-    [ "TCP_LINGERTIME", "cnet__tcp_8h.html#ae80e18b307aac32d568c4639f5ed5615", null ],
     [ "TCP_MAXRXTSHIFT", "cnet__tcp_8h.html#a2108b2428e2666384b39076eee553e42", null ],
+    [ "tcp_stats_t", "cnet__tcp_8h.html#a7ecea36e83d430e9fe8f7eb2ad468c62", null ],
+    [ "tcb_state_t", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580", [
+      [ "TCPS_CLOSED", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580a4f8d86eeb2beeb3bf01c94c2fb603bc7", null ],
+      [ "TCPS_LISTEN", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580ae876dc74ecfa88aac94ea8a525f817a7", null ],
+      [ "TCPS_SYN_SENT", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580add03207b6397c58ea360c6cca02e1f4a", null ],
+      [ "TCPS_SYN_RCVD", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580aff9e935dafbbaa2d01432313f17184d1", null ],
+      [ "TCPS_ESTABLISHED", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580ac7de299b0e77aed3a32088a99519e449", null ],
+      [ "TCPS_CLOSE_WAIT", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580ad38a644d7dfc833018e7a9fd29198e6e", null ],
+      [ "TCPS_FIN_WAIT_1", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580a4c6d8dba2fd5ebedd82389647945a51d", null ],
+      [ "TCPS_CLOSING", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580ab5653b68c7bbd43378b32f81ea45f3be", null ],
+      [ "TCPS_LAST_ACK", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580afa6d1d4f5b77b2827faa22a6666eb2e4", null ],
+      [ "TCPS_FIN_WAIT_2", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580a62a2b3dd744a742484392b8bddaa4e57", null ],
+      [ "TCPS_TIME_WAIT", "cnet__tcp_8h.html#a2a19685c938477e70558673a71525580ac8b1d3bfcb0ba941981f35594ce12f69", null ]
+    ] ],
     [ "tcb_alloc", "cnet__tcp_8h.html#a65c65d3f4ac5cc8e6f4c58f757db04d0", null ],
-    [ "__tcp_process_timers", "cnet__tcp_8h.html#a0cb3c285d84e65f4b98c0988da1a47b9", null ]
+    [ "cnet_tcp_input", "cnet__tcp_8h.html#aaa1066ecd7422ceffa136c82057311c3", null ],
+    [ "cnet_tcp_output", "cnet__tcp_8h.html#a9ab43e93c690785011734acbe41c0a9e", null ],
+    [ "cnet_tcp_connect", "cnet__tcp_8h.html#a059e5cc784e1e86615d046a6ff89c4f7", null ],
+    [ "cnet_tcb_new", "cnet__tcp_8h.html#af6b155f656f5ca0c1754723f3b566abf", null ],
+    [ "cnet_tcp_abort", "cnet__tcp_8h.html#a428dd3917c05d8e737a3214cfe659977", null ],
+    [ "cnet_tcp_close", "cnet__tcp_8h.html#a05c81da4ce2e09f547934f3de41e3e63", null ],
+    [ "tcp_q_pop", "cnet__tcp_8h.html#abeaadb40f102a2f9444f1888388f933c", null ],
+    [ "cnet_tcp_dump", "cnet__tcp_8h.html#a363db84885e92fc6e0831ad6d6322588", null ],
+    [ "cnet_tcb_list", "cnet__tcp_8h.html#a1e3eab967922b22920fee5f2a1b2f6bb", null ],
+    [ "cnet_tcb_dump", "cnet__tcp_8h.html#affe1d5c86294fbba66767ef4695762f9", null ]
 ];

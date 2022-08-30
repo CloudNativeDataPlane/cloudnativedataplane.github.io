@@ -26,7 +26,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1. Introduction" href="intro.html" />
-    <link rel="prev" title="10. ABI and API Deprecation" href="../rel_notes/deprecation.html" /> 
+    <link rel="prev" title="11. ABI and API Deprecation" href="../rel_notes/deprecation.html" /> 
   </head><body>
 <nav class="navbar navbar-expand-md navbar-dark bg-blue px-2">
 
@@ -68,7 +68,7 @@
           <a href="intro.html" title="1. Introduction"
              accesskey="N">next</a> |</li>
         <li class="right" >
-          <a href="../rel_notes/deprecation.html" title="10. ABI and API Deprecation"
+          <a href="../rel_notes/deprecation.html" title="11. ABI and API Deprecation"
              accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Programmer’s Guide</a></li> 
@@ -135,54 +135,76 @@
 <li class="toctree-l2"><a class="reference internal" href="mempool_lib.html#use-cases">4.2. Use Cases</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="pktmbuf_lib.html">5. Pktmbuf Library</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#design-of-packet-buffers">5.1. Design of Packet Buffers</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#pktmbuf-and-umem-layout">5.2. Pktmbuf and UMEM layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#buffers-stored-in-memory-pools-umem">5.3. Buffers Stored in Memory Pools (UMEM)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#constructors">5.4. Constructors</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#allocating-and-freeing-pktmbufs">5.5. Allocating and Freeing pktmbufs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#manipulating-pktmbufs">5.6. Manipulating pktmbufs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#meta-information">5.7. Meta Information</a></li>
+<li class="toctree-l1"><a class="reference internal" href="msgchan.html">5. MsgChan Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="msgchan.html#use-cases">5.1. Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="msgchan.html#anatomy-of-a-msgchan">5.2. Anatomy of a MsgChan</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="graph_lib.html">6. Graph Library and Inbuilt Nodes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#features">6.1. Features</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#advantages-of-graph-architecture">6.2. Advantages of Graph architecture</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#performance-tuning-parameters">6.3. Performance tuning parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#programming-model">6.4. Programming model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#anatomy-of-node">6.4.1. Anatomy of Node:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#node-creation-and-registration">6.4.2. Node creation and registration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#link-the-nodes-to-create-the-graph-topology">6.4.3. Link the Nodes to create the graph topology</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#create-the-graph-object">6.4.4. Create the graph object</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#multicore-graph-processing">6.4.5. Multicore graph processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#in-fast-path">6.4.6. In fast path</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#context-update-when-graph-walk-in-action">6.4.7. Context update when graph walk in action</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#get-the-node-statistics-using-graph-cluster">6.4.8. Get the node statistics using graph cluster</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#node-writing-guidelines">6.4.9. Node writing guidelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#static-nodes">6.4.10. Static nodes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#intermediate-nodes">6.4.11. Intermediate nodes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pktmbuf_lib.html">6. Pktmbuf Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#design-of-packet-buffers">6.1. Design of Packet Buffers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#pktmbuf-and-umem-layout">6.2. Pktmbuf and UMEM layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#buffers-stored-in-memory-pools-umem">6.3. Buffers Stored in Memory Pools (UMEM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#constructors">6.4. Constructors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#allocating-and-freeing-pktmbufs">6.5. Allocating and Freeing pktmbufs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#manipulating-pktmbufs">6.6. Manipulating pktmbufs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pktmbuf_lib.html#meta-information">6.7. Meta Information</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#graph-object-memory-layout">6.5. Graph object memory layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#inbuilt-nodes">6.6. Inbuilt Nodes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#ethdev-rx">6.6.1. ethdev_rx</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#ethdev-tx">6.6.2. ethdev_tx</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#pkt-drop">6.6.3. pkt_drop</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#ip4-lookup">6.6.4. ip4_lookup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#ip4-rewrite">6.6.5. ip4_rewrite</a></li>
-<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#null">6.6.6. null</a></li>
+<li class="toctree-l1"><a class="reference internal" href="graph_lib.html">7. Graph Library and Inbuilt Nodes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#features">7.1. Features</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#advantages-of-graph-architecture">7.2. Advantages of Graph architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#performance-tuning-parameters">7.3. Performance tuning parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#programming-model">7.4. Programming model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#anatomy-of-node">7.4.1. Anatomy of Node:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#node-creation-and-registration">7.4.2. Node creation and registration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#link-the-nodes-to-create-the-graph-topology">7.4.3. Link the Nodes to create the graph topology</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#create-the-graph-object">7.4.4. Create the graph object</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#multicore-graph-processing">7.4.5. Multicore graph processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#in-fast-path">7.4.6. In fast path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#context-update-when-graph-walk-in-action">7.4.7. Context update when graph walk in action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#get-the-node-statistics-using-graph-cluster">7.4.8. Get the node statistics using graph cluster</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#node-writing-guidelines">7.4.9. Node writing guidelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#static-nodes">7.4.10. Static nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#intermediate-nodes">7.4.11. Intermediate nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#graph-object-memory-layout">7.5. Graph object memory layout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="graph_lib.html#inbuilt-nodes">7.6. Inbuilt Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#pktdev-rx">7.6.1. pktdev_rx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#pktdev-tx">7.6.2. pktdev_tx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#pkt-drop">7.6.3. pkt_drop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#ip4-lookup">7.6.4. ip4_lookup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#ip4-rewrite">7.6.5. ip4_rewrite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="graph_lib.html#null">7.6.6. null</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="crypto.html">7. Crypto Libraries</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="crypto.html#openssl">7.1. OpenSSL*</a></li>
-<li class="toctree-l2"><a class="reference internal" href="crypto.html#intel-r-multi-buffer-crypto-for-ipsec-library">7.2. Intel(R) Multi-Buffer Crypto for IPsec Library</a></li>
-<li class="toctree-l2"><a class="reference internal" href="crypto.html#legal-acknowledgements">7.3. Legal Acknowledgements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="crypto.html">8. Crypto Libraries</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html#openssl">8.1. OpenSSL*</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html#intel-r-multi-buffer-crypto-for-ipsec-library">8.2. Intel(R) Multi-Buffer Crypto for IPsec Library</a></li>
+<li class="toctree-l2"><a class="reference internal" href="crypto.html#legal-acknowledgements">8.3. Legal Acknowledgements</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="xskdev_buffer_mgmt.html">8. xskdev Buffer Management</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">9. Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="xskdev_buffer_mgmt.html">9. xskdev Buffer Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cnet.html">10. CNET Stack Library</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cnet.html#overview">10.1. Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cnet.html#cnet-pod-container-overview">10.2. CNET Pod/Container Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cnet.html#cnet-graph-nodes">10.3. CNET Graph nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cnet.html#cnet-nodes">10.3.1. CNET nodes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cnet.html#input-nodes">10.3.2. Input Nodes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="cnet.html#anatomy-of-cnet-processing">10.4. Anatomy of CNET processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cnet.html#cnet-structure">10.4.1. CNET Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cnet.html#cnet-stack-structure">10.4.2. CNET Stack Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cnet.html#cnet-channel-structure">10.4.3. CNET Channel Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cnet.html#protocol-control-block-pcb">10.4.4. Protocol Control Block (PCB)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">11. Glossary</a></li>
 </ul>
 </div>
 </section>
@@ -199,7 +221,7 @@
             </a></p>
   <h4>Previous topic</h4>
   <p class="topless"><a href="../rel_notes/deprecation.html"
-                        title="previous chapter"><span class="section-number">10. </span>ABI and API Deprecation</a></p>
+                        title="previous chapter"><span class="section-number">11. </span>ABI and API Deprecation</a></p>
   <h4>Next topic</h4>
   <p class="topless"><a href="intro.html"
                         title="next chapter"><span class="section-number">1. </span>Introduction</a></p>
@@ -234,7 +256,7 @@
           <a href="intro.html" title="1. Introduction"
              >next</a> |</li>
         <li class="right" >
-          <a href="../rel_notes/deprecation.html" title="10. ABI and API Deprecation"
+          <a href="../rel_notes/deprecation.html" title="11. ABI and API Deprecation"
              >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="../index.html">Cloud Native Data Plane Latest documentation</a> &#187;</li>
         <li class="nav-item nav-item-this"><a href="">Programmer’s Guide</a></li> 

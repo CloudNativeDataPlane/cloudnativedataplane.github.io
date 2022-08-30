@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -117,17 +117,16 @@ $(document).ready(function(){initNavTree('xskdev_8h.html',''); initResizable(); 
 <div class="title">xskdev.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;net/if.h&gt;</code><br />
-<code>#include &lt;poll.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;poll.h&gt;</code><br />
 <code>#include &lt;pthread.h&gt;</code><br />
-<code>#include &lt;bpf/xsk.h&gt;</code><br />
-<code>#include &lt;net/ethernet.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;bpf/xsk.h&gt;</code><br />
+<code>#include &lt;net/if.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__lport_8h_source.html">cne_lport.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="uds_8h_source.html">uds.h</a>&gt;</code><br />
-<code>#include &quot;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>&quot;</code><br />
 </div>
 <p><a href="xskdev_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -200,7 +199,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>flag to <a class="el" href="xskdev_8h.html#a6cfce6ea53b12e817a3ac7ca098829a6">xskdev_dump()</a> to dump out the stats </p>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00058">58</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00060">60</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -217,7 +216,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Flag to dump the RX/FQ/TX/CQ rings/queues </p>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00059">59</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00061">61</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -321,7 +320,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a17">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a3">examples/cndpfwd/main.c</a>, and <a class="el" href="examples_2vpp-plugin_2cndp_2input_8c-example.html#a2">examples/vpp-plugin/cndp/input.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00167">167</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00168">168</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -369,7 +368,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a5">examples/cndpfwd/main.c</a>, and <a class="el" href="examples_2vpp-plugin_2cndp_2output_8c-example.html#a2">examples/vpp-plugin/cndp/output.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00185">185</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00186">186</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -567,7 +566,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The void * used for buffer allocation and free routines. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00253">253</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00254">254</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -613,7 +612,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The number of bufs allocated in the bufs array. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00271">271</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00272">272</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -658,7 +657,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00287">287</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00288">288</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -703,7 +702,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00304">304</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00305">305</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -748,7 +747,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00321">321</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00322">322</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -793,7 +792,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00337">337</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00338">338</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -832,7 +831,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The data length of the buffer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00353">353</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00354">354</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -871,7 +870,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The address of the data pointer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00369">369</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00370">370</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -910,7 +909,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The the virtual address of the segment buffer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00385">385</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00386">386</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -948,7 +947,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00399">399</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00400">400</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>
@@ -994,13 +993,13 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">xi</td><td>The pointer to the xskdev_info struct. </td></tr>
     <tr><td class="paramname">buf</td><td>The buffer to reset. </td></tr>
-    <tr><td class="paramname">buf_len</td><td>The buffer length to set the buffer to (if needed). </td></tr>
+    <tr><td class="paramname">buf_len</td><td>The max data length able to be contained in the buffer. If the buffer is 2K and it contains a mbuf like header then buf_len = (2K - sizeof(mbuf)). </td></tr>
     <tr><td class="paramname">headroom</td><td>The buffer headroom to offset the data pointer by (if needed). </td></tr>
   </table>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00417">417</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="xskdev_8h_source.html#l00420">420</a> of file <a class="el" href="xskdev_8h_source.html">xskdev.h</a>.</p>
 
 </div>
 </div>

@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -118,8 +118,8 @@ $(document).ready(function(){initNavTree('pktdev__driver_8h.html',''); initResiz
 <div class="title">pktdev_driver.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="cne__atomic_8h_source.html">cne_atomic.h</a>&gt;</code><br />
-<code>#include &lt;sys/queue.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;sys/queue.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__atomic_8h_source.html">cne_atomic.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
 </div>
 <p><a href="pktdev__driver_8h_source.html">Go to the source code of this file.</a></p>
@@ -133,8 +133,8 @@ Data Structures</h2></td></tr>
 Typedefs</h2></td></tr>
 <tr class="memitem:a9f0fbc8bfaccd3b8a9b5d7a30b24e609"><td class="memItemLeft" align="right" valign="top">typedef int()&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktdev__driver_8h.html#a9f0fbc8bfaccd3b8a9b5d7a30b24e609">pktdev_probe_t</a>(<a class="el" href="cne__lport_8h.html#aae210b02aee05858e19157c1662e425c">lport_cfg_t</a> *cfg)</td></tr>
 <tr class="separator:a9f0fbc8bfaccd3b8a9b5d7a30b24e609"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8dd290399266dc219dd5d7666af5ae75"><td class="memItemLeft" align="right" valign="top">typedef int()&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktdev__driver_8h.html#a8dd290399266dc219dd5d7666af5ae75">pktdev_remove_t</a>(int lport)</td></tr>
-<tr class="separator:a8dd290399266dc219dd5d7666af5ae75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44ffe316cdc972f2484f869ac6e9a646"><td class="memItemLeft" align="right" valign="top">typedef int()&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktdev__driver_8h.html#a44ffe316cdc972f2484f869ac6e9a646">pktdev_remove_t</a>(struct cne_pktdev *dev)</td></tr>
+<tr class="separator:a44ffe316cdc972f2484f869ac6e9a646"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -142,14 +142,12 @@ Functions</h2></td></tr>
 <tr class="separator:a55d2a8149d787b69126f5739cc5a9047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad27faa77d28afc323ed7f0cc4349e329"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktdev__driver_8h.html#ad27faa77d28afc323ed7f0cc4349e329">pktdev_register</a> (struct <a class="el" href="structpktdev__driver.html">pktdev_driver</a> *driver)</td></tr>
 <tr class="separator:ad27faa77d28afc323ed7f0cc4349e329"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab199dc723874c1c2a8565084dd6e456c"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktdev__driver_8h.html#ab199dc723874c1c2a8565084dd6e456c">pktdev_create_done</a> (struct cne_pktdev *dev)</td></tr>
-<tr class="separator:ab199dc723874c1c2a8565084dd6e456c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa61458a060075f37af4161a995ead9de"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktdev__driver_8h.html#aa61458a060075f37af4161a995ead9de">pktdev_release_port</a> (struct cne_pktdev *dev)</td></tr>
 <tr class="separator:aa61458a060075f37af4161a995ead9de"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>CNE Ethernet Device PMD API</p>
-<p>These APIs for the use from Ethernet drivers, user applications shouldn't use them. </p>
+<div class="textblock"><p>CNE pktdev PMD API</p>
+<p>These APIs are used by pktdev drivers. Applications should not use them. </p>
 
 <p class="definition">Definition in file <a class="el" href="pktdev__driver_8h_source.html">pktdev_driver.h</a>.</p>
 </div><h2 class="groupheader">Typedef Documentation</h2>
@@ -166,24 +164,24 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Probe function called for each virtual device driver once. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktdev__driver_8h_source.html#l00032">32</a> of file <a class="el" href="pktdev__driver_8h_source.html">pktdev_driver.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev__driver_8h_source.html#l00030">30</a> of file <a class="el" href="pktdev__driver_8h_source.html">pktdev_driver.h</a>.</p>
 
 </div>
 </div>
-<a id="a8dd290399266dc219dd5d7666af5ae75"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8dd290399266dc219dd5d7666af5ae75">&#9670;&nbsp;</a></span>pktdev_remove_t</h2>
+<a id="a44ffe316cdc972f2484f869ac6e9a646"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a44ffe316cdc972f2484f869ac6e9a646">&#9670;&nbsp;</a></span>pktdev_remove_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int() pktdev_remove_t(int lport)</td>
+          <td class="memname">typedef int() pktdev_remove_t(struct cne_pktdev *dev)</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>Remove function to remove a lport </p>
 
-<p class="definition">Definition at line <a class="el" href="pktdev__driver_8h_source.html#l00037">37</a> of file <a class="el" href="pktdev__driver_8h_source.html">pktdev_driver.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktdev__driver_8h_source.html#l00035">35</a> of file <a class="el" href="pktdev__driver_8h_source.html">pktdev_driver.h</a>.</p>
 
 </div>
 </div>
@@ -235,32 +233,7 @@ Functions</h2></td></tr>
 <p>Register a virtual device driver.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">driver</td><td>A pointer to a cne_vdev_driver structure describing the driver to be registered. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="ab199dc723874c1c2a8565084dd6e456c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab199dc723874c1c2a8565084dd6e456c">&#9670;&nbsp;</a></span>pktdev_create_done()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CNDP_API void pktdev_create_done </td>
-          <td>(</td>
-          <td class="paramtype">struct cne_pktdev *&#160;</td>
-          <td class="paramname"><em>dev</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Tell pktdev from the driver the initialization is complete</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dev</td><td>The internal pktdev structure pointer </td></tr>
+    <tr><td class="paramname">driver</td><td>A pointer to a <a class="el" href="structpktdev__driver.html">pktdev_driver</a> structure describing the driver to be registered. </td></tr>
   </table>
   </dd>
 </dl>

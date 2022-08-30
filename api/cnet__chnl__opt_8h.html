@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -110,6 +110,8 @@ $(document).ready(function(){initNavTree('cnet__chnl__opt_8h.html',''); initResi
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cnet_chnl_opt.h File Reference</div>  </div>
 </div><!--header-->
@@ -118,11 +120,142 @@ $(document).ready(function(){initNavTree('cnet__chnl__opt_8h.html',''); initResi
 <code>#include &lt;sys/socket.h&gt;</code><br />
 </div>
 <p><a href="cnet__chnl__opt_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:aaa0749f638d118156c993f1e5de5564d"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">chnl_set_opt</a> (int cd, int level, int optname, const void *optval, int optlen)</td></tr>
+<tr class="memdesc:aaa0749f638d118156c993f1e5de5564d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set a channel option.  <a href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">More...</a><br /></td></tr>
+<tr class="separator:aaa0749f638d118156c993f1e5de5564d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac8cc3a01aeec750cbf86f55c67924c3"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__chnl__opt_8h.html#aac8cc3a01aeec750cbf86f55c67924c3">chnl_get_opt</a> (int cd, int level, int optname, void *optval, socklen_t *optlen)</td></tr>
+<tr class="memdesc:aac8cc3a01aeec750cbf86f55c67924c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a channel option.  <a href="cnet__chnl__opt_8h.html#aac8cc3a01aeec750cbf86f55c67924c3">More...</a><br /></td></tr>
+<tr class="separator:aac8cc3a01aeec750cbf86f55c67924c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CNET Channel option routines and constants. </p>
 
 <p class="definition">Definition in file <a class="el" href="cnet__chnl__opt_8h_source.html">cnet_chnl_opt.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="aaa0749f638d118156c993f1e5de5564d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa0749f638d118156c993f1e5de5564d">&#9670;&nbsp;</a></span>chnl_set_opt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int chnl_set_opt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>optname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>optval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>optlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Set a channel option. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cd</td><td>The channel descriptor to use for the set </td></tr>
+    <tr><td class="paramname">level</td><td>The level of the option to set </td></tr>
+    <tr><td class="paramname">optname</td><td>The name of the option to set </td></tr>
+    <tr><td class="paramname">optval</td><td>The option value to set </td></tr>
+    <tr><td class="paramname">optlen</td><td>The option length for the set </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success or -1 on error </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a15">examples/cnet-quic/quic-cli.c</a>.</dd>
+</dl>
+
+</div>
+</div>
+<a id="aac8cc3a01aeec750cbf86f55c67924c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aac8cc3a01aeec750cbf86f55c67924c3">&#9670;&nbsp;</a></span>chnl_get_opt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int chnl_get_opt </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>cd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>level</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>optname</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>optval</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">socklen_t *&#160;</td>
+          <td class="paramname"><em>optlen</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Get a channel option. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cd</td><td>The channel descriptor to use for the get </td></tr>
+    <tr><td class="paramname">level</td><td>The level of the option to get </td></tr>
+    <tr><td class="paramname">optname</td><td>The name of the option to get </td></tr>
+    <tr><td class="paramname">optval</td><td>The option value to get </td></tr>
+    <tr><td class="paramname">optlen</td><td>The option length for the get </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success or -1 on error </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

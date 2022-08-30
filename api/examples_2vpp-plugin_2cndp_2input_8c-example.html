@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -135,6 +135,10 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2input_8c-e
 <div class="line"><span class="preprocessor">#include &lt;vnet/vnet.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cndp/cndp.h&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &lt;cndp/xskdev.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 0</span></div>
+<div class="line"><span class="preprocessor">#include &lt;vnet/interface/rx_queue_funcs.h&gt;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#ifndef CLIB_MARCH_VARIANT</span></div>
 <div class="line"><span class="comment">/* packet trace format function */</span></div>
@@ -318,21 +322,38 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2input_8c-e
 <div class="line">{</div>
 <div class="line">  uword n_rx_packets = 0;</div>
 <div class="line">  cndp_main_t *cmp = &amp;cndp_main;</div>
+<div class="line"><span class="preprocessor">#if USE_2101_RX_QUEUES == 1</span></div>
+<div class="line">  <span class="comment">/* VPP 21.06 changes how rx queues are processed */</span></div>
 <div class="line">  vnet_device_input_runtime_t *rt = (<span class="keywordtype">void</span> *)node-&gt;runtime_data;</div>
 <div class="line">  vnet_device_and_queue_t *dq;</div>
+<div class="line">#<span class="keywordflow">else</span></div>
+<div class="line">  vnet_hw_if_rxq_poll_vector_t *pv;</div>
+<div class="line">#endif</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">/*</span></div>
 <div class="line"><span class="comment">   * Poll all devices on this cpu for input/interrupts.</span></div>
 <div class="line"><span class="comment">   */</span></div>
+<div class="line">#<span class="keywordflow">if</span> USE_2101_RX_QUEUES == 1</div>
+<div class="line">  <span class="comment">/* VPP 21.06 changes how rx queues are processed */</span></div>
 <div class="line">  <span class="comment">/* *INDENT-OFF* */</span></div>
 <div class="line">  foreach_device_and_queue (dq, rt-&gt;devices_and_queues)</div>
-<div class="line">  {</div>
-<div class="line">    cndp_device_t *cd;</div>
+<div class="line">    {</div>
+<div class="line">      cndp_device_t *cd;</div>
 <div class="line"> </div>
-<div class="line">    cd = cmp-&gt;devices[dq-&gt;dev_instance];</div>
-<div class="line">    n_rx_packets += cndp_device_input (vm, node, cd, dq-&gt;queue_id);</div>
-<div class="line">  }</div>
+<div class="line">      cd = cmp-&gt;devices[dq-&gt;dev_instance];</div>
+<div class="line">      n_rx_packets += cndp_device_input (vm, node, cd, dq-&gt;queue_id);</div>
+<div class="line">    }</div>
 <div class="line">  <span class="comment">/* *INDENT-ON* */</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
+<div class="line">  pv = vnet_hw_if_get_rxq_poll_vector (vm, node);</div>
+<div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; vec_len (pv); i++)</div>
+<div class="line">    {</div>
+<div class="line">      cndp_device_t *cd;</div>
+<div class="line"> </div>
+<div class="line">      cd = cmp-&gt;devices[pv[i].dev_instance];</div>
+<div class="line">      n_rx_packets += cndp_device_input (vm, node, cd, pv[i].queue_id);</div>
+<div class="line">    }</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">  <span class="keywordflow">return</span> n_rx_packets;</div>
 <div class="line">}</div>
@@ -362,7 +383,7 @@ $(document).ready(function(){initNavTree('examples_2vpp-plugin_2cndp_2input_8c-e
 <div class="line"><span class="comment"> */</span></div>
 <div class="ttc" id="acne_8h_html_a0f9cdd535e00d18a2c8aa9a318ec7bec"><div class="ttname"><a href="cne_8h.html#a0f9cdd535e00d18a2c8aa9a318ec7bec">cne_id</a></div><div class="ttdeci">CNDP_API int cne_id(void)</div></div>
 <div class="ttc" id="acne_8h_html_aede2592588bf0890de26de8798ece005"><div class="ttname"><a href="cne_8h.html#aede2592588bf0890de26de8798ece005">cne_register</a></div><div class="ttdeci">CNDP_API int cne_register(const char *name)</div></div>
-<div class="ttc" id="axskdev_8h_html_a09fbb296353240bd11bfa29b4332a8e8"><div class="ttname"><a href="xskdev_8h.html#a09fbb296353240bd11bfa29b4332a8e8">xskdev_rx_burst</a></div><div class="ttdeci">CNDP_API __cne_always_inline uint16_t xskdev_rx_burst(xskdev_info_t *xi, void **bufs, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="xskdev_8h_source.html#l00167">xskdev.h:167</a></div></div>
+<div class="ttc" id="axskdev_8h_html_a09fbb296353240bd11bfa29b4332a8e8"><div class="ttname"><a href="xskdev_8h.html#a09fbb296353240bd11bfa29b4332a8e8">xskdev_rx_burst</a></div><div class="ttdeci">CNDP_API __cne_always_inline uint16_t xskdev_rx_burst(xskdev_info_t *xi, void **bufs, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="xskdev_8h_source.html#l00168">xskdev.h:168</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

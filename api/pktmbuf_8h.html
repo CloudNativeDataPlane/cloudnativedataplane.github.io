@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -120,17 +120,17 @@ $(document).ready(function(){initNavTree('pktmbuf_8h.html',''); initResizable();
 <div class="title">pktmbuf.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;errno.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;bsd/string.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__atomic_8h_source.html">cne_atomic.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="mempool_8h_source.html">mempool.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__branch__prediction_8h_source.html">cne_branch_prediction.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__log_8h_source.html">cne_log.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__mmap_8h_source.html">cne_mmap.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__prefetch_8h_source.html">cne_prefetch.h</a>&gt;</code><br />
-<code>#include &lt;<a class="el" href="cne__branch__prediction_8h_source.html">cne_branch_prediction.h</a>&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;errno.h&gt;</code><br />
-<code>#include &lt;bsd/string.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="cne__log_8h_source.html">cne_log.h</a>&quot;</code><br />
+<code>#include &lt;<a class="el" href="mempool_8h_source.html">mempool.h</a>&gt;</code><br />
 <code>#include &quot;<a class="el" href="pktmbuf__ops_8h_source.html">pktmbuf_ops.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="pktmbuf__offload_8h_source.html">pktmbuf_offload.h</a>&quot;</code><br />
 </div>
@@ -175,6 +175,8 @@ Macros</h2></td></tr>
 <tr class="separator:a9f979d8469cd4829ff0dab30defec34e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77fa2b918e3052b564b228868d58c198"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a>(m,  t)&#160;&#160;&#160;<a class="el" href="pktmbuf_8h.html#a9f979d8469cd4829ff0dab30defec34e">pktmbuf_mtod_offset</a>(m, t, 0)</td></tr>
 <tr class="separator:a77fa2b918e3052b564b228868d58c198"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58c8a0c206768776152dca95f044c578"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a58c8a0c206768776152dca95f044c578">pktmbuf_meta_index</a>(m)&#160;&#160;&#160;((m)-&gt;meta_index)</td></tr>
+<tr class="separator:a58c8a0c206768776152dca95f044c578"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab136e1e8175a5cd7f63f21c6f60948e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ab136e1e8175a5cd7f63f21c6f60948e6">__pktmbuf_sanity_check</a>(m,  is_h)&#160;&#160;&#160;do { } while (0)</td></tr>
 <tr class="separator:ab136e1e8175a5cd7f63f21c6f60948e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d88bb2dd5b4a9b80536afa2f14f704f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a0d88bb2dd5b4a9b80536afa2f14f704f">CNE_MBUF_PREFETCH_TO_FREE</a>(m)</td></tr>
@@ -188,21 +190,21 @@ Typedefs</h2></td></tr>
 <tr class="separator:ae51ffa3a5006a0e892be9dd81b5d95af"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30efb6567ce24c925cd4d21c46538f2a"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structpktmbuf__pending.html">pktmbuf_pending</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a30efb6567ce24c925cd4d21c46538f2a">pktmbuf_pending_t</a></td></tr>
 <tr class="separator:a30efb6567ce24c925cd4d21c46538f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad393e734eb496ba2d342cd76edaea895"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ad393e734eb496ba2d342cd76edaea895">pktmbuf_cb_t</a>) (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *buf, uint32_t sz, void *ud)</td></tr>
-<tr class="separator:ad393e734eb496ba2d342cd76edaea895"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9758e72db88a6356fc85f0968eb7aaaf"><td class="memItemLeft" align="right" valign="top">typedef int(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a9758e72db88a6356fc85f0968eb7aaaf">pktmbuf_cb_t</a>) (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *buf, uint32_t sz, uint32_t idx, void *ud)</td></tr>
+<tr class="separator:a9758e72db88a6356fc85f0968eb7aaaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:afccd240f973cf154952fb917c9209719"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719a6a2f4695ca68a5d87e44c2095ff50cb1">DEFAULT_BURST_SIZE</a> = 64
-, <a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ae7096018275cdb1fc616c1207558f7f4">DEFAULT_MBUF_COUNT</a> = (16 * 1024)
-, <a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719a07a0abc4d50cc8a0f8925c7298687e1b">DEFAULT_MBUF_SIZE</a> = 2048
-, <a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ae81b0ee37ad506c4152b49d03a776554">PKTMBUF_PENDING_SZ</a> = 128
+<tr class="memitem:ac205be2172292384dd687b5471a87edd"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87edda6a2f4695ca68a5d87e44c2095ff50cb1">DEFAULT_BURST_SIZE</a> = 64
+, <a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddae7096018275cdb1fc616c1207558f7f4">DEFAULT_MBUF_COUNT</a> = (16 * 1024)
+, <a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87edda07a0abc4d50cc8a0f8925c7298687e1b">DEFAULT_MBUF_SIZE</a> = 2048
+, <a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddae81b0ee37ad506c4152b49d03a776554">PKTMBUF_PENDING_SZ</a> = 128
 , <br />
-&#160;&#160;<a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ac6dba7b154f603f7bf3ba71cda1b7ad6">PKTMBUF_INFO_NAME_SZ</a> = 24
+&#160;&#160;<a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddac6dba7b154f603f7bf3ba71cda1b7ad6">PKTMBUF_INFO_NAME_SZ</a> = 24
 <br />
  }</td></tr>
-<tr class="separator:afccd240f973cf154952fb917c9209719"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:ac205be2172292384dd687b5471a87edd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -210,7 +212,9 @@ Functions</h2></td></tr>
 <tr class="separator:ad4cc762b3e8f318715f6b7a8df137df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae0718571a50946ff3a9bbf29a3615aaf"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ae0718571a50946ff3a9bbf29a3615aaf">pktmbuf_pool_create</a> (char *addr, uint32_t bufcnt, uint32_t bufsz, uint32_t cache_sz, <a class="el" href="pktmbuf__ops_8h.html#adb666893e111eda8a88b6b0a5ee95eea">mbuf_ops_t</a> *ops)</td></tr>
 <tr class="separator:ae0718571a50946ff3a9bbf29a3615aaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8637eb686b7dc6d003ebed3832a2e96"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ae8637eb686b7dc6d003ebed3832a2e96">pktmbuf_iterate</a> (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, <a class="el" href="pktmbuf_8h.html#ad393e734eb496ba2d342cd76edaea895">pktmbuf_cb_t</a> cb, void *ud)</td></tr>
+<tr class="memitem:ad4daf757087f484849932c763c2666a3"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ad4daf757087f484849932c763c2666a3">pktmbuf_pool_cfg_create</a> (const pktmbuf_pool_cfg_t *cfg)</td></tr>
+<tr class="separator:ad4daf757087f484849932c763c2666a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae8637eb686b7dc6d003ebed3832a2e96"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ae8637eb686b7dc6d003ebed3832a2e96">pktmbuf_iterate</a> (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, <a class="el" href="pktmbuf_8h.html#a9758e72db88a6356fc85f0968eb7aaaf">pktmbuf_cb_t</a> cb, void *ud)</td></tr>
 <tr class="separator:ae8637eb686b7dc6d003ebed3832a2e96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac15913c6b902c3056b513a607d5c7b38"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ac15913c6b902c3056b513a607d5c7b38">pktmbuf_prefetch</a> (<a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m)</td></tr>
 <tr class="separator:ac15913c6b902c3056b513a607d5c7b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -264,8 +268,10 @@ Functions</h2></td></tr>
 <tr class="separator:ab2555c4b50d887bc8599415388759aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6641b9732c15388b09ee6b843686f86f"><td class="memItemLeft" align="right" valign="top">static const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a6641b9732c15388b09ee6b843686f86f">pktmbuf_read</a> (const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m, uint32_t off, uint32_t len, void *buf)</td></tr>
 <tr class="separator:a6641b9732c15388b09ee6b843686f86f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4ae00805a563b09f5be88b09bba6107e"><td class="memItemLeft" align="right" valign="top">static const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a4ae00805a563b09f5be88b09bba6107e">pktmbuf_write</a> (void *buf, uint32_t len, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m, uint32_t off)</td></tr>
-<tr class="separator:a4ae00805a563b09f5be88b09bba6107e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa531e514fe3bd73404257ed569170e5b"><td class="memItemLeft" align="right" valign="top">static const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#aa531e514fe3bd73404257ed569170e5b">pktmbuf_write</a> (const void *buf, uint32_t len, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m, uint32_t off)</td></tr>
+<tr class="separator:aa531e514fe3bd73404257ed569170e5b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adde7790aebdbeca329a6914aac5e4f1a"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#adde7790aebdbeca329a6914aac5e4f1a">pktmbuf_data_room_size</a> (<a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *mp)</td></tr>
+<tr class="separator:adde7790aebdbeca329a6914aac5e4f1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f9a92b8eb2e7fa3a1b89a5077a4e036"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a8f9a92b8eb2e7fa3a1b89a5077a4e036">pktmbuf_clone</a> (<a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *md, <a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi)</td></tr>
 <tr class="separator:a8f9a92b8eb2e7fa3a1b89a5077a4e036"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aea3e1ca6f901714eeb5e4aabb0a0790e"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#aea3e1ca6f901714eeb5e4aabb0a0790e">pktmbuf_dump</a> (const char *msg, const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m, unsigned dump_len)</td></tr>
@@ -278,6 +284,12 @@ Functions</h2></td></tr>
 <tr class="separator:aae0a20f20faef45636a941e61ee6657d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a507a530fe6a2806ba5e5e88850872710"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a507a530fe6a2806ba5e5e88850872710">cne_get_tx_ol_flag_list</a> (uint64_t mask, char *buf, size_t buflen)</td></tr>
 <tr class="separator:a507a530fe6a2806ba5e5e88850872710"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c8ba493b2f1752a05f261df112925e4"><td class="memItemLeft" align="right" valign="top">static void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a4c8ba493b2f1752a05f261df112925e4">pktmbuf_metadata</a> (const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m)</td></tr>
+<tr class="separator:a4c8ba493b2f1752a05f261df112925e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8047cdae5df5dc8927ed05ed46dd05f1"><td class="memItemLeft" align="right" valign="top">static int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a8047cdae5df5dc8927ed05ed46dd05f1">pktmbuf_metadata_bufsz</a> (const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *m)</td></tr>
+<tr class="separator:a8047cdae5df5dc8927ed05ed46dd05f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac62a2c9f80090969e242e3eb2cc65b2f"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#ac62a2c9f80090969e242e3eb2cc65b2f">pktmbuf_pool_cfg</a> (pktmbuf_pool_cfg_t *c, void *addr, uint32_t bufcnt, uint32_t bufsz, uint32_t cache_sz, void *metadata, uint32_t metadata_bufsz, <a class="el" href="pktmbuf__ops_8h.html#adb666893e111eda8a88b6b0a5ee95eea">mbuf_ops_t</a> *ops)</td></tr>
+<tr class="separator:ac62a2c9f80090969e242e3eb2cc65b2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a17b493f21bca069422ae03f8aec86238"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="pktmbuf_8h.html#a17b493f21bca069422ae03f8aec86238">pktmbuf_info_dump</a> (void)</td></tr>
 <tr class="separator:a17b493f21bca069422ae03f8aec86238"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -304,7 +316,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </div><div class="memdoc">
 <p>Some NICs need at least 2KB buffer to RX standard Ethernet frame without splitting it into multiple segments. So, for mbufs that planned to be involved in RX/TX, the recommended minimal buffer length is 2KB. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00085">85</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00096">96</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -331,7 +343,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00273">273</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00306">306</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -358,7 +370,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00281">281</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00314">314</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -385,7 +397,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00289">289</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00322">322</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -412,7 +424,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00297">297</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00330">330</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -439,7 +451,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00305">305</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00338">338</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -466,7 +478,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00313">313</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00346">346</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -493,7 +505,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00321">321</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00354">354</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -520,7 +532,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00329">329</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00362">362</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -546,10 +558,10 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a21">examples/cndpfwd/main.c</a>, and <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a6">examples/cnet-quic/quic-cli.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a21">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a25">examples/cnet-graph/cnet-graph.c</a>, and <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a6">examples/cnet-quic/quic-cli.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00337">337</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00370">370</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -576,7 +588,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00345">345</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00378">378</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -603,7 +615,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00353">353</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00386">386</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -651,7 +663,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a12">examples/cndpfwd/acl-func.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00369">369</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00402">402</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -689,10 +701,37 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a20">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a10">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a7">examples/cnet-quic/quic-cli.c</a>, and <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a18">examples/dlb_test/dlb_test.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a20">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a10">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a24">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a7">examples/cnet-quic/quic-cli.c</a>, and <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a18">examples/dlb_test/dlb_test.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00383">383</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00416">416</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+
+</div>
+</div>
+<a id="a58c8a0c206768776152dca95f044c578"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58c8a0c206768776152dca95f044c578">&#9670;&nbsp;</a></span>pktmbuf_meta_index</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define pktmbuf_meta_index</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">m</td><td>)</td>
+          <td>&#160;&#160;&#160;((m)-&gt;meta_index)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the metadata index value from the pktmbuf header.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>The pktmbuf_t pointer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00424">424</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -723,7 +762,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </div><div class="memdoc">
 <p>check mbuf type in debug mode </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00427">427</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00468">468</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -748,7 +787,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 <div class="line">    } <span class="keywordflow">while</span> (0)</div>
 </div><!-- fragment --><p>Mbuf prefetch </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00500">500</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00541">541</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -771,7 +810,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00597">597</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00638">638</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -807,36 +846,37 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 
 </div>
 </div>
-<a id="ad393e734eb496ba2d342cd76edaea895"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad393e734eb496ba2d342cd76edaea895">&#9670;&nbsp;</a></span>pktmbuf_cb_t</h2>
+<a id="a9758e72db88a6356fc85f0968eb7aaaf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9758e72db88a6356fc85f0968eb7aaaf">&#9670;&nbsp;</a></span>pktmbuf_cb_t</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">typedef int(* pktmbuf_cb_t) (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *buf, uint32_t sz, void *ud)</td>
+          <td class="memname">typedef int(* pktmbuf_cb_t) (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *buf, uint32_t sz, uint32_t idx, void *ud)</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Object or pktmbuf callback routine to initialize the all allocated buffers.</p>
+<p>Object or pktmbuf callback routine to initialize the allocated pktmbuf_t structure.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">pi</td><td>The pktmbuf_info_t pointer </td></tr>
     <tr><td class="paramname">buf</td><td>The buffer pointer to pktmbuf_t structure to initialize </td></tr>
     <tr><td class="paramname">sz</td><td>The size of the buffer to use in initialing the buffer, if needed. </td></tr>
+    <tr><td class="paramname">idx</td><td>The index of the pktmbuf structure </td></tr>
     <tr><td class="paramname">ud</td><td>User data pointer supplied by the caller </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on successfully initialized buffer or -1 on error </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00250">250</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00282">282</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="afccd240f973cf154952fb917c9209719"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afccd240f973cf154952fb917c9209719">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="ac205be2172292384dd687b5471a87edd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac205be2172292384dd687b5471a87edd">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -847,15 +887,15 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a6a2f4695ca68a5d87e44c2095ff50cb1"></a>DEFAULT_BURST_SIZE&#160;</td><td class="fielddoc"><p>Default burst size </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="ac205be2172292384dd687b5471a87edda6a2f4695ca68a5d87e44c2095ff50cb1"></a>DEFAULT_BURST_SIZE&#160;</td><td class="fielddoc"><p>Default burst size </p>
 </td></tr>
-<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719ae7096018275cdb1fc616c1207558f7f4"></a>DEFAULT_MBUF_COUNT&#160;</td><td class="fielddoc"><p>Default mbuf count </p>
+<tr><td class="fieldname"><a id="ac205be2172292384dd687b5471a87eddae7096018275cdb1fc616c1207558f7f4"></a>DEFAULT_MBUF_COUNT&#160;</td><td class="fielddoc"><p>Default mbuf count </p>
 </td></tr>
-<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719a07a0abc4d50cc8a0f8925c7298687e1b"></a>DEFAULT_MBUF_SIZE&#160;</td><td class="fielddoc"><p>Default mbuf size data + sizeof(pktmbuf_t) + extra </p>
+<tr><td class="fieldname"><a id="ac205be2172292384dd687b5471a87edda07a0abc4d50cc8a0f8925c7298687e1b"></a>DEFAULT_MBUF_SIZE&#160;</td><td class="fielddoc"><p>Default mbuf size data + sizeof(pktmbuf_t) + extra </p>
 </td></tr>
-<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719ae81b0ee37ad506c4152b49d03a776554"></a>PKTMBUF_PENDING_SZ&#160;</td><td class="fielddoc"><p>Size of the pending free mbuf pointers </p>
+<tr><td class="fieldname"><a id="ac205be2172292384dd687b5471a87eddae81b0ee37ad506c4152b49d03a776554"></a>PKTMBUF_PENDING_SZ&#160;</td><td class="fielddoc"><p>Size of the pending free mbuf pointers </p>
 </td></tr>
-<tr><td class="fieldname"><a id="afccd240f973cf154952fb917c9209719ac6dba7b154f603f7bf3ba71cda1b7ad6"></a>PKTMBUF_INFO_NAME_SZ&#160;</td><td class="fielddoc"><p>Size of the the info name </p>
+<tr><td class="fieldname"><a id="ac205be2172292384dd687b5471a87eddac6dba7b154f603f7bf3ba71cda1b7ad6"></a>PKTMBUF_INFO_NAME_SZ&#160;</td><td class="fielddoc"><p>Size of the the info name </p>
 </td></tr>
 </table>
 
@@ -934,20 +974,46 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Create the pktmbuf_info_t structure and setup some of the fields</p>
+<p>Create the pktmbuf_info_t structure with no external metadata information.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">addr</td><td>The starting address of the buffer space </td></tr>
-    <tr><td class="paramname">bufcnt</td><td>Number of buffers to create or allocate, using the <em>mtype</em> for <a class="el" href="cne__mmap_8h.html#a7f367b78de57455c2efd48017076365b">mmap_alloc()</a> </td></tr>
+    <tr><td class="paramname">bufcnt</td><td>Number of buffers to create or allocate </td></tr>
     <tr><td class="paramname">bufsz</td><td>The size of each buffer to be allocated </td></tr>
-    <tr><td class="paramname">cache_sz</td><td>Cache size for mempool or other user needs </td></tr>
-    <tr><td class="paramname">ops</td><td>Pointer to mbuf_ops_t structure for mbuf operator function pointers. This structure is copied into the <a class="el" href="structpktmbuf__info__s.html#ac1ec8fcce6433d5ecb74553e56d3c7c3">pktmbuf_info_t.ops</a> structure. </td></tr>
+    <tr><td class="paramname">cache_sz</td><td>Cache size for mempool or other user needs, can be zero for no cache. </td></tr>
+    <tr><td class="paramname">ops</td><td>Pointer to mbuf_ops_t structure for mbuf operator function pointers. This structure is copied into the <a class="el" href="structpktmbuf__info__s.html#ac1ec8fcce6433d5ecb74553e56d3c7c3">pktmbuf_info_t.ops</a> structure and can be NULL. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL on error or a valid pktmbuf_info_t pointer. </dd></dl>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a27">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#a24">examples/cnet-graph/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a24">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#a25">examples/dlb_test/parse-args.c</a>, and <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a25">examples/l3fwd-graph/parse-args.c</a>.</dd>
 </dl>
+
+</div>
+</div>
+<a id="ad4daf757087f484849932c763c2666a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4daf757087f484849932c763c2666a3">&#9670;&nbsp;</a></span>pktmbuf_pool_cfg_create()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API <a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a>* pktmbuf_pool_cfg_create </td>
+          <td>(</td>
+          <td class="paramtype">const pktmbuf_pool_cfg_t *&#160;</td>
+          <td class="paramname"><em>cfg</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create the pktmbuf_info_t structure and setup some of the fields</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cfg</td><td>Pointer to a configuration structure. addr - The starting address of the buffer space bufcnt - Number of buffers to create or allocate, using the <em>mtype</em> for <a class="el" href="cne__mmap_8h.html#a7f367b78de57455c2efd48017076365b">mmap_alloc()</a> bufsz - The size of each buffer to be allocated cache_sz - Cache size for mempool or other user needs ops - Pointer to mbuf_ops_t structure for mbuf operator function pointers. This structure is copied into the <a class="el" href="structpktmbuf__info__s.html#ac1ec8fcce6433d5ecb74553e56d3c7c3">pktmbuf_info_t.ops</a> structure and can be NULL. metadata_bufsz - is the size of the external metadata buffers. metadata - is a pointer to the start of the metadata, can be NULL for no external metadata. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL on error or a valid pktmbuf_info_t pointer. </dd></dl>
 
 </div>
 </div>
@@ -966,7 +1032,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="pktmbuf_8h.html#ad393e734eb496ba2d342cd76edaea895">pktmbuf_cb_t</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="pktmbuf_8h.html#a9758e72db88a6356fc85f0968eb7aaaf">pktmbuf_cb_t</a>&#160;</td>
           <td class="paramname"><em>cb</em>, </td>
         </tr>
         <tr>
@@ -1027,7 +1093,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00396">396</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00437">437</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1063,7 +1129,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The pointer of the beginning of the mbuf data. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00410">410</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00451">451</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1164,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Reference count number. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00440">440</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00481">481</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1143,7 +1209,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00453">453</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00494">494</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1189,7 +1255,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Updated value </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00475">475</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00516">516</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1325,7 +1391,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a29">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#a26">examples/cnet-graph/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a26">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#a27">examples/dlb_test/parse-args.c</a>, and <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a26">examples/l3fwd-graph/parse-args.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00555">555</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00596">596</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1361,7 +1427,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL if <code>pi</code> is NULL or pointer to <a class="el" href="structpktmbuf__info__s.html#a143576556e5d67a2812b3436e4181534">pktmbuf_info_t.name</a> field which could be empty. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00574">574</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00615">615</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1396,7 +1462,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00586">586</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00627">627</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1425,7 +1491,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </div><div class="memdoc">
 <p>Reset a mbuf internal fields to valid known states. </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00603">603</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00644">644</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1481,7 +1547,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a20">examples/cndpfwd/main.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00629">629</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00670">670</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1522,7 +1588,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00648">648</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00689">689</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1563,7 +1629,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00680">680</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00721">721</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1600,7 +1666,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a14">examples/cndpfwd/acl-func.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00700">700</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00741">741</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1645,10 +1711,10 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </table>
   </dd>
 </dl>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a9">examples/cndpfwd/main.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a9">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a20">examples/cnet-graph/cnet-graph.c</a>, and <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a11">examples/cnet-quic/quic-cli.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00760">760</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00801">801</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1740,7 +1806,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The length of the headroom. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00811">811</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00853">853</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1776,7 +1842,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The length of the tailroom. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00826">826</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00868">868</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1813,7 +1879,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the end of the packet data. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00843">843</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00885">885</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1850,7 +1916,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the end of the mbuf buffer. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00860">860</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00902">902</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1898,7 +1964,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the start of the newly prepended data, or NULL if there is not enough headroom space in the first segment </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00882">882</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00924">924</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1946,7 +2012,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the new offset into the mbuf where the data begins. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00913">913</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00955">955</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -1994,7 +2060,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A pointer to the start of the newly appended data, or NULL if there is not enough tailroom space in the last segment </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00958">958</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01002">1002</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -2046,7 +2112,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00987">987</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01031">1031</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -2108,12 +2174,12 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The pointer to the data or in the user buffer. If mbuf is too small, NULL is returned. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01022">1022</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01066">1066</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
-<a id="a4ae00805a563b09f5be88b09bba6107e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4ae00805a563b09f5be88b09bba6107e">&#9670;&nbsp;</a></span>pktmbuf_write()</h2>
+<a id="aa531e514fe3bd73404257ed569170e5b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa531e514fe3bd73404257ed569170e5b">&#9670;&nbsp;</a></span>pktmbuf_write()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -2124,7 +2190,7 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
         <tr>
           <td class="memname">static const void* pktmbuf_write </td>
           <td>(</td>
-          <td class="paramtype">void *&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
         </tr>
         <tr>
@@ -2172,7 +2238,44 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a4">examples/cnet-quic/quic-cli.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01053">1053</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01097">1097</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+
+</div>
+</div>
+<a id="adde7790aebdbeca329a6914aac5e4f1a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adde7790aebdbeca329a6914aac5e4f1a">&#9670;&nbsp;</a></span>pktmbuf_data_room_size()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static uint16_t pktmbuf_data_room_size </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a> *&#160;</td>
+          <td class="paramname"><em>mp</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Amount of total data space available for packet data.</p>
+<p>This value is the max space available for packet data in a pktmbuf_t, which means the value for a 2K buffer would be (2K - sizeof(pktmbuf_t)).</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mp</td><td>The mempool pointer to get the element size. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The total amount of space available for packet data in a pktmbuf_t. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01117">1117</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -2394,6 +2497,159 @@ Addison-Wesley, 1995, ISBN 0-201-63354-X from Richard Stevens" <a href="http://w
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 on success, (-1) on error. </dd></dl>
+
+</div>
+</div>
+<a id="a4c8ba493b2f1752a05f261df112925e4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c8ba493b2f1752a05f261df112925e4">&#9670;&nbsp;</a></span>pktmbuf_metadata()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static void* pktmbuf_metadata </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the metadata buffer address</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>The pktmbuf_t structure pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>NULL on error or pointer to metadata buffer </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a8">examples/cnet-quic/quic-cli.c</a>.</dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01209">1209</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+
+</div>
+</div>
+<a id="a8047cdae5df5dc8927ed05ed46dd05f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8047cdae5df5dc8927ed05ed46dd05f1">&#9670;&nbsp;</a></span>pktmbuf_metadata_bufsz()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static int32_t pktmbuf_metadata_bufsz </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Return the size of the metadata buffer if external or headroom size if internal buffer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>The pktmbuf_t structure pointer </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 if pktmbuf pointer is NULL or size of metadata buffer or headroom size if internal. </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l01231">1231</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+
+</div>
+</div>
+<a id="ac62a2c9f80090969e242e3eb2cc65b2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac62a2c9f80090969e242e3eb2cc65b2f">&#9670;&nbsp;</a></span>pktmbuf_pool_cfg()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int pktmbuf_pool_cfg </td>
+          <td>(</td>
+          <td class="paramtype">pktmbuf_pool_cfg_t *&#160;</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>addr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>bufcnt</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>bufsz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>cache_sz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>metadata</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>metadata_bufsz</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="pktmbuf__ops_8h.html#adb666893e111eda8a88b6b0a5ee95eea">mbuf_ops_t</a> *&#160;</td>
+          <td class="paramname"><em>ops</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Construct a pktmbuf_pool_cfg_t structure with the given parameters.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">c</td><td>Pointer to the pktmbuf_pool_cfg_t structure </td></tr>
+    <tr><td class="paramname">addr</td><td>Address of the pktmbuf buffers, must not be NULL </td></tr>
+    <tr><td class="paramname">bufcnt</td><td>Number of buffers in the pktmbuf pool, can be zero to use default </td></tr>
+    <tr><td class="paramname">bufsz</td><td>Size of each buffer in the pktmbuf pool, can be zero to use default </td></tr>
+    <tr><td class="paramname">cache_sz</td><td>Cache size of the mempool to use in allocate/free buffers, can be zero </td></tr>
+    <tr><td class="paramname">metadata</td><td>The pointer of the metadata buffer pool, can be NULL. </td></tr>
+    <tr><td class="paramname">metadata_bufsz</td><td>The size of each metadata buffer in the pool, if metadata is valid can not be zero and needs to be a multiple of a cacheline. </td></tr>
+    <tr><td class="paramname">ops</td><td>The pktmbuf ops structure pointer, can be NULL. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success or -1 on error. </dd></dl>
 
 </div>
 </div>

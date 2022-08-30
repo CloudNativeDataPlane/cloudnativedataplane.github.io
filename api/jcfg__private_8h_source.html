@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -115,90 +115,92 @@ $(document).ready(function(){initNavTree('jcfg__private_8h_source.html',''); ini
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* SPDX-License-Identifier: BSD-3-Clause</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) &lt;2019-2020&gt;, Intel Corporation. All rights reserved.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2019-2022 Intel Corporation.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/* Created 2019-2020 by Keith Wiles @ intel.com */</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef _JCFG_PRIVATE_H_</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define _JCFG_PRIVATE_H_</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;sys/queue.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;json-c/json_object.h&gt;</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;json-c/json_tokener.h&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;json-c/json_util.h&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;json-c/json_visit.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;json-c/linkhash.h&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structjcfg__client__s.html">jcfg_client_s</a> {</div>
-<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2">   26</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2">s</a>;                     </div>
-<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615">   27</a></span>&#160;    <a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *<a class="code" href="structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615">info</a>;         </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858">   28</a></span>&#160;    pthread_barrier_t <a class="code" href="structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858">barrier</a>; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;} <a class="code" href="structjcfg__client__s.html">jcfg_client_t</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="structjcfg.html">   34</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structjcfg.html">jcfg</a> {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">struct </span><a class="code" href="structjcfg__data.html">jcfg_data</a> <a class="code" href="structjcfg.html#a68532c177ebf567e5e47e908735aeb33">data</a>;    </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">   36</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">str</a>;                </div>
-<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structjcfg.html#aa022e6fdc1582a211278228e710896f3">   37</a></span>&#160;    <span class="keyword">struct </span>json_object *<a class="code" href="structjcfg.html#aa022e6fdc1582a211278228e710896f3">root</a>; </div>
-<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">   38</a></span>&#160;    <span class="keyword">struct </span>json_tokener *<a class="code" href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">tok</a>; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structqueue__list__entry.html">   44</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structqueue__list__entry.html">queue_list_entry</a> {</div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structqueue__list__entry.html#ac5f38113a34f9eab3e7782eade81d266">   45</a></span>&#160;    uint16_t <a class="code" href="structqueue__list__entry.html#ac5f38113a34f9eab3e7782eade81d266">v</a>;                         </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="structqueue__list__entry.html#a07849bb7514e6eb96215b7b5ad58afe4">   46</a></span>&#160;    <a class="code" href="structqueue__list__entry.html#a07849bb7514e6eb96215b7b5ad58afe4">TAILQ_ENTRY</a>(<a class="code" href="structqueue__list__entry.html">queue_list_entry</a>) next; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;};</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(queue_list_head, <a class="code" href="structqueue__list__entry.html">queue_list_entry</a>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structqueue__list.html">   57</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structqueue__list.html">queue_list</a> {</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structqueue__list.html#a1a1f4624f66ab0b2eb0b98316514c369">   58</a></span>&#160;    uint16_t <a class="code" href="structqueue__list.html#a1a1f4624f66ab0b2eb0b98316514c369">min</a>; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structqueue__list.html#ac66b569507cc273bbf83ce5dd5f70e84">   59</a></span>&#160;    uint16_t <a class="code" href="structqueue__list.html#ac66b569507cc273bbf83ce5dd5f70e84">max</a>; </div>
-<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="structqueue__list.html#a9875bfca8a71b397165547a74c4fc410">   60</a></span>&#160;    uint16_t <a class="code" href="structqueue__list.html#a8bf0d44a6ead3e7cc2898ba02498749e">num</a>; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">struct </span>queue_list_head <a class="code" href="structqueue__list.html#a9875bfca8a71b397165547a74c4fc410">head</a>; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">char</span> *</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;jcfg_get_json_string(<span class="keyword">struct</span> <a class="code" href="structjcfg.html">jcfg</a> *cfg)</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordflow">return</span> (cfg) ? cfg-&gt;<a class="code" href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">str</a> : NULL;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span>json_tokener *</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;jcfg_get_json_token(<span class="keyword">struct</span> <a class="code" href="structjcfg.html">jcfg</a> *cfg)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keywordflow">return</span> (cfg) ? cfg-&gt;<a class="code" href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">tok</a> : NULL;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _JCFG_PRIVATE_H_ */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef _JCFG_PRIVATE_H_</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define _JCFG_PRIVATE_H_</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;sys/queue.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;pthread.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;json-c/json_object.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;json-c/json_tokener.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;json-c/json_util.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;json-c/json_visit.h&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;json-c/linkhash.h&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html">   24</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structjcfg__client__s.html">jcfg_client_s</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2">   25</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2">s</a>;                     </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615">   26</a></span>&#160;    <a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *<a class="code" href="structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615">info</a>;         </div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858">   27</a></span>&#160;    pthread_barrier_t <a class="code" href="structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858">barrier</a>; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;} <a class="code" href="structjcfg__client__s.html">jcfg_client_t</a>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="structjcfg.html">   33</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structjcfg.html">jcfg</a> {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">struct </span><a class="code" href="structjcfg__data.html">jcfg_data</a> <a class="code" href="structjcfg.html#a68532c177ebf567e5e47e908735aeb33">data</a>;    </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">   35</a></span>&#160;    <span class="keywordtype">char</span> *<a class="code" href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">str</a>;                </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="structjcfg.html#aa022e6fdc1582a211278228e710896f3">   36</a></span>&#160;    <span class="keyword">struct </span>json_object *<a class="code" href="structjcfg.html#aa022e6fdc1582a211278228e710896f3">root</a>; </div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">   37</a></span>&#160;    <span class="keyword">struct </span>json_tokener *<a class="code" href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">tok</a>; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="structqueue__list__entry.html">   43</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structqueue__list__entry.html">queue_list_entry</a> {</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="structqueue__list__entry.html#ac5f38113a34f9eab3e7782eade81d266">   44</a></span>&#160;    uint16_t <a class="code" href="structqueue__list__entry.html#ac5f38113a34f9eab3e7782eade81d266">v</a>;                         </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="structqueue__list__entry.html#a07849bb7514e6eb96215b7b5ad58afe4">   45</a></span>&#160;    <a class="code" href="structqueue__list__entry.html#a07849bb7514e6eb96215b7b5ad58afe4">TAILQ_ENTRY</a>(<a class="code" href="structqueue__list__entry.html">queue_list_entry</a>) next; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;};</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(queue_list_head, <a class="code" href="structqueue__list__entry.html">queue_list_entry</a>);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="structqueue__list.html">   56</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structqueue__list.html">queue_list</a> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="structqueue__list.html#a1a1f4624f66ab0b2eb0b98316514c369">   57</a></span>&#160;    uint16_t <a class="code" href="structqueue__list.html#a1a1f4624f66ab0b2eb0b98316514c369">min</a>; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="structqueue__list.html#ac66b569507cc273bbf83ce5dd5f70e84">   58</a></span>&#160;    uint16_t <a class="code" href="structqueue__list.html#ac66b569507cc273bbf83ce5dd5f70e84">max</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="structqueue__list.html#a9875bfca8a71b397165547a74c4fc410">   59</a></span>&#160;    uint16_t <a class="code" href="structqueue__list.html#a8bf0d44a6ead3e7cc2898ba02498749e">num</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    <span class="keyword">struct </span>queue_list_head <a class="code" href="structqueue__list.html#a9875bfca8a71b397165547a74c4fc410">head</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;};</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">char</span> *</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;jcfg_get_json_string(<span class="keyword">struct</span> <a class="code" href="structjcfg.html">jcfg</a> *cfg)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">return</span> (cfg) ? cfg-&gt;<a class="code" href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">str</a> : NULL;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;}</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span>json_tokener *</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;jcfg_get_json_token(<span class="keyword">struct</span> <a class="code" href="structjcfg.html">jcfg</a> *cfg)</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> (cfg) ? cfg-&gt;<a class="code" href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">tok</a> : NULL;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;}</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;<span class="keywordtype">void</span> jcfg_umem_free(<a class="code" href="structjcfg__hdr.html">jcfg_hdr_t</a> *hdr);</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _JCFG_PRIVATE_H_ */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="apktdev__driver_8h_html_a55d2a8149d787b69126f5739cc5a9047"><div class="ttname"><a href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a></div><div class="ttdeci">TAILQ_HEAD(pktdev_driver_list, pktdev_driver)</div></div>
-<div class="ttc" id="astructjcfg__client__s_html"><div class="ttname"><a href="structjcfg__client__s.html">jcfg_client_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00025">jcfg_private.h:25</a></div></div>
-<div class="ttc" id="astructjcfg__client__s_html_a339d22b3e442946380f98ed19e320db2"><div class="ttname"><a href="structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2">jcfg_client_s::s</a></div><div class="ttdeci">int s</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00026">jcfg_private.h:26</a></div></div>
-<div class="ttc" id="astructjcfg__client__s_html_a5d86c19b2e4b5f2ad5e8e2ec6f3f6615"><div class="ttname"><a href="structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615">jcfg_client_s::info</a></div><div class="ttdeci">jcfg_info_t * info</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00027">jcfg_private.h:27</a></div></div>
-<div class="ttc" id="astructjcfg__client__s_html_a779bfbbb688cf46720cfb65109ea4858"><div class="ttname"><a href="structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858">jcfg_client_s::barrier</a></div><div class="ttdeci">pthread_barrier_t barrier</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00028">jcfg_private.h:28</a></div></div>
-<div class="ttc" id="astructjcfg__data_html"><div class="ttname"><a href="structjcfg__data.html">jcfg_data</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00275">jcfg.h:275</a></div></div>
-<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00337">jcfg.h:337</a></div></div>
-<div class="ttc" id="astructjcfg_html"><div class="ttname"><a href="structjcfg.html">jcfg</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00034">jcfg_private.h:34</a></div></div>
-<div class="ttc" id="astructjcfg_html_a68532c177ebf567e5e47e908735aeb33"><div class="ttname"><a href="structjcfg.html#a68532c177ebf567e5e47e908735aeb33">jcfg::data</a></div><div class="ttdeci">struct jcfg_data data</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00028">jcfg_private.h:35</a></div></div>
-<div class="ttc" id="astructjcfg_html_a6bad2932f8ead4197bd1d15770789d50"><div class="ttname"><a href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">jcfg::tok</a></div><div class="ttdeci">struct json_tokener * tok</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00038">jcfg_private.h:38</a></div></div>
-<div class="ttc" id="astructjcfg_html_aa022e6fdc1582a211278228e710896f3"><div class="ttname"><a href="structjcfg.html#aa022e6fdc1582a211278228e710896f3">jcfg::root</a></div><div class="ttdeci">struct json_object * root</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00037">jcfg_private.h:37</a></div></div>
-<div class="ttc" id="astructjcfg_html_ab50d783982593ef993ea0b68f7ad8b80"><div class="ttname"><a href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">jcfg::str</a></div><div class="ttdeci">char * str</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00036">jcfg_private.h:36</a></div></div>
-<div class="ttc" id="astructqueue__list__entry_html"><div class="ttname"><a href="structqueue__list__entry.html">queue_list_entry</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00044">jcfg_private.h:44</a></div></div>
+<div class="ttc" id="astructjcfg__client__s_html"><div class="ttname"><a href="structjcfg__client__s.html">jcfg_client_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00024">jcfg_private.h:24</a></div></div>
+<div class="ttc" id="astructjcfg__client__s_html_a339d22b3e442946380f98ed19e320db2"><div class="ttname"><a href="structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2">jcfg_client_s::s</a></div><div class="ttdeci">int s</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00025">jcfg_private.h:25</a></div></div>
+<div class="ttc" id="astructjcfg__client__s_html_a5d86c19b2e4b5f2ad5e8e2ec6f3f6615"><div class="ttname"><a href="structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615">jcfg_client_s::info</a></div><div class="ttdeci">jcfg_info_t * info</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00026">jcfg_private.h:26</a></div></div>
+<div class="ttc" id="astructjcfg__client__s_html_a779bfbbb688cf46720cfb65109ea4858"><div class="ttname"><a href="structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858">jcfg_client_s::barrier</a></div><div class="ttdeci">pthread_barrier_t barrier</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00027">jcfg_private.h:27</a></div></div>
+<div class="ttc" id="astructjcfg__data_html"><div class="ttname"><a href="structjcfg__data.html">jcfg_data</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00272">jcfg.h:272</a></div></div>
+<div class="ttc" id="astructjcfg__hdr_html"><div class="ttname"><a href="structjcfg__hdr.html">jcfg_hdr</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00129">jcfg.h:129</a></div></div>
+<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00334">jcfg.h:334</a></div></div>
+<div class="ttc" id="astructjcfg_html"><div class="ttname"><a href="structjcfg.html">jcfg</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00033">jcfg_private.h:33</a></div></div>
+<div class="ttc" id="astructjcfg_html_a68532c177ebf567e5e47e908735aeb33"><div class="ttname"><a href="structjcfg.html#a68532c177ebf567e5e47e908735aeb33">jcfg::data</a></div><div class="ttdeci">struct jcfg_data data</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00027">jcfg_private.h:34</a></div></div>
+<div class="ttc" id="astructjcfg_html_a6bad2932f8ead4197bd1d15770789d50"><div class="ttname"><a href="structjcfg.html#a6bad2932f8ead4197bd1d15770789d50">jcfg::tok</a></div><div class="ttdeci">struct json_tokener * tok</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00037">jcfg_private.h:37</a></div></div>
+<div class="ttc" id="astructjcfg_html_aa022e6fdc1582a211278228e710896f3"><div class="ttname"><a href="structjcfg.html#aa022e6fdc1582a211278228e710896f3">jcfg::root</a></div><div class="ttdeci">struct json_object * root</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00036">jcfg_private.h:36</a></div></div>
+<div class="ttc" id="astructjcfg_html_ab50d783982593ef993ea0b68f7ad8b80"><div class="ttname"><a href="structjcfg.html#ab50d783982593ef993ea0b68f7ad8b80">jcfg::str</a></div><div class="ttdeci">char * str</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00035">jcfg_private.h:35</a></div></div>
+<div class="ttc" id="astructqueue__list__entry_html"><div class="ttname"><a href="structqueue__list__entry.html">queue_list_entry</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00043">jcfg_private.h:43</a></div></div>
 <div class="ttc" id="astructqueue__list__entry_html_a07849bb7514e6eb96215b7b5ad58afe4"><div class="ttname"><a href="structqueue__list__entry.html#a07849bb7514e6eb96215b7b5ad58afe4">queue_list_entry::TAILQ_ENTRY</a></div><div class="ttdeci">TAILQ_ENTRY(queue_list_entry) next</div></div>
-<div class="ttc" id="astructqueue__list__entry_html_ac5f38113a34f9eab3e7782eade81d266"><div class="ttname"><a href="structqueue__list__entry.html#ac5f38113a34f9eab3e7782eade81d266">queue_list_entry::v</a></div><div class="ttdeci">uint16_t v</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00045">jcfg_private.h:45</a></div></div>
-<div class="ttc" id="astructqueue__list_html"><div class="ttname"><a href="structqueue__list.html">queue_list</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00057">jcfg_private.h:57</a></div></div>
-<div class="ttc" id="astructqueue__list_html_a1a1f4624f66ab0b2eb0b98316514c369"><div class="ttname"><a href="structqueue__list.html#a1a1f4624f66ab0b2eb0b98316514c369">queue_list::min</a></div><div class="ttdeci">uint16_t min</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00058">jcfg_private.h:58</a></div></div>
-<div class="ttc" id="astructqueue__list_html_a8bf0d44a6ead3e7cc2898ba02498749e"><div class="ttname"><a href="structqueue__list.html#a8bf0d44a6ead3e7cc2898ba02498749e">queue_list::num</a></div><div class="ttdeci">uint16_t num</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00060">jcfg_private.h:60</a></div></div>
-<div class="ttc" id="astructqueue__list_html_a9875bfca8a71b397165547a74c4fc410"><div class="ttname"><a href="structqueue__list.html#a9875bfca8a71b397165547a74c4fc410">queue_list::head</a></div><div class="ttdeci">struct queue_list_head head</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00060">jcfg_private.h:62</a></div></div>
-<div class="ttc" id="astructqueue__list_html_ac66b569507cc273bbf83ce5dd5f70e84"><div class="ttname"><a href="structqueue__list.html#ac66b569507cc273bbf83ce5dd5f70e84">queue_list::max</a></div><div class="ttdeci">uint16_t max</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00059">jcfg_private.h:59</a></div></div>
+<div class="ttc" id="astructqueue__list__entry_html_ac5f38113a34f9eab3e7782eade81d266"><div class="ttname"><a href="structqueue__list__entry.html#ac5f38113a34f9eab3e7782eade81d266">queue_list_entry::v</a></div><div class="ttdeci">uint16_t v</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00044">jcfg_private.h:44</a></div></div>
+<div class="ttc" id="astructqueue__list_html"><div class="ttname"><a href="structqueue__list.html">queue_list</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00056">jcfg_private.h:56</a></div></div>
+<div class="ttc" id="astructqueue__list_html_a1a1f4624f66ab0b2eb0b98316514c369"><div class="ttname"><a href="structqueue__list.html#a1a1f4624f66ab0b2eb0b98316514c369">queue_list::min</a></div><div class="ttdeci">uint16_t min</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00057">jcfg_private.h:57</a></div></div>
+<div class="ttc" id="astructqueue__list_html_a8bf0d44a6ead3e7cc2898ba02498749e"><div class="ttname"><a href="structqueue__list.html#a8bf0d44a6ead3e7cc2898ba02498749e">queue_list::num</a></div><div class="ttdeci">uint16_t num</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00059">jcfg_private.h:59</a></div></div>
+<div class="ttc" id="astructqueue__list_html_a9875bfca8a71b397165547a74c4fc410"><div class="ttname"><a href="structqueue__list.html#a9875bfca8a71b397165547a74c4fc410">queue_list::head</a></div><div class="ttdeci">struct queue_list_head head</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00059">jcfg_private.h:61</a></div></div>
+<div class="ttc" id="astructqueue__list_html_ac66b569507cc273bbf83ce5dd5f70e84"><div class="ttname"><a href="structqueue__list.html#ac66b569507cc273bbf83ce5dd5f70e84">queue_list::max</a></div><div class="ttdeci">uint16_t max</div><div class="ttdef"><b>Definition:</b> <a href="jcfg__private_8h_source.html#l00058">jcfg_private.h:58</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

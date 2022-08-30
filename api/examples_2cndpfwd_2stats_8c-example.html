@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -202,6 +202,10 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2stats_8c-example.ht
 <div class="line">    prt_cnt(skip, col, stats.ierrors, RED_TYPE);</div>
 <div class="line">    prt_cnt(skip, col, stats.imissed, RED_TYPE);</div>
 <div class="line">    prt_cnt(skip, col, stats.rx_invalid, RED_TYPE);</div>
+<div class="line"><span class="preprocessor">#if LINUX_VERSION_CODE &gt;= KERNEL_VERSION(5, 9, 0)</span></div>
+<div class="line">    prt_cnt(skip, col, stats.rx_ring_full, CYAN_TYPE);</div>
+<div class="line">    prt_cnt(skip, col, stats.rx_fill_ring_empty, CYAN_TYPE);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">    prt_cnt(skip, col, tx_pps, YELLOW_TYPE);</div>
 <div class="line">    prt_cnt(skip, col, stats.opackets, MAGENTA_TYPE);</div>
@@ -209,6 +213,9 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2stats_8c-example.ht
 <div class="line">    prt_cnt(skip, col, stats.oerrors, RED_TYPE);</div>
 <div class="line">    prt_cnt(skip, col, stats.odropped, CYAN_TYPE);</div>
 <div class="line">    prt_cnt(skip, col, stats.tx_invalid, RED_TYPE);</div>
+<div class="line"><span class="preprocessor">#if LINUX_VERSION_CODE &gt;= KERNEL_VERSION(5, 9, 0)</span></div>
+<div class="line">    prt_cnt(skip, col, stats.tx_ring_empty, CYAN_TYPE);</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (fwd-&gt;flags &amp; FWD_ACL_STATS) {</div>
 <div class="line">        prt_cnt(skip, col, acl_prefilter_pps, YELLOW_TYPE);</div>
@@ -293,12 +300,19 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2stats_8c-example.ht
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Errors&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Missed&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Invalid&quot;</span>},</div>
+<div class="line"><span class="preprocessor">#if LINUX_VERSION_CODE &gt;= KERNEL_VERSION(5, 9, 0)</span></div>
+<div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   ring full&quot;</span>},</div>
+<div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   ring empty&quot;</span>},</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line">    {HDR_LINE, <span class="stringliteral">&quot;[yellow:-:italic]%-*s [green:-:-]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;Pkts/s&quot;</span>, <span class="stringliteral">&quot;TX&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Total Pkts&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Total MBs&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Errors&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Dropped&quot;</span>},</div>
 <div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   Invalid&quot;</span>},</div>
+<div class="line"><span class="preprocessor">#if LINUX_VERSION_CODE &gt;= KERNEL_VERSION(5, 9, 0)</span></div>
+<div class="line">    {COL_LINE, <span class="stringliteral">&quot;[green]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;   ring empty&quot;</span>},</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"> </div>
 <div class="line">    {HDR_LINE | ACL_LINE, <span class="stringliteral">&quot;[yellow:-:italic]%-*s [green:-:-]%-*s [yellow]|[]\n&quot;</span>, <span class="stringliteral">&quot;Pkts/s&quot;</span>,</div>
 <div class="line">     <span class="stringliteral">&quot;ACL Drop&quot;</span>},</div>
@@ -692,29 +706,29 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2stats_8c-example.ht
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="acne__common_8h_html_a110ce74779a3879ca9ba9167c968cf27"><div class="ttname"><a href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a></div><div class="ttdeci">#define __cne_unused</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00144">cne_common.h:144</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00223">cne_log.h:223</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00250">cne_log.h:250</a></div></div>
 <div class="ttc" id="acne__lport_8h_html"><div class="ttname"><a href="cne__lport_8h.html">cne_lport.h</a></div></div>
 <div class="ttc" id="acne__stdio_8h_html_acb5e6a7e2a06a6e65de91e951186606d"><div class="ttname"><a href="cne__stdio_8h.html#acb5e6a7e2a06a6e65de91e951186606d">cne_printf</a></div><div class="ttdeci">CNDP_API int cne_printf(const char *fmt,...)</div></div>
 <div class="ttc" id="ajcfg_8h_html"><div class="ttname"><a href="jcfg_8h.html">jcfg.h</a></div></div>
 <div class="ttc" id="ametrics_8h_html"><div class="ttname"><a href="metrics_8h.html">metrics.h</a></div></div>
 <div class="ttc" id="ametrics_8h_html_a24786a02131448a9858e3f0afb226478"><div class="ttname"><a href="metrics_8h.html#a24786a02131448a9858e3f0afb226478">metrics_port_stats</a></div><div class="ttdeci">CNDP_API int metrics_port_stats(metrics_client_t *c, char *name, lport_stats_t *s)</div></div>
-<div class="ttc" id="ametrics_8h_html_a3775ca9e50261d0a5f0ac2c09b0609aa"><div class="ttname"><a href="metrics_8h.html#a3775ca9e50261d0a5f0ac2c09b0609aa">metrics_append</a></div><div class="ttdeci">#define metrics_append(c, fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="metrics_8h_source.html#l00075">metrics.h:75</a></div></div>
+<div class="ttc" id="ametrics_8h_html_a3775ca9e50261d0a5f0ac2c09b0609aa"><div class="ttname"><a href="metrics_8h.html#a3775ca9e50261d0a5f0ac2c09b0609aa">metrics_append</a></div><div class="ttdeci">#define metrics_append(c, fmt,...)</div><div class="ttdef"><b>Definition:</b> <a href="metrics_8h_source.html#l00074">metrics.h:74</a></div></div>
 <div class="ttc" id="ametrics_8h_html_a3bfe8011926265bcf363db1dcb93d405"><div class="ttname"><a href="metrics_8h.html#a3bfe8011926265bcf363db1dcb93d405">metrics_init</a></div><div class="ttdeci">CNDP_API int metrics_init(void *priv_)</div></div>
 <div class="ttc" id="ametrics_8h_html_aabdf3f9dc1683d97a1ecaa08341acef1"><div class="ttname"><a href="metrics_8h.html#aabdf3f9dc1683d97a1ecaa08341acef1">metrics_register</a></div><div class="ttdeci">CNDP_API int metrics_register(const char *cmd, metrics_cb fn)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_aa0d0bda65f9f4e73f50b6cc3b58f3cc3"><div class="ttname"><a href="pktdev__api_8h.html#aa0d0bda65f9f4e73f50b6cc3b58f3cc3">pktdev_stats_get</a></div><div class="ttdeci">CNDP_API int pktdev_stats_get(uint16_t lport_id, lport_stats_t *stats)</div></div>
-<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00337">jcfg.h:337</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html"><div class="ttname"><a href="structjcfg__lport.html">jcfg_lport</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00170">jcfg.h:170</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_a9e80a18e17fc4c6a3e11c46abcf1c8ff"><div class="ttname"><a href="structjcfg__lport.html#a9e80a18e17fc4c6a3e11c46abcf1c8ff">jcfg_lport::lpid</a></div><div class="ttdeci">uint16_t lpid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00178">jcfg.h:178</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_aaa44cfd991dfd49435b9e98988ff2580"><div class="ttname"><a href="structjcfg__lport.html#aaa44cfd991dfd49435b9e98988ff2580">jcfg_lport::netdev</a></div><div class="ttdeci">char * netdev</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00172">jcfg.h:172</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_ace02cbb931375d6cb914c32195e05e6f"><div class="ttname"><a href="structjcfg__lport.html#ace02cbb931375d6cb914c32195e05e6f">jcfg_lport::pmd_name</a></div><div class="ttdeci">char * pmd_name</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00173">jcfg.h:173</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_af1a904eea044da920254226da21ce37b"><div class="ttname"><a href="structjcfg__lport.html#af1a904eea044da920254226da21ce37b">jcfg_lport::qid</a></div><div class="ttdeci">uint16_t qid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00179">jcfg.h:179</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html"><div class="ttname"><a href="structjcfg__thd.html">jcfg_thd</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00212">jcfg.h:212</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a3621634c7d41edf167a313cdfe0648b6"><div class="ttname"><a href="structjcfg__thd.html#a3621634c7d41edf167a313cdfe0648b6">jcfg_thd::idx</a></div><div class="ttdeci">uint16_t idx</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00219">jcfg.h:219</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a8687369c18c90926a038e3a15d1ea3e6"><div class="ttname"><a href="structjcfg__thd.html#a8687369c18c90926a038e3a15d1ea3e6">jcfg_thd::lport_names</a></div><div class="ttdeci">char ** lport_names</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00220">jcfg.h:220</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a91fbaa74988c83e02adba32eba8bdecd"><div class="ttname"><a href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">jcfg_thd::lport_cnt</a></div><div class="ttdeci">uint16_t lport_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00217">jcfg.h:217</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a964ece8138f1339f5a2e693190111fed"><div class="ttname"><a href="structjcfg__thd.html#a964ece8138f1339f5a2e693190111fed">jcfg_thd::thread_type</a></div><div class="ttdeci">char * thread_type</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00215">jcfg.h:215</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_ae403285ea303dd26759cbfb5f18404f1"><div class="ttname"><a href="structjcfg__thd.html#ae403285ea303dd26759cbfb5f18404f1">jcfg_thd::pause</a></div><div class="ttdeci">volatile uint16_t pause</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00224">jcfg.h:224</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_af79ba313643b1c6e634d705221930b84"><div class="ttname"><a href="structjcfg__thd.html#af79ba313643b1c6e634d705221930b84">jcfg_thd::group_name</a></div><div class="ttdeci">char * group_name</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00214">jcfg.h:214</a></div></div>
+<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00334">jcfg.h:334</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html"><div class="ttname"><a href="structjcfg__lport.html">jcfg_lport</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00167">jcfg.h:167</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_a9e80a18e17fc4c6a3e11c46abcf1c8ff"><div class="ttname"><a href="structjcfg__lport.html#a9e80a18e17fc4c6a3e11c46abcf1c8ff">jcfg_lport::lpid</a></div><div class="ttdeci">uint16_t lpid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00175">jcfg.h:175</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_aaa44cfd991dfd49435b9e98988ff2580"><div class="ttname"><a href="structjcfg__lport.html#aaa44cfd991dfd49435b9e98988ff2580">jcfg_lport::netdev</a></div><div class="ttdeci">char * netdev</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00169">jcfg.h:169</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_ace02cbb931375d6cb914c32195e05e6f"><div class="ttname"><a href="structjcfg__lport.html#ace02cbb931375d6cb914c32195e05e6f">jcfg_lport::pmd_name</a></div><div class="ttdeci">char * pmd_name</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00170">jcfg.h:170</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_af1a904eea044da920254226da21ce37b"><div class="ttname"><a href="structjcfg__lport.html#af1a904eea044da920254226da21ce37b">jcfg_lport::qid</a></div><div class="ttdeci">uint16_t qid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00176">jcfg.h:176</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html"><div class="ttname"><a href="structjcfg__thd.html">jcfg_thd</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00209">jcfg.h:209</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a3621634c7d41edf167a313cdfe0648b6"><div class="ttname"><a href="structjcfg__thd.html#a3621634c7d41edf167a313cdfe0648b6">jcfg_thd::idx</a></div><div class="ttdeci">uint16_t idx</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00216">jcfg.h:216</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a8687369c18c90926a038e3a15d1ea3e6"><div class="ttname"><a href="structjcfg__thd.html#a8687369c18c90926a038e3a15d1ea3e6">jcfg_thd::lport_names</a></div><div class="ttdeci">char ** lport_names</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00217">jcfg.h:217</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a91fbaa74988c83e02adba32eba8bdecd"><div class="ttname"><a href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">jcfg_thd::lport_cnt</a></div><div class="ttdeci">uint16_t lport_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00214">jcfg.h:214</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a964ece8138f1339f5a2e693190111fed"><div class="ttname"><a href="structjcfg__thd.html#a964ece8138f1339f5a2e693190111fed">jcfg_thd::thread_type</a></div><div class="ttdeci">char * thread_type</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00212">jcfg.h:212</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_ae403285ea303dd26759cbfb5f18404f1"><div class="ttname"><a href="structjcfg__thd.html#ae403285ea303dd26759cbfb5f18404f1">jcfg_thd::pause</a></div><div class="ttdeci">volatile uint16_t pause</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00221">jcfg.h:221</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_af79ba313643b1c6e634d705221930b84"><div class="ttname"><a href="structjcfg__thd.html#af79ba313643b1c6e634d705221930b84">jcfg_thd::group_name</a></div><div class="ttdeci">char * group_name</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00211">jcfg.h:211</a></div></div>
 <div class="ttc" id="auds_8h_html_a3796c78eca2f5581b5712af0d8978081"><div class="ttname"><a href="uds_8h.html#a3796c78eca2f5581b5712af0d8978081">uds_group_t</a></div><div class="ttdeci">struct uds_group uds_group_t</div></div>
 <div class="ttc" id="auds_8h_html_a37ead71fc3240f2952999dc209443302"><div class="ttname"><a href="uds_8h.html#a37ead71fc3240f2952999dc209443302">uds_get_default</a></div><div class="ttdeci">CNDP_API uds_info_t * uds_get_default(void *priv)</div></div>
 <div class="ttc" id="auds_8h_html_a762d1ac4f504838931ea4208b3841033"><div class="ttname"><a href="uds_8h.html#a762d1ac4f504838931ea4208b3841033">uds_register</a></div><div class="ttdeci">CNDP_API int uds_register(const uds_group_t *grp, const char *cmd, uds_cb fn)</div></div>

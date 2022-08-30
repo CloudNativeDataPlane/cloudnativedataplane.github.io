@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -115,69 +115,67 @@ $(document).ready(function(){initNavTree('cli__env_8h_source.html',''); initResi
 </div><!--header-->
 <div class="contents">
 <a href="cli__env_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* SPDX-License-Identifier: BSD-3-Clause</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) &lt;2019-2021&gt; Intel Corporation.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * Copyright (c) 2019-2022 Intel Corporation.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">/* Create by: Keith Wiles @ intel.com */</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;sys/queue.h&gt;</span>        <span class="comment">// for TAILQ_ENTRY, TAILQ_HEAD</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef _CLI_ENV_H_</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define _CLI_ENV_H_</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#ifndef _CLI_ENV_H_</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define _CLI_ENV_H_</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span>        <span class="comment">// for CNDP_API</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">struct </span>cli;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">   25</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span> *(*cli_sfunc_t)(<span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">struct </span>env_node {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    TAILQ_ENTRY(env_node) next;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *var;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *val;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">cli_sfunc_t</a> sfunc;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;};</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">struct </span>cli_env {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(, env_node) head; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">int</span> count;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a4d89de1b8340ddbfabb24b8cb2f5271e">   46</a></span>&#160;CNDP_API <span class="keyword">struct </span>cli_env *<a class="code" href="cli__env_8h.html#a4d89de1b8340ddbfabb24b8cb2f5271e">cli_env_create</a>(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="cli__env_8h.html#afbabb83ee3f625896c99288bdeee736f">   54</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__env_8h.html#afbabb83ee3f625896c99288bdeee736f">cli_env_destroy</a>(<span class="keyword">struct</span> cli_env *env);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="cli__env_8h.html#aa0296a6a49174247434be4996e771f1a">   68</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#aa0296a6a49174247434be4996e771f1a">cli_env_set</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var, <span class="keyword">const</span> <span class="keywordtype">char</span> *val);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ac7e3722222b2f5532929b9da68a468f5">   84</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#ac7e3722222b2f5532929b9da68a468f5">cli_env_string</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var, <a class="code" href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">cli_sfunc_t</a> sfunc,</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">char</span> *val);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ac27204f326eebabd37e584b1814cfb9b">   97</a></span>&#160;CNDP_API <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="cli__env_8h.html#ac27204f326eebabd37e584b1814cfb9b">cli_env_get</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ab34e781135e07ba6ed6dee67a0a534a8">  109</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#ab34e781135e07ba6ed6dee67a0a534a8">cli_env_del</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var);</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00123"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a76fff676ac2a1ae7142ffb833e6ec1f3">  123</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__env_8h.html#a76fff676ac2a1ae7142ffb833e6ec1f3">cli_env_substitution</a>(<span class="keyword">struct</span> cli_env *env, <span class="keywordtype">char</span> *line, <span class="keywordtype">int</span> sz);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a0a7a3737f177245e0232f5216539fbb2">  134</a></span>&#160;<a class="code" href="cli__env_8h.html#a0a7a3737f177245e0232f5216539fbb2">cli_env_count</a>(<span class="keyword">struct</span> cli_env *env)</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    <span class="keywordflow">return</span> env-&gt;count;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a62299870f0e33a1cb8310b1f42959c5b">  149</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#a62299870f0e33a1cb8310b1f42959c5b">cli_env_get_all</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">struct</span> env_node **list, <span class="keywordtype">int</span> max_size);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ac00fe9078f0dbaac470bd579f8831b4b">  157</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__env_8h.html#ac00fe9078f0dbaac470bd579f8831b4b">cli_env_show</a>(<span class="keyword">struct</span> cli_env *env);</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;}</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160; </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _CLI_ENV_H_ */</span><span class="preprocessor"></span></div>
-<div class="ttc" id="acli__env_8h_html_a0a7a3737f177245e0232f5216539fbb2"><div class="ttname"><a href="cli__env_8h.html#a0a7a3737f177245e0232f5216539fbb2">cli_env_count</a></div><div class="ttdeci">static int cli_env_count(struct cli_env *env)</div><div class="ttdef"><b>Definition:</b> <a href="cli__env_8h_source.html#l00134">cli_env.h:134</a></div></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;sys/queue.h&gt;</span>         <span class="comment">// for TAILQ_ENTRY, TAILQ_HEAD</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span>        <span class="comment">// for CNDP_API</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">struct </span>cli;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">   22</a></span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span> *(*cli_sfunc_t)(<span class="keyword">const</span> <span class="keywordtype">char</span> *str);</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">struct </span>env_node {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    TAILQ_ENTRY(env_node) next;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *var;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *val;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">cli_sfunc_t</a> sfunc;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;};</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">struct </span>cli_env {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="pktdev__driver_8h.html#a55d2a8149d787b69126f5739cc5a9047">TAILQ_HEAD</a>(, env_node) head; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">int</span> count;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;};</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a4d89de1b8340ddbfabb24b8cb2f5271e">   43</a></span>&#160;CNDP_API <span class="keyword">struct </span>cli_env *<a class="code" href="cli__env_8h.html#a4d89de1b8340ddbfabb24b8cb2f5271e">cli_env_create</a>(<span class="keywordtype">void</span>);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="cli__env_8h.html#afbabb83ee3f625896c99288bdeee736f">   51</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__env_8h.html#afbabb83ee3f625896c99288bdeee736f">cli_env_destroy</a>(<span class="keyword">struct</span> cli_env *env);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="cli__env_8h.html#aa0296a6a49174247434be4996e771f1a">   65</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#aa0296a6a49174247434be4996e771f1a">cli_env_set</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var, <span class="keyword">const</span> <span class="keywordtype">char</span> *val);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ac7e3722222b2f5532929b9da68a468f5">   81</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#ac7e3722222b2f5532929b9da68a468f5">cli_env_string</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var, <a class="code" href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">cli_sfunc_t</a> sfunc,</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                            <span class="keyword">const</span> <span class="keywordtype">char</span> *val);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ac27204f326eebabd37e584b1814cfb9b">   94</a></span>&#160;CNDP_API <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="cli__env_8h.html#ac27204f326eebabd37e584b1814cfb9b">cli_env_get</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ab34e781135e07ba6ed6dee67a0a534a8">  106</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#ab34e781135e07ba6ed6dee67a0a534a8">cli_env_del</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">const</span> <span class="keywordtype">char</span> *var);</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a76fff676ac2a1ae7142ffb833e6ec1f3">  120</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__env_8h.html#a76fff676ac2a1ae7142ffb833e6ec1f3">cli_env_substitution</a>(<span class="keyword">struct</span> cli_env *env, <span class="keywordtype">char</span> *line, <span class="keywordtype">int</span> sz);</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a0a7a3737f177245e0232f5216539fbb2">  131</a></span>&#160;<a class="code" href="cli__env_8h.html#a0a7a3737f177245e0232f5216539fbb2">cli_env_count</a>(<span class="keyword">struct</span> cli_env *env)</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <span class="keywordflow">return</span> env-&gt;count;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="cli__env_8h.html#a62299870f0e33a1cb8310b1f42959c5b">  146</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cli__env_8h.html#a62299870f0e33a1cb8310b1f42959c5b">cli_env_get_all</a>(<span class="keyword">struct</span> cli_env *env, <span class="keyword">struct</span> env_node **list, <span class="keywordtype">int</span> max_size);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="cli__env_8h.html#ac00fe9078f0dbaac470bd579f8831b4b">  154</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cli__env_8h.html#ac00fe9078f0dbaac470bd579f8831b4b">cli_env_show</a>(<span class="keyword">struct</span> cli_env *env);</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;}</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* _CLI_ENV_H_ */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="acli__env_8h_html_a0a7a3737f177245e0232f5216539fbb2"><div class="ttname"><a href="cli__env_8h.html#a0a7a3737f177245e0232f5216539fbb2">cli_env_count</a></div><div class="ttdeci">static int cli_env_count(struct cli_env *env)</div><div class="ttdef"><b>Definition:</b> <a href="cli__env_8h_source.html#l00131">cli_env.h:131</a></div></div>
 <div class="ttc" id="acli__env_8h_html_a4d89de1b8340ddbfabb24b8cb2f5271e"><div class="ttname"><a href="cli__env_8h.html#a4d89de1b8340ddbfabb24b8cb2f5271e">cli_env_create</a></div><div class="ttdeci">CNDP_API struct cli_env * cli_env_create(void)</div></div>
-<div class="ttc" id="acli__env_8h_html_a5741cfe4e4d3f27f9d9d1bb44e69fa75"><div class="ttname"><a href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">cli_sfunc_t</a></div><div class="ttdeci">char *(* cli_sfunc_t)(const char *str)</div><div class="ttdef"><b>Definition:</b> <a href="cli__env_8h_source.html#l00025">cli_env.h:25</a></div></div>
+<div class="ttc" id="acli__env_8h_html_a5741cfe4e4d3f27f9d9d1bb44e69fa75"><div class="ttname"><a href="cli__env_8h.html#a5741cfe4e4d3f27f9d9d1bb44e69fa75">cli_sfunc_t</a></div><div class="ttdeci">char *(* cli_sfunc_t)(const char *str)</div><div class="ttdef"><b>Definition:</b> <a href="cli__env_8h_source.html#l00022">cli_env.h:22</a></div></div>
 <div class="ttc" id="acli__env_8h_html_a62299870f0e33a1cb8310b1f42959c5b"><div class="ttname"><a href="cli__env_8h.html#a62299870f0e33a1cb8310b1f42959c5b">cli_env_get_all</a></div><div class="ttdeci">CNDP_API int cli_env_get_all(struct cli_env *env, struct env_node **list, int max_size)</div></div>
 <div class="ttc" id="acli__env_8h_html_a76fff676ac2a1ae7142ffb833e6ec1f3"><div class="ttname"><a href="cli__env_8h.html#a76fff676ac2a1ae7142ffb833e6ec1f3">cli_env_substitution</a></div><div class="ttdeci">CNDP_API void cli_env_substitution(struct cli_env *env, char *line, int sz)</div></div>
 <div class="ttc" id="acli__env_8h_html_aa0296a6a49174247434be4996e771f1a"><div class="ttname"><a href="cli__env_8h.html#aa0296a6a49174247434be4996e771f1a">cli_env_set</a></div><div class="ttdeci">CNDP_API int cli_env_set(struct cli_env *env, const char *var, const char *val)</div></div>

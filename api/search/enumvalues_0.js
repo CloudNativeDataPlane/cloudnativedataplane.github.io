@@ -1,20 +1,6 @@
 var searchData=
 [
-  ['_5fasync_4551',['_ASYNC',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2c306b339797eecb94cf36ec186d4af3',1,'cnet_chnl.h']]],
-  ['_5fcantrecvmore_4552',['_CANTRECVMORE',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79',1,'cnet_chnl.h']]],
-  ['_5fcantsendmore_4553',['_CANTSENDMORE',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f',1,'cnet_chnl.h']]],
-  ['_5fchnl_5ffree_4554',['_CHNL_FREE',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a8f0c4a91b6fac2e1c55dabe7e60f85f1',1,'cnet_chnl.h']]],
-  ['_5fincomp_4555',['_INCOMP',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af318d307162865f7dcfe19d4c3587ae6',1,'cnet_chnl.h']]],
-  ['_5fisconfirming_4556',['_ISCONFIRMING',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a83a6b57ae83ab10defef07ff5811135d',1,'cnet_chnl.h']]],
-  ['_5fisconnected_4557',['_ISCONNECTED',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9a114f69ea90855e0d1f383035a68d96',1,'cnet_chnl.h']]],
-  ['_5fisconnecting_4558',['_ISCONNECTING',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2eaaecb32fddfc87c6d468f753047a19',1,'cnet_chnl.h']]],
-  ['_5fisdisconnected_4559',['_ISDISCONNECTED',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04bfbc8718be3fa2595a1f3ecdf5a7d9',1,'cnet_chnl.h']]],
-  ['_5fisdisconnecting_4560',['_ISDISCONNECTING',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a0b9bac5cfb2379184898dc6a2e3c72a1',1,'cnet_chnl.h']]],
-  ['_5fnbio_4561',['_NBIO',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5ab3e171adcd1ec641eeb562882e0654f9',1,'cnet_chnl.h']]],
-  ['_5fnofdref_4562',['_NOFDREF',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9d91a9a6f5094f0cc502e05e83f626a0',1,'cnet_chnl.h']]],
-  ['_5fpriv_4563',['_PRIV',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5adef382ed9e62a35675342cf9fb5d018a',1,'cnet_chnl.h']]],
-  ['_5frcvatmark_4564',['_RCVATMARK',['../cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a3273a4248ae14422482ee50333b4d72b',1,'cnet_chnl.h']]],
-  ['_5fselexcept_4565',['_SELEXCEPT',['../cnet__const_8h.html#a385c44f6fb256e5716a2302a5b940388a2e3245e3206171e0ee80d674973ea811',1,'cnet_const.h']]],
-  ['_5fselread_4566',['_SELREAD',['../cnet__const_8h.html#a385c44f6fb256e5716a2302a5b940388ab7d21754e4ba0165f55669a45a9ee5d7',1,'cnet_const.h']]],
-  ['_5fselwrite_4567',['_SELWRITE',['../cnet__const_8h.html#a385c44f6fb256e5716a2302a5b940388a779a5d6984661880edabccc57c9d0de7',1,'cnet_const.h']]]
+  ['_5fselexcept_4636',['_SELEXCEPT',['../cnet__const_8h.html#abed82baf7f470b522273a3e37c24c600a2e3245e3206171e0ee80d674973ea811',1,'cnet_const.h']]],
+  ['_5fselread_4637',['_SELREAD',['../cnet__const_8h.html#abed82baf7f470b522273a3e37c24c600ab7d21754e4ba0165f55669a45a9ee5d7',1,'cnet_const.h']]],
+  ['_5fselwrite_4638',['_SELWRITE',['../cnet__const_8h.html#abed82baf7f470b522273a3e37c24c600a779a5d6984661880edabccc57c9d0de7',1,'cnet_const.h']]]
 ];

@@ -8,5 +8,6 @@ var structpktmbuf__info__s =
     [ "bufcnt", "structpktmbuf__info__s.html#ab380511e539f05f71b36046d1b4e40f1", null ],
     [ "bufsz", "structpktmbuf__info__s.html#a0c5c1e23020e6a7b6456d5bac50cda83", null ],
     [ "cache_sz", "structpktmbuf__info__s.html#a9d44190f20eda1a399f1c5c77dbbab3e", null ],
-    [ "mtype", "structpktmbuf__info__s.html#a2f585bc192b4012ffb10e97c0d90a222", null ]
+    [ "metadata_bufsz", "structpktmbuf__info__s.html#a185a41dd157376730be7c2c5a5912f7b", null ],
+    [ "metadata", "structpktmbuf__info__s.html#ace70beae1a71187d5961a8d7c0dafb7b", null ]
 ];

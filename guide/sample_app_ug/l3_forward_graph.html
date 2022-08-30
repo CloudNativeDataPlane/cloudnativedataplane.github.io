@@ -137,7 +137,7 @@ This causes the <code class="docutils literal notranslate"><span class="pre">pkt
         <span class="n">ether_addr_copy</span><span class="p">(</span><span class="o">&amp;</span><span class="n">addr</span><span class="p">,</span> <span class="p">(</span><span class="k">struct</span> <span class="nc">ether_addr</span> <span class="o">*</span><span class="p">)(</span><span class="n">val_eth</span> <span class="o">+</span> <span class="n">lportid</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
     <span class="p">}</span>
 
-    <span class="cm">/* Ethdev node config, skip rx queue mapping */</span>
+    <span class="cm">/* Pktdev node config, skip rx queue mapping */</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">cne_node_eth_config</span><span class="p">(</span><span class="n">pktdev_conf</span><span class="p">,</span> <span class="n">nb_conf</span><span class="p">))</span>
         <span class="n">CNE_ERR_RET</span><span class="p">(</span><span class="s">&quot;cne_node_eth_config: failed</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 

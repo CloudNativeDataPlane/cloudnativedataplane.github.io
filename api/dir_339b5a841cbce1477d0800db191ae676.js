@@ -1,5 +1,7 @@
 var dir_339b5a841cbce1477d0800db191ae676 =
 [
+    [ "cne_arp.h", "cne__arp_8h.html", "cne__arp_8h" ],
+    [ "cne_ether.h", "cne__ether_8h.html", "cne__ether_8h" ],
     [ "cne_gre.h", "cne__gre_8h.html", [
       [ "cne_gre_hdr", "structcne__gre__hdr.html", "structcne__gre__hdr" ]
     ] ],
@@ -9,6 +11,7 @@ var dir_339b5a841cbce1477d0800db191ae676 =
     [ "cne_mpls.h", "cne__mpls_8h.html", [
       [ "cne_mpls_hdr", "structcne__mpls__hdr.html", "structcne__mpls__hdr" ]
     ] ],
+    [ "cne_net.h", "cne__net_8h.html", "cne__net_8h" ],
     [ "cne_sctp.h", "cne__sctp_8h.html", [
       [ "cne_sctp_hdr", "structcne__sctp__hdr.html", "structcne__sctp__hdr" ]
     ] ],

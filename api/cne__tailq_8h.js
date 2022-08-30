@@ -6,7 +6,9 @@ var cne__tailq_8h =
     [ "CNE_TAILQ_LOOKUP", "cne__tailq_8h.html#a223734e890e606c73e3653a420d68322", null ],
     [ "TAILQ_FOREACH_SAFE", "cne__tailq_8h.html#a2a85f19896399eecd0ebf91cb8176166", null ],
     [ "TAILQ_HEAD", "cne__tailq_8h.html#a0334381f081fc1b775b32845757dcb08", null ],
-    [ "cne_dump_tailq", "cne__tailq_8h.html#a77814ca8d3402f4ded911796928c8833", null ],
-    [ "cne_tailq_lookup", "cne__tailq_8h.html#a31af1f46049a44cfaa30fc4976f88714", null ],
-    [ "cne_eal_tailq_register", "cne__tailq_8h.html#a744d957d0db9ef9f28bdfc474627832f", null ]
+    [ "cne_tailqs_init", "cne__tailq_8h.html#aca83590a47a62787bfe66107073af6dc", null ],
+    [ "cne_tailq_register", "cne__tailq_8h.html#ad82728745006e8efa1f7bc4d7f0e080a", null ],
+    [ "cne_dump_tailq", "cne__tailq_8h.html#a341c672524b0a7e944114c2a4a1e00be", null ],
+    [ "cne_tailq_lookup", "cne__tailq_8h.html#af328c416c1ec95c3e31fabd0cd8ff956", null ],
+    [ "cne_eal_tailq_register", "cne__tailq_8h.html#a071556cfc599e74fab72f48c78a968d3", null ]
 ];

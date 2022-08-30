@@ -1,12 +1,12 @@
 var cne__tcp_8h =
 [
     [ "cne_tcp_hdr", "structcne__tcp__hdr.html", "structcne__tcp__hdr" ],
-    [ "CNE_TCP_CWR_FLAG", "cne__tcp_8h.html#a430fc574382d24ebb6f252605b84731e", null ],
-    [ "CNE_TCP_ECE_FLAG", "cne__tcp_8h.html#a522db00562ed70f6ffaa63abcadff1bf", null ],
-    [ "CNE_TCP_URG_FLAG", "cne__tcp_8h.html#a582fabb3197754a8babab9ae33bde680", null ],
-    [ "CNE_TCP_ACK_FLAG", "cne__tcp_8h.html#a1cf6d0b966d30299000d06b61500eaaf", null ],
-    [ "CNE_TCP_PSH_FLAG", "cne__tcp_8h.html#ad1e297a466c07615772468cf1787b657", null ],
-    [ "CNE_TCP_RST_FLAG", "cne__tcp_8h.html#a42d51d6f2aeb41df358829aabeaaad53", null ],
-    [ "CNE_TCP_SYN_FLAG", "cne__tcp_8h.html#a579661e6b9b9ab4b26204140c579960f", null ],
-    [ "CNE_TCP_FIN_FLAG", "cne__tcp_8h.html#ac0cb8a522602be4d8e048d8e24791721", null ]
+    [ "TCP_CWR_FLAG", "cne__tcp_8h.html#a284985f74d0a959605ecfc8bd9147413", null ],
+    [ "TCP_ECE_FLAG", "cne__tcp_8h.html#a22401eca8a59a6367afda8f3c4d40dbc", null ],
+    [ "TCP_URG_FLAG", "cne__tcp_8h.html#a92c2a6e9842e095783431eda69830c5a", null ],
+    [ "TCP_ACK_FLAG", "cne__tcp_8h.html#a9641da111a7e5e7a3f67da79c76a30f1", null ],
+    [ "TCP_PSH_FLAG", "cne__tcp_8h.html#a846b178aac51c0e3bdfa86caead9040e", null ],
+    [ "TCP_RST_FLAG", "cne__tcp_8h.html#a8f87be252855d028d1522b575a1e0ea6", null ],
+    [ "TCP_SYN_FLAG", "cne__tcp_8h.html#aba16841070445c89c4afd769bfe3ae9c", null ],
+    [ "TCP_FIN_FLAG", "cne__tcp_8h.html#af5d1a011cc1818546a895cfa6beaf358", null ]
 ];

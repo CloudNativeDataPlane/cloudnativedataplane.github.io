@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -118,15 +118,15 @@ $(document).ready(function(){initNavTree('cne__tty_8h.html',''); initResizable()
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;termios.h&gt;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;string.h&gt;</code><br />
-<code>#include &lt;stdio.h&gt;</code><br />
-<code>#include &lt;stdarg.h&gt;</code><br />
-<code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;signal.h&gt;</code><br />
+<code>#include &lt;stdarg.h&gt;</code><br />
+<code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__atomic_8h_source.html">cne_atomic.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__system_8h_source.html">cne_system.h</a>&gt;</code><br />
-<code>#include &quot;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&quot;</code><br />
 </div>
 <p><a href="cne__tty_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -186,7 +186,7 @@ Functions</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CNE TTY input and output support routines.</p>
-<p>Setup the TTY for I/O unless it is a socket instead. These routines as common and used by cli and all output routines for stdin/stdout as well as socket I/O handling in later changes. </p>
+<p>Setup the TTY for I/O unless it is a socket instead. These routines are used by cli and all output routines for stdin/stdout as well as socket I/O handling. </p>
 
 <p class="definition">Definition in file <a class="el" href="cne__tty_8h_source.html">cne_tty.h</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -285,7 +285,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Disable color printing of messages. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a68">examples/cndpfwd/parse-args.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a69">examples/cndpfwd/parse-args.c</a>, and <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#a65">examples/cnet-graph/parse-args.c</a>.</dd>
 </dl>
 
 </div>
@@ -562,7 +562,7 @@ Functions</h2></td></tr>
 <p>Write the data from buf to the tty file descriptor number, bypass this_tty-&gt;fd_out</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">fd</td><td>The file desciptor index value </td></tr>
+    <tr><td class="paramname">fd</td><td>The file descriptor index value </td></tr>
     <tr><td class="paramname">buf</td><td>Pointer to data buffer to output the file descriptor. </td></tr>
     <tr><td class="paramname">len</td><td>Number of bytes to write to file descriptor. </td></tr>
   </table>

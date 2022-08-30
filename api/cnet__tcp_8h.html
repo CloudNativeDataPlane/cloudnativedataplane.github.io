@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -111,15 +111,16 @@ $(document).ready(function(){initNavTree('cnet__tcp_8h.html',''); initResizable(
 
 <div class="header">
   <div class="summary">
+<a href="#nested-classes">Data Structures</a> &#124;
 <a href="#define-members">Macros</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
 <a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cnet_tcp.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="cnet__chnl_8h_source.html">cnet_chnl.h</a>&gt;</code><br />
-<code>#include &quot;<a class="el" href="cnet__const_8h_source.html">cnet_const.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="cnet__const_8h_source.html">cnet_const.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="cnet__pcb_8h_source.html">cnet_pcb.h</a>&quot;</code><br />
 <code>#include &lt;<a class="el" href="cne__tcp_8h_source.html">net/cne_tcp.h</a>&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
@@ -134,6 +135,11 @@ $(document).ready(function(){initNavTree('cnet__tcp_8h.html',''); initResizable(
 </div>
 <p><a href="cnet__tcp_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Data Structures</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structtcp__stats.html">tcp_stats</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:aedd7de15002fd15efa1df5e0fcf0f68e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#aedd7de15002fd15efa1df5e0fcf0f68e">TCP_MIN_MSS</a>&#160;&#160;&#160;64</td></tr>
@@ -192,92 +198,112 @@ Macros</h2></td></tr>
 <tr class="separator:a77e12f485d89e0a62ed85df1b8aefb97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a80156f7996a04aa286bb392963877e4d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a80156f7996a04aa286bb392963877e4d">TCP_SLOWHZ</a>&#160;&#160;&#160;2</td></tr>
 <tr class="separator:a80156f7996a04aa286bb392963877e4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae80e18b307aac32d568c4639f5ed5615"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#ae80e18b307aac32d568c4639f5ed5615">TCP_LINGERTIME</a>&#160;&#160;&#160;120</td></tr>
-<tr class="separator:ae80e18b307aac32d568c4639f5ed5615"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2108b2428e2666384b39076eee553e42"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a2108b2428e2666384b39076eee553e42">TCP_MAXRXTSHIFT</a>&#160;&#160;&#160;12</td></tr>
 <tr class="separator:a2108b2428e2666384b39076eee553e42"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a7ecea36e83d430e9fe8f7eb2ad468c62"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="structtcp__stats.html">tcp_stats</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a7ecea36e83d430e9fe8f7eb2ad468c62">tcp_stats_t</a></td></tr>
+<tr class="separator:a7ecea36e83d430e9fe8f7eb2ad468c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a94798fdadfbf49a7c658ace669a1d310"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+<tr class="memitem:a2a19685c938477e70558673a71525580"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a2a19685c938477e70558673a71525580">tcb_state_t</a> { <br />
  }</td></tr>
-<tr class="separator:a94798fdadfbf49a7c658ace669a1d310"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabfcbcb5ac86a1edac4035264bc7d2b8"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8affc846ad286dd1d3f543701012aac9a3">TCP_OPT_EOL</a> = 0
-, <a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8acd4ca190b31e6792ee1edf2517f37426">TCP_OPT_NOP</a>
-, <a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8a40737b44b618f068e785898d59163da3">TCP_OPT_MSS</a>
-, <a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8a2ca048ae2dbef27ff11253dfac9c9c6a">TCP_OPT_WSOPT</a>
+<tr class="separator:a2a19685c938477e70558673a71525580"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af9bdc3014f3d54c426b6d2df10de4960"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960affc846ad286dd1d3f543701012aac9a3">TCP_OPT_EOL</a> = 0
+, <a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960acd4ca190b31e6792ee1edf2517f37426">TCP_OPT_NOP</a>
+, <a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960a40737b44b618f068e785898d59163da3">TCP_OPT_MSS</a>
+, <a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960a2ca048ae2dbef27ff11253dfac9c9c6a">TCP_OPT_WSOPT</a>
 , <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8a6c415932d5a471338adfd60922bad389">TCP_OPT_SACK_OK</a>
-, <a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8a73efd676eed230a15772ee3ca50c7328">TCP_OPT_SACK</a>
-, <a class="el" href="cnet__tcp_8h.html#aabfcbcb5ac86a1edac4035264bc7d2b8ad90471aa9cb3ba39c91e96701f566ec3">TCP_OPT_TSTAMP</a> = 8
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960a6c415932d5a471338adfd60922bad389">TCP_OPT_SACK_OK</a>
+, <a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960a73efd676eed230a15772ee3ca50c7328">TCP_OPT_SACK</a>
+, <a class="el" href="cnet__tcp_8h.html#af9bdc3014f3d54c426b6d2df10de4960ad90471aa9cb3ba39c91e96701f566ec3">TCP_OPT_TSTAMP</a> = 8
 <br />
  }</td></tr>
-<tr class="separator:aabfcbcb5ac86a1edac4035264bc7d2b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5d76b81b0ad4c19007a781d4edb8181f"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a5d76b81b0ad4c19007a781d4edb8181fa8dc842f2d04fbc3bfb661f6ce430e7f8">TCPT_REXMT</a> = 0
-, <a class="el" href="cnet__tcp_8h.html#a5d76b81b0ad4c19007a781d4edb8181fa9c774b4876cf709190e0c7b915e6785d">TCPT_PERSIST</a>
-, <a class="el" href="cnet__tcp_8h.html#a5d76b81b0ad4c19007a781d4edb8181fac543dbebccc86c4993258f42dce5b897">TCPT_KEEP</a>
-, <a class="el" href="cnet__tcp_8h.html#a5d76b81b0ad4c19007a781d4edb8181fa8b10ac5ce99554c28a5ac1bd034a7836">TCPT_2MSL</a>
+<tr class="separator:af9bdc3014f3d54c426b6d2df10de4960"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb49720dc49f7d4e4cf9adbf2948e409"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#adb49720dc49f7d4e4cf9adbf2948e409a8dc842f2d04fbc3bfb661f6ce430e7f8">TCPT_REXMT</a> = 0
+, <a class="el" href="cnet__tcp_8h.html#adb49720dc49f7d4e4cf9adbf2948e409a9c774b4876cf709190e0c7b915e6785d">TCPT_PERSIST</a>
+, <a class="el" href="cnet__tcp_8h.html#adb49720dc49f7d4e4cf9adbf2948e409ac543dbebccc86c4993258f42dce5b897">TCPT_KEEP</a>
+, <a class="el" href="cnet__tcp_8h.html#adb49720dc49f7d4e4cf9adbf2948e409a8b10ac5ce99554c28a5ac1bd034a7836">TCPT_2MSL</a>
 , <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a5d76b81b0ad4c19007a781d4edb8181fa50248f3d0316834349ed9f918b175e16">TCP_NTIMERS</a>
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#adb49720dc49f7d4e4cf9adbf2948e409a50248f3d0316834349ed9f918b175e16">TCP_NTIMERS</a>
 <br />
  }</td></tr>
-<tr class="separator:a5d76b81b0ad4c19007a781d4edb8181f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac34dfe6c6b73b43a4656c9dce041034"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="cnet__tcp_8h.html#aac34dfe6c6b73b43a4656c9dce041034a0b8d3e1750ee168cf0a0d4eb4fabf26f">SEG_TS_PRESENT</a> = 0x8000
-, <a class="el" href="cnet__tcp_8h.html#aac34dfe6c6b73b43a4656c9dce041034a404af3511b6abcd93f84ce8e9cb26ed7">SEG_MSS_PRESENT</a> = 0x4000
-, <a class="el" href="cnet__tcp_8h.html#aac34dfe6c6b73b43a4656c9dce041034a3b40f3ee0ad7c323fec8d24d04ce265a">SEG_WS_PRESENT</a> = 0x2000
+<tr class="separator:adb49720dc49f7d4e4cf9adbf2948e409"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aae05225933a42f81e7c4a9fb286596f9"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="cnet__tcp_8h.html#aae05225933a42f81e7c4a9fb286596f9a0b8d3e1750ee168cf0a0d4eb4fabf26f">SEG_TS_PRESENT</a> = 0x8000
+, <a class="el" href="cnet__tcp_8h.html#aae05225933a42f81e7c4a9fb286596f9a404af3511b6abcd93f84ce8e9cb26ed7">SEG_MSS_PRESENT</a> = 0x4000
+, <a class="el" href="cnet__tcp_8h.html#aae05225933a42f81e7c4a9fb286596f9a3b40f3ee0ad7c323fec8d24d04ce265a">SEG_WS_PRESENT</a> = 0x2000
+, <a class="el" href="cnet__tcp_8h.html#aae05225933a42f81e7c4a9fb286596f9a7e264ec8649f1a90388e89237e89156f">SEG_SACK_PERMIT</a> = 0x1000
  }</td></tr>
-<tr class="separator:aac34dfe6c6b73b43a4656c9dce041034"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ed680fdb405e7195d9f14032851eebb"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="cnet__tcp_8h.html#a0ed680fdb405e7195d9f14032851eebba51285c57c2196ca2bbf7eea8479708fe">TCP_FAST_TIMER</a> = 1
-, <a class="el" href="cnet__tcp_8h.html#a0ed680fdb405e7195d9f14032851eebbaaa3af7415a6b5d74d5087c64c24c604f">TCP_SLOW_TIMER</a> = 2
+<tr class="separator:aae05225933a42f81e7c4a9fb286596f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39fca1837c5ce7715cbf571669660c13"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <a class="el" href="cnet__tcp_8h.html#a39fca1837c5ce7715cbf571669660c13a51285c57c2196ca2bbf7eea8479708fe">TCP_FAST_TIMER</a> = 1
+, <a class="el" href="cnet__tcp_8h.html#a39fca1837c5ce7715cbf571669660c13aaa3af7415a6b5d74d5087c64c24c604f">TCP_SLOW_TIMER</a> = 2
  }</td></tr>
-<tr class="separator:a0ed680fdb405e7195d9f14032851eebb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0944a4353780132eeab7b06e3e42291d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291dae1ee9428c9d85bb7f6ad673c2c6e00a7">TCBF_PASSIVE_OPEN</a> = 0x10000000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da56f4f7101b86e85248a0efe1f796eb2d">TCBF_FORCE_TX</a> = 0x20000000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291dadf9c8d6f5af75891c45a22d9c90997bb">TCBF_DELAYED_ACK</a> = 0x40000000
+<tr class="separator:a39fca1837c5ce7715cbf571669660c13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf8fd5f0e57d456151c951e0f3715fc4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4ae1ee9428c9d85bb7f6ad673c2c6e00a7">TCBF_PASSIVE_OPEN</a> = 0x10000000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a56f4f7101b86e85248a0efe1f796eb2d">TCBF_FORCE_TX</a> = 0x20000000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4adf9c8d6f5af75891c45a22d9c90997bb">TCBF_DELAYED_ACK</a> = 0x40000000
 , <b>TCBF_FREE_BIT_1</b> = 0x80000000
 , <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291dae29ea0237d0abf409f896712a9efdb68">TCBF_RFC1122_URG</a> = 0x01000000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291daab2d55d5d940825e06dc23af28b7f832">TCBF_BOUND</a> = 0x02000000
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4ae29ea0237d0abf409f896712a9efdb68">TCBF_RFC1122_URG</a> = 0x01000000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4aab2d55d5d940825e06dc23af28b7f832">TCBF_BOUND</a> = 0x02000000
 , <b>TCBF_FREE_BIT_2</b> = 0x04000000
 , <b>TCBF_FREE_BIT_3</b> = 0x08000000
 , <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291daac0aacfd54b3ff83a6e0ec324689079d">TCBF_REQ_TSTAMP</a> = 0x00100000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da834123ab1817b5ac28e72b3c6f72c103">TCBF_RCVD_SCALE</a> = 0x00200000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da1bb651c5df8ed7503a8bdcc1fc8f4d77">TCBF_REQ_SCALE</a> = 0x00400000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da86a552d636fbcfc62590c6da0fcabeba">TCBF_SEND_URG</a> = 0x00800000
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4aac0aacfd54b3ff83a6e0ec324689079d">TCBF_REQ_TSTAMP</a> = 0x00100000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a834123ab1817b5ac28e72b3c6f72c103">TCBF_RCVD_SCALE</a> = 0x00200000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a1bb651c5df8ed7503a8bdcc1fc8f4d77">TCBF_REQ_SCALE</a> = 0x00400000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a86a552d636fbcfc62590c6da0fcabeba">TCBF_SEND_URG</a> = 0x00800000
 , <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da581574e2ce47e2012d4b2c582fca2001">TCBF_ACK_NOW</a> = 0x00010000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291daeb1430b00e48000d1a9c9e7bb1642f53">TCBF_SENT_FIN</a> = 0x00020000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da86498e27cbddb1655d25ba617a829df1">TCBF_SACK_PERMIT</a> = 0x00040000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da408e09b3accf575d4b2d4b0e0e01983b">TCBF_RCVD_TSTAMP</a> = 0x00080000
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a581574e2ce47e2012d4b2c582fca2001">TCBF_ACK_NOW</a> = 0x00010000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4aeb1430b00e48000d1a9c9e7bb1642f53">TCBF_SENT_FIN</a> = 0x00020000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a86498e27cbddb1655d25ba617a829df1">TCBF_SACK_PERMIT</a> = 0x00040000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a408e09b3accf575d4b2d4b0e0e01983b">TCBF_RCVD_TSTAMP</a> = 0x00080000
 , <br />
-&#160;&#160;<a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da07f0341c7e36a54aac73d4ea475df047">TCBF_NODELAY</a> = 0x00001000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da8daa95537403f7136da26efb2d25241f">TCBF_NAGLE_CREDIT</a> = 0x00002000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da48955a24cc1a5f30d6d1307f09b2f1cf">TCBF_OUR_FIN_ACKED</a> = 0x00004000
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291dacae1d3acc6f6e168c1ec68089c6dbcd4">TCBF_NEED_OUTPUT</a> = 0x00008000
+&#160;&#160;<a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a07f0341c7e36a54aac73d4ea475df047">TCBF_NODELAY</a> = 0x00001000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a8daa95537403f7136da26efb2d25241f">TCBF_NAGLE_CREDIT</a> = 0x00002000
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a48955a24cc1a5f30d6d1307f09b2f1cf">TCBF_OUR_FIN_ACKED</a> = 0x00004000
+, <b>TCBF_FREE_BIT_4</b> = 0x00008000
 , <br />
-&#160;&#160;<b>TCBF_FREE_BIT_4</b> = 0x00000100
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da5792e12e59f6c30248f44df3b542ccd9">TCBF_NEED_FAST_REXMT</a> = 0x00000200
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da9bdb8a6073b78838edf43ae3d9d88979">TCBF_NOPUSH</a> = 0x00000400
-, <a class="el" href="cnet__tcp_8h.html#a0944a4353780132eeab7b06e3e42291da9d45f0248c8c04af86c18ee7e6350b39">TCBF_NOOPT</a> = 0x00000800
+&#160;&#160;<b>TCBF_FREE_BIT_5</b> = 0x00000100
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a5792e12e59f6c30248f44df3b542ccd9">TCBF_NEED_FAST_REXMT</a> = 0x00000200
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a9bdb8a6073b78838edf43ae3d9d88979">TCBF_NOPUSH</a> = 0x00000400
+, <a class="el" href="cnet__tcp_8h.html#aaf8fd5f0e57d456151c951e0f3715fc4a9d45f0248c8c04af86c18ee7e6350b39">TCBF_NOOPT</a> = 0x00000800
 <br />
  }</td></tr>
-<tr class="separator:a0944a4353780132eeab7b06e3e42291d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="separator:aaf8fd5f0e57d456151c951e0f3715fc4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a65c65d3f4ac5cc8e6f4c58f757db04d0"><td class="memItemLeft" align="right" valign="top">static struct tcb_entry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a65c65d3f4ac5cc8e6f4c58f757db04d0">tcb_alloc</a> (void)</td></tr>
 <tr class="separator:a65c65d3f4ac5cc8e6f4c58f757db04d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0cb3c285d84e65f4b98c0988da1a47b9"><td class="memItemLeft" align="right" valign="top"><a id="a0cb3c285d84e65f4b98c0988da1a47b9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a0cb3c285d84e65f4b98c0988da1a47b9">__tcp_process_timers</a> (void)</td></tr>
-<tr class="memdesc:a0cb3c285d84e65f4b98c0988da1a47b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal function to process timer events. <br /></td></tr>
-<tr class="separator:a0cb3c285d84e65f4b98c0988da1a47b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaa1066ecd7422ceffa136c82057311c3"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#aaa1066ecd7422ceffa136c82057311c3">cnet_tcp_input</a> (struct pcb_entry *pcb, <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *mbuf)</td></tr>
+<tr class="separator:aaa1066ecd7422ceffa136c82057311c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ab43e93c690785011734acbe41c0a9e"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a9ab43e93c690785011734acbe41c0a9e">cnet_tcp_output</a> (struct tcb_entry *tcb)</td></tr>
+<tr class="separator:a9ab43e93c690785011734acbe41c0a9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a059e5cc784e1e86615d046a6ff89c4f7"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a059e5cc784e1e86615d046a6ff89c4f7">cnet_tcp_connect</a> (struct pcb_entry *pcb)</td></tr>
+<tr class="separator:a059e5cc784e1e86615d046a6ff89c4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af6b155f656f5ca0c1754723f3b566abf"><td class="memItemLeft" align="right" valign="top">CNDP_API struct tcb_entry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#af6b155f656f5ca0c1754723f3b566abf">cnet_tcb_new</a> (struct pcb_entry *pcb)</td></tr>
+<tr class="separator:af6b155f656f5ca0c1754723f3b566abf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a428dd3917c05d8e737a3214cfe659977"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a428dd3917c05d8e737a3214cfe659977">cnet_tcp_abort</a> (struct pcb_entry *pcb)</td></tr>
+<tr class="separator:a428dd3917c05d8e737a3214cfe659977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a05c81da4ce2e09f547934f3de41e3e63"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a05c81da4ce2e09f547934f3de41e3e63">cnet_tcp_close</a> (struct pcb_entry *pcb)</td></tr>
+<tr class="separator:a05c81da4ce2e09f547934f3de41e3e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abeaadb40f102a2f9444f1888388f933c"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#abeaadb40f102a2f9444f1888388f933c">tcp_q_pop</a> (struct tcp_q *tq)</td></tr>
+<tr class="separator:abeaadb40f102a2f9444f1888388f933c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a363db84885e92fc6e0831ad6d6322588"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a363db84885e92fc6e0831ad6d6322588">cnet_tcp_dump</a> (const char *msg, struct <a class="el" href="structcne__tcp__hdr.html">cne_tcp_hdr</a> *tcp)</td></tr>
+<tr class="separator:a363db84885e92fc6e0831ad6d6322588"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e3eab967922b22920fee5f2a1b2f6bb"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#a1e3eab967922b22920fee5f2a1b2f6bb">cnet_tcb_list</a> (stk_t *stk, struct tcb_entry *tcb)</td></tr>
+<tr class="separator:a1e3eab967922b22920fee5f2a1b2f6bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affe1d5c86294fbba66767ef4695762f9"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__tcp_8h.html#affe1d5c86294fbba66767ef4695762f9">cnet_tcb_dump</a> (void)</td></tr>
+<tr class="separator:affe1d5c86294fbba66767ef4695762f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>CNET TCP procotol routines and constants. </p>
+<div class="textblock"><p>CNET TCP protocol routines and constants. </p>
 
 <p class="definition">Definition in file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
@@ -294,7 +320,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Minimum segment size </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00229">229</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00219">219</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -311,7 +337,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Default Segment size (576 - 40) </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00230">230</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00220">220</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -328,7 +354,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Normal TCP MSS value </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00231">231</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00221">221</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -345,7 +371,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max TCP segment size </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00232">232</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00222">222</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -362,7 +388,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Size of Header(IPv4/v6/TCP) overhead </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00233">233</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00223">223</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -379,7 +405,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Default/minimum TCP header </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00234">234</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00224">224</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -396,7 +422,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max unscaled Window value </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00239">239</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00229">229</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -413,7 +439,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max Window index value </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00240">240</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00230">230</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -430,7 +456,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max congestion window </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00241">241</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00231">231</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -447,7 +473,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>TCP Vector size </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00242">242</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00232">232</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -464,7 +490,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>30 Seconds Max Segment Lifetime </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00245">245</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00235">235</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -481,7 +507,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>1 Second retransmit timer. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00246">246</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00236">236</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -498,7 +524,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>64 Second retransmit timer. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00247">247</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00237">237</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -515,7 +541,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>5 Second minimum persist timer. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00248">248</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00238">238</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -532,7 +558,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>60 Seconds Max persist timer. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00249">249</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00239">239</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -549,7 +575,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>75 Seconds connection established </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00250">250</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00240">240</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -566,7 +592,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>7200 Seconds idle time (first) </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00251">251</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00241">241</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -583,7 +609,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>75 Seconds between probes </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00252">252</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00242">242</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -600,7 +626,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max number keepalive probes. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00256">256</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00246">246</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -617,7 +643,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>special value </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00254">254</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00244">244</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -634,7 +660,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>default RTT (1 seconds) </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00255">255</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00245">245</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -651,7 +677,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max number keepalive probes. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00256">256</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00246">246</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -668,7 +694,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>multiplier srtt = srtt x 8 </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00258">258</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00248">248</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -685,7 +711,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>shift srtt = srtt &lt;&lt; 3 </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00259">259</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00249">249</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -702,7 +728,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>multiplier rttvar = rttvar x 4 </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00260">260</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00250">250</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -719,7 +745,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>shift rttvar = rttvar &lt;&lt; 2 </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00261">261</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00251">251</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -734,9 +760,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Intial SYN Start increment </p>
+<p>Initial SYN Start increment </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00263">263</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00253">253</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -753,24 +779,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Slow hertz </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00264">264</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
-
-</div>
-</div>
-<a id="ae80e18b307aac32d568c4639f5ed5615"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae80e18b307aac32d568c4639f5ed5615">&#9670;&nbsp;</a></span>TCP_LINGERTIME</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define TCP_LINGERTIME&#160;&#160;&#160;120</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Max seconds for SO_LINGER </p>
-
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00294">294</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00254">254</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -787,13 +796,70 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Max retransmissions </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00295">295</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00284">284</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a id="a7ecea36e83d430e9fe8f7eb2ad468c62"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7ecea36e83d430e9fe8f7eb2ad468c62">&#9670;&nbsp;</a></span>tcp_stats_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef struct <a class="el" href="structtcp__stats.html">tcp_stats</a> <a class="el" href="cnet__tcp_8h.html#a7ecea36e83d430e9fe8f7eb2ad468c62">tcp_stats_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TCP counters. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a94798fdadfbf49a7c658ace669a1d310"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a94798fdadfbf49a7c658ace669a1d310">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="a2a19685c938477e70558673a71525580"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a19685c938477e70558673a71525580">&#9670;&nbsp;</a></span>tcb_state_t</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="cnet__tcp_8h.html#a2a19685c938477e70558673a71525580">tcb_state_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>TCP states (numeric values match those in RFC2452) </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580a4f8d86eeb2beeb3bf01c94c2fb603bc7"></a>TCPS_CLOSED&#160;</td><td class="fielddoc"><p>TCB is Closed </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580ae876dc74ecfa88aac94ea8a525f817a7"></a>TCPS_LISTEN&#160;</td><td class="fielddoc"><p>TCB is listening </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580add03207b6397c58ea360c6cca02e1f4a"></a>TCPS_SYN_SENT&#160;</td><td class="fielddoc"><p>Sent SYN segment </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580aff9e935dafbbaa2d01432313f17184d1"></a>TCPS_SYN_RCVD&#160;</td><td class="fielddoc"><p>Received SYN segment </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580ac7de299b0e77aed3a32088a99519e449"></a>TCPS_ESTABLISHED&#160;</td><td class="fielddoc"><p>Connection is established </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580ad38a644d7dfc833018e7a9fd29198e6e"></a>TCPS_CLOSE_WAIT&#160;</td><td class="fielddoc"><p>Connection is in close wait state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580a4c6d8dba2fd5ebedd82389647945a51d"></a>TCPS_FIN_WAIT_1&#160;</td><td class="fielddoc"><p>Connection is in FIN wait 1 state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580ab5653b68c7bbd43378b32f81ea45f3be"></a>TCPS_CLOSING&#160;</td><td class="fielddoc"><p>Connection is closing </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580afa6d1d4f5b77b2827faa22a6666eb2e4"></a>TCPS_LAST_ACK&#160;</td><td class="fielddoc"><p>Connection is in Last ACK state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580a62a2b3dd744a742484392b8bddaa4e57"></a>TCPS_FIN_WAIT_2&#160;</td><td class="fielddoc"><p>Connection is in FIN wait 2 state </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a2a19685c938477e70558673a71525580ac8b1d3bfcb0ba941981f35594ce12f69"></a>TCPS_TIME_WAIT&#160;</td><td class="fielddoc"><p>Connection is in time wait state </p>
+</td></tr>
+</table>
+
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00122">122</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+
+</div>
+</div>
+<a id="af9bdc3014f3d54c426b6d2df10de4960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af9bdc3014f3d54c426b6d2df10de4960">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -804,36 +870,28 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310a4f8d86eeb2beeb3bf01c94c2fb603bc7"></a>TCPS_CLOSED&#160;</td><td class="fielddoc"><p>TCB is Closed </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960affc846ad286dd1d3f543701012aac9a3"></a>TCP_OPT_EOL&#160;</td><td class="fielddoc"><p>End of Line flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310ae876dc74ecfa88aac94ea8a525f817a7"></a>TCPS_LISTEN&#160;</td><td class="fielddoc"><p>TCB is listening </p>
+<tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960acd4ca190b31e6792ee1edf2517f37426"></a>TCP_OPT_NOP&#160;</td><td class="fielddoc"><p>Noop type option </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310add03207b6397c58ea360c6cca02e1f4a"></a>TCPS_SYN_SENT&#160;</td><td class="fielddoc"><p>Sent SYN segment </p>
+<tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960a40737b44b618f068e785898d59163da3"></a>TCP_OPT_MSS&#160;</td><td class="fielddoc"><p>MSS option type </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310aff9e935dafbbaa2d01432313f17184d1"></a>TCPS_SYN_RCVD&#160;</td><td class="fielddoc"><p>Received SYN segment </p>
+<tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960a2ca048ae2dbef27ff11253dfac9c9c6a"></a>TCP_OPT_WSOPT&#160;</td><td class="fielddoc"><p>Window Scaling option </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310ac7de299b0e77aed3a32088a99519e449"></a>TCPS_ESTABLISHED&#160;</td><td class="fielddoc"><p>Connection is established </p>
+<tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960a6c415932d5a471338adfd60922bad389"></a>TCP_OPT_SACK_OK&#160;</td><td class="fielddoc"><p>SACK OK option </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310ad38a644d7dfc833018e7a9fd29198e6e"></a>TCPS_CLOSE_WAIT&#160;</td><td class="fielddoc"><p>Connection is in close wait state </p>
+<tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960a73efd676eed230a15772ee3ca50c7328"></a>TCP_OPT_SACK&#160;</td><td class="fielddoc"><p>SACK option </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310a4c6d8dba2fd5ebedd82389647945a51d"></a>TCPS_FIN_WAIT_1&#160;</td><td class="fielddoc"><p>Connection is in FIN wait 1 state </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310ab5653b68c7bbd43378b32f81ea45f3be"></a>TCPS_CLOSING&#160;</td><td class="fielddoc"><p>Connection is closing </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310afa6d1d4f5b77b2827faa22a6666eb2e4"></a>TCPS_LAST_ACK&#160;</td><td class="fielddoc"><p>Connection is in Last ACK state </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310a62a2b3dd744a742484392b8bddaa4e57"></a>TCPS_FIN_WAIT_2&#160;</td><td class="fielddoc"><p>Connection is in FIN wait 2 state </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a94798fdadfbf49a7c658ace669a1d310ac8b1d3bfcb0ba941981f35594ce12f69"></a>TCPS_TIME_WAIT&#160;</td><td class="fielddoc"><p>Connection is in time wait state </p>
+<tr><td class="fieldname"><a id="af9bdc3014f3d54c426b6d2df10de4960ad90471aa9cb3ba39c91e96701f566ec3"></a>TCP_OPT_TSTAMP&#160;</td><td class="fielddoc"><p>Timestamp option </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00132">132</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00198">198</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
-<a id="aabfcbcb5ac86a1edac4035264bc7d2b8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabfcbcb5ac86a1edac4035264bc7d2b8">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="adb49720dc49f7d4e4cf9adbf2948e409"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adb49720dc49f7d4e4cf9adbf2948e409">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -844,28 +902,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8affc846ad286dd1d3f543701012aac9a3"></a>TCP_OPT_EOL&#160;</td><td class="fielddoc"><p>End of Line flag </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="adb49720dc49f7d4e4cf9adbf2948e409a8dc842f2d04fbc3bfb661f6ce430e7f8"></a>TCPT_REXMT&#160;</td><td class="fielddoc"><p>Retransmit timer index </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8acd4ca190b31e6792ee1edf2517f37426"></a>TCP_OPT_NOP&#160;</td><td class="fielddoc"><p>Noop type option </p>
+<tr><td class="fieldname"><a id="adb49720dc49f7d4e4cf9adbf2948e409a9c774b4876cf709190e0c7b915e6785d"></a>TCPT_PERSIST&#160;</td><td class="fielddoc"><p>Persist timer index </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8a40737b44b618f068e785898d59163da3"></a>TCP_OPT_MSS&#160;</td><td class="fielddoc"><p>MSS option type </p>
+<tr><td class="fieldname"><a id="adb49720dc49f7d4e4cf9adbf2948e409ac543dbebccc86c4993258f42dce5b897"></a>TCPT_KEEP&#160;</td><td class="fielddoc"><p>Keepalive or Connection Established timer </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8a2ca048ae2dbef27ff11253dfac9c9c6a"></a>TCP_OPT_WSOPT&#160;</td><td class="fielddoc"><p>Window Scaling option </p>
+<tr><td class="fieldname"><a id="adb49720dc49f7d4e4cf9adbf2948e409a8b10ac5ce99554c28a5ac1bd034a7836"></a>TCPT_2MSL&#160;</td><td class="fielddoc"><p>2 x Max Segment Life or FIN Wait 2 timer </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8a6c415932d5a471338adfd60922bad389"></a>TCP_OPT_SACK_OK&#160;</td><td class="fielddoc"><p>SACK OK option </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8a73efd676eed230a15772ee3ca50c7328"></a>TCP_OPT_SACK&#160;</td><td class="fielddoc"><p>SACK option </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aabfcbcb5ac86a1edac4035264bc7d2b8ad90471aa9cb3ba39c91e96701f566ec3"></a>TCP_OPT_TSTAMP&#160;</td><td class="fielddoc"><p>Timestamp option </p>
+<tr><td class="fieldname"><a id="adb49720dc49f7d4e4cf9adbf2948e409a50248f3d0316834349ed9f918b175e16"></a>TCP_NTIMERS&#160;</td><td class="fielddoc"><p>Number of timers in tcb_t.timers </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00208">208</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00294">294</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
-<a id="a5d76b81b0ad4c19007a781d4edb8181f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5d76b81b0ad4c19007a781d4edb8181f">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="aae05225933a42f81e7c4a9fb286596f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aae05225933a42f81e7c4a9fb286596f9">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -876,24 +930,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a5d76b81b0ad4c19007a781d4edb8181fa8dc842f2d04fbc3bfb661f6ce430e7f8"></a>TCPT_REXMT&#160;</td><td class="fielddoc"><p>Retransmit timer index </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aae05225933a42f81e7c4a9fb286596f9a0b8d3e1750ee168cf0a0d4eb4fabf26f"></a>SEG_TS_PRESENT&#160;</td><td class="fielddoc"><p>Timestamp is present </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5d76b81b0ad4c19007a781d4edb8181fa9c774b4876cf709190e0c7b915e6785d"></a>TCPT_PERSIST&#160;</td><td class="fielddoc"><p>Persist timer index </p>
+<tr><td class="fieldname"><a id="aae05225933a42f81e7c4a9fb286596f9a404af3511b6abcd93f84ce8e9cb26ed7"></a>SEG_MSS_PRESENT&#160;</td><td class="fielddoc"><p>MSS option is present </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5d76b81b0ad4c19007a781d4edb8181fac543dbebccc86c4993258f42dce5b897"></a>TCPT_KEEP&#160;</td><td class="fielddoc"><p>Keepalive or Connection Established timer </p>
+<tr><td class="fieldname"><a id="aae05225933a42f81e7c4a9fb286596f9a3b40f3ee0ad7c323fec8d24d04ce265a"></a>SEG_WS_PRESENT&#160;</td><td class="fielddoc"><p>Window Scale present </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a5d76b81b0ad4c19007a781d4edb8181fa8b10ac5ce99554c28a5ac1bd034a7836"></a>TCPT_2MSL&#160;</td><td class="fielddoc"><p>2 x Max Segment Life or FIN Wait 2 timer </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a5d76b81b0ad4c19007a781d4edb8181fa50248f3d0316834349ed9f918b175e16"></a>TCP_NTIMERS&#160;</td><td class="fielddoc"><p>Number of timers in tcb_t.timers </p>
+<tr><td class="fieldname"><a id="aae05225933a42f81e7c4a9fb286596f9a7e264ec8649f1a90388e89237e89156f"></a>SEG_SACK_PERMIT&#160;</td><td class="fielddoc"><p>SACK permission flag, which is not supported at this time. </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00305">305</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00327">327</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
-<a id="aac34dfe6c6b73b43a4656c9dce041034"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aac34dfe6c6b73b43a4656c9dce041034">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="a39fca1837c5ce7715cbf571669660c13"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39fca1837c5ce7715cbf571669660c13">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -904,20 +956,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aac34dfe6c6b73b43a4656c9dce041034a0b8d3e1750ee168cf0a0d4eb4fabf26f"></a>SEG_TS_PRESENT&#160;</td><td class="fielddoc"><p>Timestamp is present </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a39fca1837c5ce7715cbf571669660c13a51285c57c2196ca2bbf7eea8479708fe"></a>TCP_FAST_TIMER&#160;</td><td class="fielddoc"><p>Fast TCP timer (200ms) </p>
 </td></tr>
-<tr><td class="fieldname"><a id="aac34dfe6c6b73b43a4656c9dce041034a404af3511b6abcd93f84ce8e9cb26ed7"></a>SEG_MSS_PRESENT&#160;</td><td class="fielddoc"><p>MSS option is present </p>
-</td></tr>
-<tr><td class="fieldname"><a id="aac34dfe6c6b73b43a4656c9dce041034a3b40f3ee0ad7c323fec8d24d04ce265a"></a>SEG_WS_PRESENT&#160;</td><td class="fielddoc"><p>Window Scale present </p>
+<tr><td class="fieldname"><a id="a39fca1837c5ce7715cbf571669660c13aaa3af7415a6b5d74d5087c64c24c604f"></a>TCP_SLOW_TIMER&#160;</td><td class="fielddoc"><p>Slow TCP timer (500ms) </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00338">338</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00334">334</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
-<a id="a0ed680fdb405e7195d9f14032851eebb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0ed680fdb405e7195d9f14032851eebb">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="aaf8fd5f0e57d456151c951e0f3715fc4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaf8fd5f0e57d456151c951e0f3715fc4">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -928,71 +978,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0ed680fdb405e7195d9f14032851eebba51285c57c2196ca2bbf7eea8479708fe"></a>TCP_FAST_TIMER&#160;</td><td class="fielddoc"><p>Fast TCP timer (200ms) </p>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4ae1ee9428c9d85bb7f6ad673c2c6e00a7"></a>TCBF_PASSIVE_OPEN&#160;</td><td class="fielddoc"><p>Passive open </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0ed680fdb405e7195d9f14032851eebbaaa3af7415a6b5d74d5087c64c24c604f"></a>TCP_SLOW_TIMER&#160;</td><td class="fielddoc"><p>Slow TCP timer (500ms) </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a56f4f7101b86e85248a0efe1f796eb2d"></a>TCBF_FORCE_TX&#160;</td><td class="fielddoc"><p>Do an ACK now from persist </p>
 </td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00344">344</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
-
-</div>
-</div>
-<a id="a0944a4353780132eeab7b06e3e42291d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0944a4353780132eeab7b06e3e42291d">&#9670;&nbsp;</a></span>anonymous enum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291dae1ee9428c9d85bb7f6ad673c2c6e00a7"></a>TCBF_PASSIVE_OPEN&#160;</td><td class="fielddoc"><p>Passive open </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4adf9c8d6f5af75891c45a22d9c90997bb"></a>TCBF_DELAYED_ACK&#160;</td><td class="fielddoc"><p>DELAYED ACK </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da56f4f7101b86e85248a0efe1f796eb2d"></a>TCBF_FORCE_TX&#160;</td><td class="fielddoc"><p>Do an ACK now from persist </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4ae29ea0237d0abf409f896712a9efdb68"></a>TCBF_RFC1122_URG&#160;</td><td class="fielddoc"><p>RFC1122 Urgent </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291dadf9c8d6f5af75891c45a22d9c90997bb"></a>TCBF_DELAYED_ACK&#160;</td><td class="fielddoc"><p>DELAYED ACK </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4aab2d55d5d940825e06dc23af28b7f832"></a>TCBF_BOUND&#160;</td><td class="fielddoc"><p>TCB is Bound </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291dae29ea0237d0abf409f896712a9efdb68"></a>TCBF_RFC1122_URG&#160;</td><td class="fielddoc"><p>RFC1122 Urgent </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4aac0aacfd54b3ff83a6e0ec324689079d"></a>TCBF_REQ_TSTAMP&#160;</td><td class="fielddoc"><p>Requested Timestamp option </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291daab2d55d5d940825e06dc23af28b7f832"></a>TCBF_BOUND&#160;</td><td class="fielddoc"><p>TCB is Bound </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a834123ab1817b5ac28e72b3c6f72c103"></a>TCBF_RCVD_SCALE&#160;</td><td class="fielddoc"><p>Window Scaling received </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291daac0aacfd54b3ff83a6e0ec324689079d"></a>TCBF_REQ_TSTAMP&#160;</td><td class="fielddoc"><p>Reguested Timestamp option </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a1bb651c5df8ed7503a8bdcc1fc8f4d77"></a>TCBF_REQ_SCALE&#160;</td><td class="fielddoc"><p>Requested Window Scaling </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da834123ab1817b5ac28e72b3c6f72c103"></a>TCBF_RCVD_SCALE&#160;</td><td class="fielddoc"><p>Window Scaling received </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a86a552d636fbcfc62590c6da0fcabeba"></a>TCBF_SEND_URG&#160;</td><td class="fielddoc"><p>Send urgent data </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da1bb651c5df8ed7503a8bdcc1fc8f4d77"></a>TCBF_REQ_SCALE&#160;</td><td class="fielddoc"><p>Requested Window Scaling </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a581574e2ce47e2012d4b2c582fca2001"></a>TCBF_ACK_NOW&#160;</td><td class="fielddoc"><p>ACK Now </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da86a552d636fbcfc62590c6da0fcabeba"></a>TCBF_SEND_URG&#160;</td><td class="fielddoc"><p>Send urgent data </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4aeb1430b00e48000d1a9c9e7bb1642f53"></a>TCBF_SENT_FIN&#160;</td><td class="fielddoc"><p>FIN has been sent </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da581574e2ce47e2012d4b2c582fca2001"></a>TCBF_ACK_NOW&#160;</td><td class="fielddoc"><p>ACK Now </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a86498e27cbddb1655d25ba617a829df1"></a>TCBF_SACK_PERMIT&#160;</td><td class="fielddoc"><p>SACK Permit is not supported, look at SEG_SACK_PERMIT </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291daeb1430b00e48000d1a9c9e7bb1642f53"></a>TCBF_SENT_FIN&#160;</td><td class="fielddoc"><p>FIN has been sent </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a408e09b3accf575d4b2d4b0e0e01983b"></a>TCBF_RCVD_TSTAMP&#160;</td><td class="fielddoc"><p>Received Timestamp in SYN </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da86498e27cbddb1655d25ba617a829df1"></a>TCBF_SACK_PERMIT&#160;</td><td class="fielddoc"><p>I could SACK </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a07f0341c7e36a54aac73d4ea475df047"></a>TCBF_NODELAY&#160;</td><td class="fielddoc"><p>don't delay packets </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da408e09b3accf575d4b2d4b0e0e01983b"></a>TCBF_RCVD_TSTAMP&#160;</td><td class="fielddoc"><p>Received Timestamp in SYN </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a8daa95537403f7136da26efb2d25241f"></a>TCBF_NAGLE_CREDIT&#160;</td><td class="fielddoc"><p>Nagle credit flag </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da07f0341c7e36a54aac73d4ea475df047"></a>TCBF_NODELAY&#160;</td><td class="fielddoc"><p>don't delay packets </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a48955a24cc1a5f30d6d1307f09b2f1cf"></a>TCBF_OUR_FIN_ACKED&#160;</td><td class="fielddoc"><p>Our FIN has been acked </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da8daa95537403f7136da26efb2d25241f"></a>TCBF_NAGLE_CREDIT&#160;</td><td class="fielddoc"><p>Nagle credit flag </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a5792e12e59f6c30248f44df3b542ccd9"></a>TCBF_NEED_FAST_REXMT&#160;</td><td class="fielddoc"><p>Need a fast Retransmit </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da48955a24cc1a5f30d6d1307f09b2f1cf"></a>TCBF_OUR_FIN_ACKED&#160;</td><td class="fielddoc"><p>Our FIN has been acked </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a9bdb8a6073b78838edf43ae3d9d88979"></a>TCBF_NOPUSH&#160;</td><td class="fielddoc"><p>no push </p>
 </td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291dacae1d3acc6f6e168c1ec68089c6dbcd4"></a>TCBF_NEED_OUTPUT&#160;</td><td class="fielddoc"><p>Need output </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da5792e12e59f6c30248f44df3b542ccd9"></a>TCBF_NEED_FAST_REXMT&#160;</td><td class="fielddoc"><p>Need a fast Retransmit </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da9bdb8a6073b78838edf43ae3d9d88979"></a>TCBF_NOPUSH&#160;</td><td class="fielddoc"><p>no push </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a0944a4353780132eeab7b06e3e42291da9d45f0248c8c04af86c18ee7e6350b39"></a>TCBF_NOOPT&#160;</td><td class="fielddoc"><p>don't use TCP options </p>
+<tr><td class="fieldname"><a id="aaf8fd5f0e57d456151c951e0f3715fc4a9d45f0248c8c04af86c18ee7e6350b39"></a>TCBF_NOOPT&#160;</td><td class="fielddoc"><p>don't use TCP options </p>
 </td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00428">428</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00416">416</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
 
 </div>
 </div>
@@ -1022,7 +1048,282 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet
 </div><div class="memdoc">
 <p>Allocate a new TCB control block from the free list of TCB structures. </p>
 
-<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00523">523</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__tcp_8h_source.html#l00566">566</a> of file <a class="el" href="cnet__tcp_8h_source.html">cnet_tcp.h</a>.</p>
+
+</div>
+</div>
+<a id="aaa1066ecd7422ceffa136c82057311c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa1066ecd7422ceffa136c82057311c3">&#9670;&nbsp;</a></span>cnet_tcp_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int cnet_tcp_input </td>
+          <td>(</td>
+          <td class="paramtype">struct pcb_entry *&#160;</td>
+          <td class="paramname"><em>pcb</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *&#160;</td>
+          <td class="paramname"><em>mbuf</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The TCP input routine</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcb</td><td>The PCB pointer for this connection </td></tr>
+    <tr><td class="paramname">mbuf</td><td>The mbuf to process in TCP input </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success or -1 on error. </dd></dl>
+
+</div>
+</div>
+<a id="a9ab43e93c690785011734acbe41c0a9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9ab43e93c690785011734acbe41c0a9e">&#9670;&nbsp;</a></span>cnet_tcp_output()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API void cnet_tcp_output </td>
+          <td>(</td>
+          <td class="paramtype">struct tcb_entry *&#160;</td>
+          <td class="paramname"><em>tcb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The TCP output routine.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tcb</td><td>The TCB to process output packets from. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a059e5cc784e1e86615d046a6ff89c4f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a059e5cc784e1e86615d046a6ff89c4f7">&#9670;&nbsp;</a></span>cnet_tcp_connect()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int cnet_tcp_connect </td>
+          <td>(</td>
+          <td class="paramtype">struct pcb_entry *&#160;</td>
+          <td class="paramname"><em>pcb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The TCP connect function gives the PCB to use for the connection</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcb</td><td>The PCB pointer in which to do the connection request. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on success or -1 on error </dd></dl>
+
+</div>
+</div>
+<a id="af6b155f656f5ca0c1754723f3b566abf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af6b155f656f5ca0c1754723f3b566abf">&#9670;&nbsp;</a></span>cnet_tcb_new()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API struct tcb_entry* cnet_tcb_new </td>
+          <td>(</td>
+          <td class="paramtype">struct pcb_entry *&#160;</td>
+          <td class="paramname"><em>pcb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Create a new TCB for the given PCB pointer.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcb</td><td>The PCB to create the TCB from. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>TCB pointer or NULL on failure. </dd></dl>
+
+</div>
+</div>
+<a id="a428dd3917c05d8e737a3214cfe659977"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a428dd3917c05d8e737a3214cfe659977">&#9670;&nbsp;</a></span>cnet_tcp_abort()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API void cnet_tcp_abort </td>
+          <td>(</td>
+          <td class="paramtype">struct pcb_entry *&#160;</td>
+          <td class="paramname"><em>pcb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Abort the TCP connection</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcb</td><td>The PCB pointer in which to start the abort sequence. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a05c81da4ce2e09f547934f3de41e3e63"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a05c81da4ce2e09f547934f3de41e3e63">&#9670;&nbsp;</a></span>cnet_tcp_close()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int cnet_tcp_close </td>
+          <td>(</td>
+          <td class="paramtype">struct pcb_entry *&#160;</td>
+          <td class="paramname"><em>pcb</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Close the TCP connection for the given PCB</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pcb</td><td>The PCB in which to start the connect close sequence </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>-1 on error or 0 on success </dd></dl>
+
+</div>
+</div>
+<a id="abeaadb40f102a2f9444f1888388f933c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abeaadb40f102a2f9444f1888388f933c">&#9670;&nbsp;</a></span>tcp_q_pop()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* tcp_q_pop </td>
+          <td>(</td>
+          <td class="paramtype">struct tcp_q *&#160;</td>
+          <td class="paramname"><em>tq</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Remove an entry from the queue </p>
+
+</div>
+</div>
+<a id="a363db84885e92fc6e0831ad6d6322588"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a363db84885e92fc6e0831ad6d6322588">&#9670;&nbsp;</a></span>cnet_tcp_dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API void cnet_tcp_dump </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>msg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct <a class="el" href="structcne__tcp__hdr.html">cne_tcp_hdr</a> *&#160;</td>
+          <td class="paramname"><em>tcp</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dump out the TCP header and information</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">msg</td><td>A caller supplied message or NULL if none </td></tr>
+    <tr><td class="paramname">tcp</td><td>The TCP header to dump </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a1e3eab967922b22920fee5f2a1b2f6bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1e3eab967922b22920fee5f2a1b2f6bb">&#9670;&nbsp;</a></span>cnet_tcb_list()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API void cnet_tcb_list </td>
+          <td>(</td>
+          <td class="paramtype">stk_t *&#160;</td>
+          <td class="paramname"><em>stk</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">struct tcb_entry *&#160;</td>
+          <td class="paramname"><em>tcb</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>List out all of the active TCB structures</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stk</td><td>The stack instance to dump the TCB from </td></tr>
+    <tr><td class="paramname">tcb</td><td>The TCB structure to dump or NULL for all TCB structures. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="affe1d5c86294fbba66767ef4695762f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#affe1d5c86294fbba66767ef4695762f9">&#9670;&nbsp;</a></span>cnet_tcb_dump()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API void cnet_tcb_dump </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Dump out all TCBs in all stack instances. </p>
 
 </div>
 </div>

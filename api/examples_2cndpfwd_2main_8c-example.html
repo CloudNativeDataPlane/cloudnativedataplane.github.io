@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -118,7 +118,6 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line"><span class="comment"> * Copyright (c) 2019-2022 Intel Corporation.</span></div>
 <div class="line"><span class="comment"> */</span></div>
 <div class="line"> </div>
-<div class="line"><span class="preprocessor">#include &lt;locale.h&gt;</span>         <span class="comment">// for NULL, setlocale, LC_ALL</span></div>
 <div class="line"><span class="preprocessor">#include &lt;pthread.h&gt;</span>        <span class="comment">// for pthread_barrier_wait, pthread_self, pthread_...</span></div>
 <div class="line"><span class="preprocessor">#include &lt;sched.h&gt;</span>          <span class="comment">// for cpu_set_t</span></div>
 <div class="line"><span class="preprocessor">#include &lt;signal.h&gt;</span>         <span class="comment">// for SIGUSR1, SIGINT</span></div>
@@ -148,6 +147,8 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#define foreach_thd_lport(_t, _lp) \</span></div>
 <div class="line"><span class="preprocessor">    for (int _i = 0; _i &lt; _t-&gt;lport_cnt &amp;&amp; (_lp = _t-&gt;lports[_i]); _i++, _lp = _t-&gt;lports[_i])</span></div>
+<div class="line"> </div>
+<div class="line"><span class="preprocessor">#define TIMEOUT_VALUE 1000 </span><span class="comment">/* Number of times to wait for each usleep() time */</span><span class="preprocessor"></span></div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">enum</span> thread_quit_state {</div>
 <div class="line">    THD_RUN = 0, </div>
@@ -188,6 +189,8 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">{</div>
 <div class="line">    <span class="keywordflow">while</span> (n_pkts &gt; 0) {</div>
 <div class="line">        uint16_t n = __tx_burst(api, pd, mbufs, n_pkts);</div>
+<div class="line">        <span class="keywordflow">if</span> (n == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">            <span class="keywordflow">return</span> n;</div>
 <div class="line"> </div>
 <div class="line">        n_pkts -= n;</div>
 <div class="line">        mbufs += n;</div>
@@ -206,6 +209,8 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">        <a name="a8"></a><a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;fwd_port passed in lport private data is NULL\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    n_pkts = __rx_burst(fwd-&gt;pkt_api, pd, pd-&gt;rx_mbufs, fwd-&gt;burst);</div>
+<div class="line">    <span class="keywordflow">if</span> (n_pkts == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (n_pkts)</div>
 <div class="line">        <a name="a9"></a><a class="code" href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a>(pd-&gt;rx_mbufs, n_pkts);</div>
@@ -227,6 +232,9 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">    <a class="code" href="structtxbuff.html">txbuff</a> = thd_private-&gt;txbuffs;</div>
 <div class="line"> </div>
 <div class="line">    n_pkts = __rx_burst(fwd-&gt;pkt_api, pd, pd-&gt;rx_mbufs, fwd-&gt;burst);</div>
+<div class="line">    <span class="keywordflow">if</span> (n_pkts == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line"> </div>
 <div class="line">    <span class="keywordflow">for</span> (i = 0; i &lt; n_pkts; i++) {</div>
 <div class="line">        uint8_t dst_lport = get_dst_lport(<a name="a10"></a><a class="code" href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a>(pd-&gt;rx_mbufs[i], <span class="keywordtype">void</span> *));</div>
 <div class="line">        <a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *dst = <a name="a11"></a><a class="code" href="jcfg_8h.html#a8f77a640370ae4142a4973cdfeaaf7ba">jcfg_lport_by_index</a>(fwd-&gt;jinfo, dst_lport);</div>
@@ -258,20 +266,24 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">_loopback_test(<a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *lport, <span class="keyword">struct</span> fwd_info *fwd)</div>
 <div class="line">{</div>
 <div class="line">    <span class="keyword">struct </span>fwd_port *pd = lport-&gt;priv_;</div>
-<div class="line">    <span class="keywordtype">int</span> n_pkts;</div>
+<div class="line">    <span class="keywordtype">int</span> n_pkts, n;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (!pd)</div>
 <div class="line">        <a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;fwd_port passed in lport private data is NULL\n&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    n_pkts = __rx_burst(fwd-&gt;pkt_api, pd, pd-&gt;rx_mbufs, fwd-&gt;burst);</div>
+<div class="line">    <span class="keywordflow">if</span> (n_pkts == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (n_pkts) {</div>
 <div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; n_pkts; j++)</div>
 <div class="line">            MAC_SWAP(<a class="code" href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a>(pd-&gt;rx_mbufs[j], <span class="keywordtype">void</span> *));</div>
 <div class="line"> </div>
-<div class="line">        pd-&gt;tx_overrun += __tx_flush(pd, fwd-&gt;pkt_api, pd-&gt;rx_mbufs, n_pkts);</div>
+<div class="line">        n = __tx_flush(pd, fwd-&gt;pkt_api, pd-&gt;rx_mbufs, n_pkts);</div>
+<div class="line">        <span class="keywordflow">if</span> (n == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">            <span class="keywordflow">return</span> -1;</div>
+<div class="line">        pd-&gt;tx_overrun += n;</div>
 <div class="line">    }</div>
-<div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
 <div class="line">}</div>
 <div class="line"> </div>
@@ -280,18 +292,15 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">{</div>
 <div class="line">    <span class="keyword">struct </span>fwd_port *pd = lport-&gt;priv_;</div>
 <div class="line">    <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *tx_mbufs[fwd-&gt;burst];</div>
-<div class="line">    <span class="keywordtype">int</span> n_pkts;</div>
+<div class="line">    <span class="keywordtype">int</span> n_pkts, n;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (!pd)</div>
 <div class="line">        <a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;fwd_port passed in lport private data is NULL\n&quot;</span>);</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">/* Cleanup RX side */</span></div>
-<div class="line">    <a class="code" href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a>(pd-&gt;rx_mbufs, __rx_burst(fwd-&gt;pkt_api, pd, pd-&gt;rx_mbufs, fwd-&gt;burst));</div>
-<div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (fwd-&gt;pkt_api == PKTDEV_PKT_API)</div>
 <div class="line">        n_pkts = <a name="a16"></a><a class="code" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a>(pd-&gt;lport, tx_mbufs, fwd-&gt;burst);</div>
 <div class="line">    <span class="keywordflow">else</span> {</div>
-<div class="line">        region_info_t *ri = &amp;lport-&gt;<a name="a17"></a><a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a name="a18"></a><a class="code" href="structjcfg__umem.html#aab8b3484b7ca6e5fdbc6f098d9be7e3d">rinfo</a>[lport-&gt;<a name="a19"></a><a class="code" href="structjcfg__lport.html#ab1043824914372d0da6fdffd6100254d">region_idx</a>];</div>
+<div class="line">        region_info_t *ri = &amp;lport-&gt;<a name="a17"></a><a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a name="a18"></a><a class="code" href="structjcfg__umem.html#ad3e35105f18708750062f9b080406337">rinfo</a>[lport-&gt;<a name="a19"></a><a class="code" href="structjcfg__lport.html#ab1043824914372d0da6fdffd6100254d">region_idx</a>];</div>
 <div class="line"> </div>
 <div class="line">        n_pkts = <a name="a20"></a><a class="code" href="pktmbuf_8h.html#a7e44a4d778a3bc816d6e330d2448800a">pktmbuf_alloc_bulk</a>(ri-&gt;pool, tx_mbufs, fwd-&gt;burst);</div>
 <div class="line">    }</div>
@@ -301,18 +310,97 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">            <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *xb = tx_mbufs[j];</div>
 <div class="line">            uint64_t *p   = <a class="code" href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a>(xb, uint64_t *);</div>
 <div class="line"> </div>
-<div class="line">            p[0]                 = 0xfd3c78299efefd3c;</div>
-<div class="line">            p[1]                 = 0x00450008b82c9efe;</div>
-<div class="line">            p[2]                 = 0x110400004f122e00;</div>
-<div class="line">            p[3]                 = 0xa8c00100a8c01e22;</div>
-<div class="line">            p[4]                 = 0x1a002e16d2040101;</div>
-<div class="line">            p[5]                 = 0x706f6e6d6c6b9a9e;</div>
-<div class="line">            p[6]                 = 0x7877767574737271;</div>
-<div class="line">            p[7]                 = 0x31307a79;</div>
+<div class="line">            <span class="comment">/*</span></div>
+<div class="line"><span class="comment">             * IPv4/UDP 64 byte packet</span></div>
+<div class="line"><span class="comment">             * Port Src/Dest       :           1234/ 5678</span></div>
+<div class="line"><span class="comment">             * Pkt Type            :           IPv4 / UDP</span></div>
+<div class="line"><span class="comment">             * IP  Destination     :           198.18.1.1</span></div>
+<div class="line"><span class="comment">             *     Source          :        198.18.0.1/24</span></div>
+<div class="line"><span class="comment">             * MAC Destination     :    3c:fd:fe:e4:34:c0</span></div>
+<div class="line"><span class="comment">             *     Source          :    3c:fd:fe:e4:38:40</span></div>
+<div class="line"><span class="comment">             * 0000   3cfd fee4 34c0 3cfd fee4 3840 08004500</span></div>
+<div class="line"><span class="comment">             * 0010   002e 60ac 0000 4011 8cec c612 0001c612</span></div>
+<div class="line"><span class="comment">             * 0020   0101 04d2 162e 001a 93c6 6b6c 6d6e6f70</span></div>
+<div class="line"><span class="comment">             * 0030   7172 7374 7576 7778 797a 3031</span></div>
+<div class="line"><span class="comment">             */</span></div>
+<div class="line">            p[0]                 = 0x3cfdfee434c03cfd;</div>
+<div class="line">            p[1]                 = 0xfee4384008004500;</div>
+<div class="line">            p[2]                 = 0x002e60ac00004011;</div>
+<div class="line">            p[3]                 = 0x8cecc6120001c612;</div>
+<div class="line">            p[4]                 = 0x010104d2162e001a;</div>
+<div class="line">            p[5]                 = 0x93c66b6c6d6e6f70;</div>
+<div class="line">            p[6]                 = 0x7172737475767778;</div>
+<div class="line">            p[7]                 = 0x797a3031;</div>
 <div class="line">            <a name="a21"></a><a class="code" href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a>(xb) = 60;</div>
 <div class="line">        }</div>
 <div class="line"> </div>
-<div class="line">        pd-&gt;tx_overrun += __tx_flush(pd, fwd-&gt;pkt_api, tx_mbufs, n_pkts);</div>
+<div class="line">        n = __tx_flush(pd, fwd-&gt;pkt_api, tx_mbufs, n_pkts);</div>
+<div class="line">        <span class="keywordflow">if</span> (n == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">            <span class="keywordflow">return</span> -1;</div>
+<div class="line">        pd-&gt;tx_overrun += n;</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">_txonly_rx_test(<a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *lport, <span class="keyword">struct</span> fwd_info *fwd)</div>
+<div class="line">{</div>
+<div class="line">    <span class="keyword">struct </span>fwd_port *pd = lport-&gt;priv_;</div>
+<div class="line">    <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *tx_mbufs[fwd-&gt;burst];</div>
+<div class="line">    <span class="keywordtype">int</span> n_pkts, n;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (!pd)</div>
+<div class="line">        <a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;fwd_port passed in lport private data is NULL\n&quot;</span>);</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Cleanup RX side */</span></div>
+<div class="line">    n_pkts = __rx_burst(fwd-&gt;pkt_api, pd, pd-&gt;rx_mbufs, fwd-&gt;burst);</div>
+<div class="line">    <span class="keywordflow">if</span> (n_pkts == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line"> </div>
+<div class="line">    <a class="code" href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a>(pd-&gt;rx_mbufs, n_pkts);</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (fwd-&gt;pkt_api == PKTDEV_PKT_API)</div>
+<div class="line">        n_pkts = <a class="code" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a>(pd-&gt;lport, tx_mbufs, fwd-&gt;burst);</div>
+<div class="line">    <span class="keywordflow">else</span> {</div>
+<div class="line">        region_info_t *ri = &amp;lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a class="code" href="structjcfg__umem.html#ad3e35105f18708750062f9b080406337">rinfo</a>[lport-&gt;<a class="code" href="structjcfg__lport.html#ab1043824914372d0da6fdffd6100254d">region_idx</a>];</div>
+<div class="line"> </div>
+<div class="line">        n_pkts = <a class="code" href="pktmbuf_8h.html#a7e44a4d778a3bc816d6e330d2448800a">pktmbuf_alloc_bulk</a>(ri-&gt;pool, tx_mbufs, fwd-&gt;burst);</div>
+<div class="line">    }</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (n_pkts &gt; 0) {</div>
+<div class="line">        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j &lt; n_pkts; j++) {</div>
+<div class="line">            <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> *xb = tx_mbufs[j];</div>
+<div class="line">            uint64_t *p   = <a class="code" href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a>(xb, uint64_t *);</div>
+<div class="line"> </div>
+<div class="line">            <span class="comment">/*</span></div>
+<div class="line"><span class="comment">             * IPv4/UDP 64 byte packet</span></div>
+<div class="line"><span class="comment">             * Port Src/Dest       :           1234/ 5678</span></div>
+<div class="line"><span class="comment">             * Pkt Type            :           IPv4 / UDP</span></div>
+<div class="line"><span class="comment">             * IP  Destination     :           198.18.1.1</span></div>
+<div class="line"><span class="comment">             *     Source          :        198.18.0.1/24</span></div>
+<div class="line"><span class="comment">             * MAC Destination     :    3c:fd:fe:e4:34:c0</span></div>
+<div class="line"><span class="comment">             *     Source          :    3c:fd:fe:e4:38:40</span></div>
+<div class="line"><span class="comment">             * 0000   3cfd fee4 34c0 3cfd fee4 3840 08004500</span></div>
+<div class="line"><span class="comment">             * 0010   002e 60ac 0000 4011 8cec c612 0001c612</span></div>
+<div class="line"><span class="comment">             * 0020   0101 04d2 162e 001a 93c6 6b6c 6d6e6f70</span></div>
+<div class="line"><span class="comment">             * 0030   7172 7374 7576 7778 797a 3031</span></div>
+<div class="line"><span class="comment">             */</span></div>
+<div class="line">            p[0]                 = 0x3cfdfee434c03cfd;</div>
+<div class="line">            p[1]                 = 0xfee4384008004500;</div>
+<div class="line">            p[2]                 = 0x002e60ac00004011;</div>
+<div class="line">            p[3]                 = 0x8cecc6120001c612;</div>
+<div class="line">            p[4]                 = 0x010104d2162e001a;</div>
+<div class="line">            p[5]                 = 0x93c66b6c6d6e6f70;</div>
+<div class="line">            p[6]                 = 0x7172737475767778;</div>
+<div class="line">            p[7]                 = 0x797a3031;</div>
+<div class="line">            <a class="code" href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a>(xb) = 60;</div>
+<div class="line">        }</div>
+<div class="line"> </div>
+<div class="line">        n = __tx_flush(pd, fwd-&gt;pkt_api, tx_mbufs, n_pkts);</div>
+<div class="line">        <span class="keywordflow">if</span> (n == PKTDEV_ADMIN_STATE_DOWN)</div>
+<div class="line">            <span class="keywordflow">return</span> -1;</div>
+<div class="line">        pd-&gt;tx_overrun += n;</div>
 <div class="line">    }</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">return</span> 0;</div>
@@ -415,10 +503,21 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">    <span class="keyword">struct </span>fwd_info *fwd               = func_arg-&gt;fwd;</div>
 <div class="line">    <a class="code" href="structjcfg__thd.html">jcfg_thd_t</a> *thd                    = func_arg-&gt;thd;</div>
 <div class="line">    <a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *lport;</div>
+<div class="line">    <span class="comment">// clang-format off</span></div>
 <div class="line">    <span class="keyword">struct </span>{</div>
 <div class="line">        int (*func)(<a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *lport, <span class="keyword">struct </span>fwd_info *fwd);</div>
-<div class="line">    } tests[] = {{NULL},      {_drop_test},   {_loopback_test}, {_txonly_test},</div>
-<div class="line">                 {_fwd_test}, {acl_fwd_test}, {acl_fwd_test},   {NULL}};</div>
+<div class="line">    } tests[] = {</div>
+<div class="line">        {NULL},</div>
+<div class="line">        {_drop_test},</div>
+<div class="line">        {_loopback_test},</div>
+<div class="line">        {_txonly_test},</div>
+<div class="line">        {_fwd_test},</div>
+<div class="line">        {acl_fwd_test},</div>
+<div class="line">        {acl_fwd_test},</div>
+<div class="line">        {_txonly_rx_test},</div>
+<div class="line">        {NULL}</div>
+<div class="line">    };</div>
+<div class="line">    <span class="comment">// clang-format on</span></div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (thd-&gt;<a name="a29"></a><a class="code" href="structjcfg__thd.html#ad0c2c8b05cdeb757fb5c3a542b0566ec">group</a>-&gt;<a name="a30"></a><a class="code" href="structjcfg__lgroup.html#abe960560941fa7eb7926720d9143e1f6">lcore_cnt</a> &gt; 0)</div>
 <div class="line">        pthread_setaffinity_np(pthread_self(), <span class="keyword">sizeof</span>(cpu_set_t), &amp;thd-&gt;<a class="code" href="structjcfg__thd.html#ad0c2c8b05cdeb757fb5c3a542b0566ec">group</a>-&gt;<a name="a31"></a><a class="code" href="structjcfg__lgroup.html#a91bb1e9325cf7ed3b748e11b66ce9e18">lcore_bitmap</a>);</div>
@@ -478,18 +577,7 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">_check_thread_quit(<a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *j <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">void</span> *obj, <span class="keywordtype">void</span> *arg <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">int</span> idx)</div>
-<div class="line">{</div>
-<div class="line">    <a class="code" href="structjcfg__thd.html">jcfg_thd_t</a> *thd = obj;</div>
-<div class="line"> </div>
-<div class="line">    <span class="comment">/* Make sure worker threads are done. Ignore main thread (idx=0) */</span></div>
-<div class="line">    <span class="keywordflow">while</span> (thd-&gt;<a class="code" href="structjcfg__thd.html#a77bd726f66fc11fca562d50f340f8341">quit</a> != THD_DONE &amp;&amp; idx &gt; 0)</div>
-<div class="line">        ;</div>
-<div class="line">    <span class="keywordflow">return</span> 0;</div>
-<div class="line">}</div>
-<div class="line"> </div>
-<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
-<div class="line">_thread_cleanup(<a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *j <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">void</span> *obj, <span class="keywordtype">void</span> *arg, <span class="keywordtype">int</span> idx <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>)</div>
+<div class="line">_thread_port_close(<a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *j <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">void</span> *obj, <span class="keywordtype">void</span> *arg, <span class="keywordtype">int</span> idx <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>)</div>
 <div class="line">{</div>
 <div class="line">    <a class="code" href="structjcfg__thd.html">jcfg_thd_t</a> *thd = obj;</div>
 <div class="line">    <a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *lport;</div>
@@ -521,13 +609,45 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">if</span> (ret &lt; 0)</div>
 <div class="line">            CNE_ERR(<span class="stringliteral">&quot;port_close() returned error\n&quot;</span>);</div>
+<div class="line">    }</div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
 <div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">_check_thread_quit(<a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *j <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">void</span> *obj, <span class="keywordtype">void</span> *arg <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">int</span> idx)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="structjcfg__thd.html">jcfg_thd_t</a> *thd = obj;</div>
+<div class="line">    uint32_t timo   = TIMEOUT_VALUE;</div>
+<div class="line"> </div>
+<div class="line">    <span class="comment">/* Make sure worker threads are done. Ignore main thread (idx=0) */</span></div>
+<div class="line">    <span class="keywordflow">while</span> (--timo &amp;&amp; thd-&gt;<a class="code" href="structjcfg__thd.html#a77bd726f66fc11fca562d50f340f8341">quit</a> != THD_DONE &amp;&amp; idx &gt; 0)</div>
+<div class="line">        usleep(10000); <span class="comment">/* 10ms */</span></div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (timo == 0)</div>
+<div class="line">        <span class="keywordflow">return</span> -1;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">return</span> 0;</div>
+<div class="line">}</div>
+<div class="line"> </div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">int</span></div>
+<div class="line">_thread_cleanup(<a class="code" href="structjcfg__info__s.html">jcfg_info_t</a> *j <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>, <span class="keywordtype">void</span> *obj, <span class="keywordtype">void</span> *arg <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>,</div>
+<div class="line">                <span class="keywordtype">int</span> idx <a class="code" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>)</div>
+<div class="line">{</div>
+<div class="line">    <a class="code" href="structjcfg__thd.html">jcfg_thd_t</a> *thd = obj;</div>
+<div class="line">    <a class="code" href="structjcfg__lport.html">jcfg_lport_t</a> *lport;</div>
+<div class="line"> </div>
+<div class="line">    <span class="keywordflow">if</span> (thd-&gt;<a class="code" href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">lport_cnt</a> == 0) {</div>
+<div class="line">        CNE_DEBUG(<span class="stringliteral">&quot;No lports attached to thread &#39;%s&#39;\n&quot;</span>, thd-&gt;name);</div>
+<div class="line">        <span class="keywordflow">return</span> 0;</div>
+<div class="line">    } <span class="keywordflow">else</span></div>
+<div class="line">        CNE_DEBUG(<span class="stringliteral">&quot;Close %d lport%s for thread &#39;%s&#39;\n&quot;</span>, thd-&gt;<a class="code" href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">lport_cnt</a>,</div>
+<div class="line">                  (thd-&gt;<a class="code" href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">lport_cnt</a> == 1) ? <span class="stringliteral">&quot;&quot;</span> : <span class="stringliteral">&quot;s&quot;</span>, thd-&gt;name);</div>
+<div class="line"> </div>
+<div class="line">    foreach_thd_lport (thd, lport) {</div>
 <div class="line">        <span class="keywordflow">if</span> (lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>) {</div>
-<div class="line">            <span class="keywordtype">int</span> i;</div>
-<div class="line"> </div>
-<div class="line">            <span class="keywordflow">for</span> (i = 0; i &lt; lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a name="a42"></a><a class="code" href="structjcfg__umem.html#af2ff8bd84ac49642ff923abee2ed6056">region_cnt</a>; i++) {</div>
-<div class="line">                <a name="a43"></a><a class="code" href="pktmbuf_8h.html#ad4cc762b3e8f318715f6b7a8df137df7">pktmbuf_destroy</a>(lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a class="code" href="structjcfg__umem.html#aab8b3484b7ca6e5fdbc6f098d9be7e3d">rinfo</a>[i].pool);</div>
-<div class="line">                lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a class="code" href="structjcfg__umem.html#aab8b3484b7ca6e5fdbc6f098d9be7e3d">rinfo</a>[i].pool = NULL;</div>
+<div class="line">            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a name="a42"></a><a class="code" href="structjcfg__umem.html#af2ff8bd84ac49642ff923abee2ed6056">region_cnt</a>; i++) {</div>
+<div class="line">                <a name="a43"></a><a class="code" href="pktmbuf_8h.html#ad4cc762b3e8f318715f6b7a8df137df7">pktmbuf_destroy</a>(lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a class="code" href="structjcfg__umem.html#ad3e35105f18708750062f9b080406337">rinfo</a>[i].pool);</div>
+<div class="line">                lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a class="code" href="structjcfg__umem.html#ad3e35105f18708750062f9b080406337">rinfo</a>[i].pool = NULL;</div>
 <div class="line">            }</div>
 <div class="line">            <a name="a44"></a><a class="code" href="cne__mmap_8h.html#a30b203a0857344ce285e08166e654e5e">mmap_free</a>(lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a name="a45"></a><a class="code" href="structjcfg__umem.html#a03b76209c26a8c940528c27ccd4a4399">mm</a>);</div>
 <div class="line">            lport-&gt;<a class="code" href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">umem</a>-&gt;<a class="code" href="structjcfg__umem.html#a03b76209c26a8c940528c27ccd4a4399">mm</a> = NULL; <span class="comment">/* Make sure we do not free this again */</span></div>
@@ -543,7 +663,7 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">    <span class="keyword">struct </span>fwd_info *fwd = arg;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">switch</span> (exit_type) {</div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a46"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a46"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a>:</div>
 <div class="line">        <span class="comment">/* Terminate the application if not USR1 signal, allows for GDB breakpoint setting */</span></div>
 <div class="line">        <span class="keywordflow">if</span> (val == SIGUSR1)</div>
 <div class="line">            <span class="keywordflow">return</span>;</div>
@@ -553,13 +673,14 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">        fwd-&gt;timer_quit = 1;</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a48"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a48"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a>:</div>
 <div class="line">        <span class="keywordflow">if</span> (val)</div>
 <div class="line">            <a class="code" href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a>(99, 1, <span class="stringliteral">&quot;\n&gt;&gt;&gt; [cyan]Terminating with status [green]%d[]\n&quot;</span>, val);</div>
 <div class="line"> </div>
 <div class="line">        <span class="keywordflow">if</span> (fwd) {</div>
 <div class="line">            <a class="code" href="cne__stdio_8h.html#acb5e6a7e2a06a6e65de91e951186606d">cne_printf</a>(<span class="stringliteral">&quot;&gt;&gt;&gt; [magenta]Closing lport(s)[]\n&quot;</span>);</div>
 <div class="line">            jcfg_thread_foreach(fwd-&gt;jinfo, _thread_quit, fwd);</div>
+<div class="line">            jcfg_thread_foreach(fwd-&gt;jinfo, _thread_port_close, fwd);</div>
 <div class="line">            jcfg_thread_foreach(fwd-&gt;jinfo, _check_thread_quit, fwd);</div>
 <div class="line">            jcfg_thread_foreach(fwd-&gt;jinfo, _thread_cleanup, fwd);</div>
 <div class="line">            <a class="code" href="cne__stdio_8h.html#acb5e6a7e2a06a6e65de91e951186606d">cne_printf</a>(<span class="stringliteral">&quot;&gt;&gt;&gt; [magenta]Done[]\n&quot;</span>);</div>
@@ -572,7 +693,7 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a51"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a51"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a>:</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">default</span>:</div>
@@ -584,14 +705,22 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line"><span class="keywordtype">int</span></div>
 <div class="line">main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> **argv)</div>
 <div class="line">{</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *tests[] = {<span class="stringliteral">&quot;Unknown&quot;</span>, <span class="stringliteral">&quot;Drop&quot;</span>,       <span class="stringliteral">&quot;Loopback&quot;</span>,       <span class="stringliteral">&quot;Tx Only&quot;</span>,</div>
-<div class="line">                           <span class="stringliteral">&quot;Forward&quot;</span>, <span class="stringliteral">&quot;ACL Strict&quot;</span>, <span class="stringliteral">&quot;ACL Permissive&quot;</span>, NULL};</div>
-<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *apis[]  = {<span class="stringliteral">&quot;Unknown&quot;</span>, <span class="stringliteral">&quot;XSKDEV&quot;</span>, <span class="stringliteral">&quot;PKTDEV&quot;</span>, NULL};</div>
-<div class="line">    <span class="keywordtype">int</span> signals[]       = {SIGINT, SIGUSR1, SIGTERM};</div>
+<div class="line">    <span class="comment">// clang-format off</span></div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *tests[] = {</div>
+<div class="line">        <span class="stringliteral">&quot;Unknown&quot;</span>, <span class="stringliteral">&quot;Drop&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Loopback&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Tx Only&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Forward&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;ACL Strict&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;ACL Permissive&quot;</span>,</div>
+<div class="line">        <span class="stringliteral">&quot;Tx Only+RX&quot;</span>,</div>
+<div class="line">        NULL</div>
+<div class="line">    };</div>
+<div class="line">    <span class="comment">// clang-format on</span></div>
+<div class="line">    <span class="keyword">const</span> <span class="keywordtype">char</span> *apis[] = {<span class="stringliteral">&quot;Unknown&quot;</span>, <span class="stringliteral">&quot;XSKDEV&quot;</span>, <span class="stringliteral">&quot;PKTDEV&quot;</span>, NULL};</div>
+<div class="line">    <span class="keywordtype">int</span> signals[]      = {SIGINT, SIGUSR1, SIGTERM};</div>
 <div class="line"> </div>
 <div class="line">    memset(&amp;fwd_info, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> fwd_info));</div>
-<div class="line"> </div>
-<div class="line">    setlocale(LC_ALL, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<a name="a52"></a><a class="code" href="cne_8h.html#a2dd46e2096148023d060831f7868b74a">cne_init</a>() || parse_args(argc, argv, fwd))</div>
 <div class="line">        <span class="keywordflow">goto</span> err;</div>
@@ -619,7 +748,7 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">    <span class="keywordflow">for</span> (;;) {</div>
 <div class="line">        sleep(1);</div>
 <div class="line"> </div>
-<div class="line">        <span class="keywordflow">if</span> (fwd-&gt;timer_quit) <span class="comment">/* Test for quiting after sleep to avoid calling print_port_stats() */</span></div>
+<div class="line">        <span class="keywordflow">if</span> (fwd-&gt;timer_quit) <span class="comment">/* Test for quitting after sleep to avoid calling print_port_stats() */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
 <div class="line">        <span class="keywordflow">if</span> (fwd-&gt;opts.cli)</div>
@@ -642,18 +771,18 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="line">}</div>
 <div class="ttc" id="acne_8h_html"><div class="ttname"><a href="cne_8h.html">cne.h</a></div></div>
 <div class="ttc" id="acne_8h_html_a2dd46e2096148023d060831f7868b74a"><div class="ttname"><a href="cne_8h.html#a2dd46e2096148023d060831f7868b74a">cne_init</a></div><div class="ttdeci">CNDP_API int cne_init(void)</div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a></div><div class="ttdeci">@ CNE_CALLED_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00028">cne.h:28</a></div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a></div><div class="ttdeci">@ CNE_USER_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00029">cne.h:29</a></div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a></div><div class="ttdeci">@ CNE_CAUGHT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00027">cne.h:27</a></div></div>
 <div class="ttc" id="acne_8h_html_ae44241df5dc9d02f736816190d3d42c5"><div class="ttname"><a href="cne_8h.html#ae44241df5dc9d02f736816190d3d42c5">cne_on_exit</a></div><div class="ttdeci">CNDP_API int cne_on_exit(on_exit_fn_t exit_fn, void *arg, int *signals, int nb_signals)</div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a></div><div class="ttdeci">@ CNE_CALLED_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00028">cne.h:28</a></div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a></div><div class="ttdeci">@ CNE_USER_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00029">cne.h:29</a></div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a></div><div class="ttdeci">@ CNE_CAUGHT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00027">cne.h:27</a></div></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="acne__common_8h_html_a110ce74779a3879ca9ba9167c968cf27"><div class="ttname"><a href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a></div><div class="ttdeci">#define __cne_unused</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00144">cne_common.h:144</a></div></div>
-<div class="ttc" id="acne__common_8h_html_afa19e4373ad95aff9c2473b2a3da0299"><div class="ttname"><a href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a></div><div class="ttdeci">#define __cne_always_inline</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00213">cne_common.h:213</a></div></div>
+<div class="ttc" id="acne__common_8h_html_afa19e4373ad95aff9c2473b2a3da0299"><div class="ttname"><a href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a></div><div class="ttdeci">#define __cne_always_inline</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00218">cne_common.h:218</a></div></div>
 <div class="ttc" id="acne__gettid_8h_html"><div class="ttname"><a href="cne__gettid_8h.html">cne_gettid.h</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00223">cne_log.h:223</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00246">cne_log.h:246</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ae0f3349d5fd1ed71310c911dc4e81eea"><div class="ttname"><a href="cne__log_8h.html#ae0f3349d5fd1ed71310c911dc4e81eea">cne_exit</a></div><div class="ttdeci">#define cne_exit(format, args...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00288">cne_log.h:288</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00250">cne_log.h:250</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00273">cne_log.h:273</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ae0f3349d5fd1ed71310c911dc4e81eea"><div class="ttname"><a href="cne__log_8h.html#ae0f3349d5fd1ed71310c911dc4e81eea">cne_exit</a></div><div class="ttdeci">#define cne_exit(format, args...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00315">cne_log.h:315</a></div></div>
 <div class="ttc" id="acne__mmap_8h_html_a30b203a0857344ce285e08166e654e5e"><div class="ttname"><a href="cne__mmap_8h.html#a30b203a0857344ce285e08166e654e5e">mmap_free</a></div><div class="ttdeci">CNDP_API int mmap_free(mmap_t *mmap)</div></div>
 <div class="ttc" id="acne__stdio_8h_html_ab638714dd6596ee2a904abf94cdb0528"><div class="ttname"><a href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a></div><div class="ttdeci">CNDP_API int cne_printf_pos(int16_t r, int16_t c, const char *fmt,...)</div></div>
 <div class="ttc" id="acne__stdio_8h_html_acb5e6a7e2a06a6e65de91e951186606d"><div class="ttname"><a href="cne__stdio_8h.html#acb5e6a7e2a06a6e65de91e951186606d">cne_printf</a></div><div class="ttdeci">CNDP_API int cne_printf(const char *fmt,...)</div></div>
@@ -663,32 +792,32 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="ttc" id="ajcfg_8h_html_a8f77a640370ae4142a4973cdfeaaf7ba"><div class="ttname"><a href="jcfg_8h.html#a8f77a640370ae4142a4973cdfeaaf7ba">jcfg_lport_by_index</a></div><div class="ttdeci">CNDP_API jcfg_lport_t * jcfg_lport_by_index(jcfg_info_t *jinfo, int idx)</div></div>
 <div class="ttc" id="ametrics_8h_html"><div class="ttname"><a href="metrics_8h.html">metrics.h</a></div></div>
 <div class="ttc" id="ametrics_8h_html_ab6f5cd790e9ee2b0fcc89537dfae70d2"><div class="ttname"><a href="metrics_8h.html#ab6f5cd790e9ee2b0fcc89537dfae70d2">metrics_destroy</a></div><div class="ttdeci">CNDP_API int metrics_destroy(void)</div></div>
-<div class="ttc" id="apktdev_8h_html_a8b02a8a5fa5d7f4ad8866c5960584337"><div class="ttname"><a href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">pktdev_tx_burst</a></div><div class="ttdeci">static uint16_t pktdev_tx_burst(uint16_t lport_id, pktmbuf_t **tx_pkts, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00256">pktdev.h:256</a></div></div>
-<div class="ttc" id="apktdev_8h_html_abe3980a568daec5be51051bcfcdc16cc"><div class="ttname"><a href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">pktdev_rx_burst</a></div><div class="ttdeci">static uint16_t pktdev_rx_burst(uint16_t lport_id, pktmbuf_t **rx_pkts, const uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00182">pktdev.h:182</a></div></div>
+<div class="ttc" id="apktdev_8h_html_a8b02a8a5fa5d7f4ad8866c5960584337"><div class="ttname"><a href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">pktdev_tx_burst</a></div><div class="ttdeci">static uint16_t pktdev_tx_burst(uint16_t lport_id, pktmbuf_t **tx_pkts, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00258">pktdev.h:258</a></div></div>
+<div class="ttc" id="apktdev_8h_html_abe3980a568daec5be51051bcfcdc16cc"><div class="ttname"><a href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">pktdev_rx_burst</a></div><div class="ttdeci">static uint16_t pktdev_rx_burst(uint16_t lport_id, pktmbuf_t **rx_pkts, const uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00183">pktdev.h:183</a></div></div>
 <div class="ttc" id="apktdev__api_8h_html_a3b4e99e57c23cbe92863182322cb1d6b"><div class="ttname"><a href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a></div><div class="ttdeci">CNDP_API int pktdev_buf_alloc(int lport_id, pktmbuf_t **bufs, uint16_t nb_bufs)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a5ddc94e699312f0c6b708a75ac668102"><div class="ttname"><a href="pktdev__api_8h.html#a5ddc94e699312f0c6b708a75ac668102">pktdev_close</a></div><div class="ttdeci">CNDP_API int pktdev_close(uint16_t lport_id)</div></div>
-<div class="ttc" id="apktmbuf_8h_html_a034b66bc273e1340547cb7288685ad2f"><div class="ttname"><a href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a></div><div class="ttdeci">#define pktmbuf_data_len(m)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00337">pktmbuf.h:337</a></div></div>
-<div class="ttc" id="apktmbuf_8h_html_a77fa2b918e3052b564b228868d58c198"><div class="ttname"><a href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a></div><div class="ttdeci">#define pktmbuf_mtod(m, t)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00383">pktmbuf.h:383</a></div></div>
-<div class="ttc" id="apktmbuf_8h_html_a7e44a4d778a3bc816d6e330d2448800a"><div class="ttname"><a href="pktmbuf_8h.html#a7e44a4d778a3bc816d6e330d2448800a">pktmbuf_alloc_bulk</a></div><div class="ttdeci">static int pktmbuf_alloc_bulk(pktmbuf_info_t *pi, pktmbuf_t **mbufs, unsigned count)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00629">pktmbuf.h:629</a></div></div>
-<div class="ttc" id="apktmbuf_8h_html_aa27ef3ac37cc4956e9722415637f1cfe"><div class="ttname"><a href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a></div><div class="ttdeci">static void pktmbuf_free_bulk(pktmbuf_t **mbufs, unsigned int count)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00760">pktmbuf.h:760</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_a034b66bc273e1340547cb7288685ad2f"><div class="ttname"><a href="pktmbuf_8h.html#a034b66bc273e1340547cb7288685ad2f">pktmbuf_data_len</a></div><div class="ttdeci">#define pktmbuf_data_len(m)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00370">pktmbuf.h:370</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_a77fa2b918e3052b564b228868d58c198"><div class="ttname"><a href="pktmbuf_8h.html#a77fa2b918e3052b564b228868d58c198">pktmbuf_mtod</a></div><div class="ttdeci">#define pktmbuf_mtod(m, t)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00416">pktmbuf.h:416</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_a7e44a4d778a3bc816d6e330d2448800a"><div class="ttname"><a href="pktmbuf_8h.html#a7e44a4d778a3bc816d6e330d2448800a">pktmbuf_alloc_bulk</a></div><div class="ttdeci">static int pktmbuf_alloc_bulk(pktmbuf_info_t *pi, pktmbuf_t **mbufs, unsigned count)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00670">pktmbuf.h:670</a></div></div>
+<div class="ttc" id="apktmbuf_8h_html_aa27ef3ac37cc4956e9722415637f1cfe"><div class="ttname"><a href="pktmbuf_8h.html#aa27ef3ac37cc4956e9722415637f1cfe">pktmbuf_free_bulk</a></div><div class="ttdeci">static void pktmbuf_free_bulk(pktmbuf_t **mbufs, unsigned int count)</div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00801">pktmbuf.h:801</a></div></div>
 <div class="ttc" id="apktmbuf_8h_html_ad4cc762b3e8f318715f6b7a8df137df7"><div class="ttname"><a href="pktmbuf_8h.html#ad4cc762b3e8f318715f6b7a8df137df7">pktmbuf_destroy</a></div><div class="ttdeci">CNDP_API void pktmbuf_destroy(pktmbuf_info_t *pi)</div></div>
-<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00337">jcfg.h:337</a></div></div>
-<div class="ttc" id="astructjcfg__lgroup_html_a91bb1e9325cf7ed3b748e11b66ce9e18"><div class="ttname"><a href="structjcfg__lgroup.html#a91bb1e9325cf7ed3b748e11b66ce9e18">jcfg_lgroup::lcore_bitmap</a></div><div class="ttdeci">cpu_set_t lcore_bitmap</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00206">jcfg.h:206</a></div></div>
-<div class="ttc" id="astructjcfg__lgroup_html_abe960560941fa7eb7926720d9143e1f6"><div class="ttname"><a href="structjcfg__lgroup.html#abe960560941fa7eb7926720d9143e1f6">jcfg_lgroup::lcore_cnt</a></div><div class="ttdeci">uint16_t lcore_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00205">jcfg.h:205</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html"><div class="ttname"><a href="structjcfg__lport.html">jcfg_lport</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00170">jcfg.h:170</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_a3fa8cc3cca167b6baba4051d9d874d87"><div class="ttname"><a href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">jcfg_lport::umem</a></div><div class="ttdeci">jcfg_umem_t * umem</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00176">jcfg.h:176</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_a9e80a18e17fc4c6a3e11c46abcf1c8ff"><div class="ttname"><a href="structjcfg__lport.html#a9e80a18e17fc4c6a3e11c46abcf1c8ff">jcfg_lport::lpid</a></div><div class="ttdeci">uint16_t lpid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00178">jcfg.h:178</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_ab1043824914372d0da6fdffd6100254d"><div class="ttname"><a href="structjcfg__lport.html#ab1043824914372d0da6fdffd6100254d">jcfg_lport::region_idx</a></div><div class="ttdeci">uint16_t region_idx</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00177">jcfg.h:177</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html"><div class="ttname"><a href="structjcfg__thd.html">jcfg_thd</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00212">jcfg.h:212</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a77bd726f66fc11fca562d50f340f8341"><div class="ttname"><a href="structjcfg__thd.html#a77bd726f66fc11fca562d50f340f8341">jcfg_thd::quit</a></div><div class="ttdeci">volatile uint16_t quit</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00223">jcfg.h:223</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a8cc3dd191f714ba4ae35b2d3ac5b557a"><div class="ttname"><a href="structjcfg__thd.html#a8cc3dd191f714ba4ae35b2d3ac5b557a">jcfg_thd::tid</a></div><div class="ttdeci">int tid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00222">jcfg.h:222</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a91fbaa74988c83e02adba32eba8bdecd"><div class="ttname"><a href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">jcfg_thd::lport_cnt</a></div><div class="ttdeci">uint16_t lport_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00217">jcfg.h:217</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_ad0c2c8b05cdeb757fb5c3a542b0566ec"><div class="ttname"><a href="structjcfg__thd.html#ad0c2c8b05cdeb757fb5c3a542b0566ec">jcfg_thd::group</a></div><div class="ttdeci">jcfg_lgroup_t * group</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00216">jcfg.h:216</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_ae403285ea303dd26759cbfb5f18404f1"><div class="ttname"><a href="structjcfg__thd.html#ae403285ea303dd26759cbfb5f18404f1">jcfg_thd::pause</a></div><div class="ttdeci">volatile uint16_t pause</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00224">jcfg.h:224</a></div></div>
-<div class="ttc" id="astructjcfg__umem_html_a03b76209c26a8c940528c27ccd4a4399"><div class="ttname"><a href="structjcfg__umem.html#a03b76209c26a8c940528c27ccd4a4399">jcfg_umem::mm</a></div><div class="ttdeci">mmap_t * mm</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00154">jcfg.h:154</a></div></div>
-<div class="ttc" id="astructjcfg__umem_html_aab8b3484b7ca6e5fdbc6f098d9be7e3d"><div class="ttname"><a href="structjcfg__umem.html#aab8b3484b7ca6e5fdbc6f098d9be7e3d">jcfg_umem::rinfo</a></div><div class="ttdeci">region_info_t rinfo[UMEM_MAX_REGIONS]</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00164">jcfg.h:164</a></div></div>
-<div class="ttc" id="astructjcfg__umem_html_af2ff8bd84ac49642ff923abee2ed6056"><div class="ttname"><a href="structjcfg__umem.html#af2ff8bd84ac49642ff923abee2ed6056">jcfg_umem::region_cnt</a></div><div class="ttdeci">uint16_t region_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00163">jcfg.h:163</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00334">jcfg.h:334</a></div></div>
+<div class="ttc" id="astructjcfg__lgroup_html_a91bb1e9325cf7ed3b748e11b66ce9e18"><div class="ttname"><a href="structjcfg__lgroup.html#a91bb1e9325cf7ed3b748e11b66ce9e18">jcfg_lgroup::lcore_bitmap</a></div><div class="ttdeci">cpu_set_t lcore_bitmap</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00203">jcfg.h:203</a></div></div>
+<div class="ttc" id="astructjcfg__lgroup_html_abe960560941fa7eb7926720d9143e1f6"><div class="ttname"><a href="structjcfg__lgroup.html#abe960560941fa7eb7926720d9143e1f6">jcfg_lgroup::lcore_cnt</a></div><div class="ttdeci">uint16_t lcore_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00202">jcfg.h:202</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html"><div class="ttname"><a href="structjcfg__lport.html">jcfg_lport</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00167">jcfg.h:167</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_a3fa8cc3cca167b6baba4051d9d874d87"><div class="ttname"><a href="structjcfg__lport.html#a3fa8cc3cca167b6baba4051d9d874d87">jcfg_lport::umem</a></div><div class="ttdeci">jcfg_umem_t * umem</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00173">jcfg.h:173</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_a9e80a18e17fc4c6a3e11c46abcf1c8ff"><div class="ttname"><a href="structjcfg__lport.html#a9e80a18e17fc4c6a3e11c46abcf1c8ff">jcfg_lport::lpid</a></div><div class="ttdeci">uint16_t lpid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00175">jcfg.h:175</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_ab1043824914372d0da6fdffd6100254d"><div class="ttname"><a href="structjcfg__lport.html#ab1043824914372d0da6fdffd6100254d">jcfg_lport::region_idx</a></div><div class="ttdeci">uint16_t region_idx</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00174">jcfg.h:174</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html"><div class="ttname"><a href="structjcfg__thd.html">jcfg_thd</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00209">jcfg.h:209</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a77bd726f66fc11fca562d50f340f8341"><div class="ttname"><a href="structjcfg__thd.html#a77bd726f66fc11fca562d50f340f8341">jcfg_thd::quit</a></div><div class="ttdeci">volatile uint16_t quit</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00220">jcfg.h:220</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a8cc3dd191f714ba4ae35b2d3ac5b557a"><div class="ttname"><a href="structjcfg__thd.html#a8cc3dd191f714ba4ae35b2d3ac5b557a">jcfg_thd::tid</a></div><div class="ttdeci">int tid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00219">jcfg.h:219</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a91fbaa74988c83e02adba32eba8bdecd"><div class="ttname"><a href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">jcfg_thd::lport_cnt</a></div><div class="ttdeci">uint16_t lport_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00214">jcfg.h:214</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_ad0c2c8b05cdeb757fb5c3a542b0566ec"><div class="ttname"><a href="structjcfg__thd.html#ad0c2c8b05cdeb757fb5c3a542b0566ec">jcfg_thd::group</a></div><div class="ttdeci">jcfg_lgroup_t * group</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00213">jcfg.h:213</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_ae403285ea303dd26759cbfb5f18404f1"><div class="ttname"><a href="structjcfg__thd.html#ae403285ea303dd26759cbfb5f18404f1">jcfg_thd::pause</a></div><div class="ttdeci">volatile uint16_t pause</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00221">jcfg.h:221</a></div></div>
+<div class="ttc" id="astructjcfg__umem_html_a03b76209c26a8c940528c27ccd4a4399"><div class="ttname"><a href="structjcfg__umem.html#a03b76209c26a8c940528c27ccd4a4399">jcfg_umem::mm</a></div><div class="ttdeci">mmap_t * mm</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00152">jcfg.h:152</a></div></div>
+<div class="ttc" id="astructjcfg__umem_html_ad3e35105f18708750062f9b080406337"><div class="ttname"><a href="structjcfg__umem.html#ad3e35105f18708750062f9b080406337">jcfg_umem::rinfo</a></div><div class="ttdeci">region_info_t * rinfo</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00161">jcfg.h:161</a></div></div>
+<div class="ttc" id="astructjcfg__umem_html_af2ff8bd84ac49642ff923abee2ed6056"><div class="ttname"><a href="structjcfg__umem.html#af2ff8bd84ac49642ff923abee2ed6056">jcfg_umem::region_cnt</a></div><div class="ttdeci">uint16_t region_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00160">jcfg.h:160</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 <div class="ttc" id="astructtxbuff_html"><div class="ttname"><a href="structtxbuff.html">txbuff</a></div><div class="ttdef"><b>Definition:</b> <a href="txbuff_8h_source.html#l00044">txbuff.h:44</a></div></div>
 <div class="ttc" id="atxbuff_8h_html"><div class="ttname"><a href="txbuff_8h.html">txbuff.h</a></div></div>
 <div class="ttc" id="atxbuff_8h_html_a00b7cec3b813b4d7a2827e985093ba1b"><div class="ttname"><a href="txbuff_8h.html#a00b7cec3b813b4d7a2827e985093ba1b">txbuff_pktdev_create</a></div><div class="ttdeci">CNDP_API txbuff_t * txbuff_pktdev_create(uint16_t size, txbuff_error_fn cbfn, void *cb_arg, uint16_t lport_id)</div></div>
@@ -699,9 +828,9 @@ $(document).ready(function(){initNavTree('examples_2cndpfwd_2main_8c-example.htm
 <div class="ttc" id="atxbuff_8h_html_ada45a79108312587d7f04b3ef40ff239"><div class="ttname"><a href="txbuff_8h.html#ada45a79108312587d7f04b3ef40ff239">txbuff_xskdev_create</a></div><div class="ttdeci">CNDP_API txbuff_t * txbuff_xskdev_create(uint16_t size, txbuff_error_fn cbfn, void *cb_arg, void *xinfo)</div></div>
 <div class="ttc" id="atxbuff_8h_html_afdf8f0e841815a554cfeb4c928442f7c"><div class="ttname"><a href="txbuff_8h.html#afdf8f0e841815a554cfeb4c928442f7c">txbuff_flush</a></div><div class="ttdeci">CNDP_API uint16_t txbuff_flush(txbuff_t *buffer)</div></div>
 <div class="ttc" id="auds_8h_html_a8c0cab666854400817794186c5d39178"><div class="ttname"><a href="uds_8h.html#a8c0cab666854400817794186c5d39178">uds_destroy</a></div><div class="ttdeci">CNDP_API void uds_destroy(uds_info_t *info)</div></div>
-<div class="ttc" id="axskdev_8h_html_a09fbb296353240bd11bfa29b4332a8e8"><div class="ttname"><a href="xskdev_8h.html#a09fbb296353240bd11bfa29b4332a8e8">xskdev_rx_burst</a></div><div class="ttdeci">CNDP_API __cne_always_inline uint16_t xskdev_rx_burst(xskdev_info_t *xi, void **bufs, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="xskdev_8h_source.html#l00167">xskdev.h:167</a></div></div>
+<div class="ttc" id="axskdev_8h_html_a09fbb296353240bd11bfa29b4332a8e8"><div class="ttname"><a href="xskdev_8h.html#a09fbb296353240bd11bfa29b4332a8e8">xskdev_rx_burst</a></div><div class="ttdeci">CNDP_API __cne_always_inline uint16_t xskdev_rx_burst(xskdev_info_t *xi, void **bufs, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="xskdev_8h_source.html#l00168">xskdev.h:168</a></div></div>
 <div class="ttc" id="axskdev_8h_html_a4395c6409fc445e6fb6791cf2b904d93"><div class="ttname"><a href="xskdev_8h.html#a4395c6409fc445e6fb6791cf2b904d93">xskdev_socket_destroy</a></div><div class="ttdeci">CNDP_API void xskdev_socket_destroy(xskdev_info_t *xi)</div></div>
-<div class="ttc" id="axskdev_8h_html_aa3a4f5889495e52230c3534195b043a1"><div class="ttname"><a href="xskdev_8h.html#aa3a4f5889495e52230c3534195b043a1">xskdev_tx_burst</a></div><div class="ttdeci">CNDP_API __cne_always_inline uint16_t xskdev_tx_burst(xskdev_info_t *xi, void **bufs, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="xskdev_8h_source.html#l00185">xskdev.h:185</a></div></div>
+<div class="ttc" id="axskdev_8h_html_aa3a4f5889495e52230c3534195b043a1"><div class="ttname"><a href="xskdev_8h.html#aa3a4f5889495e52230c3534195b043a1">xskdev_tx_burst</a></div><div class="ttdeci">CNDP_API __cne_always_inline uint16_t xskdev_tx_burst(xskdev_info_t *xi, void **bufs, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="xskdev_8h_source.html#l00186">xskdev.h:186</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

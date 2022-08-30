@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -214,8 +214,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:aeb8e1c282570d629a6b603a94a4650d6"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"></td></tr>
-<tr class="separator:aeb8e1c282570d629a6b603a94a4650d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa156d1cebb38c8a65846c4d9c006012a"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"></td></tr>
+<tr class="separator:aa156d1cebb38c8a65846c4d9c006012a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This file contains definion of CNE pktmbuf structure itself, packet offload flags and some related macros. For majority of CNDP entities, it is not recommended to include this file directly, use include &lt;<a class="el" href="pktmbuf_8h.html">pktmbuf.h</a>&gt; instead.</p>
@@ -645,7 +645,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Generic IP encapsulated tunnel type, used for TSO and checksum offload. It can be used for tunnels which are not standards or listed above. It is preferred to use specific tunnel flags like CNE_MBUF_F_TX_TUNNEL_GRE or CNE_MBUF_F_TX_TUNNEL_IPIP if possible. The ethdev must be configured with CNE_ETH_TX_OFFLOAD_IP_TNL_TSO. Outer and inner checksums are done according to the existing flags like CNE_MBUF_F_TX_xxx_CKSUM. Specific tunnel headers that contain payload length, sequence id or checksum are not expected to be updated. </p>
+<p>Generic IP encapsulated tunnel type, used for TSO and checksum offload. It can be used for tunnels which are not standards or listed above. It is preferred to use specific tunnel flags like CNE_MBUF_F_TX_TUNNEL_GRE or CNE_MBUF_F_TX_TUNNEL_IPIP if possible. The device must be configured with CNE_ETH_TX_OFFLOAD_IP_TNL_TSO. Outer and inner checksums are done according to the existing flags like CNE_MBUF_F_TX_xxx_CKSUM. Specific tunnel headers that contain payload length, sequence id or checksum are not expected to be updated. </p>
 
 <p class="definition">Definition at line <a class="el" href="pktmbuf__offload_8h_source.html#l00249">249</a> of file <a class="el" href="pktmbuf__offload_8h_source.html">pktmbuf_offload.h</a>.</p>
 
@@ -662,7 +662,7 @@ Enumerations</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Generic UDP encapsulated tunnel type, used for TSO and checksum offload. UDP tunnel type implies outer IP layer. It can be used for tunnels which are not standards or listed above. It is preferred to use specific tunnel flags like CNE_MBUF_F_TX_TUNNEL_VXLAN if possible. The ethdev must be configured with CNE_ETH_TX_OFFLOAD_UDP_TNL_TSO. Outer and inner checksums are done according to the existing flags like CNE_MBUF_F_TX_xxx_CKSUM. Specific tunnel headers that contain payload length, sequence id or checksum are not expected to be updated. </p>
+<p>Generic UDP encapsulated tunnel type, used for TSO and checksum offload. UDP tunnel type implies outer IP layer. It can be used for tunnels which are not standards or listed above. It is preferred to use specific tunnel flags like CNE_MBUF_F_TX_TUNNEL_VXLAN if possible. The device must be configured with CNE_ETH_TX_OFFLOAD_UDP_TNL_TSO. Outer and inner checksums are done according to the existing flags like CNE_MBUF_F_TX_xxx_CKSUM. Specific tunnel headers that contain payload length, sequence id or checksum are not expected to be updated. </p>
 
 <p class="definition">Definition at line <a class="el" href="pktmbuf__offload_8h_source.html#l00262">262</a> of file <a class="el" href="pktmbuf__offload_8h_source.html">pktmbuf_offload.h</a>.</p>
 
@@ -1000,8 +1000,8 @@ Enumerations</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="aeb8e1c282570d629a6b603a94a4650d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeb8e1c282570d629a6b603a94a4650d6">&#9670;&nbsp;</a></span>anonymous enum</h2>
+<a id="aa156d1cebb38c8a65846c4d9c006012a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa156d1cebb38c8a65846c4d9c006012a">&#9670;&nbsp;</a></span>anonymous enum</h2>
 
 <div class="memitem">
 <div class="memproto">

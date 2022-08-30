@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -144,8 +144,8 @@ Macros</h2></td></tr>
 <tr class="separator:a82c8250e93b6986c6ff82ab54090e0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc5defbf14ad8a0390da39751d695c10"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__common_8h.html#acc5defbf14ad8a0390da39751d695c10">__cne_aligned</a>(a)&#160;&#160;&#160;__attribute__((aligned(a)))</td></tr>
 <tr class="separator:acc5defbf14ad8a0390da39751d695c10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a47e93d2f3c805c7dfee536548b94d34f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__common_8h.html#a47e93d2f3c805c7dfee536548b94d34f">__cne_packed</a>&#160;&#160;&#160;__attribute__((__packed__))</td></tr>
-<tr class="separator:a47e93d2f3c805c7dfee536548b94d34f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0ed0d407c258d262bb3bb1ac2a92b8e"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__common_8h.html#ab0ed0d407c258d262bb3bb1ac2a92b8e">__cne_packed</a>&#160;&#160;&#160;__attribute__((__packed__))</td></tr>
+<tr class="separator:ab0ed0d407c258d262bb3bb1ac2a92b8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7dadf48871cead7cdb53e885874909a0"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__common_8h.html#a7dadf48871cead7cdb53e885874909a0">__cne_weak</a>&#160;&#160;&#160;__attribute__((__weak__))</td></tr>
 <tr class="separator:a7dadf48871cead7cdb53e885874909a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a110ce74779a3879ca9ba9167c968cf27"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a>&#160;&#160;&#160;__attribute__((__unused__))</td></tr>
@@ -341,7 +341,7 @@ Variables</h2></td></tr>
 <div class="line">        if (x == y)              \</div>
 <div class="line">            x = z;               \</div>
 <div class="line">    } <span class="keywordflow">while</span> ((0))</div>
-</div><!-- fragment --><p>Enable the use of shared UMEM if the kernel version &gt;= 5.10 and we detect in the top-level meson.build we have the correct libbpf version &gt;= 0.3.0 Helper routine to set a default value if x == y then x = z.</p>
+</div><!-- fragment --><p>Enable the use of shared UMEM if the kernel version &gt;= 5.10 and we detect in the top-level meson.build we have the correct libbpf version &gt;= 0.3.0 &lt;= 0.6.1 Helper routine to set a default value if x == y then x = z.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">x</td><td>Value to set for default </td></tr>
@@ -463,14 +463,14 @@ Variables</h2></td></tr>
 
 </div>
 </div>
-<a id="a47e93d2f3c805c7dfee536548b94d34f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a47e93d2f3c805c7dfee536548b94d34f">&#9670;&nbsp;</a></span>__cne_packed</h2>
+<a id="ab0ed0d407c258d262bb3bb1ac2a92b8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0ed0d407c258d262bb3bb1ac2a92b8e">&#9670;&nbsp;</a></span>__cne_packed</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">struct <a class="el" href="structcne__ether__hdr.html">cne_ether_hdr</a> struct <a class="el" href="structcne__vlan__hdr.html">cne_vlan_hdr</a> <a class="el" href="struct____cne__packed.html">__cne_packed</a>&#160;&#160;&#160;__attribute__((__packed__))</td>
+          <td class="memname">struct cne_ipv6_fragment_ext <a class="el" href="struct____cne__packed.html">__cne_packed</a>&#160;&#160;&#160;__attribute__((__packed__))</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -509,7 +509,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>short definition to mark a function parameter unused </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a0">examples/cli/main.c</a>, <a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a31">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a25">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a1">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cndpfwd_2stats_8c-example.html#a4">examples/cndpfwd/stats.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a35">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-graph_2stats_8c-example.html#a0">examples/cnet-graph/stats.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a28">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2stats_8c-example.html#a0">examples/cnet-quic/stats.c</a>, <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a5">examples/dlb_test/dlb_test.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#a1">examples/dlb_test/parse-args.c</a>, <a class="el" href="examples_2dlb_test_2stats_8c-example.html#a3">examples/dlb_test/stats.c</a>, <a class="el" href="examples_2helloworld_2main_8c-example.html#a0">examples/helloworld/main.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a0">examples/ibroker/main.c</a>, <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a2">examples/l3fwd-graph/fwd.c</a>, <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a1">examples/l3fwd-graph/parse-args.c</a>, <a class="el" href="examples_2l3fwd-graph_2stats_8c-example.html#a0">examples/l3fwd-graph/stats.c</a>, <a class="el" href="examples_2phil_2main_8c-example.html#a19">examples/phil/main.c</a>, <a class="el" href="examples_2phil_2parse-args_8c-example.html#a1">examples/phil/parse-args.c</a>, and <a class="el" href="examples_2timer_2main_8c-example.html#a1">examples/timer/main.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a0">examples/cli/main.c</a>, <a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a31">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a25">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a1">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cndpfwd_2stats_8c-example.html#a4">examples/cndpfwd/stats.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a26">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-graph_2stats_8c-example.html#a0">examples/cnet-graph/stats.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a28">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a9">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2cnet-quic_2stats_8c-example.html#a0">examples/cnet-quic/stats.c</a>, <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a5">examples/dlb_test/dlb_test.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#a1">examples/dlb_test/parse-args.c</a>, <a class="el" href="examples_2dlb_test_2stats_8c-example.html#a3">examples/dlb_test/stats.c</a>, <a class="el" href="examples_2helloworld_2main_8c-example.html#a0">examples/helloworld/main.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a0">examples/ibroker/main.c</a>, <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a2">examples/l3fwd-graph/fwd.c</a>, <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a1">examples/l3fwd-graph/parse-args.c</a>, <a class="el" href="examples_2l3fwd-graph_2stats_8c-example.html#a0">examples/l3fwd-graph/stats.c</a>, <a class="el" href="examples_2phil_2main_8c-example.html#a19">examples/phil/main.c</a>, <a class="el" href="examples_2phil_2parse-args_8c-example.html#a1">examples/phil/parse-args.c</a>, and <a class="el" href="examples_2timer_2main_8c-example.html#a1">examples/timer/main.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00144">144</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
@@ -532,7 +532,7 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>definition to mark a variable or function parameter as used so as to avoid a compiler warning </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a12">examples/cli/main.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a20">examples/cnet-graph/cnet-graph.c</a>, and <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a25">examples/dlb_test/dlb_test.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a12">examples/cli/main.c</a>, and <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a25">examples/dlb_test/dlb_test.c</a>.</dd>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00150">150</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
@@ -573,7 +573,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00172">172</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00177">177</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +601,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00184">184</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00189">189</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -639,7 +639,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00196">196</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00201">201</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -667,7 +667,7 @@ Variables</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00208">208</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00213">213</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -686,7 +686,7 @@ Variables</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a1">examples/cndpfwd/main.c</a>, and <a class="el" href="examples_2vpp-plugin_2cndp_2device_8c-example.html#a1">examples/vpp-plugin/cndp/device.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00213">213</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00218">218</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -703,7 +703,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Force a function to be noinlined </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00218">218</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00223">223</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -734,7 +734,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Force type to a new type </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00223">223</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00228">228</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -767,7 +767,7 @@ Variables</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a5">examples/cndpfwd/acl-func.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00230">230</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00235">235</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -798,7 +798,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>subtract a byte-value offset from a pointer </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00235">235</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00240">240</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -829,7 +829,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>get the difference between two pointer values, i.e. how far apart in bytes are the locations they point two. It is assumed that ptr1 is greater than ptr2. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00242">242</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00247">247</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -866,7 +866,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Workaround to cast a const field of a structure to non-const type. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00247">247</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00252">252</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +897,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a pointer to a given power-of-two. The resultant pointer will be a pointer of the same type as the first parameter, and point to an address no higher than the first parameter. Second parameter must be a power-of-two value. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00258">258</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00263">263</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -928,7 +928,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a value to a given power-of-two. The resultant value will be of the same type as the first parameter, and will be no bigger than the first parameter. Second parameter must be a power-of-two value. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00266">266</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00271">271</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -959,7 +959,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a pointer to a given power-of-two. The resultant pointer will be a pointer of the same type as the first parameter, and point to an address no lower than the first parameter. Second parameter must be a power-of-two value. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00274">274</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00279">279</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -990,7 +990,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a value to a given power-of-two. The resultant value will be of the same type as the first parameter, and will be no lower than the first parameter. Second parameter must be a power-of-two value. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00283">283</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00288">288</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1021,7 +1021,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a pointer to a given power-of-two. The resultant pointer will be a pointer of the same type as the first parameter, and point to an address no lower than the first parameter. Second parameter must be a power-of-two value. This function is the same as CNE_PTR_ALIGN_CEIL </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00292">292</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00297">297</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1052,7 +1052,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a value to a given power-of-two. The resultant value will be of the same type as the first parameter, and will be no lower than the first parameter. Second parameter must be a power-of-two value. This function is the same as CNE_ALIGN_CEIL </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00301">301</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00306">306</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1083,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a value to the multiple of given value. The resultant value will be of the same type as the first parameter and will be no lower than the first parameter. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00308">308</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00313">313</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1114,7 +1114,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to align a value to the multiple of given value. The resultant value will be of the same type as the first parameter and will be no higher than the first parameter. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00316">316</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00321">321</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1148,11 +1148,11 @@ Variables</h2></td></tr>
 <div class="line">        typeof(v) floor = <a class="code" href="cne__common_8h.html#aef2d6e30578df54940b9017e24df8270">CNE_ALIGN_MUL_FLOOR</a>(v, mul); \</div>
 <div class="line">        (ceil - v) &gt; (v - floor) ? floor : ceil;       \</div>
 <div class="line">    })</div>
-<div class="ttc" id="acne__common_8h_html_aef2d6e30578df54940b9017e24df8270"><div class="ttname"><a href="cne__common_8h.html#aef2d6e30578df54940b9017e24df8270">CNE_ALIGN_MUL_FLOOR</a></div><div class="ttdeci">#define CNE_ALIGN_MUL_FLOOR(v, mul)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00316">cne_common.h:316</a></div></div>
-<div class="ttc" id="acne__common_8h_html_aff9460376e2570339423c9d134ed2bd1"><div class="ttname"><a href="cne__common_8h.html#aff9460376e2570339423c9d134ed2bd1">CNE_ALIGN_MUL_CEIL</a></div><div class="ttdeci">#define CNE_ALIGN_MUL_CEIL(v, mul)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00308">cne_common.h:308</a></div></div>
+<div class="ttc" id="acne__common_8h_html_aef2d6e30578df54940b9017e24df8270"><div class="ttname"><a href="cne__common_8h.html#aef2d6e30578df54940b9017e24df8270">CNE_ALIGN_MUL_FLOOR</a></div><div class="ttdeci">#define CNE_ALIGN_MUL_FLOOR(v, mul)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00321">cne_common.h:321</a></div></div>
+<div class="ttc" id="acne__common_8h_html_aff9460376e2570339423c9d134ed2bd1"><div class="ttname"><a href="cne__common_8h.html#aff9460376e2570339423c9d134ed2bd1">CNE_ALIGN_MUL_CEIL</a></div><div class="ttdeci">#define CNE_ALIGN_MUL_CEIL(v, mul)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00313">cne_common.h:313</a></div></div>
 </div><!-- fragment --><p>Macro to align value to the nearest multiple of the given value. The resultant value might be greater than or less than the first parameter whichever difference is the lowest. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00323">323</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00328">328</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1173,7 +1173,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Triggers an error at compilation time if the condition is true. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00352">352</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00357">357</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1190,7 +1190,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Cache line mask. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00357">357</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00362">362</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1211,7 +1211,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Return the first cache-aligned value greater or equal to size. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00360">360</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00365">365</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1228,7 +1228,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Cache line size in terms of log2 </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00365">365</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00370">370</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1245,7 +1245,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Minimum Cache line size. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00371">371</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00376">376</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1262,7 +1262,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Force alignment to cache line. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00374">374</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00379">379</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1279,7 +1279,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Force minimum cache line alignment. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00377">377</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00382">382</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1300,7 +1300,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Macro to return 1 if n is a power of 2, 0 otherwise </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00456">456</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00461">461</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1338,7 +1338,7 @@ Variables</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a7">examples/cndpfwd/acl-func.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00545">545</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00550">550</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1374,7 +1374,7 @@ Variables</h2></td></tr>
 <div class="line">    })</div>
 </div><!-- fragment --><p>Macro to return the maximum of two numbers </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00555">555</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00560">560</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1404,10 +1404,10 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p>Return the offset of a field in a structure. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a45">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a39">examples/cnet-quic/cnet-quic.c</a>, and <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a41">examples/l3fwd-graph/fwd.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a52">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a39">examples/cnet-quic/cnet-quic.c</a>, and <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a41">examples/l3fwd-graph/fwd.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00718">718</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00723">723</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1447,13 +1447,13 @@ Variables</h2></td></tr>
 <div class="line">        __attribute__((unused)) type *_target_ptr = (type *)(ptr); \</div>
 <div class="line">        (type *)(((uintptr_t)_ptr) - <a class="code" href="cne__common_8h.html#a276e8a32e0bbf024aadd9420b8f2d3b3">offsetof</a>(type, member));      \</div>
 <div class="line">    })</div>
-<div class="ttc" id="acne__common_8h_html_a276e8a32e0bbf024aadd9420b8f2d3b3"><div class="ttname"><a href="cne__common_8h.html#a276e8a32e0bbf024aadd9420b8f2d3b3">offsetof</a></div><div class="ttdeci">#define offsetof(TYPE, MEMBER)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00718">cne_common.h:718</a></div></div>
+<div class="ttc" id="acne__common_8h_html_a276e8a32e0bbf024aadd9420b8f2d3b3"><div class="ttname"><a href="cne__common_8h.html#a276e8a32e0bbf024aadd9420b8f2d3b3">offsetof</a></div><div class="ttdeci">#define offsetof(TYPE, MEMBER)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00723">cne_common.h:723</a></div></div>
 </div><!-- fragment --><p>Return pointer to the wrapping struct instance.</p>
 <p>Example:</p>
 <p>struct wrapper { ... struct child c; ... };</p>
 <p>struct child *x = obtain(...); struct wrapper *w = <a class="el" href="cne__common_8h.html#af8c317a42292b61c93aae91e59118a46">container_of(x, struct wrapper, c)</a>; </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00736">736</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00741">741</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1492,7 +1492,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The size of the field in the structure, in bytes. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00754">754</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00759">759</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1513,7 +1513,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Take a macro value and get a string version of it </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00758">758</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00763">763</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1544,7 +1544,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>ISO C helpers to modify format strings using variadic macros. This is a replacement for the ", ## __VA_ARGS__" GNU extension. An empty s argument is appended to avoid a dangling comma. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00765">765</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00770">770</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1575,7 +1575,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Mask value of type "tp" for the first "ln" bit set. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00770">770</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00775">775</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1596,7 +1596,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of elements in the array. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00773">773</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00778">778</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1614,7 +1614,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>Physical address </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00393">393</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00398">398</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1631,7 +1631,7 @@ Variables</h2></td></tr>
 </div><div class="memdoc">
 <p>IO virtual address type. When the physical addressing mode (IOVA as PA) is in use, the translation from an IO virtual address (IOVA) to a physical address is a direct mapping, i.e. the same value. Otherwise, in virtual mode (IOVA as VA), an IOMMU may do the translation. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00403">403</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00408">408</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1679,7 +1679,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True(1) where the pointer is correctly aligned, false(0) otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00342">342</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00347">347</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1715,7 +1715,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The combined value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00417">417</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00422">422</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1751,7 +1751,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The combined value. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00439">439</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00444">444</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1786,7 +1786,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>1 if true, 0 otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00465">465</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00470">470</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1822,7 +1822,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Input parameter aligned to the next power of 2 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00480">480</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00485">485</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1858,7 +1858,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Input parameter aligned to the previous power of 2 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00498">498</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00503">503</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1896,7 +1896,7 @@ Variables</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a6">examples/cndpfwd/acl-func.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00515">515</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00520">520</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1932,7 +1932,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Input parameter aligned to the previous power of 2 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00533">533</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00538">538</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -1967,7 +1967,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>least significant set bit in the input parameter. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00576">576</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00581">581</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2015,7 +2015,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns 0 if <code>v</code> was 0, otherwise returns 1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00596">596</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00601">601</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2051,7 +2051,7 @@ Variables</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The rounded-up log2 of the input, or 0 if the input is 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00614">614</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00619">619</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2090,7 +2090,7 @@ cne_fls_u32(0) = 0, cne_fls_u32(1) = 1, cne_fls_u32(0x80000000) = 32</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The last (most-significant) bit set, or 0 if the input is 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00634">634</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00639">639</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2125,7 +2125,7 @@ cne_fls_u32(0) = 0, cne_fls_u32(1) = 1, cne_fls_u32(0x80000000) = 32</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>least significant set bit in the input parameter. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00651">651</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00656">656</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2173,7 +2173,7 @@ cne_fls_u32(0) = 0, cne_fls_u32(1) = 1, cne_fls_u32(0x80000000) = 32</dd></dl>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Returns 0 if <code>v</code> was 0, otherwise returns 1. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00671">671</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00676">676</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2212,7 +2212,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The last (most-significant) bit set, or 0 if the input is 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00693">693</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00698">698</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2248,7 +2248,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The rounded-up log2 of the input, or 0 if the input is 0. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00707">707</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00712">712</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2285,7 +2285,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Number. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00791">791</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00796">796</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2303,7 +2303,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </div><div class="memdoc">
 <p>Generic marker for any place in a structure. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00380">380</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00385">385</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2320,7 +2320,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </div><div class="memdoc">
 <p>Marker for 1B alignment in a structure. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00382">382</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00387">387</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2337,7 +2337,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </div><div class="memdoc">
 <p>Marker for 2B alignment in a structure. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00384">384</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00389">389</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2354,7 +2354,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </div><div class="memdoc">
 <p>Marker for 4B alignment in a structure. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00386">386</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00391">391</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>
@@ -2371,7 +2371,7 @@ cne_fls_u64(0) = 0, cne_fls_u64(1) = 1, cne_fls_u64(0x8000000000000000) = 64</dd
 </div><div class="memdoc">
 <p>Marker for 8B alignment in a structure. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00388">388</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__common_8h_source.html#l00393">393</a> of file <a class="el" href="cne__common_8h_source.html">cne_common.h</a>.</p>
 
 </div>
 </div>

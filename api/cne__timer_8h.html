@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -361,7 +361,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Initialize the timer library.</p>
 <p>Initializes internal variables (list, locks and so on) for the CNE timer library. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a50">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a44">examples/cnet-quic/cnet-quic.c</a>, and <a class="el" href="examples_2timer_2main_8c-example.html#a6">examples/timer/main.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a40">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a44">examples/cnet-quic/cnet-quic.c</a>, and <a class="el" href="examples_2timer_2main_8c-example.html#a6">examples/timer/main.c</a>.</dd>
 </dl>
 
 </div>
@@ -652,7 +652,7 @@ Functions</h2></td></tr>
 <p>Manage the timer list and execute callback functions.</p>
 <p>This function must be called periodically from CNE threads main_loop(). It browses the list of pending timers and runs all timers that are expired.</p>
 <p>The precision of the timer depends on the call frequency of this function. However, the more often the function is called, the more CPU resources it will use. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2timer_2main_8c-example.html#a9">examples/timer/main.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a41">examples/cnet-graph/cnet-graph.c</a>, and <a class="el" href="examples_2timer_2main_8c-example.html#a9">examples/timer/main.c</a>.</dd>
 </dl>
 
 </div>

@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -111,12 +111,13 @@ $(document).ready(function(){initNavTree('cnet__pcb_8h.html',''); initResizable(
 
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">cnet_pcb.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;<a class="el" href="cnet__inet_8h_source.html">cnet_inet.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;<a class="el" href="cne__inet_8h_source.html">cne_inet.h</a>&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;string.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&quot;</code><br />
@@ -135,12 +136,18 @@ Functions</h2></td></tr>
 <tr class="memitem:a89534149f80758f89b0ebef60723b781"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">cnet_pcb_dump</a> (stk_t *stk)</td></tr>
 <tr class="memdesc:a89534149f80758f89b0ebef60723b781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump out the PCB information.  <a href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">More...</a><br /></td></tr>
 <tr class="separator:a89534149f80758f89b0ebef60723b781"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ebbc159f035bacb8192922f5a53ae1b"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a8ebbc159f035bacb8192922f5a53ae1b">cnet_pcb_dump_details</a> (stk_t *stk)</td></tr>
-<tr class="memdesc:a8ebbc159f035bacb8192922f5a53ae1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dump out the details information for the stack PCB list.  <a href="cnet__pcb_8h.html#a8ebbc159f035bacb8192922f5a53ae1b">More...</a><br /></td></tr>
-<tr class="separator:a8ebbc159f035bacb8192922f5a53ae1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7047d33040efa074a992dc0728bcbdca"><td class="memItemLeft" align="right" valign="top">static struct pcb_entry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">cnet_pcb_locate</a> (struct pcb_hd *hd, struct in_caddr *faddr, struct in_caddr *laddr)</td></tr>
+<tr class="memitem:a57a3ff576473be55e522392c7140e2ad"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a57a3ff576473be55e522392c7140e2ad">cnet_pcb_show</a> (struct pcb_entry *pcb)</td></tr>
+<tr class="separator:a57a3ff576473be55e522392c7140e2ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7047d33040efa074a992dc0728bcbdca"><td class="memItemLeft" align="right" valign="top">static struct pcb_entry *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">cnet_pcb_locate</a> (struct pcb_hd *hd, struct in_caddr *<a class="el" href="cnet__pcb_8h.html#a5782deb3070540b7cdbfe994a6f00eaa">faddr</a>, struct in_caddr *<a class="el" href="cnet__pcb_8h.html#a933a871ab76b00e6955fc5bb2003b640">laddr</a>)</td></tr>
 <tr class="memdesc:a7047d33040efa074a992dc0728bcbdca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Return the PCB entry matching the given information.  <a href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">More...</a><br /></td></tr>
 <tr class="separator:a7047d33040efa074a992dc0728bcbdca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:a5782deb3070540b7cdbfe994a6f00eaa"><td class="memItemLeft" align="right" valign="top">struct in_caddr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a5782deb3070540b7cdbfe994a6f00eaa">faddr</a></td></tr>
+<tr class="separator:a5782deb3070540b7cdbfe994a6f00eaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a933a871ab76b00e6955fc5bb2003b640"><td class="memItemLeft" align="right" valign="top">struct in_caddr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__pcb_8h.html#a933a871ab76b00e6955fc5bb2003b640">laddr</a></td></tr>
+<tr class="separator:a933a871ab76b00e6955fc5bb2003b640"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>CNET PCB routines. </p>
@@ -221,30 +228,28 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a8ebbc159f035bacb8192922f5a53ae1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8ebbc159f035bacb8192922f5a53ae1b">&#9670;&nbsp;</a></span>cnet_pcb_dump_details()</h2>
+<a id="a57a3ff576473be55e522392c7140e2ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57a3ff576473be55e522392c7140e2ad">&#9670;&nbsp;</a></span>cnet_pcb_show()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CNDP_API void cnet_pcb_dump_details </td>
+          <td class="memname">CNDP_API void cnet_pcb_show </td>
           <td>(</td>
-          <td class="paramtype">stk_t *&#160;</td>
-          <td class="paramname"><em>stk</em></td><td>)</td>
+          <td class="paramtype">struct pcb_entry *&#160;</td>
+          <td class="paramname"><em>pcb</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>Dump out the details information for the stack PCB list. </p>
+<p>Print out the given PCB entry.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">stk</td><td>The stack instance pointer to use for dumping the data. </td></tr>
+    <tr><td class="paramname">pcb</td><td>The PCB entry to dump out </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>N/A </dd></dl>
 
 </div>
 </div>
@@ -299,7 +304,42 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>NULL on error or pointer to a pcb_entry. </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cnet__pcb_8h_source.html#l00169">169</a> of file <a class="el" href="cnet__pcb_8h_source.html">cnet_pcb.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cnet__pcb_8h_source.html#l00163">163</a> of file <a class="el" href="cnet__pcb_8h_source.html">cnet_pcb.h</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a id="a5782deb3070540b7cdbfe994a6f00eaa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5782deb3070540b7cdbfe994a6f00eaa">&#9670;&nbsp;</a></span>faddr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct in_caddr faddr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>foreign IP address </p>
+
+<p class="definition">Definition at line <a class="el" href="cnet__pcb_8h_source.html#l00163">163</a> of file <a class="el" href="cnet__pcb_8h_source.html">cnet_pcb.h</a>.</p>
+
+</div>
+</div>
+<a id="a933a871ab76b00e6955fc5bb2003b640"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a933a871ab76b00e6955fc5bb2003b640">&#9670;&nbsp;</a></span>laddr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">struct in_caddr laddr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>local IP address </p>
+
+<p class="definition">Definition at line <a class="el" href="cnet__pcb_8h_source.html#l00163">163</a> of file <a class="el" href="cnet__pcb_8h_source.html">cnet_pcb.h</a>.</p>
 
 </div>
 </div>

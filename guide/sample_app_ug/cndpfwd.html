@@ -93,6 +93,7 @@
 <li><p>fwd</p></li>
 <li><p>acl-strict</p></li>
 <li><p>acl-permissive</p></li>
+<li><p>tx-only-rx (TX-Only plus draining RX ring)</p></li>
 </ul>
 </div></blockquote>
 <p>In forward mode (‘fwd’), the destination logical port on which to forward the packet is specified by
@@ -121,7 +122,8 @@ a linux environment:</p>
 </pre></div>
 </div>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Usage: ./builddir/examples/cndpfwd/cndpfwd [-h] [-c json_file] [-b burst] &lt;mode&gt;</span>
-<span class="go">  &lt;mode&gt;         Mode types [drop | rx-only], tx-only, [lb | loopback], fwd, acl-strict or acl-permissive</span>
+<span class="go">  &lt;mode&gt;         Mode types [drop | rx-only], tx-only, [lb | loopback], fwd, tx-only-rx,</span>
+<span class="go">                 acl-strict or acl-permissive</span>
 <span class="go">  -a &lt;api&gt;       The API type to use xskdev or pktdev APIs, default is xskdev.\n&quot;</span>
 <span class="go">                 The -a option overrides JSON file.\n&quot;</span>
 <span class="go">  -b &lt;burst&gt;     Burst size. If not present default burst size 256 max 256.</span>
@@ -265,7 +267,8 @@ location where libraries are installed.</p>
 <span class="go">    //   no-metrics - (O) Disable metrics gathering and thread</span>
 <span class="go">    //   no-restapi - (O) Disable RestAPI support</span>
 <span class="go">    //   cli        - (O) Enable/Disable CLI supported</span>
-<span class="go">    //   mode       - (O) Mode type [drop | rx-only], tx-only, [lb | loopback], fwd, acl-strict, acl-permissive</span>
+<span class="go">    //   mode       - (O) Mode type [drop | rx-only], tx-only, [lb | loopback], fwd, tx-only-rx</span>
+<span class="go">    //                    acl-strict, acl-permissive</span>
 <span class="go">    //   uds_path   - (0) Path to unix domain socket to get xsk map fd</span>
 <span class="go">    &quot;options&quot;: {</span>
 <span class="go">        &quot;pkt_api&quot;: &quot;xskdev&quot;,</span>
@@ -330,7 +333,7 @@ by name, specified as a parameter, e.g. <cite>/app/stop,fwd:0</cite> (or <cite>a
 or stop all forwarding threads)</p></li>
 <li><p><cite>/metrics/port_stats</cite> - lists metrics for <cite>cndpfwd</cite> app</p></li>
 </ul>
-<p>The following UDS endpoints will only be avialable if ACL is enabled:</p>
+<p>The following UDS endpoints will only be available if ACL is enabled:</p>
 <ul class="simple">
 <li><p><cite>/acl/rules</cite> - lists general information about the rule table</p></li>
 <li><p><cite>/acl/rules,r:&lt;rule&gt;</cite> - show a specific ACL rule (indicated by its number) in

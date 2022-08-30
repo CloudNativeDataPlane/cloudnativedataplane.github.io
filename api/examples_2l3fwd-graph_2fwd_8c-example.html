@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -136,13 +136,12 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="cne__system_8h.html">cne_system.h</a>&gt;</span>                   <span class="comment">// for cne_lcore_id</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="cne__vect_8h.html">cne_vect.h</a>&gt;</span>                     <span class="comment">// for xmm_t</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="cne__ip_8h.html">net/cne_ip.h</a>&gt;</span>                   <span class="comment">// for CNE_IPV4</span></div>
-<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="cne__ether_8h.html">cne_ether.h</a>&gt;</span>                    <span class="comment">// for ether_addr_copy, ETHER_LOCAL_ADMI...</span></div>
+<div class="line"><span class="preprocessor">#include &lt;<a class="code" href="cne__ether_8h.html">net/cne_ether.h</a>&gt;</span>                <span class="comment">// for ether_addr_copy, ETHER_LOCAL_ADMI...</span></div>
 <div class="line"><span class="preprocessor">#include &lt;<a class="code" href="jcfg_8h.html">jcfg.h</a>&gt;</span>                         <span class="comment">// for jcfg_thd_t, jcfg_lport_t, jcfg_lg...</span></div>
 <div class="line"><span class="preprocessor">#include &lt;net/ethernet.h&gt;</span>                 <span class="comment">// for ether_addr</span></div>
 <div class="line"><span class="preprocessor">#include &lt;netinet/in.h&gt;</span>                   <span class="comment">// for INET6_ADDRSTRLEN, in_addr, htonl</span></div>
 <div class="line"><span class="preprocessor">#include &lt;sched.h&gt;</span>                        <span class="comment">// for cpu_set_t</span></div>
 <div class="line"><span class="preprocessor">#include &lt;stddef.h&gt;</span>                       <span class="comment">// for offsetof</span></div>
-<div class="line"><span class="preprocessor">#include &lt;locale.h&gt;</span></div>
 <div class="line"> </div>
 <div class="line"><span class="preprocessor">#include &quot;fwd.h&quot;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="cne_8h.html">cne.h</a>&quot;</span>               <span class="comment">// for cne_id, cne_init, cne_on_exit</span></div>
@@ -399,7 +398,7 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="line">    <span class="keyword">struct </span>fwd_info *f = arg;</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">switch</span> (exit_type) {</div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a36"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a36"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a>:</div>
 <div class="line">        <span class="keywordflow">switch</span> (val) {</div>
 <div class="line">        <span class="keywordflow">case</span> SIGUSR1: <span class="comment">/* Used to break into the debugger */</span></div>
 <div class="line">            <span class="keywordflow">break</span>;</div>
@@ -415,12 +414,12 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="line">        }</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a38"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a38"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a>:</div>
 <div class="line">        <a class="code" href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a>(99, 1, <span class="stringliteral">&quot;\n&gt;&gt;&gt; [cyan]Terminating with status [green]%d[]\n&quot;</span>, val);</div>
 <div class="line">        my_quit(f);</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
 <div class="line"> </div>
-<div class="line">    <span class="keywordflow">case</span> <a name="a39"></a><a class="code" href="cne_8h.html#a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a>:</div>
+<div class="line">    <span class="keywordflow">case</span> <a name="a39"></a><a class="code" href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a>:</div>
 <div class="line">        <a class="code" href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a>(99, 1, <span class="stringliteral">&quot;\n&gt;&gt;&gt; [cyan]User called exit, with [red]%d[]\n&quot;</span>, val);</div>
 <div class="line">        my_quit(f);</div>
 <div class="line">        <span class="keywordflow">break</span>;</div>
@@ -452,10 +451,10 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="line">        <span class="keywordflow">if</span> (<a name="a44"></a><a class="code" href="pktdev__api_8h.html#a0a896527503de634e15bc97e7980e532">pktdev_macaddr_get</a>(lportid, &amp;addr))</div>
 <div class="line">            <a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;Unable to get MAC address from lport %d\n&quot;</span>, lportid);</div>
 <div class="line"> </div>
-<div class="line">        <a name="a45"></a><a class="code" href="cne__ether_8h.html#a85f09927173a87e6a8e515b97b0ff233">ether_addr_copy</a>(&amp;addr, (<span class="keyword">struct</span> <a class="code" href="structether__addr.html">ether_addr</a> *)(val_eth + lportid) + 1);</div>
+<div class="line">        <a name="a45"></a><a class="code" href="cne__ether_8h.html#abc74ad76505ddb8e8866e17fef111600">ether_addr_copy</a>(&amp;addr, (<span class="keyword">struct</span> <a class="code" href="structether__addr.html">ether_addr</a> *)(val_eth + lportid) + 1);</div>
 <div class="line">    }</div>
 <div class="line"> </div>
-<div class="line">    <span class="comment">/* Ethdev node config, skip rx queue mapping */</span></div>
+<div class="line">    <span class="comment">/* Pktdev node config, skip rx queue mapping */</span></div>
 <div class="line">    <span class="keywordflow">if</span> (<a name="a46"></a><a class="code" href="node__eth__api_8h.html#a768d02e2173dbe8ca1b43d8b71cf3d26">cne_node_eth_config</a>(pktdev_conf, nb_conf))</div>
 <div class="line">        <a class="code" href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a>(<span class="stringliteral">&quot;cne_node_eth_config: failed\n&quot;</span>);</div>
 <div class="line"> </div>
@@ -468,8 +467,6 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="line">    <span class="keywordtype">int</span> signals[] = {SIGINT, SIGTERM, SIGUSR1};</div>
 <div class="line"> </div>
 <div class="line">    memset(&amp;fwd_info, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> fwd_info));</div>
-<div class="line"> </div>
-<div class="line">    setlocale(LC_ALL, <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"> </div>
 <div class="line">    <span class="keywordflow">if</span> (<a name="a47"></a><a class="code" href="cne_8h.html#a2dd46e2096148023d060831f7868b74a">cne_init</a>() &lt; 0)</div>
 <div class="line">        <a class="code" href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a>(err, <span class="stringliteral">&quot;cne_init() failed\n&quot;</span>);</div>
@@ -509,18 +506,18 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="ttc" id="acne_8h_html"><div class="ttname"><a href="cne_8h.html">cne.h</a></div></div>
 <div class="ttc" id="acne_8h_html_a0f9cdd535e00d18a2c8aa9a318ec7bec"><div class="ttname"><a href="cne_8h.html#a0f9cdd535e00d18a2c8aa9a318ec7bec">cne_id</a></div><div class="ttdeci">CNDP_API int cne_id(void)</div></div>
 <div class="ttc" id="acne_8h_html_a2dd46e2096148023d060831f7868b74a"><div class="ttname"><a href="cne_8h.html#a2dd46e2096148023d060831f7868b74a">cne_init</a></div><div class="ttdeci">CNDP_API int cne_init(void)</div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a></div><div class="ttdeci">@ CNE_CALLED_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00028">cne.h:28</a></div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a></div><div class="ttdeci">@ CNE_USER_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00029">cne.h:29</a></div></div>
-<div class="ttc" id="acne_8h_html_a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363"><div class="ttname"><a href="cne_8h.html#a4caf8d8f829279fba122163d961608a4acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a></div><div class="ttdeci">@ CNE_CAUGHT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00027">cne.h:27</a></div></div>
 <div class="ttc" id="acne_8h_html_ae44241df5dc9d02f736816190d3d42c5"><div class="ttname"><a href="cne_8h.html#ae44241df5dc9d02f736816190d3d42c5">cne_on_exit</a></div><div class="ttdeci">CNDP_API int cne_on_exit(on_exit_fn_t exit_fn, void *arg, int *signals, int nb_signals)</div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18aa7b27456b766e2093e1b69ea13035f62">CNE_CALLED_EXIT</a></div><div class="ttdeci">@ CNE_CALLED_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00028">cne.h:28</a></div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18ab5139a5968f01ba10a013cc3e530ca2d">CNE_USER_EXIT</a></div><div class="ttdeci">@ CNE_USER_EXIT</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00029">cne.h:29</a></div></div>
+<div class="ttc" id="acne_8h_html_ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363"><div class="ttname"><a href="cne_8h.html#ae4d5251432e1a9e6803c0240cc492e18acc510e19cf8fce0f350d2a8938901363">CNE_CAUGHT_SIGNAL</a></div><div class="ttdeci">@ CNE_CAUGHT_SIGNAL</div><div class="ttdef"><b>Definition:</b> <a href="cne_8h_source.html#l00027">cne.h:27</a></div></div>
 <div class="ttc" id="acne__branch__prediction_8h_html"><div class="ttname"><a href="cne__branch__prediction_8h.html">cne_branch_prediction.h</a></div></div>
 <div class="ttc" id="acne__branch__prediction_8h_html_a217a0bd562b98ae8c2ffce44935351e1"><div class="ttname"><a href="cne__branch__prediction_8h.html#a217a0bd562b98ae8c2ffce44935351e1">likely</a></div><div class="ttdeci">#define likely(x)</div><div class="ttdef"><b>Definition:</b> <a href="cne__branch__prediction_8h_source.html#l00024">cne_branch_prediction.h:24</a></div></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="acne__common_8h_html_a110ce74779a3879ca9ba9167c968cf27"><div class="ttname"><a href="cne__common_8h.html#a110ce74779a3879ca9ba9167c968cf27">__cne_unused</a></div><div class="ttdeci">#define __cne_unused</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00144">cne_common.h:144</a></div></div>
-<div class="ttc" id="acne__common_8h_html_a276e8a32e0bbf024aadd9420b8f2d3b3"><div class="ttname"><a href="cne__common_8h.html#a276e8a32e0bbf024aadd9420b8f2d3b3">offsetof</a></div><div class="ttdeci">#define offsetof(TYPE, MEMBER)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00718">cne_common.h:718</a></div></div>
+<div class="ttc" id="acne__common_8h_html_a276e8a32e0bbf024aadd9420b8f2d3b3"><div class="ttname"><a href="cne__common_8h.html#a276e8a32e0bbf024aadd9420b8f2d3b3">offsetof</a></div><div class="ttdeci">#define offsetof(TYPE, MEMBER)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00723">cne_common.h:723</a></div></div>
 <div class="ttc" id="acne__ether_8h_html"><div class="ttname"><a href="cne__ether_8h.html">cne_ether.h</a></div></div>
-<div class="ttc" id="acne__ether_8h_html_a85f09927173a87e6a8e515b97b0ff233"><div class="ttname"><a href="cne__ether_8h.html#a85f09927173a87e6a8e515b97b0ff233">ether_addr_copy</a></div><div class="ttdeci">void ether_addr_copy(const struct ether_addr *ea_from, struct ether_addr *ea_to)</div></div>
-<div class="ttc" id="acne__ether_8h_html_aa88ef1c2e21ad83afe35974c4cd2f4ff"><div class="ttname"><a href="cne__ether_8h.html#aa88ef1c2e21ad83afe35974c4cd2f4ff">ETHER_LOCAL_ADMIN_ADDR</a></div><div class="ttdeci">#define ETHER_LOCAL_ADMIN_ADDR</div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00055">cne_ether.h:55</a></div></div>
+<div class="ttc" id="acne__ether_8h_html_aa88ef1c2e21ad83afe35974c4cd2f4ff"><div class="ttname"><a href="cne__ether_8h.html#aa88ef1c2e21ad83afe35974c4cd2f4ff">ETHER_LOCAL_ADMIN_ADDR</a></div><div class="ttdeci">#define ETHER_LOCAL_ADMIN_ADDR</div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00057">cne_ether.h:57</a></div></div>
+<div class="ttc" id="acne__ether_8h_html_abc74ad76505ddb8e8866e17fef111600"><div class="ttname"><a href="cne__ether_8h.html#abc74ad76505ddb8e8866e17fef111600">ether_addr_copy</a></div><div class="ttdeci">CNDP_API __cne_always_inline void ether_addr_copy(const struct ether_addr *ea_from, struct ether_addr *ea_to)</div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00282">cne_ether.h:282</a></div></div>
 <div class="ttc" id="acne__graph_8h_html"><div class="ttname"><a href="cne__graph_8h.html">cne_graph.h</a></div></div>
 <div class="ttc" id="acne__graph_8h_html_a046d7f9533089d4de4097014041eb47d"><div class="ttname"><a href="cne__graph_8h.html#a046d7f9533089d4de4097014041eb47d">cne_graph_cluster_stats_get</a></div><div class="ttdeci">CNDP_API void cne_graph_cluster_stats_get(struct cne_graph_cluster_stats *stat, bool skip_cb)</div></div>
 <div class="ttc" id="acne__graph_8h_html_a5d5aeabb280da175ab508717faacbc96"><div class="ttname"><a href="cne__graph_8h.html#a5d5aeabb280da175ab508717faacbc96">cne_graph_destroy</a></div><div class="ttdeci">CNDP_API int cne_graph_destroy(cne_graph_t id)</div></div>
@@ -534,8 +531,8 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="ttc" id="acne__ip_8h_html"><div class="ttname"><a href="cne__ip_8h.html">cne_ip.h</a></div></div>
 <div class="ttc" id="acne__ip_8h_html_ad3c5377f324aeb2e6822734d62518cdd"><div class="ttname"><a href="cne__ip_8h.html#ad3c5377f324aeb2e6822734d62518cdd">CNE_IPV4</a></div><div class="ttdeci">#define CNE_IPV4(a, b, c, d)</div><div class="ttdef"><b>Definition:</b> <a href="cne__ip_8h_source.html#l00047">cne_ip.h:47</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00223">cne_log.h:223</a></div></div>
-<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00246">cne_log.h:246</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ac8c38301b044c47cdcdffa35550bd524"><div class="ttname"><a href="cne__log_8h.html#ac8c38301b044c47cdcdffa35550bd524">CNE_ERR_RET</a></div><div class="ttdeci">#define CNE_ERR_RET(...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00250">cne_log.h:250</a></div></div>
+<div class="ttc" id="acne__log_8h_html_ad8375acbd0957d02439e7b8d7f3a6e22"><div class="ttname"><a href="cne__log_8h.html#ad8375acbd0957d02439e7b8d7f3a6e22">CNE_ERR_GOTO</a></div><div class="ttdeci">#define CNE_ERR_GOTO(lbl,...)</div><div class="ttdef"><b>Definition:</b> <a href="cne__log_8h_source.html#l00273">cne_log.h:273</a></div></div>
 <div class="ttc" id="acne__stdio_8h_html_ab638714dd6596ee2a904abf94cdb0528"><div class="ttname"><a href="cne__stdio_8h.html#ab638714dd6596ee2a904abf94cdb0528">cne_printf_pos</a></div><div class="ttdeci">CNDP_API int cne_printf_pos(int16_t r, int16_t c, const char *fmt,...)</div></div>
 <div class="ttc" id="acne__stdio_8h_html_acb5e6a7e2a06a6e65de91e951186606d"><div class="ttname"><a href="cne__stdio_8h.html#acb5e6a7e2a06a6e65de91e951186606d">cne_printf</a></div><div class="ttdeci">CNDP_API int cne_printf(const char *fmt,...)</div></div>
 <div class="ttc" id="acne__system_8h_html"><div class="ttname"><a href="cne__system_8h.html">cne_system.h</a></div></div>
@@ -557,18 +554,18 @@ $(document).ready(function(){initNavTree('examples_2l3fwd-graph_2fwd_8c-example.
 <div class="ttc" id="astructcne__graph__cluster__stats__param_html"><div class="ttname"><a href="structcne__graph__cluster__stats__param.html">cne_graph_cluster_stats_param</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__graph_8h_source.html#l00152">cne_graph.h:152</a></div></div>
 <div class="ttc" id="astructcne__graph__cluster__stats__param_html_a1fc164a72fe8539ffb66bc179e7446f7"><div class="ttname"><a href="structcne__graph__cluster__stats__param.html#a1fc164a72fe8539ffb66bc179e7446f7">cne_graph_cluster_stats_param::graph_patterns</a></div><div class="ttdeci">const char ** graph_patterns</div><div class="ttdef"><b>Definition:</b> <a href="cne__graph_8h_source.html#l00159">cne_graph.h:159</a></div></div>
 <div class="ttc" id="astructcne__graph__cluster__stats__param_html_a2e5c4c1a59f1fc37f63d3a22a020e2f3"><div class="ttname"><a href="structcne__graph__cluster__stats__param.html#a2e5c4c1a59f1fc37f63d3a22a020e2f3">cne_graph_cluster_stats_param::nb_graph_patterns</a></div><div class="ttdeci">uint16_t nb_graph_patterns</div><div class="ttdef"><b>Definition:</b> <a href="cne__graph_8h_source.html#l00158">cne_graph.h:158</a></div></div>
-<div class="ttc" id="astructcne__node__pktdev__config_html"><div class="ttname"><a href="structcne__node__pktdev__config.html">cne_node_pktdev_config</a></div><div class="ttdef"><b>Definition:</b> <a href="node__eth__api_8h_source.html#l00030">node_eth_api.h:30</a></div></div>
-<div class="ttc" id="astructether__addr_html"><div class="ttname"><a href="structether__addr.html">ether_addr</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00050">cne_ether.h:50</a></div></div>
-<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00337">jcfg.h:337</a></div></div>
-<div class="ttc" id="astructjcfg__lgroup_html_a91bb1e9325cf7ed3b748e11b66ce9e18"><div class="ttname"><a href="structjcfg__lgroup.html#a91bb1e9325cf7ed3b748e11b66ce9e18">jcfg_lgroup::lcore_bitmap</a></div><div class="ttdeci">cpu_set_t lcore_bitmap</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00206">jcfg.h:206</a></div></div>
-<div class="ttc" id="astructjcfg__lgroup_html_abe960560941fa7eb7926720d9143e1f6"><div class="ttname"><a href="structjcfg__lgroup.html#abe960560941fa7eb7926720d9143e1f6">jcfg_lgroup::lcore_cnt</a></div><div class="ttdeci">uint16_t lcore_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00205">jcfg.h:205</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html"><div class="ttname"><a href="structjcfg__lport.html">jcfg_lport</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00170">jcfg.h:170</a></div></div>
-<div class="ttc" id="astructjcfg__lport_html_a9e80a18e17fc4c6a3e11c46abcf1c8ff"><div class="ttname"><a href="structjcfg__lport.html#a9e80a18e17fc4c6a3e11c46abcf1c8ff">jcfg_lport::lpid</a></div><div class="ttdeci">uint16_t lpid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00178">jcfg.h:178</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html"><div class="ttname"><a href="structjcfg__thd.html">jcfg_thd</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00212">jcfg.h:212</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a77bd726f66fc11fca562d50f340f8341"><div class="ttname"><a href="structjcfg__thd.html#a77bd726f66fc11fca562d50f340f8341">jcfg_thd::quit</a></div><div class="ttdeci">volatile uint16_t quit</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00223">jcfg.h:223</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_a91fbaa74988c83e02adba32eba8bdecd"><div class="ttname"><a href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">jcfg_thd::lport_cnt</a></div><div class="ttdeci">uint16_t lport_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00217">jcfg.h:217</a></div></div>
-<div class="ttc" id="astructjcfg__thd_html_ad0c2c8b05cdeb757fb5c3a542b0566ec"><div class="ttname"><a href="structjcfg__thd.html#ad0c2c8b05cdeb757fb5c3a542b0566ec">jcfg_thd::group</a></div><div class="ttdeci">jcfg_lgroup_t * group</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00216">jcfg.h:216</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="astructcne__node__pktdev__config_html"><div class="ttname"><a href="structcne__node__pktdev__config.html">cne_node_pktdev_config</a></div><div class="ttdef"><b>Definition:</b> <a href="node__eth__api_8h_source.html#l00029">node_eth_api.h:29</a></div></div>
+<div class="ttc" id="astructether__addr_html"><div class="ttname"><a href="structether__addr.html">ether_addr</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00052">cne_ether.h:52</a></div></div>
+<div class="ttc" id="astructjcfg__info__s_html"><div class="ttname"><a href="structjcfg__info__s.html">jcfg_info_s</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00334">jcfg.h:334</a></div></div>
+<div class="ttc" id="astructjcfg__lgroup_html_a91bb1e9325cf7ed3b748e11b66ce9e18"><div class="ttname"><a href="structjcfg__lgroup.html#a91bb1e9325cf7ed3b748e11b66ce9e18">jcfg_lgroup::lcore_bitmap</a></div><div class="ttdeci">cpu_set_t lcore_bitmap</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00203">jcfg.h:203</a></div></div>
+<div class="ttc" id="astructjcfg__lgroup_html_abe960560941fa7eb7926720d9143e1f6"><div class="ttname"><a href="structjcfg__lgroup.html#abe960560941fa7eb7926720d9143e1f6">jcfg_lgroup::lcore_cnt</a></div><div class="ttdeci">uint16_t lcore_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00202">jcfg.h:202</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html"><div class="ttname"><a href="structjcfg__lport.html">jcfg_lport</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00167">jcfg.h:167</a></div></div>
+<div class="ttc" id="astructjcfg__lport_html_a9e80a18e17fc4c6a3e11c46abcf1c8ff"><div class="ttname"><a href="structjcfg__lport.html#a9e80a18e17fc4c6a3e11c46abcf1c8ff">jcfg_lport::lpid</a></div><div class="ttdeci">uint16_t lpid</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00175">jcfg.h:175</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html"><div class="ttname"><a href="structjcfg__thd.html">jcfg_thd</a></div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00209">jcfg.h:209</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a77bd726f66fc11fca562d50f340f8341"><div class="ttname"><a href="structjcfg__thd.html#a77bd726f66fc11fca562d50f340f8341">jcfg_thd::quit</a></div><div class="ttdeci">volatile uint16_t quit</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00220">jcfg.h:220</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_a91fbaa74988c83e02adba32eba8bdecd"><div class="ttname"><a href="structjcfg__thd.html#a91fbaa74988c83e02adba32eba8bdecd">jcfg_thd::lport_cnt</a></div><div class="ttdeci">uint16_t lport_cnt</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00214">jcfg.h:214</a></div></div>
+<div class="ttc" id="astructjcfg__thd_html_ad0c2c8b05cdeb757fb5c3a542b0566ec"><div class="ttname"><a href="structjcfg__thd.html#ad0c2c8b05cdeb757fb5c3a542b0566ec">jcfg_thd::group</a></div><div class="ttdeci">jcfg_lgroup_t * group</div><div class="ttdef"><b>Definition:</b> <a href="jcfg_8h_source.html#l00213">jcfg.h:213</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 </div><!-- fragment --> </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

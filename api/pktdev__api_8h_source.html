@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -121,14 +121,14 @@ $(document).ready(function(){initNavTree('pktdev__api_8h_source.html',''); initR
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef __PKTDEV_API_H</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define __PKTDEV_API_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__lport_8h.html">cne_lport.h</a>&gt;</span>        <span class="comment">// for lport_cfg_t, lport_stats_t</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span>          <span class="comment">// for bool, false, true</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>           <span class="comment">// for uint16_t</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span>            <span class="comment">// for NULL, FILE</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cne__common_8h.html">cne_common.h</a>&quot;</span>          <span class="comment">// for CNDP_API</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="pktmbuf_8h.html">pktmbuf.h</a>&quot;</span>             <span class="comment">// for pktmbuf_t</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="netdev__funcs_8h.html">netdev_funcs.h</a>&quot;</span>        <span class="comment">// for struct offloads</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span>        <span class="comment">// for bool, false, true</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>         <span class="comment">// for uint16_t</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span>          <span class="comment">// for NULL, FILE</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span>          <span class="comment">// for CNDP_API</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__lport_8h.html">cne_lport.h</a>&gt;</span>           <span class="comment">// for lport_cfg_t, lport_stats_t</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="netdev__funcs_8h.html">netdev_funcs.h</a>&gt;</span>        <span class="comment">// for struct offloads</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pktmbuf_8h.html">pktmbuf.h</a>&gt;</span>             <span class="comment">// for pktmbuf_t</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">struct </span><a class="code" href="structether__addr.html">ether_addr</a>;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">struct </span>cne_pktdev;</div>
@@ -210,26 +210,24 @@ $(document).ready(function(){initNavTree('pktdev__api_8h_source.html',''); initR
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160; </div>
 <div class="line"><a name="l00394"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#aefbbc79841de0f4b46c98b682899da4f">  394</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="pktdev__api_8h.html#aefbbc79841de0f4b46c98b682899da4f">pktdev_port_setup</a>(<a class="code" href="cne__lport_8h.html#aae210b02aee05858e19157c1662e425c">lport_cfg_t</a> *c);</div>
 <div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160; </div>
-<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#a3d3bbfe8424540db471e02ff4b22c931">  404</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="pktdev__api_8h.html#a3d3bbfe8424540db471e02ff4b22c931">pktdev_port_remove</a>(<span class="keywordtype">int</span> lport_id);</div>
+<div class="line"><a name="l00404"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#ac9a216ff9c7607440557ed9a6753b144">  404</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="pktdev__api_8h.html#ac9a216ff9c7607440557ed9a6753b144">lport_cfg_dump</a>(FILE *f, <a class="code" href="cne__lport_8h.html#aae210b02aee05858e19157c1662e425c">lport_cfg_t</a> *c);</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00414"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#ac9a216ff9c7607440557ed9a6753b144">  414</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="pktdev__api_8h.html#ac9a216ff9c7607440557ed9a6753b144">lport_cfg_dump</a>(FILE *f, <a class="code" href="cne__lport_8h.html#aae210b02aee05858e19157c1662e425c">lport_cfg_t</a> *c);</div>
+<div class="line"><a name="l00414"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">  414</a></span>&#160;CNDP_API <span class="keywordtype">bool</span> <a class="code" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a>(uint16_t lport_id);</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160; </div>
-<div class="line"><a name="l00424"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">  424</a></span>&#160;CNDP_API <span class="keywordtype">bool</span> <a class="code" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a>(uint16_t lport_id);</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160; </div>
-<div class="line"><a name="l00436"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#aaafe9935ae6059897d39be5c92f2fb25">  436</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="pktdev__api_8h.html#aaafe9935ae6059897d39be5c92f2fb25">pktdev_admin_state_set</a>(uint16_t lport_id, <span class="keywordtype">bool</span> state);</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160; </div>
-<div class="line"><a name="l00441"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#a8a8b1cc4add9885209ec1aeee5001a37">  441</a></span>&#160;<span class="preprocessor">#define pktdev_admin_state_up(_pid)   pktdev_admin_state_set(_pid, true)</span></div>
-<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;<span class="preprocessor">#define pktdev_admin_state_down(_pid) pktdev_admin_state_set(_pid, false)</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#aaafe9935ae6059897d39be5c92f2fb25">  426</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="pktdev__api_8h.html#aaafe9935ae6059897d39be5c92f2fb25">pktdev_admin_state_set</a>(uint16_t lport_id, <span class="keywordtype">bool</span> state);</div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
+<div class="line"><a name="l00431"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#a8a8b1cc4add9885209ec1aeee5001a37">  431</a></span>&#160;<span class="preprocessor">#define pktdev_admin_state_up(_pid)   pktdev_admin_state_set(_pid, true)</span></div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;<span class="preprocessor">#define pktdev_admin_state_down(_pid) pktdev_admin_state_set(_pid, false)</span></div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160; </div>
+<div class="line"><a name="l00442"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#aba813542b82c2f4f4e7ccbb41d887457">  442</a></span>&#160;CNDP_API <span class="keywordtype">void</span> *<a class="code" href="pktdev__api_8h.html#aba813542b82c2f4f4e7ccbb41d887457">pktdev_arg_get</a>(uint16_t lport_id);</div>
 <div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160; </div>
-<div class="line"><a name="l00452"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#aba813542b82c2f4f4e7ccbb41d887457">  452</a></span>&#160;CNDP_API <span class="keywordtype">void</span> *<a class="code" href="pktdev__api_8h.html#aba813542b82c2f4f4e7ccbb41d887457">pktdev_arg_get</a>(uint16_t lport_id);</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160; </div>
-<div class="line"><a name="l00466"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">  466</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a>(<span class="keywordtype">int</span> lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **bufs, uint16_t nb_bufs);</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160; </div>
-<div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;}</div>
-<div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PKTDEV_API_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00456"></a><span class="lineno"><a class="line" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">  456</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a>(<span class="keywordtype">int</span> lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **bufs, uint16_t nb_bufs);</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160; </div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;}</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160; </div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PKTDEV_API_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="acne__lport_8h_html"><div class="ttname"><a href="cne__lport_8h.html">cne_lport.h</a></div></div>
 <div class="ttc" id="acne__lport_8h_html_aae210b02aee05858e19157c1662e425c"><div class="ttname"><a href="cne__lport_8h.html#aae210b02aee05858e19157c1662e425c">lport_cfg_t</a></div><div class="ttdeci">struct lport_cfg lport_cfg_t</div></div>
@@ -240,7 +238,6 @@ $(document).ready(function(){initNavTree('pktdev__api_8h_source.html',''); initR
 <div class="ttc" id="apktdev__api_8h_html_a26eded5e43bb2f11849ec5cbc7c43c4d"><div class="ttname"><a href="pktdev__api_8h.html#a26eded5e43bb2f11849ec5cbc7c43c4d">pktdev_get</a></div><div class="ttdeci">CNDP_API struct cne_pktdev * pktdev_get(uint16_t lport_id)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a3393d1b63a03ea9b51128ecfa21a2d3d"><div class="ttname"><a href="pktdev__api_8h.html#a3393d1b63a03ea9b51128ecfa21a2d3d">pktdev_close_all</a></div><div class="ttdeci">CNDP_API int pktdev_close_all(void)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a3b4e99e57c23cbe92863182322cb1d6b"><div class="ttname"><a href="pktdev__api_8h.html#a3b4e99e57c23cbe92863182322cb1d6b">pktdev_buf_alloc</a></div><div class="ttdeci">CNDP_API int pktdev_buf_alloc(int lport_id, pktmbuf_t **bufs, uint16_t nb_bufs)</div></div>
-<div class="ttc" id="apktdev__api_8h_html_a3d3bbfe8424540db471e02ff4b22c931"><div class="ttname"><a href="pktdev__api_8h.html#a3d3bbfe8424540db471e02ff4b22c931">pktdev_port_remove</a></div><div class="ttdeci">CNDP_API int pktdev_port_remove(int lport_id)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a4fff8e2763502993aac492c7ae3c63a0"><div class="ttname"><a href="pktdev__api_8h.html#a4fff8e2763502993aac492c7ae3c63a0">pktdev_set_admin_state_up</a></div><div class="ttdeci">CNDP_API int pktdev_set_admin_state_up(uint16_t lport_id)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a529d38f5d574fb890d8fe940c57a5d91"><div class="ttname"><a href="pktdev__api_8h.html#a529d38f5d574fb890d8fe940c57a5d91">pktdev_set_mtu</a></div><div class="ttdeci">CNDP_API int pktdev_set_mtu(uint16_t lport_id, uint16_t mtu)</div></div>
 <div class="ttc" id="apktdev__api_8h_html_a5ddc94e699312f0c6b708a75ac668102"><div class="ttname"><a href="pktdev__api_8h.html#a5ddc94e699312f0c6b708a75ac668102">pktdev_close</a></div><div class="ttdeci">CNDP_API int pktdev_close(uint16_t lport_id)</div></div>
@@ -265,10 +262,10 @@ $(document).ready(function(){initNavTree('pktdev__api_8h_source.html',''); initR
 <div class="ttc" id="apktdev__api_8h_html_af1cb420b843759d5cbf92fb1f2deec2a"><div class="ttname"><a href="pktdev__api_8h.html#af1cb420b843759d5cbf92fb1f2deec2a">cne_rx_callback_fn</a></div><div class="ttdeci">uint16_t(* cne_rx_callback_fn)(uint16_t lport_id, pktmbuf_t *pkts[], uint16_t nb_pkts, uint16_t max_pkts, void *user_param)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev__api_8h_source.html#l00074">pktdev_api.h:74</a></div></div>
 <div class="ttc" id="apktdev__api_8h_html_afba9f441ee7dc48603af773ed19edb04"><div class="ttname"><a href="pktdev__api_8h.html#afba9f441ee7dc48603af773ed19edb04">pktdev_port_count</a></div><div class="ttdeci">CNDP_API uint16_t pktdev_port_count(void)</div></div>
 <div class="ttc" id="apktmbuf_8h_html"><div class="ttname"><a href="pktmbuf_8h.html">pktmbuf.h</a></div></div>
-<div class="ttc" id="astructether__addr_html"><div class="ttname"><a href="structether__addr.html">ether_addr</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00050">cne_ether.h:50</a></div></div>
-<div class="ttc" id="astructoffloads_html"><div class="ttname"><a href="structoffloads.html">offloads</a></div><div class="ttdef"><b>Definition:</b> <a href="netdev__funcs_8h_source.html#l00045">netdev_funcs.h:45</a></div></div>
+<div class="ttc" id="astructether__addr_html"><div class="ttname"><a href="structether__addr.html">ether_addr</a></div><div class="ttdef"><b>Definition:</b> <a href="cne__ether_8h_source.html#l00052">cne_ether.h:52</a></div></div>
+<div class="ttc" id="astructoffloads_html"><div class="ttname"><a href="structoffloads.html">offloads</a></div><div class="ttdef"><b>Definition:</b> <a href="netdev__funcs_8h_source.html#l00063">netdev_funcs.h:63</a></div></div>
 <div class="ttc" id="astructpktdev__info_html"><div class="ttname"><a href="structpktdev__info.html">pktdev_info</a></div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00079">pktdev.h:79</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

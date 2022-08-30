@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -148,8 +148,10 @@ Functions</h2></td></tr>
 <tr class="separator:a47c18fccea0855d013ebddb6b8c7e943"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae68fc6484c166d36296f9513168a5064"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uid_8h.html#ae68fc6484c166d36296f9513168a5064">uid_alloc</a> (<a class="el" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> _e)</td></tr>
 <tr class="separator:ae68fc6484c166d36296f9513168a5064"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ada752db9e09fbc3a4e1fdf764e030213"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uid_8h.html#ada752db9e09fbc3a4e1fdf764e030213">uid_free</a> (<a class="el" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> _e, int idx)</td></tr>
-<tr class="separator:ada752db9e09fbc3a4e1fdf764e030213"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab0f3c3c081a795363f7fe29e46bc9379"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uid_8h.html#ab0f3c3c081a795363f7fe29e46bc9379">uid_free</a> (<a class="el" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> _e, int idx)</td></tr>
+<tr class="separator:ab0f3c3c081a795363f7fe29e46bc9379"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa73c63d0a0b5fe1e4210f4e7c7be4109"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uid_8h.html#aa73c63d0a0b5fe1e4210f4e7c7be4109">uid_test</a> (<a class="el" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> *e, int uid)</td></tr>
+<tr class="separator:aa73c63d0a0b5fe1e4210f4e7c7be4109"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a112c1a77ad4cf07c647cca171d1e499a"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="uid_8h.html#a112c1a77ad4cf07c647cca171d1e499a">uid_dump</a> (FILE *f)</td></tr>
 <tr class="separator:a112c1a77ad4cf07c647cca171d1e499a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -361,14 +363,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ada752db9e09fbc3a4e1fdf764e030213"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ada752db9e09fbc3a4e1fdf764e030213">&#9670;&nbsp;</a></span>uid_free()</h2>
+<a id="ab0f3c3c081a795363f7fe29e46bc9379"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0f3c3c081a795363f7fe29e46bc9379">&#9670;&nbsp;</a></span>uid_free()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">CNDP_API int uid_free </td>
+          <td class="memname">CNDP_API void uid_free </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a>&#160;</td>
           <td class="paramname"><em>_e</em>, </td>
@@ -394,7 +396,43 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>-1 on error or 0 on success </dd></dl>
+
+</div>
+</div>
+<a id="aa73c63d0a0b5fe1e4210f4e7c7be4109"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa73c63d0a0b5fe1e4210f4e7c7be4109">&#9670;&nbsp;</a></span>uid_test()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int uid_test </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="uid_8h.html#a5d88bb14ddb857f454bcdc9ac0451f35">u_id_t</a> *&#160;</td>
+          <td class="paramname"><em>e</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>uid</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Test to see if a bit is set in the bitmap (or cleared in this case)</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>The u_id_t structure pointer to be tested using the uid bit index. </td></tr>
+    <tr><td class="paramname">uid</td><td>The uid bit to test, if the bit is cleared then it is allocated. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 on not set and 1 on set. </dd></dl>
 
 </div>
 </div>

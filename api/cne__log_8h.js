@@ -12,6 +12,7 @@ var cne__log_8h =
     [ "cne_exit", "cne__log_8h.html#ae0f3349d5fd1ed71310c911dc4e81eea", null ],
     [ "CNE_VERIFY", "cne__log_8h.html#af5ac4a5a14f0fb331acd7cfd8380d4a5", null ],
     [ "cne_log_set_level", "cne__log_8h.html#ab82f15a1f60259c6efa5aadad3bd79da", null ],
+    [ "cne_log_set_level_str", "cne__log_8h.html#a5739d622988e336d0995b8342237dc4d", null ],
     [ "cne_log_get_level", "cne__log_8h.html#a6965e901fc691369e501becb11db2757", null ],
     [ "cne_log", "cne__log_8h.html#a4bd1c5e638da6be873f600b9d9775380", null ],
     [ "cne_print", "cne__log_8h.html#a728a20d4a680c5fc2e20aae5330dd9c2", null ],

@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -127,7 +127,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
-<tr class="memitem:a143576556e5d67a2812b3436e4181534"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#a143576556e5d67a2812b3436e4181534">name</a> [<a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ac6dba7b154f603f7bf3ba71cda1b7ad6">PKTMBUF_INFO_NAME_SZ</a>]</td></tr>
+<tr class="memitem:a143576556e5d67a2812b3436e4181534"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#a143576556e5d67a2812b3436e4181534">name</a> [<a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddac6dba7b154f603f7bf3ba71cda1b7ad6">PKTMBUF_INFO_NAME_SZ</a>]</td></tr>
 <tr class="separator:a143576556e5d67a2812b3436e4181534"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5bd6c22dbf0f6b5b0ae0233f8eb3704"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#ae5bd6c22dbf0f6b5b0ae0233f8eb3704">addr</a></td></tr>
 <tr class="separator:ae5bd6c22dbf0f6b5b0ae0233f8eb3704"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -141,15 +141,17 @@ Data Fields</h2></td></tr>
 <tr class="separator:a0c5c1e23020e6a7b6456d5bac50cda83"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d44190f20eda1a399f1c5c77dbbab3e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#a9d44190f20eda1a399f1c5c77dbbab3e">cache_sz</a></td></tr>
 <tr class="separator:a9d44190f20eda1a399f1c5c77dbbab3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2f585bc192b4012ffb10e97c0d90a222"><td class="memItemLeft" align="right" valign="top"><a class="el" href="cne__mmap_8h.html#a7dbda60241bcd7b3053b7e6864b9b943">mmap_type_t</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#a2f585bc192b4012ffb10e97c0d90a222">mtype</a></td></tr>
-<tr class="separator:a2f585bc192b4012ffb10e97c0d90a222"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a185a41dd157376730be7c2c5a5912f7b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#a185a41dd157376730be7c2c5a5912f7b">metadata_bufsz</a></td></tr>
+<tr class="separator:a185a41dd157376730be7c2c5a5912f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace70beae1a71187d5961a8d7c0dafb7b"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpktmbuf__info__s.html#ace70beae1a71187d5961a8d7c0dafb7b">metadata</a></td></tr>
+<tr class="separator:ace70beae1a71187d5961a8d7c0dafb7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Information structure for pktmbuf buffer and related information. </p>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#_a25">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#_a21">examples/cnet-graph/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#_a21">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#_a22">examples/dlb_test/parse-args.c</a>, and <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#_a22">examples/l3fwd-graph/parse-args.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00067">67</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00077">77</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
 <a id="a533653bfacb297a765a31163a71a55cd"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a533653bfacb297a765a31163a71a55cd">&#9670;&nbsp;</a></span>TAILQ_ENTRY()</h2>
@@ -178,13 +180,13 @@ Data Fields</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char name[<a class="el" href="pktmbuf_8h.html#afccd240f973cf154952fb917c9209719ac6dba7b154f603f7bf3ba71cda1b7ad6">PKTMBUF_INFO_NAME_SZ</a>]</td>
+          <td class="memname">char name[<a class="el" href="pktmbuf_8h.html#ac205be2172292384dd687b5471a87eddac6dba7b154f603f7bf3ba71cda1b7ad6">PKTMBUF_INFO_NAME_SZ</a>]</td>
         </tr>
       </table>
 </div><div class="memdoc">
 <p>pktmbuf_info name string can be empty </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00069">69</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00079">79</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -201,7 +203,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Address of pktmbuf array </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00070">70</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00080">80</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -218,7 +220,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Pool data pointer i.e. mempool pointer like value </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00071">71</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00081">81</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -235,7 +237,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>pktmbuf functions pointers </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00072">72</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00082">82</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -252,7 +254,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Number of buffers created </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00073">73</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00083">83</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -269,7 +271,7 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Size of each buffer </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00074">74</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00084">84</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
@@ -286,24 +288,41 @@ Data Fields</h2></td></tr>
 </div><div class="memdoc">
 <p>Cache size if needed for allocation cache </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00075">75</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00085">85</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>
-<a id="a2f585bc192b4012ffb10e97c0d90a222"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f585bc192b4012ffb10e97c0d90a222">&#9670;&nbsp;</a></span>mtype</h2>
+<a id="a185a41dd157376730be7c2c5a5912f7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a185a41dd157376730be7c2c5a5912f7b">&#9670;&nbsp;</a></span>metadata_bufsz</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="cne__mmap_8h.html#a7dbda60241bcd7b3053b7e6864b9b943">mmap_type_t</a> mtype</td>
+          <td class="memname">uint32_t metadata_bufsz</td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Type of MMAP memory to allocate </p>
+<p>Size of of metadata buffers </p>
 
-<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00076">76</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00086">86</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
+
+</div>
+</div>
+<a id="ace70beae1a71187d5961a8d7c0dafb7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ace70beae1a71187d5961a8d7c0dafb7b">&#9670;&nbsp;</a></span>metadata</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* metadata</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Pointer to metadata buffers </p>
+
+<p class="definition">Definition at line <a class="el" href="pktmbuf_8h_source.html#l00087">87</a> of file <a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>.</p>
 
 </div>
 </div>

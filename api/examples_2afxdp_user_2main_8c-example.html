@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -128,7 +128,11 @@ $(document).ready(function(){initNavTree('examples_2afxdp_user_2main_8c-example.
 <div class="line"><span class="preprocessor">#pragma GCC diagnostic push</span></div>
 <div class="line"><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wunused-parameter&quot;</span></div>
 <div class="line"><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wcast-qual&quot;</span></div>
+<div class="line"><span class="preprocessor">#ifdef __clang__</span></div>
+<div class="line"><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wincompatible-pointer-types-discards-qualifiers&quot;</span></div>
+<div class="line"><span class="preprocessor">#else</span></div>
 <div class="line"><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wdiscarded-qualifiers&quot;</span></div>
+<div class="line"><span class="preprocessor">#endif</span></div>
 <div class="line"><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wformat-nonliteral&quot;</span></div>
 <div class="line"><span class="preprocessor">#pragma GCC diagnostic ignored &quot;-Wsign-compare&quot;</span></div>
 <div class="line"> </div>

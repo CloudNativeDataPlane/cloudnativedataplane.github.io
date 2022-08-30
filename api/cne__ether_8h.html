@@ -7,7 +7,7 @@
 <!--<meta charset="utf-8">-->
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CNDP: lib/usr/clib/net/cne_ether.h File Reference</title>
+<title>CNDP: lib/include/net/cne_ether.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -124,6 +124,8 @@ $(document).ready(function(){initNavTree('cne__ether_8h.html',''); initResizable
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;net/ethernet.h&gt;</code><br />
 <code>#include &lt;linux/if_ether.h&gt;</code><br />
+<code>#include &lt;stdbool.h&gt;</code><br />
+<code>#include &lt;string.h&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
 </div>
 <p><a href="cne__ether_8h_source.html">Go to the source code of this file.</a></p>
@@ -214,32 +216,32 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae0fabbd9e95c0702d7ad72175b077b38"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#ae0fabbd9e95c0702d7ad72175b077b38">ether_addr_is_same</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea1, const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea2)</td></tr>
-<tr class="separator:ae0fabbd9e95c0702d7ad72175b077b38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6986f4c28d4bd4624f9ee4fa54f88848"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a6986f4c28d4bd4624f9ee4fa54f88848">ether_addr_is_zero</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:a6986f4c28d4bd4624f9ee4fa54f88848"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af2e3a95c7f9d55957e1e5cb1e053835c"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#af2e3a95c7f9d55957e1e5cb1e053835c">ether_addr_is_unicast</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:af2e3a95c7f9d55957e1e5cb1e053835c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8fd4ef0ec10b86dffde08fb1eb9f9401"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a8fd4ef0ec10b86dffde08fb1eb9f9401">ether_addr_is_multicast</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:a8fd4ef0ec10b86dffde08fb1eb9f9401"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d9794138bf5f40a07582d1ec5aba2ca"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a3d9794138bf5f40a07582d1ec5aba2ca">ether_addr_is_broadcast</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:a3d9794138bf5f40a07582d1ec5aba2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afaf8c1287c621c754e3d5c67bce1a124"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#afaf8c1287c621c754e3d5c67bce1a124">ether_addr_is_universal</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:afaf8c1287c621c754e3d5c67bce1a124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a17119209bdc00ba01cdf958179ca46d2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a17119209bdc00ba01cdf958179ca46d2">ether_addr_is_local_admin</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:a17119209bdc00ba01cdf958179ca46d2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20890146a535c3f1b8ef9af2439ada37"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a20890146a535c3f1b8ef9af2439ada37">ether_addr_is_valid_assigned</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
-<tr class="separator:a20890146a535c3f1b8ef9af2439ada37"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3d7554f3b70789b6e68544025c40e3c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#af3d7554f3b70789b6e68544025c40e3c">ether_random_addr</a> (uint8_t *addr)</td></tr>
-<tr class="separator:af3d7554f3b70789b6e68544025c40e3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85f09927173a87e6a8e515b97b0ff233"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a85f09927173a87e6a8e515b97b0ff233">ether_addr_copy</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea_from, struct <a class="el" href="structether__addr.html">ether_addr</a> *ea_to)</td></tr>
-<tr class="separator:a85f09927173a87e6a8e515b97b0ff233"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a98f82b3230a937ba1414d56d4a1ee2fc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a98f82b3230a937ba1414d56d4a1ee2fc">ether_format_addr</a> (char *buf, uint16_t size, const struct <a class="el" href="structether__addr.html">ether_addr</a> *eth_addr)</td></tr>
-<tr class="separator:a98f82b3230a937ba1414d56d4a1ee2fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab5bce5c37a98d87214173baece23dc09"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#ab5bce5c37a98d87214173baece23dc09">ether_unformat_addr</a> (const char *str, struct <a class="el" href="structether__addr.html">ether_addr</a> *eth_addr)</td></tr>
-<tr class="separator:ab5bce5c37a98d87214173baece23dc09"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a547f25aefe3c6078a1a8da9e420d4c"><td class="memItemLeft" align="right" valign="top">static __inline__ struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a0a547f25aefe3c6078a1a8da9e420d4c">cne_ether_aton</a> (const char *a, void *_e)</td></tr>
-<tr class="separator:a0a547f25aefe3c6078a1a8da9e420d4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9d07aacd5b4fa0da338768de088909e7"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a9d07aacd5b4fa0da338768de088909e7">ether_addr_is_same</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea1, const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea2)</td></tr>
+<tr class="separator:a9d07aacd5b4fa0da338768de088909e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a22ac65df0229a5b3effd92445e959fb6"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a22ac65df0229a5b3effd92445e959fb6">ether_addr_is_zero</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:a22ac65df0229a5b3effd92445e959fb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a239560d19f6c956a226ae88b1b89ec71"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a239560d19f6c956a226ae88b1b89ec71">ether_addr_is_unicast</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:a239560d19f6c956a226ae88b1b89ec71"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7b5b00abfda65aab8d01c4ee3c5c00b"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#ac7b5b00abfda65aab8d01c4ee3c5c00b">ether_addr_is_multicast</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:ac7b5b00abfda65aab8d01c4ee3c5c00b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3692515a1930a9c10eab2d67102fa843"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a3692515a1930a9c10eab2d67102fa843">ether_addr_is_broadcast</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:a3692515a1930a9c10eab2d67102fa843"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ffae319e9a684c3286131b62018af68"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a3ffae319e9a684c3286131b62018af68">ether_addr_is_universal</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:a3ffae319e9a684c3286131b62018af68"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1d3d813adf36fd94cf332f81b5859ad"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#ab1d3d813adf36fd94cf332f81b5859ad">ether_addr_is_local_admin</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:ab1d3d813adf36fd94cf332f81b5859ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a96ed54d540cf6dead42983e1851ceded"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a96ed54d540cf6dead42983e1851ceded">ether_addr_is_valid_assigned</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:a96ed54d540cf6dead42983e1851ceded"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c0738f4fb100a16f6624013a5c0eac7"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#a0c0738f4fb100a16f6624013a5c0eac7">ether_random_addr</a> (uint8_t *addr)</td></tr>
+<tr class="separator:a0c0738f4fb100a16f6624013a5c0eac7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc74ad76505ddb8e8866e17fef111600"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#abc74ad76505ddb8e8866e17fef111600">ether_addr_copy</a> (const struct <a class="el" href="structether__addr.html">ether_addr</a> *ea_from, struct <a class="el" href="structether__addr.html">ether_addr</a> *ea_to)</td></tr>
+<tr class="separator:abc74ad76505ddb8e8866e17fef111600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabd39013b615c02f7c43a1ec57a2bf2e"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#aabd39013b615c02f7c43a1ec57a2bf2e">ether_format_addr</a> (char *buf, uint16_t size, const struct <a class="el" href="structether__addr.html">ether_addr</a> *eth_addr)</td></tr>
+<tr class="separator:aabd39013b615c02f7c43a1ec57a2bf2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8fd4f9edba35cc79e17d3a2c08baef3"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#ac8fd4f9edba35cc79e17d3a2c08baef3">ether_unformat_addr</a> (const char *s, struct <a class="el" href="structether__addr.html">ether_addr</a> *ea)</td></tr>
+<tr class="separator:ac8fd4f9edba35cc79e17d3a2c08baef3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeabc1a2392c03be9a20a6087bd0a5b95"><td class="memItemLeft" align="right" valign="top">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__ether_8h.html#aeabc1a2392c03be9a20a6087bd0a5b95">cne_ether_aton</a> (const char *a, struct <a class="el" href="structether__addr.html">ether_addr</a> *e)</td></tr>
+<tr class="separator:aeabc1a2392c03be9a20a6087bd0a5b95"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Ethernet Helpers in CNE </p>
@@ -259,7 +261,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Maximum VLAN frame length, including CRC. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00028">28</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00030">30</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -276,7 +278,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Maximum Jumbo frame length, including CRC. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00030">30</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00032">32</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -293,7 +295,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Maximum VLAN ID. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00032">32</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00034">34</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -310,7 +312,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Minimum MTU for IPv4 packets, see RFC 791. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00034">34</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00036">36</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -329,7 +331,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a43">examples/l3fwd-graph/fwd.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00055">55</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00057">57</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -346,7 +348,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Multicast or broadcast Eth. address. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00056">56</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00058">58</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -363,7 +365,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IPv4 Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00227">227</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00081">81</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -380,7 +382,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IPv6 Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00228">228</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00082">82</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -397,7 +399,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Arp Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00229">229</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00083">83</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -414,7 +416,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Reverse Arp Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00230">230</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00084">84</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -431,7 +433,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1Q VLAN tagging. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00231">231</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00085">85</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -448,7 +450,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1ad QinQ tagging. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00232">232</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00086">86</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -465,7 +467,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>PPPoE Discovery Stage. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00233">233</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00087">87</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -482,7 +484,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>PPPoE Session Stage. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00234">234</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00088">88</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -499,7 +501,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1BR E-Tag. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00235">235</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00089">89</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -516,7 +518,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1AS 1588 Precise Time Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00237">237</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00091">91</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -533,7 +535,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Slow protocols (LACP and Marker). </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00238">238</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00092">92</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -550,7 +552,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Transparent Ethernet Bridging. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00239">239</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00093">93</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -567,7 +569,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>LLDP Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00240">240</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00094">94</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -584,7 +586,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>MPLS ethertype. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00241">241</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00095">95</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -601,7 +603,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>MPLS multicast ethertype. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00242">242</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00096">96</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -618,7 +620,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IPv4 Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00245">245</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00099">99</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -635,7 +637,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IPv6 Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00246">246</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00100">100</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -652,7 +654,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Arp Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00247">247</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00101">101</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -669,7 +671,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Reverse Arp Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00248">248</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00102">102</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -686,7 +688,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1Q VLAN tagging. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00249">249</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00103">103</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -703,7 +705,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1ad QinQ tagging. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00250">250</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00104">104</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -720,7 +722,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>PPPoE Discovery Stage. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00251">251</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00105">105</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -737,7 +739,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>PPPoE Session Stage. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00252">252</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00106">106</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -754,7 +756,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1BR E-Tag. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00253">253</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00107">107</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -771,7 +773,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>IEEE 802.1AS 1588 Precise Time Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00255">255</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00109">109</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -788,7 +790,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Slow protocols (LACP and Marker). </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00256">256</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00110">110</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -805,7 +807,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Transparent Ethernet Bridging. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00257">257</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00111">111</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -822,7 +824,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>LLDP Protocol. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00258">258</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00112">112</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -839,7 +841,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>MPLS ethertype. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00259">259</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00113">113</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -856,19 +858,19 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>MPLS multicast ethertype. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00260">260</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00114">114</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="ae0fabbd9e95c0702d7ad72175b077b38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae0fabbd9e95c0702d7ad72175b077b38">&#9670;&nbsp;</a></span>ether_addr_is_same()</h2>
+<a id="a9d07aacd5b4fa0da338768de088909e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d07aacd5b4fa0da338768de088909e7">&#9670;&nbsp;</a></span>ether_addr_is_same()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_same </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_same </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea1</em>, </td>
@@ -896,16 +898,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given two ethernet address are the same; False (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00131">131</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a6986f4c28d4bd4624f9ee4fa54f88848"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6986f4c28d4bd4624f9ee4fa54f88848">&#9670;&nbsp;</a></span>ether_addr_is_zero()</h2>
+<a id="a22ac65df0229a5b3effd92445e959fb6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a22ac65df0229a5b3effd92445e959fb6">&#9670;&nbsp;</a></span>ether_addr_is_zero()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_zero </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_zero </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -922,16 +926,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is filled with zeros; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00150">150</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="af2e3a95c7f9d55957e1e5cb1e053835c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af2e3a95c7f9d55957e1e5cb1e053835c">&#9670;&nbsp;</a></span>ether_addr_is_unicast()</h2>
+<a id="a239560d19f6c956a226ae88b1b89ec71"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a239560d19f6c956a226ae88b1b89ec71">&#9670;&nbsp;</a></span>ether_addr_is_unicast()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_unicast </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_unicast </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -948,16 +954,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is a unicast address; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00168">168</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a8fd4ef0ec10b86dffde08fb1eb9f9401"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8fd4ef0ec10b86dffde08fb1eb9f9401">&#9670;&nbsp;</a></span>ether_addr_is_multicast()</h2>
+<a id="ac7b5b00abfda65aab8d01c4ee3c5c00b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7b5b00abfda65aab8d01c4ee3c5c00b">&#9670;&nbsp;</a></span>ether_addr_is_multicast()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_multicast </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_multicast </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -974,16 +982,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is a multicast address; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00184">184</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a3d9794138bf5f40a07582d1ec5aba2ca"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3d9794138bf5f40a07582d1ec5aba2ca">&#9670;&nbsp;</a></span>ether_addr_is_broadcast()</h2>
+<a id="a3692515a1930a9c10eab2d67102fa843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3692515a1930a9c10eab2d67102fa843">&#9670;&nbsp;</a></span>ether_addr_is_broadcast()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_broadcast </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_broadcast </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -1000,16 +1010,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is a broadcast address; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00200">200</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="afaf8c1287c621c754e3d5c67bce1a124"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afaf8c1287c621c754e3d5c67bce1a124">&#9670;&nbsp;</a></span>ether_addr_is_universal()</h2>
+<a id="a3ffae319e9a684c3286131b62018af68"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ffae319e9a684c3286131b62018af68">&#9670;&nbsp;</a></span>ether_addr_is_universal()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_universal </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_universal </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -1026,16 +1038,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is a universally assigned address; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00218">218</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a17119209bdc00ba01cdf958179ca46d2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a17119209bdc00ba01cdf958179ca46d2">&#9670;&nbsp;</a></span>ether_addr_is_local_admin()</h2>
+<a id="ab1d3d813adf36fd94cf332f81b5859ad"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1d3d813adf36fd94cf332f81b5859ad">&#9670;&nbsp;</a></span>ether_addr_is_local_admin()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_local_admin </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_local_admin </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -1052,16 +1066,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is a locally assigned address; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00234">234</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a20890146a535c3f1b8ef9af2439ada37"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a20890146a535c3f1b8ef9af2439ada37">&#9670;&nbsp;</a></span>ether_addr_is_valid_assigned()</h2>
+<a id="a96ed54d540cf6dead42983e1851ceded"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a96ed54d540cf6dead42983e1851ceded">&#9670;&nbsp;</a></span>ether_addr_is_valid_assigned()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_addr_is_valid_assigned </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_addr_is_valid_assigned </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea</em></td><td>)</td>
@@ -1078,16 +1094,18 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True (1) if the given ethernet address is valid; false (0) otherwise. </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00251">251</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="af3d7554f3b70789b6e68544025c40e3c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af3d7554f3b70789b6e68544025c40e3c">&#9670;&nbsp;</a></span>ether_random_addr()</h2>
+<a id="a0c0738f4fb100a16f6624013a5c0eac7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c0738f4fb100a16f6624013a5c0eac7">&#9670;&nbsp;</a></span>ether_random_addr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ether_random_addr </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> void ether_random_addr </td>
           <td>(</td>
           <td class="paramtype">uint8_t *&#160;</td>
           <td class="paramname"><em>addr</em></td><td>)</td>
@@ -1102,16 +1120,18 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00263">263</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a85f09927173a87e6a8e515b97b0ff233"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a85f09927173a87e6a8e515b97b0ff233">&#9670;&nbsp;</a></span>ether_addr_copy()</h2>
+<a id="abc74ad76505ddb8e8866e17fef111600"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc74ad76505ddb8e8866e17fef111600">&#9670;&nbsp;</a></span>ether_addr_copy()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ether_addr_copy </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> void ether_addr_copy </td>
           <td>(</td>
           <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
           <td class="paramname"><em>ea_from</em>, </td>
@@ -1140,16 +1160,18 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a45">examples/l3fwd-graph/fwd.c</a>.</dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00282">282</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a98f82b3230a937ba1414d56d4a1ee2fc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a98f82b3230a937ba1414d56d4a1ee2fc">&#9670;&nbsp;</a></span>ether_format_addr()</h2>
+<a id="aabd39013b615c02f7c43a1ec57a2bf2e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabd39013b615c02f7c43a1ec57a2bf2e">&#9670;&nbsp;</a></span>ether_format_addr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void ether_format_addr </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> void ether_format_addr </td>
           <td>(</td>
           <td class="paramtype">char *&#160;</td>
           <td class="paramname"><em>buf</em>, </td>
@@ -1183,25 +1205,27 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00334">334</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="ab5bce5c37a98d87214173baece23dc09"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab5bce5c37a98d87214173baece23dc09">&#9670;&nbsp;</a></span>ether_unformat_addr()</h2>
+<a id="ac8fd4f9edba35cc79e17d3a2c08baef3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8fd4f9edba35cc79e17d3a2c08baef3">&#9670;&nbsp;</a></span>ether_unformat_addr()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int ether_unformat_addr </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> int ether_unformat_addr </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
-          <td class="paramname"><em>str</em>, </td>
+          <td class="paramname"><em>s</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
-          <td class="paramname"><em>eth_addr</em>&#160;</td>
+          <td class="paramname"><em>ea</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1213,26 +1237,25 @@ Functions</h2></td></tr>
 <p>Convert string with Ethernet address to an <a class="el" href="structether__addr.html">ether_addr</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">str</td><td>A pointer to buffer contains the formatted MAC address. The supported formats are: XX:XX:XX:XX:XX:XX or XXXX:XXXX:XXXX where XX is a hex digit: 0-9, a-f, or A-F. </td></tr>
-    <tr><td class="paramname">eth_addr</td><td>A pointer to a <a class="el" href="structether__addr.html">ether_addr</a> structure. </td></tr>
+    <tr><td class="paramname">s</td><td>A pointer to buffer contains the formatted MAC address. The supported formats are: XX:XX:XX:XX:XX:XX or XXXX:XXXX:XXXX where XX is a hex digit: 0-9, a-f, or A-F. </td></tr>
+    <tr><td class="paramname">ea</td><td>A pointer to a <a class="el" href="structether__addr.html">ether_addr</a> structure. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>0 if successful -1 and sets errno if invalid string </dd></dl>
 
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00426">426</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+
 </div>
 </div>
-<a id="a0a547f25aefe3c6078a1a8da9e420d4c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a547f25aefe3c6078a1a8da9e420d4c">&#9670;&nbsp;</a></span>cne_ether_aton()</h2>
+<a id="aeabc1a2392c03be9a20a6087bd0a5b95"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aeabc1a2392c03be9a20a6087bd0a5b95">&#9670;&nbsp;</a></span>cne_ether_aton()</h2>
 
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">static __inline__ struct <a class="el" href="structether__addr.html">ether_addr</a>* cne_ether_aton </td>
+          <td class="memname">CNDP_API <a class="el" href="cne__common_8h.html#afa19e4373ad95aff9c2473b2a3da0299">__cne_always_inline</a> struct <a class="el" href="structether__addr.html">ether_addr</a>* cne_ether_aton </td>
           <td>(</td>
           <td class="paramtype">const char *&#160;</td>
           <td class="paramname"><em>a</em>, </td>
@@ -1240,8 +1263,8 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>_e</em>&#160;</td>
+          <td class="paramtype">struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
+          <td class="paramname"><em>e</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -1249,23 +1272,18 @@ Functions</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 <p>Convert a string Ethernet MAC address to the binary form</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">a</td><td>String containing the MAC address in two forms XX:XX:XX:XX:XX:XX or XXXX:XXXX:XXX </td></tr>
-    <tr><td class="paramname">_e</td><td>pointer to a struct <a class="el" href="structether__addr.html">ether_addr</a> to place the return value. If the value is null then use a static location instead. </td></tr>
+    <tr><td class="paramname">e</td><td>pointer to a struct <a class="el" href="structether__addr.html">ether_addr</a> to place the return value. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the struct <a class="el" href="structether__addr.html">ether_addr</a> structure; </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00274">274</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__ether_8h_source.html#l00449">449</a> of file <a class="el" href="cne__ether_8h_source.html">cne_ether.h</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1292,7 @@ Functions</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_7bbc81032548574d2e7e9264f003edf5.html">usr</a></li><li class="navelem"><a class="el" href="dir_52d0f5cebd30a8a0290be82a9cdbea18.html">clib</a></li><li class="navelem"><a class="el" href="dir_a1aa7035f484ba7be8202f753282f7e0.html">net</a></li><li class="navelem"><a class="el" href="cne__ether_8h.html">cne_ether.h</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_5a30104352ef4255dc24354b02eb2d20.html">include</a></li><li class="navelem"><a class="el" href="dir_339b5a841cbce1477d0800db191ae676.html">net</a></li><li class="navelem"><a class="el" href="cne__ether_8h.html">cne_ether.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

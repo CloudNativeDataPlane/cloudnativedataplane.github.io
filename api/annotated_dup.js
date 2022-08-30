@@ -34,7 +34,7 @@ var annotated_dup =
     [ "cne_ipv6_hdr", "structcne__ipv6__hdr.html", "structcne__ipv6__hdr" ],
     [ "cne_ipv6_tuple", "structcne__ipv6__tuple.html", null ],
     [ "cne_mpls_hdr", "structcne__mpls__hdr.html", "structcne__mpls__hdr" ],
-    [ "cne_net_hdr_lens", "structcne__net__hdr__lens.html", null ],
+    [ "cne_net_hdr_lens", "structcne__net__hdr__lens.html", "structcne__net__hdr__lens" ],
     [ "cne_node_pktdev_config", "structcne__node__pktdev__config.html", "structcne__node__pktdev__config" ],
     [ "cne_node_register", "structcne__node__register.html", "structcne__node__register" ],
     [ "cne_rib6_conf", "structcne__rib6__conf.html", "structcne__rib6__conf" ],
@@ -100,5 +100,6 @@ var annotated_dup =
     [ "pktmbuf_s", "structpktmbuf__s.html", "structpktmbuf__s" ],
     [ "queue_list", "structqueue__list.html", "structqueue__list" ],
     [ "queue_list_entry", "structqueue__list__entry.html", "structqueue__list__entry" ],
+    [ "tcp_stats", "structtcp__stats.html", "structtcp__stats" ],
     [ "txbuff", "structtxbuff.html", "structtxbuff" ]
 ];

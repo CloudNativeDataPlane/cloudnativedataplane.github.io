@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -112,7 +112,6 @@ $(document).ready(function(){initNavTree('cne__log_8h.html',''); initResizable()
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
-<a href="#enum-members">Enumerations</a> &#124;
 <a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cne_log.h File Reference</div>  </div>
@@ -121,8 +120,8 @@ $(document).ready(function(){initNavTree('cne__log_8h.html',''); initResizable()
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdarg.h&gt;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &lt;<a class="el" href="cne__stdio_8h_source.html">cne_stdio.h</a>&gt;</code><br />
 <code>#include &lt;<a class="el" href="cne__common_8h_source.html">cne_common.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__stdio_8h_source.html">cne_stdio.h</a>&gt;</code><br />
 <code>#include &quot;cne_build_config.h&quot;</code><br />
 </div>
 <p><a href="cne__log_8h_source.html">Go to the source code of this file.</a></p>
@@ -152,28 +151,12 @@ Macros</h2></td></tr>
 <tr class="memitem:af5ac4a5a14f0fb331acd7cfd8380d4a5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__log_8h.html#af5ac4a5a14f0fb331acd7cfd8380d4a5">CNE_VERIFY</a>(exp)</td></tr>
 <tr class="separator:af5ac4a5a14f0fb331acd7cfd8380d4a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-Enumerations</h2></td></tr>
-<tr class="memitem:a1fb9092bcdeada2d206bdc74afbbe122"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom">{ <br />
-&#160;&#160;<a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122ada303b3aa4b331b6edf6fe0d52941e83">CNE_LOG_EMERG</a> = 1
-, <a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122a07bccba632d747f1777963b6515a5bb5">CNE_LOG_ALERT</a>
-, <a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122a4bd5ec25f945fbb9bee71cb1b18c2e7e">CNE_LOG_CRIT</a>
-, <a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122ad6ce1c931428d7b8daa145ae99614fd5">CNE_LOG_ERR</a>
-, <br />
-&#160;&#160;<a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122a84e28dd61624f74a6327f9066a5c0177">CNE_LOG_WARNING</a>
-, <a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122ad548dcc5958098e94870db38198f5f6a">CNE_LOG_NOTICE</a>
-, <a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122a177682b564539be92123d26e54d09553">CNE_LOG_INFO</a>
-, <a class="el" href="cne__log_8h.html#a1fb9092bcdeada2d206bdc74afbbe122a44b0f12b01228e449393a7718f88cac2">CNE_LOG_DEBUG</a>
-, <br />
-&#160;&#160;<b>CNE_LAST_LOG</b>
-<br />
- }</td></tr>
-<tr class="separator:a1fb9092bcdeada2d206bdc74afbbe122"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ab82f15a1f60259c6efa5aadad3bd79da"><td class="memItemLeft" align="right" valign="top">CNDP_API void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__log_8h.html#ab82f15a1f60259c6efa5aadad3bd79da">cne_log_set_level</a> (uint32_t level)</td></tr>
 <tr class="separator:ab82f15a1f60259c6efa5aadad3bd79da"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5739d622988e336d0995b8342237dc4d"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__log_8h.html#a5739d622988e336d0995b8342237dc4d">cne_log_set_level_str</a> (char *log_level)</td></tr>
+<tr class="separator:a5739d622988e336d0995b8342237dc4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6965e901fc691369e501becb11db2757"><td class="memItemLeft" align="right" valign="top">CNDP_API uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__log_8h.html#a6965e901fc691369e501becb11db2757">cne_log_get_level</a> (void)</td></tr>
 <tr class="separator:a6965e901fc691369e501becb11db2757"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bd1c5e638da6be873f600b9d9775380"><td class="memItemLeft" align="right" valign="top">CNDP_API int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cne__log_8h.html#a4bd1c5e638da6be873f600b9d9775380">cne_log</a> (uint32_t level, const char *func, int line, const char *format,...)</td></tr>
@@ -235,7 +218,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00157">157</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00184">184</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +261,7 @@ Functions</h2></td></tr>
 </ul>
 </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00171">171</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00198">198</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -299,7 +282,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Macros for the normal cases with <a class="el" href="cne__log_8h.html#a13110f84f1d7551517ec751fdd586b0f">CNE_LOG()</a> levels </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00176">176</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00203">203</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -335,7 +318,7 @@ Functions</h2></td></tr>
 </div><!-- fragment --><p>Generate an Error log message and return value</p>
 <p>Same as <a class="el" href="cne__log_8h.html#a13110f84f1d7551517ec751fdd586b0f">CNE_LOG(ERR,...)</a> define, but returns -1 to enable this style of coding. if (val == error) { CNE_ERR("Error: Failed\n"); return -1; } Returning _val to the calling function. </p>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00195">195</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00222">222</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -356,10 +339,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Generate an Error log message and return</p>
 <p>Same as <a class="el" href="cne__log_8h.html#a13110f84f1d7551517ec751fdd586b0f">CNE_LOG(ERR,...)</a> define, but returns to enable this style of coding. if (val == error) { CNE_ERR("Error: Failed\n"); return; } Returning to the calling function. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a28">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a21">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a3">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a8">examples/ibroker/main.c</a>, <a class="el" href="examples_2phil_2main_8c-example.html#a16">examples/phil/main.c</a>, and <a class="el" href="examples_2phil_2phil_8c-example.html#a1">examples/phil/phil.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a32">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a21">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a3">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a8">examples/ibroker/main.c</a>, <a class="el" href="examples_2phil_2main_8c-example.html#a16">examples/phil/main.c</a>, and <a class="el" href="examples_2phil_2phil_8c-example.html#a1">examples/phil/phil.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00211">211</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00238">238</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -380,10 +363,10 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Generate an Error log message and return -1</p>
 <p>Same as <a class="el" href="cne__log_8h.html#a13110f84f1d7551517ec751fdd586b0f">CNE_LOG(ERR,...)</a> define, but returns -1 to enable this style of coding. if (val == error) { CNE_ERR("Error: Failed\n"); return -1; } Returning a -1 to the calling function. </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a26">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a8">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a12">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cndpfwd_2stats_8c-example.html#a10">examples/cndpfwd/stats.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a1">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#a17">examples/cnet-graph/parse-args.c</a>, <a class="el" href="examples_2cnet-graph_2stats_8c-example.html#a8">examples/cnet-graph/stats.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a1">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a17">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a8">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2cnet-quic_2stats_8c-example.html#a8">examples/cnet-quic/stats.c</a>, <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a8">examples/dlb_test/dlb_test.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#a18">examples/dlb_test/parse-args.c</a>, <a class="el" href="examples_2helloworld_2main_8c-example.html#a4">examples/helloworld/main.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a2">examples/ibroker/main.c</a>, <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a9">examples/l3fwd-graph/fwd.c</a>, <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a18">examples/l3fwd-graph/parse-args.c</a>, <a class="el" href="examples_2l3fwd-graph_2stats_8c-example.html#a8">examples/l3fwd-graph/stats.c</a>, <a class="el" href="examples_2phil_2main_8c-example.html#a24">examples/phil/main.c</a>, and <a class="el" href="examples_2phil_2parse-args_8c-example.html#a17">examples/phil/parse-args.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a26">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a8">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a12">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cndpfwd_2stats_8c-example.html#a10">examples/cndpfwd/stats.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a1">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#a17">examples/cnet-graph/parse-args.c</a>, <a class="el" href="examples_2cnet-graph_2stats_8c-example.html#a8">examples/cnet-graph/stats.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a1">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a17">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a12">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2cnet-quic_2stats_8c-example.html#a8">examples/cnet-quic/stats.c</a>, <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a8">examples/dlb_test/dlb_test.c</a>, <a class="el" href="examples_2dlb_test_2parse-args_8c-example.html#a18">examples/dlb_test/parse-args.c</a>, <a class="el" href="examples_2helloworld_2main_8c-example.html#a4">examples/helloworld/main.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a2">examples/ibroker/main.c</a>, <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a9">examples/l3fwd-graph/fwd.c</a>, <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a18">examples/l3fwd-graph/parse-args.c</a>, <a class="el" href="examples_2l3fwd-graph_2stats_8c-example.html#a8">examples/l3fwd-graph/stats.c</a>, <a class="el" href="examples_2phil_2main_8c-example.html#a24">examples/phil/main.c</a>, and <a class="el" href="examples_2phil_2parse-args_8c-example.html#a17">examples/phil/parse-args.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00223">223</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00250">250</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -407,7 +390,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a24">examples/cli/main.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00235">235</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00262">262</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -442,10 +425,10 @@ Functions</h2></td></tr>
 <div class="line">    } <span class="keywordflow">while</span> ((0))</div>
 </div><!-- fragment --><p>Generate a Error log message and goto label</p>
 <p>Same as <a class="el" href="cne__log_8h.html#a13110f84f1d7551517ec751fdd586b0f">CNE_LOG(ERR,...)</a> define, but goes to a label to enable this style of coding. if (error condition) { CNE_ERR("Error: Failed\n"); goto lbl; } </p>
-<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a33">examples/cli/main.c</a>, <a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a39">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a33">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a9">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a9">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a65">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a10">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a12">examples/ibroker/main.c</a>, <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a16">examples/l3fwd-graph/fwd.c</a>, and <a class="el" href="examples_2phil_2phil_8c-example.html#a11">examples/phil/phil.c</a>.</dd>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cli_2main_8c-example.html#a33">examples/cli/main.c</a>, <a class="el" href="examples_2cndpfwd_2acl-func_8c-example.html#a39">examples/cndpfwd/acl-func.c</a>, <a class="el" href="examples_2cndpfwd_2main_8c-example.html#a33">examples/cndpfwd/main.c</a>, <a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a9">examples/cnet-graph/cnet-graph.c</a>, <a class="el" href="examples_2cnet-quic_2cnet-quic_8c-example.html#a9">examples/cnet-quic/cnet-quic.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a66">examples/cnet-quic/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2quic-cli_8c-example.html#a14">examples/cnet-quic/quic-cli.c</a>, <a class="el" href="examples_2ibroker_2main_8c-example.html#a12">examples/ibroker/main.c</a>, <a class="el" href="examples_2l3fwd-graph_2fwd_8c-example.html#a16">examples/l3fwd-graph/fwd.c</a>, and <a class="el" href="examples_2phil_2phil_8c-example.html#a11">examples/phil/phil.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00246">246</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00273">273</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -488,7 +471,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2helloworld_2main_8c-example.html#a10">examples/helloworld/main.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00273">273</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00300">300</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -530,7 +513,7 @@ Functions</h2></td></tr>
 <dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2main_8c-example.html#a35">examples/cndpfwd/main.c</a>, and <a class="el" href="examples_2dlb_test_2dlb_test_8c-example.html#a17">examples/dlb_test/dlb_test.c</a>.</dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00288">288</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00315">315</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -563,48 +546,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00315">315</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
-<a id="a1fb9092bcdeada2d206bdc74afbbe122"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1fb9092bcdeada2d206bdc74afbbe122">&#9670;&nbsp;</a></span>anonymous enum</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">anonymous enum</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122ada303b3aa4b331b6edf6fe0d52941e83"></a>CNE_LOG_EMERG&#160;</td><td class="fielddoc"><p>System is unusable. <br  />
- </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122a07bccba632d747f1777963b6515a5bb5"></a>CNE_LOG_ALERT&#160;</td><td class="fielddoc"><p>Action must be taken immediately. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122a4bd5ec25f945fbb9bee71cb1b18c2e7e"></a>CNE_LOG_CRIT&#160;</td><td class="fielddoc"><p>Critical conditions. <br  />
- </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122ad6ce1c931428d7b8daa145ae99614fd5"></a>CNE_LOG_ERR&#160;</td><td class="fielddoc"><p>Error conditions. <br  />
- </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122a84e28dd61624f74a6327f9066a5c0177"></a>CNE_LOG_WARNING&#160;</td><td class="fielddoc"><p>Warning conditions. <br  />
- </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122ad548dcc5958098e94870db38198f5f6a"></a>CNE_LOG_NOTICE&#160;</td><td class="fielddoc"><p>Normal but significant condition. </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122a177682b564539be92123d26e54d09553"></a>CNE_LOG_INFO&#160;</td><td class="fielddoc"><p>Informational. <br  />
- </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a1fb9092bcdeada2d206bdc74afbbe122a44b0f12b01228e449393a7718f88cac2"></a>CNE_LOG_DEBUG&#160;</td><td class="fielddoc"><p>Debug-level messages. <br  />
- </p>
-</td></tr>
-</table>
-
-<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00030">30</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="cne__log_8h_source.html#l00342">342</a> of file <a class="el" href="cne__log_8h_source.html">cne_log.h</a>.</p>
 
 </div>
 </div>
@@ -634,6 +576,34 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a5739d622988e336d0995b8342237dc4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5739d622988e336d0995b8342237dc4d">&#9670;&nbsp;</a></span>cne_log_set_level_str()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CNDP_API int cne_log_set_level_str </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>log_level</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the log level by string.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">log_level</td><td>The level to be set.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>0 for success, 1 on error. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cndpfwd_2parse-args_8c-example.html#a68">examples/cndpfwd/parse-args.c</a>, <a class="el" href="examples_2cnet-graph_2parse-args_8c-example.html#a64">examples/cnet-graph/parse-args.c</a>, <a class="el" href="examples_2cnet-quic_2parse-args_8c-example.html#a64">examples/cnet-quic/parse-args.c</a>, and <a class="el" href="examples_2l3fwd-graph_2parse-args_8c-example.html#a61">examples/l3fwd-graph/parse-args.c</a>.</dd>
+</dl>
+
+</div>
+</div>
 <a id="a6965e901fc691369e501becb11db2757"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6965e901fc691369e501becb11db2757">&#9670;&nbsp;</a></span>cne_log_get_level()</h2>
 
@@ -651,6 +621,8 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Get the log level.</p>
 <dl class="section return"><dt>Returns</dt><dd>The current log level. </dd></dl>
+<dl class="section examples"><dt>Examples</dt><dd><a class="el" href="examples_2cnet-graph_2cnet-graph_8c-example.html#a23">examples/cnet-graph/cnet-graph.c</a>.</dd>
+</dl>
 
 </div>
 </div>

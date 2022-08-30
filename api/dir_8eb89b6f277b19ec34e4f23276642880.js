@@ -11,7 +11,6 @@ var dir_8eb89b6f277b19ec34e4f23276642880 =
     [ "netlink", "dir_a72034d3b3942ebf8954e4e25657003b.html", "dir_a72034d3b3942ebf8954e4e25657003b" ],
     [ "pcb", "dir_95a0043d9d7e67ee0cd5484e3a93e591.html", "dir_95a0043d9d7e67ee0cd5484e3a93e591" ],
     [ "protosw", "dir_688825e0de109e412f5fdc1c5999c105.html", "dir_688825e0de109e412f5fdc1c5999c105" ],
-    [ "punt", "dir_82b0f95e9864fbfff3421a1e3d4b04eb.html", "dir_82b0f95e9864fbfff3421a1e3d4b04eb" ],
     [ "reg", "dir_042c63a42be5b02245cd97b4dc171b8f.html", "dir_042c63a42be5b02245cd97b4dc171b8f" ],
     [ "route", "dir_a586d1fbe0eb8232d71ecee4d8356e4b.html", "dir_a586d1fbe0eb8232d71ecee4d8356e4b" ],
     [ "sbin", "dir_f4fde151a5c5697974a7dc857dd747ff.html", "dir_f4fde151a5c5697974a7dc857dd747ff" ],

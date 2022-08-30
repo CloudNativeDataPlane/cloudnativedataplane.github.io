@@ -7,7 +7,7 @@
 <!--<meta charset="utf-8">-->
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CNDP: lib/usr/clib/vec Directory Reference</title>
+<title>CNDP: lib/cnet/incs/cnet_rarp.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -91,7 +91,7 @@ $(function() {
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
-$(document).ready(function(){initNavTree('dir_198f6ec41c59a2e8ebeceab89a45cfc1.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('cnet__rarp_8h.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -110,16 +110,87 @@ $(document).ready(function(){initNavTree('dir_198f6ec41c59a2e8ebeceab89a45cfc1.h
 </div>
 
 <div class="header">
+  <div class="summary">
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
-<div class="title">vec Directory Reference</div>  </div>
+<div class="title">cnet_rarp.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__ether_8h_source.html">net/cne_ether.h</a>&gt;</code><br />
+<code>#include &lt;net/ethernet.h&gt;</code><br />
+<code>#include &lt;<a class="el" href="cne__arp_8h_source.html">net/cne_arp.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="mempool_8h_source.html">mempool.h</a>&gt;</code><br />
+<code>#include &lt;<a class="el" href="pktmbuf_8h_source.html">pktmbuf.h</a>&gt;</code><br />
+</div>
+<p><a href="cnet__rarp_8h_source.html">Go to the source code of this file.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a72dbaef3c5da3bd43b10ea5862fbac29"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cnet__rarp_8h.html#a72dbaef3c5da3bd43b10ea5862fbac29">cne_net_make_rarp_packet</a> (<a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *pi, const struct <a class="el" href="structether__addr.html">ether_addr</a> *mac)</td></tr>
+<tr class="separator:a72dbaef3c5da3bd43b10ea5862fbac29"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>RARP-related defines </p>
+
+<p class="definition">Definition in file <a class="el" href="cnet__rarp_8h_source.html">cnet_rarp.h</a>.</p>
+</div><h2 class="groupheader">Function Documentation</h2>
+<a id="a72dbaef3c5da3bd43b10ea5862fbac29"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a72dbaef3c5da3bd43b10ea5862fbac29">&#9670;&nbsp;</a></span>cne_net_make_rarp_packet()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">static <a class="el" href="structpktmbuf__s.html">pktmbuf_t</a>* cne_net_make_rarp_packet </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="pktmbuf_8h.html#ae51ffa3a5006a0e892be9dd81b5d95af">pktmbuf_info_t</a> *&#160;</td>
+          <td class="paramname"><em>pi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const struct <a class="el" href="structether__addr.html">ether_addr</a> *&#160;</td>
+          <td class="paramname"><em>mac</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Make a RARP packet based on MAC addr.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">pi</td><td>Pointer to the pktmbuf information structure. </td></tr>
+    <tr><td class="paramname">mac</td><td>Pointer to the MAC addr</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd><ul>
+<li>RARP packet pointer on success, or NULL on error </li>
+</ul>
+</dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="cnet__rarp_8h_source.html#l00041">41</a> of file <a class="el" href="cnet__rarp_8h_source.html">cnet_rarp.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_7bbc81032548574d2e7e9264f003edf5.html">usr</a></li><li class="navelem"><a class="el" href="dir_52d0f5cebd30a8a0290be82a9cdbea18.html">clib</a></li><li class="navelem"><a class="el" href="dir_198f6ec41c59a2e8ebeceab89a45cfc1.html">vec</a></li>
+    <li class="navelem"><a class="el" href="dir_97aefd0d527b934f1d99a682da8fe6a9.html">lib</a></li><li class="navelem"><a class="el" href="dir_8eb89b6f277b19ec34e4f23276642880.html">cnet</a></li><li class="navelem"><a class="el" href="dir_90ceaf1415e61810ac71667c19aa907c.html">incs</a></li><li class="navelem"><a class="el" href="cnet__rarp_8h.html">cnet_rarp.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

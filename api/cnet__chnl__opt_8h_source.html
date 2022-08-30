@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -134,26 +134,31 @@ $(document).ready(function(){initNavTree('cnet__chnl__opt_8h_source.html',''); i
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="keyword">struct </span>chnl_optsw {</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    int32_t level;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    int (*setfunc)(<span class="keyword">struct </span>chnl *, int, int, <span class="keyword">const</span> <span class="keywordtype">void</span> *, uint32_t);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    int (*getfunc)(<span class="keyword">struct </span>chnl *, int, int, <span class="keywordtype">void</span> *, uint32_t *);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    int (*setfunc)(<span class="keyword">struct </span>chnl *ch, int, int, <span class="keyword">const</span> <span class="keywordtype">void</span> *, uint32_t);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    int (*getfunc)(<span class="keyword">struct </span>chnl *ch, int, int, <span class="keywordtype">void</span> *, uint32_t *);</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;};</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;CNDP_API <span class="keywordtype">int</span> cnet_chnl_opt_init(<span class="keywordtype">int</span> num_handlers);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;CNDP_API <span class="keywordtype">int</span> cnet_chnl_opt_add(<span class="keyword">struct</span> chnl_optsw *);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;CNDP_API <span class="keywordtype">int</span> cnet_chnl_opt_iterate_set(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keyword">const</span> <span class="keywordtype">void</span> *optval,</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;                                       uint32_t optlen);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;CNDP_API <span class="keywordtype">int</span> cnet_chnl_opt_iterate_get(<span class="keyword">struct</span> chnl *, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keywordtype">void</span> *optval,</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;                                       uint32_t *optlen);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;CNDP_API <span class="keywordtype">int</span> chnl_set_opt(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keyword">const</span> <span class="keywordtype">void</span> *optval, <span class="keywordtype">int</span> optlen);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;CNDP_API <span class="keywordtype">int</span> chnl_get_opt(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keywordtype">void</span> *optval, socklen_t *optlen);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;CNDP_API uint32_t chnl_optval_get(<span class="keyword">const</span> <span class="keywordtype">void</span> *optval, uint32_t optlen);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keywordtype">int</span> cnet_chnl_opt_add(<span class="keyword">struct</span> chnl_optsw *ps);</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;}</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CNET_CHNL_OPT */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">int</span> cnet_chnl_opt_iterate_set(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keyword">const</span> <span class="keywordtype">void</span> *optval,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                              uint32_t optlen);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">int</span> cnet_chnl_opt_iterate_get(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keywordtype">void</span> *optval,</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                              uint32_t *optlen);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;uint32_t chnl_optval_get(<span class="keyword">const</span> <span class="keywordtype">void</span> *optval, uint32_t optlen);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">  110</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">chnl_set_opt</a>(<span class="keywordtype">int</span> cd, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keyword">const</span> <span class="keywordtype">void</span> *optval, <span class="keywordtype">int</span> optlen);</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="line" href="cnet__chnl__opt_8h.html#aac8cc3a01aeec750cbf86f55c67924c3">  128</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl__opt_8h.html#aac8cc3a01aeec750cbf86f55c67924c3">chnl_get_opt</a>(<span class="keywordtype">int</span> cd, <span class="keywordtype">int</span> level, <span class="keywordtype">int</span> optname, <span class="keywordtype">void</span> *optval, socklen_t *optlen);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CNET_CHNL_OPT */</span><span class="preprocessor"></span></div>
+<div class="ttc" id="acnet__chnl__opt_8h_html_aaa0749f638d118156c993f1e5de5564d"><div class="ttname"><a href="cnet__chnl__opt_8h.html#aaa0749f638d118156c993f1e5de5564d">chnl_set_opt</a></div><div class="ttdeci">CNDP_API int chnl_set_opt(int cd, int level, int optname, const void *optval, int optlen)</div><div class="ttdoc">Set a channel option.</div></div>
+<div class="ttc" id="acnet__chnl__opt_8h_html_aac8cc3a01aeec750cbf86f55c67924c3"><div class="ttname"><a href="cnet__chnl__opt_8h.html#aac8cc3a01aeec750cbf86f55c67924c3">chnl_get_opt</a></div><div class="ttdeci">CNDP_API int chnl_get_opt(int cd, int level, int optname, void *optval, socklen_t *optlen)</div><div class="ttdoc">Get a channel option.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

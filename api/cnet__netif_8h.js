@@ -39,6 +39,7 @@ var cnet__netif_8h =
     [ "cnet_netif_find_by_name", "cnet__netif_8h.html#a2a88b396adaf873d8f98f6e70591be6f", null ],
     [ "cnet_netif_find_by_ifindex", "cnet__netif_8h.html#aa6e53eadc6ac54340d4b7b4983d2c71f", null ],
     [ "cnet_netif_find_by_netdev", "cnet__netif_8h.html#a8de205c648fb48dc31974f33aef2f2e8", null ],
+    [ "cnet_netif_find_by_lport", "cnet__netif_8h.html#a326e65af0f973d5d49f010ab53d78496", null ],
     [ "cnet_is_ifname_valid", "cnet__netif_8h.html#aee7310c1b7897d12fd549e345e774925", null ],
     [ "cnet_is_netdev_valid", "cnet__netif_8h.html#a8e3f73c92a36e995fbb7eff9c6d84dbd", null ],
     [ "cnet_is_ifindex_valid", "cnet__netif_8h.html#ad3c1d88c3a7b893575862c3c00aede21", null ]

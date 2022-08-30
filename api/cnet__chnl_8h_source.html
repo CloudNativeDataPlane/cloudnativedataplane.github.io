@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -143,420 +143,107 @@ $(document).ready(function(){initNavTree('cnet__chnl_8h_source.html',''); initRe
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">struct </span>netif;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>stk_s;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__spinlock_8h.html">cne_spinlock.h</a>&gt;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#define CHNL_VEC_SIZE 256</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#define _MIN_BUF_SIZE (3 * TCP_NORMAL_MSS) </span><span class="comment">/* 1460 Normal MSS size for TCP */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#ifdef _IPPORT_RESERVED</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#undef _IPPORT_RESERVED</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#define _IPPORT_RESERVED 49152 </span><span class="comment">/* Starting Ephemeral Port value */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">typedef</span> int (*chnl_cb_t)(<span class="keyword">struct </span>chnl *ch, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs, uint16_t nb_mbufs);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">struct </span>pcb_entry;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#ifndef __CHNL_PRIV_H</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a1c492cd7780694802517b272f70713b8">   50</a></span>&#160;<span class="keyword">typedef</span> int (*<a class="code" href="cnet__chnl_8h.html#a1c492cd7780694802517b272f70713b8">chnl_cb_t</a>)(<span class="keywordtype">int</span> chnl_type, <span class="keywordtype">int</span> cd);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">/* TODO: Trying to remove this structure as it may not be needed. TCP uses it now */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">struct </span>chnl_buf {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **cb_vec;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    uint32_t cb_acc;        </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    uint32_t cb_cc;         </div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    uint32_t cb_hiwat;      </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    uint32_t cb_lowat;      </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    uint32_t cb_size;       </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    uint16_t cb_flags;      </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    uint16_t cb_selCount;   </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    uint64_t cb_timeo;      </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    pthread_mutex_t mutex;  </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    pthread_cond_t cb_cond; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">/* chnl_buf.cb_flags bits */</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#define CB_LOCK   0x0001 </span><span class="comment">/* lock on data queue */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#define CB_WANT   0x0002 </span><span class="comment">/* someone is waiting to lock */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#define CB_WAIT   0x0004 </span><span class="comment">/* someone is waiting for data/space */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#define CB_SEL    0x0008 </span><span class="comment">/* someone is selecting */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#define CB_ASYNC  0x0010 </span><span class="comment">/* ASYNC I/O, need signals */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#define CB_UPCALL 0x0020 </span><span class="comment">/* someone wants an upcall */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#define CB_NOINTR 0x0040 </span><span class="comment">/* operations not interruptable */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#define CB_AIO    0x0080 </span><span class="comment">/* AIO operations queued */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#define CB_KNOTE  0x0100 </span><span class="comment">/* kernel note attached */</span><span class="preprocessor"></span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keyword">struct </span>pcb_hd;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keyword">struct </span>chnl {</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    TAILQ_ENTRY(chnl) ch_entry;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keyword">struct </span>pcb_entry *ch_pcb;       </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">struct </span>protosw_entry *ch_proto; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    pthread_mutex_t ch_mutex;       </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keyword">struct </span>chnl *ch_ch;             </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    chnl_cb_t callback;             </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">struct </span>cne_node *ch_node;       </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    uint64_t callback_cnt;          </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    uint16_t ch_idx;                </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    uint16_t ch_options;            </div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    uint16_t ch_linger;             </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    uint16_t ch_state;              </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    uint16_t initialized;           </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    uint16_t ch_error;              </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keyword">struct </span>chnl_buf ch_rcv; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keyword">struct </span>chnl_buf ch_snd; </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="comment">/* Used for the chnl.ch_state */</span></div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9d91a9a6f5094f0cc502e05e83f626a0">  103</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9d91a9a6f5094f0cc502e05e83f626a0">_NOFDREF</a>         = 0x0001, </div>
-<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9a114f69ea90855e0d1f383035a68d96">  104</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9a114f69ea90855e0d1f383035a68d96">_ISCONNECTED</a>     = 0x0002, </div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2eaaecb32fddfc87c6d468f753047a19">  105</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2eaaecb32fddfc87c6d468f753047a19">_ISCONNECTING</a>    = 0x0004, </div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a0b9bac5cfb2379184898dc6a2e3c72a1">  106</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a0b9bac5cfb2379184898dc6a2e3c72a1">_ISDISCONNECTING</a> = 0x0008, </div>
-<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f">  107</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f">_CANTSENDMORE</a>    = 0x0010, </div>
-<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79">  108</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79">_CANTRECVMORE</a>    = 0x0020, </div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a3273a4248ae14422482ee50333b4d72b">  109</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a3273a4248ae14422482ee50333b4d72b">_RCVATMARK</a>       = 0x0040, </div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5adef382ed9e62a35675342cf9fb5d018a">  110</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5adef382ed9e62a35675342cf9fb5d018a">_PRIV</a>            = 0x0080, </div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5ab3e171adcd1ec641eeb562882e0654f9">  111</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5ab3e171adcd1ec641eeb562882e0654f9">_NBIO</a>            = 0x0100, </div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2c306b339797eecb94cf36ec186d4af3">  112</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2c306b339797eecb94cf36ec186d4af3">_ASYNC</a>           = 0x0200, </div>
-<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a83a6b57ae83ab10defef07ff5811135d">  113</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a83a6b57ae83ab10defef07ff5811135d">_ISCONFIRMING</a>    = 0x0400, </div>
-<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af318d307162865f7dcfe19d4c3587ae6">  114</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af318d307162865f7dcfe19d4c3587ae6">_INCOMP</a>          = 0x0800, </div>
-<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04bfbc8718be3fa2595a1f3ecdf5a7d9">  115</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04bfbc8718be3fa2595a1f3ecdf5a7d9">_ISDISCONNECTED</a>  = 0x1000, </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a8f0c4a91b6fac2e1c55dabe7e60f85f1">_CHNL_FREE</a>       = 0x8000  </div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a8f0c4a91b6fac2e1c55dabe7e60f85f1">  117</a></span>&#160;};</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">char</span> *</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;chnl_domain_str(<span class="keywordtype">int</span> domain)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;{</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p = NULL;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">char</span> buff[16];</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">switch</span> (domain) {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">case</span> AF_LOCAL:</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        p = <span class="stringliteral">&quot;LOCAL&quot;</span>;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">case</span> AF_INET:</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;        p = <span class="stringliteral">&quot;INET&quot;</span>;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">case</span> AF_INET6:</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        p = <span class="stringliteral">&quot;INET6&quot;</span>;</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordflow">case</span> AF_NETLINK:</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        p = <span class="stringliteral">&quot;NETLINK&quot;</span>;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    <span class="keywordflow">case</span> AF_PACKET:</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;        p = <span class="stringliteral">&quot;PACKET&quot;</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        p = buff;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        snprintf(buff, <span class="keyword">sizeof</span>(buff) - 1, <span class="stringliteral">&quot;%d&quot;</span>, domain);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;    }</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">char</span> *)(uintptr_t)p;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;}</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160; </div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">#define SOCK_ANY 0</span></div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">char</span> *</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;chnl_type_str(<span class="keywordtype">int</span> type)</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;{</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p = NULL;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">char</span> buff[16];</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160; </div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <span class="keywordflow">switch</span> (type) {</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="keywordflow">case</span> SOCK_ANY:</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        p = <span class="stringliteral">&quot;ANY&quot;</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordflow">case</span> SOCK_STREAM:</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        p = <span class="stringliteral">&quot;STREAM&quot;</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    <span class="keywordflow">case</span> SOCK_DGRAM:</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        p = <span class="stringliteral">&quot;DGRAM&quot;</span>;</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">case</span> SOCK_RAW:</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        p = <span class="stringliteral">&quot;RAW&quot;</span>;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">case</span> SOCK_SEQPACKET:</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        p = <span class="stringliteral">&quot;SEQPKT&quot;</span>;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">case</span> SOCK_PACKET:</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        p = <span class="stringliteral">&quot;PACKET&quot;</span>;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        p = buff;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        snprintf(buff, <span class="keyword">sizeof</span>(buff) - 1, <span class="stringliteral">&quot;%d&quot;</span>, type);</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    }</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">char</span> *)(uintptr_t)p;</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160; </div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">char</span> *</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;chnl_protocol_str(<span class="keywordtype">int</span> protocol)</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *p = NULL;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">char</span> buff[16];</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;    <span class="keywordflow">switch</span> (protocol) {</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    <span class="keywordflow">case</span> IPPROTO_IP:</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        p = <span class="stringliteral">&quot;IP&quot;</span>;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">case</span> IPPROTO_ICMP:</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        p = <span class="stringliteral">&quot;ICMP&quot;</span>;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">case</span> IPPROTO_IGMP:</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        p = <span class="stringliteral">&quot;IGMP&quot;</span>;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">case</span> IPPROTO_TCP:</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        p = <span class="stringliteral">&quot;TCP&quot;</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    <span class="keywordflow">case</span> IPPROTO_UDP:</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        p = <span class="stringliteral">&quot;UDP&quot;</span>;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">case</span> IPPROTO_IPV6:</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        p = <span class="stringliteral">&quot;IPV6&quot;</span>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;    <span class="keywordflow">case</span> IPPROTO_SCTP:</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        p = <span class="stringliteral">&quot;SCTP&quot;</span>;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">case</span> IPPROTO_MPLS:</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        p = <span class="stringliteral">&quot;MPLS&quot;</span>;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">case</span> IPPROTO_RAW:</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        p = <span class="stringliteral">&quot;RAW&quot;</span>;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">case</span> IPPROTO_ICMPV6:</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        p = <span class="stringliteral">&quot;ICMPV6&quot;</span>;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    <span class="keywordflow">default</span>:</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        p = buff;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        snprintf(buff, <span class="keyword">sizeof</span>(buff) - 1, <span class="stringliteral">&quot;%d&quot;</span>, protocol);</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    <span class="keywordflow">return</span> (<span class="keywordtype">char</span> *)(uintptr_t)p;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;}</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160; </div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">#define SO_CHANNEL    1</span></div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">#define SO_UDP_CHKSUM 1024</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;<span class="preprocessor">#define IP_DONTFRAG   1025</span></div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; </div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    IP_HDRINCL_FLAG     = 0x0001,</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;    IP_RECVDSTADDR_FLAG = 0x0002,</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;    IP_PKTINFO_FLAG     = 0x0004,</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    IP_RECVIF_FLAG      = 0x0008,</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    IP_DONTFRAG_FLAG    = 0x0010,</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;    IP_RECVTTL_FLAG     = 0x0020,</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    IP_RECVTOS_FLAG     = 0x0040,</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;    UDP_CHKSUM_FLAG     = 0x0080,</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;    TCP_NODELAY_FLAG    = 0x0200, <span class="comment">/* A few TCP flags */</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    TCP_NOOPT_FLAG      = 0x0400,</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    TCP_NOPUSH_FLAG     = 0x0800,</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    TCP_MAXSEG_FLAG     = 0x1000,</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;};</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160; </div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="comment"> * ioctl extensions</span></div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    SHUT_BIT_RD   = 0x01,</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    SHUT_BIT_WR   = 0x02,</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    SHUT_BIT_RDWR = 0x03,</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a244d5814303c8b1f85ff72fa6c590879">   53</a></span>&#160;<span class="preprocessor">#define CHNL_ENABLE_UDP_CHECKSUM (1 &lt;&lt; 0) </span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="preprocessor">#define SO_CHANNEL    1</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#define SO_UDP_CHKSUM 1024</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#define IP_DONTFRAG   1025</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a304fbc4cba97016c7776de2873fb893e">   60</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a304fbc4cba97016c7776de2873fb893e">SHUT_BIT_RD</a>   = 0x01, </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af8f28e81f1155fa50906486c668af8fd">   61</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af8f28e81f1155fa50906486c668af8fd">SHUT_BIT_WR</a>   = 0x02, </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04f6af6fa94138b8be074a17b9e6aeec">   62</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04f6af6fa94138b8be074a17b9e6aeec">SHUT_BIT_RDWR</a> = 0x03, </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32">   66</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a20bfa0c83f6f4d6d6f7d366bfae0aabc">   67</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a20bfa0c83f6f4d6d6f7d366bfae0aabc">CHNL_UDP_RECV_TYPE</a>,   </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a1448987a6590dd41079e2f51452390e1">   68</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a1448987a6590dd41079e2f51452390e1">CHNL_UDP_CLOSE_TYPE</a>,  </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a7ea2ddab1df7a6293fe497f70d704a65">   69</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a7ea2ddab1df7a6293fe497f70d704a65">CHNL_TCP_ACCEPT_TYPE</a>, </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a49f49b88445aa956607750d712ec3cc5">   70</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a49f49b88445aa956607750d712ec3cc5">CHNL_TCP_RECV_TYPE</a>,   </div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a0f2f2eb04e52ef12964a5c684cc23e1e">   71</a></span>&#160;    <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a0f2f2eb04e52ef12964a5c684cc23e1e">CHNL_TCP_CLOSE_TYPE</a>,  </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a6e05415e3da421623e425004ed7707b6">CHNL_CALLBACK_TYPES</a>   </div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a6e05415e3da421623e425004ed7707b6">   73</a></span>&#160;} <a class="code" href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32">chnl_type_t</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#aa2f9e4f98e8e64a554076bc1dcd270ba">   83</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__chnl_8h.html#aa2f9e4f98e8e64a554076bc1dcd270ba">chnl_dump</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">struct</span> chnl *ch);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a00adb50a5c5b85bfe966802cb9c57ff7">   97</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a00adb50a5c5b85bfe966802cb9c57ff7">chnl_connect_common</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> in_caddr *to, int32_t tolen);</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a650e4c760251fef7833ca2d70c45fad4">  113</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a650e4c760251fef7833ca2d70c45fad4">chnl_bind_common</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> in_caddr *pAddr, int32_t len,</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;                              <span class="keyword">struct</span> pcb_hd *pHd);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a68bf1afb55dbd6fb59b05a9c3f088b6f">  130</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a68bf1afb55dbd6fb59b05a9c3f088b6f">channel</a>(<span class="keywordtype">int</span> domain, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> proto, <a class="code" href="cnet__chnl_8h.html#a1c492cd7780694802517b272f70713b8">chnl_cb_t</a> cb);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a4c1a0264223397137793f50ffa8f20cc">  144</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a4c1a0264223397137793f50ffa8f20cc">chnl_bind</a>(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *addr, <span class="keywordtype">int</span> addrlen);</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a8f0bf558aa1280b3f6d876565ee922ca">  156</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a8f0bf558aa1280b3f6d876565ee922ca">chnl_listen</a>(<span class="keywordtype">int</span> cd, <span class="keywordtype">int</span> backlog);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#ac4825376026d099d983ebbefdc01fbfc">  170</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#ac4825376026d099d983ebbefdc01fbfc">chnl_accept</a>(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *sa, socklen_t *addrlen);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160; </div>
+<div class="line"><a name="l00184"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a3d730ab64c9d1bb34b48afcc1d8f6543">  184</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a3d730ab64c9d1bb34b48afcc1d8f6543">chnl_connect</a>(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *sa, <span class="keywordtype">int</span> addrlen);</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a22022a742413830c3d48d3ffb1474ca9">  201</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a22022a742413830c3d48d3ffb1474ca9">chnl_recv</a>(<span class="keywordtype">int</span> cd, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs, <span class="keywordtype">size_t</span> len);</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
+<div class="line"><a name="l00240"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#aec4391058c7042d2be24073cf54351e7">  240</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#aec4391058c7042d2be24073cf54351e7">chnl_send</a>(<span class="keywordtype">int</span> cd, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs, uint16_t nb_mbufs);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160; </div>
+<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#aa8eb33f9b15b4992e170214ca214fe33">  256</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#aa8eb33f9b15b4992e170214ca214fe33">chnl_sendto</a>(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *sa, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs, uint16_t nb_mbufs);</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160; </div>
-<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a1fd5c3843bcaae5fbd296f482d45d8fe">  268</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a1fd5c3843bcaae5fbd296f482d45d8fe">chnl_cb_wait</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> chnl_buf *cb);</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160; </div>
-<div class="line"><a name="l00280"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#ade3a57841fa882c17332b5b293973e2f">  280</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__chnl_8h.html#ade3a57841fa882c17332b5b293973e2f">chnl_cb_wakeup</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> chnl_buf *cb, <span class="keywordtype">int</span> wakeup_type);</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160; </div>
-<div class="line"><a name="l00285"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a0fe2f7e1d007ddda7cd7fd2de17ac4fc">  285</a></span>&#160;<span class="preprocessor">#define ch_rwakeup(_c) chnl_cb_wakeup((_c), &amp;(_c)-&gt;ch_rcv, _SELREAD)</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;<span class="preprocessor">#define ch_wwakeup(_c) chnl_cb_wakeup((_c), &amp;(_c)-&gt;ch_snd, _SELWRITE)</span></div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160; </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#ac97c9351c6bd407626fdbf202e7e9d31">  300</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#ac97c9351c6bd407626fdbf202e7e9d31">chnl_snd_rcv_more</a>(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> which)</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;{</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;    <span class="keywordflow">return</span> (ch-&gt;ch_state &amp; which) == which;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;}</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160; </div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#ab20a918f95b21f013ac1905c49a984fd">  315</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#ab20a918f95b21f013ac1905c49a984fd">chnl_cant_snd_rcv_more</a>(<span class="keyword">struct</span> chnl *ch, int32_t which)</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;{</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    ch-&gt;ch_state |= (which &amp; (<a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f">_CANTSENDMORE</a> | <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79">_CANTRECVMORE</a>));</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160; </div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;    <span class="keywordflow">if</span> (is_set(which, <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79">_CANTRECVMORE</a>))</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;        <a class="code" href="cnet__chnl_8h.html#a0fe2f7e1d007ddda7cd7fd2de17ac4fc">ch_rwakeup</a>(ch);</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160; </div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    <span class="keywordflow">if</span> (is_set(which, <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f">_CANTSENDMORE</a>))</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;        ch_wwakeup(ch);</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;}</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#afd635b6210d78c14b234d9507736a4f5">  335</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#afd635b6210d78c14b234d9507736a4f5">chnl_cant_rcv_more</a>(<span class="keyword">struct</span> chnl *ch)</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;{</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> ch-&gt;ch_state &amp; <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79">_CANTRECVMORE</a>;</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#ad33d414b89ff01fcb05eb07df7e32596">  349</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#ad33d414b89ff01fcb05eb07df7e32596">chnl_cant_snd_more</a>(<span class="keyword">struct</span> chnl *ch)</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;{</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordflow">return</span> ch-&gt;ch_state &amp; <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f">_CANTSENDMORE</a>;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;}</div>
+<div class="line"><a name="l00278"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a1d55ac5a156ee2dab32be5a067ca3273">  278</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a1d55ac5a156ee2dab32be5a067ca3273">chnl_getchnlname</a>(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *name, socklen_t *namelen);</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00300"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#ab1b071fab923141512133cbb21ea5fa8">  300</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#ab1b071fab923141512133cbb21ea5fa8">chnl_getpeername</a>(<span class="keywordtype">int</span> cd, <span class="keyword">struct</span> sockaddr *sa, socklen_t *salen);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160; </div>
+<div class="line"><a name="l00310"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#afd331ac9ae3fa36dddffa0f8d618eb14">  310</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#afd331ac9ae3fa36dddffa0f8d618eb14">chnl_close</a>(<span class="keywordtype">int</span> cd);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160; </div>
+<div class="line"><a name="l00322"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a1aaad35546630b7a0c56440d7eed2650">  322</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a1aaad35546630b7a0c56440d7eed2650">chnl_shutdown</a>(<span class="keywordtype">int</span> cd, <span class="keywordtype">int</span> how);</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160; </div>
+<div class="line"><a name="l00348"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a08b989da42c5673809a92f0123eebfdd">  348</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a08b989da42c5673809a92f0123eebfdd">chnl_open</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *str, <span class="keywordtype">int</span> flags, <a class="code" href="cnet__chnl_8h.html#a1c492cd7780694802517b272f70713b8">chnl_cb_t</a> fn);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;}</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160; </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint32_t</div>
-<div class="line"><a name="l00363"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a7e22147ef06aa1c666860d2b3862f52c">  363</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#a7e22147ef06aa1c666860d2b3862f52c">cb_avail</a>(<span class="keyword">struct</span> chnl_buf *cb)</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;{</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;    <span class="keywordflow">return</span> cb-&gt;cb_cc;</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;}</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint32_t</div>
-<div class="line"><a name="l00377"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a15ee675f1de19cde8a537e96999c46b3">  377</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#a15ee675f1de19cde8a537e96999c46b3">cb_space</a>(<span class="keyword">struct</span> chnl_buf *cb)</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;{</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">return</span> (uint32_t)((cb-&gt;cb_hiwat &gt; cb-&gt;cb_cc) ? (cb-&gt;cb_hiwat - cb-&gt;cb_cc) : 0);</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;}</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160; </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a483d10ba1bff7cb62c4954d5b096383b">  391</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#a483d10ba1bff7cb62c4954d5b096383b">ch_readable</a>(<span class="keyword">struct</span> chnl *ch)</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;{</div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;    <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160; </div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;    <span class="keywordflow">if</span> (!ch) {</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;        CNE_ERR(<span class="stringliteral">&quot;Channel is NULL\n&quot;</span>);</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;    }</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160; </div>
-<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;    ret =</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;        (<a class="code" href="cnet__chnl_8h.html#a7e22147ef06aa1c666860d2b3862f52c">cb_avail</a>(&amp;ch-&gt;ch_rcv) &gt;= ch-&gt;ch_rcv.cb_lowat) &amp;&amp; !<a class="code" href="cnet__chnl_8h.html#afd635b6210d78c14b234d9507736a4f5">chnl_cant_rcv_more</a>(ch) &amp;&amp; !ch-&gt;ch_error;</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160; </div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;}</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160; </div>
-<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">int</span></div>
-<div class="line"><a name="l00415"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#adb61e8b38f4250720d5142f30fce1a8f">  415</a></span>&#160;<a class="code" href="cnet__chnl_8h.html#adb61e8b38f4250720d5142f30fce1a8f">ch_writeable</a>(<span class="keyword">struct</span> chnl *ch)</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;{</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;    <span class="keywordtype">int</span> ret;</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160; </div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;    <span class="keywordflow">if</span> (!ch) {</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;        CNE_ERR(<span class="stringliteral">&quot;Channal is NULL\n&quot;</span>);</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;    }</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160; </div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;    ret = (<a class="code" href="cnet__chnl_8h.html#a15ee675f1de19cde8a537e96999c46b3">cb_space</a>(&amp;ch-&gt;ch_snd) &gt;= ch-&gt;ch_snd.cb_lowat &amp;&amp;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;           ((ch-&gt;ch_state &amp; <a class="code" href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9a114f69ea90855e0d1f383035a68d96">_ISCONNECTED</a>) || (ch-&gt;ch_proto-&gt;proto != SOCK_STREAM))) ||</div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;          !<a class="code" href="cnet__chnl_8h.html#ad33d414b89ff01fcb05eb07df7e32596">chnl_cant_snd_more</a>(ch) || !ch-&gt;ch_error;</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160; </div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;    <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;}</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160; </div>
-<div class="line"><a name="l00440"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#af418f8ee71190e41a0301ee8d615c62c">  440</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#af418f8ee71190e41a0301ee8d615c62c">chnl_OK</a>(<span class="keyword">struct</span> chnl *ch);</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160; </div>
-<div class="line"><a name="l00451"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a0b1f2642233dd50e9b4ef762ad92d233">  451</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a0b1f2642233dd50e9b4ef762ad92d233">chnl_ERROR</a>(<span class="keyword">struct</span> chnl *ch);</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160; </div>
-<div class="line"><a name="l00462"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a2f5dc0b1626fc9ea89eeeff42e0fdd67">  462</a></span>&#160;CNDP_API <span class="keyword">struct </span>chnl *<a class="code" href="cnet__chnl_8h.html#a2f5dc0b1626fc9ea89eeeff42e0fdd67">chnl_NULL</a>(<span class="keyword">struct</span> chnl *ch);</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160; </div>
-<div class="line"><a name="l00472"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a1c854e5e1ada910220137bae06edde49">  472</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__chnl_8h.html#a1c854e5e1ada910220137bae06edde49">chnl_cleanup</a>(<span class="keyword">struct</span> chnl *ch);</div>
-<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160; </div>
-<div class="line"><a name="l00489"></a><span class="lineno">  489</span>&#160;CNDP_API <span class="keyword">struct </span>chnl *__chnl_create(int32_t dom, int32_t type, int32_t pro, <span class="keyword">struct</span> pcb_entry *pcb);</div>
-<div class="line"><a name="l00490"></a><span class="lineno">  490</span>&#160; </div>
-<div class="line"><a name="l00499"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a063172a7bf372e56408ef9920012a7e4">  499</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__chnl_8h.html#a063172a7bf372e56408ef9920012a7e4">chnl_list</a>(stk_t *stk);</div>
-<div class="line"><a name="l00500"></a><span class="lineno">  500</span>&#160; </div>
-<div class="line"><a name="l00511"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a64dea97bb6c807cee3518bcdbe008524">  511</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a64dea97bb6c807cee3518bcdbe008524">chnl_validate_cb</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *msg, <span class="keyword">struct</span> chnl_buf *cb);</div>
-<div class="line"><a name="l00512"></a><span class="lineno">  512</span>&#160; </div>
-<div class="line"><a name="l00513"></a><span class="lineno">  513</span>&#160;<span class="comment">/* Common bind and connect routines for all protocols */</span></div>
-<div class="line"><a name="l00526"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a00adb50a5c5b85bfe966802cb9c57ff7">  526</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a00adb50a5c5b85bfe966802cb9c57ff7">chnl_connect_common</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> in_caddr *to, int32_t tolen);</div>
-<div class="line"><a name="l00527"></a><span class="lineno">  527</span>&#160; </div>
-<div class="line"><a name="l00538"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#abf66028b9c020cc846c53fd124d0c906">  538</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#abf66028b9c020cc846c53fd124d0c906">chnl_connect2_common</a>(<span class="keyword">struct</span> chnl *ch1, <span class="keyword">struct</span> chnl *ch2);</div>
-<div class="line"><a name="l00539"></a><span class="lineno">  539</span>&#160; </div>
-<div class="line"><a name="l00554"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a650e4c760251fef7833ca2d70c45fad4">  554</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a650e4c760251fef7833ca2d70c45fad4">chnl_bind_common</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> in_caddr *pAddr, int32_t len,</div>
-<div class="line"><a name="l00555"></a><span class="lineno">  555</span>&#160;                              <span class="keyword">struct</span> pcb_hd *pHd);</div>
-<div class="line"><a name="l00556"></a><span class="lineno">  556</span>&#160; </div>
-<div class="line"><a name="l00557"></a><span class="lineno">  557</span>&#160;<span class="comment">/* Standard chnl routines for user level API. */</span></div>
-<div class="line"><a name="l00572"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a28315ad2845a0bc643d143d72090ea30">  572</a></span>&#160;CNDP_API <span class="keyword">struct </span>chnl *<a class="code" href="cnet__chnl_8h.html#a28315ad2845a0bc643d143d72090ea30">channel</a>(<span class="keywordtype">int</span> domain, <span class="keywordtype">int</span> type, <span class="keywordtype">int</span> proto, chnl_cb_t cb);</div>
-<div class="line"><a name="l00573"></a><span class="lineno">  573</span>&#160; </div>
-<div class="line"><a name="l00586"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#aaf7ce6a412157bf7187a8aeca090de1d">  586</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#aaf7ce6a412157bf7187a8aeca090de1d">chnl_bind</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *addr, <span class="keywordtype">int</span> addrlen);</div>
-<div class="line"><a name="l00587"></a><span class="lineno">  587</span>&#160; </div>
-<div class="line"><a name="l00598"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a2976f9dd5c466e19f7edc21c2c615501">  598</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a2976f9dd5c466e19f7edc21c2c615501">chnl_listen</a>(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> backlog);</div>
-<div class="line"><a name="l00599"></a><span class="lineno">  599</span>&#160; </div>
-<div class="line"><a name="l00612"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a6b09dd4006dcca228d56b25eba7d9d68">  612</a></span>&#160;CNDP_API <span class="keyword">struct </span>chnl *<a class="code" href="cnet__chnl_8h.html#a6b09dd4006dcca228d56b25eba7d9d68">chnl_accept</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *sa, socklen_t *addrlen);</div>
-<div class="line"><a name="l00613"></a><span class="lineno">  613</span>&#160; </div>
-<div class="line"><a name="l00626"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a62d0f68e2d48717a5af217bbb8fb8aa9">  626</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a62d0f68e2d48717a5af217bbb8fb8aa9">chnl_connect</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *sa, <span class="keywordtype">int</span> addrlen);</div>
-<div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160; </div>
-<div class="line"><a name="l00638"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a28c317ce2cd2e7adb5a4893912871e01">  638</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a28c317ce2cd2e7adb5a4893912871e01">chnl_connect2</a>(<span class="keyword">struct</span> chnl *ch1, <span class="keyword">struct</span> chnl *ch2);</div>
-<div class="line"><a name="l00639"></a><span class="lineno">  639</span>&#160; </div>
-<div class="line"><a name="l00652"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a7a1962156f3d873e9e9b0753419a7d2d">  652</a></span>&#160;CNDP_API <span class="keywordtype">size_t</span> <a class="code" href="cnet__chnl_8h.html#a7a1962156f3d873e9e9b0753419a7d2d">chnl_copy_data</a>(<a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **to, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **from, <span class="keywordtype">int</span> len);</div>
-<div class="line"><a name="l00653"></a><span class="lineno">  653</span>&#160; </div>
-<div class="line"><a name="l00666"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a4e8ff696042ad6511548ccd19b9cfbbb">  666</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a4e8ff696042ad6511548ccd19b9cfbbb">chnl_send</a>(<span class="keyword">struct</span> chnl *ch, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs, uint16_t nb_mbufs);</div>
-<div class="line"><a name="l00667"></a><span class="lineno">  667</span>&#160; </div>
-<div class="line"><a name="l00682"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#afafde20efd6589632eb9b95a78fd6226">  682</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#afafde20efd6589632eb9b95a78fd6226">chnl_sendto</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *sa, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **mbufs,</div>
-<div class="line"><a name="l00683"></a><span class="lineno">  683</span>&#160;                         uint16_t nb_mbufs);</div>
-<div class="line"><a name="l00684"></a><span class="lineno">  684</span>&#160; </div>
-<div class="line"><a name="l00697"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a755ae04d1e3325eb61a165a236c77558">  697</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a755ae04d1e3325eb61a165a236c77558">chnl_fcntl</a>(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> cmd, ...);</div>
-<div class="line"><a name="l00698"></a><span class="lineno">  698</span>&#160; </div>
-<div class="line"><a name="l00711"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#aa5d673a101b82b72761ee4861bbd0ced">  711</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#aa5d673a101b82b72761ee4861bbd0ced">chnl_getchnlname</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *name, socklen_t *namelen);</div>
-<div class="line"><a name="l00712"></a><span class="lineno">  712</span>&#160; </div>
-<div class="line"><a name="l00725"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#a23721994ecb7ad4433bfb8a48e67a540">  725</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#a23721994ecb7ad4433bfb8a48e67a540">chnl_getpeername</a>(<span class="keyword">struct</span> chnl *ch, <span class="keyword">struct</span> sockaddr *name, socklen_t *namelen);</div>
-<div class="line"><a name="l00726"></a><span class="lineno">  726</span>&#160; </div>
-<div class="line"><a name="l00737"></a><span class="lineno"><a class="line" href="cnet__chnl_8h.html#af09d004708880cd3c183d7694d85a633">  737</a></span>&#160;CNDP_API <span class="keywordtype">int</span> <a class="code" href="cnet__chnl_8h.html#af09d004708880cd3c183d7694d85a633">chnl_shutdown</a>(<span class="keyword">struct</span> chnl *ch, <span class="keywordtype">int</span> how);</div>
-<div class="line"><a name="l00738"></a><span class="lineno">  738</span>&#160; </div>
-<div class="line"><a name="l00739"></a><span class="lineno">  739</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00740"></a><span class="lineno">  740</span>&#160;}</div>
-<div class="line"><a name="l00741"></a><span class="lineno">  741</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00742"></a><span class="lineno">  742</span>&#160; </div>
-<div class="line"><a name="l00743"></a><span class="lineno">  743</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CNET_CHNL_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CNET_CHNL_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acne__graph__worker_8h_html"><div class="ttname"><a href="cne__graph__worker_8h.html">cne_graph_worker.h</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
-<div class="ttc" id="acne__spinlock_8h_html"><div class="ttname"><a href="cne__spinlock_8h.html">cne_spinlock.h</a></div></div>
 <div class="ttc" id="acnet__chnl_8h_html_a00adb50a5c5b85bfe966802cb9c57ff7"><div class="ttname"><a href="cnet__chnl_8h.html#a00adb50a5c5b85bfe966802cb9c57ff7">chnl_connect_common</a></div><div class="ttdeci">CNDP_API int chnl_connect_common(struct chnl *ch, struct in_caddr *to, int32_t tolen)</div><div class="ttdoc">Common channel connect routine used by protocols.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a063172a7bf372e56408ef9920012a7e4"><div class="ttname"><a href="cnet__chnl_8h.html#a063172a7bf372e56408ef9920012a7e4">chnl_list</a></div><div class="ttdeci">CNDP_API void chnl_list(stk_t *stk)</div><div class="ttdoc">Dump out the channel structure list.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a0b1f2642233dd50e9b4ef762ad92d233"><div class="ttname"><a href="cnet__chnl_8h.html#a0b1f2642233dd50e9b4ef762ad92d233">chnl_ERROR</a></div><div class="ttdeci">CNDP_API int chnl_ERROR(struct chnl *ch)</div><div class="ttdoc">This is a protocol back-end routine for operations that don't need to do any further work and need to...</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a0fe2f7e1d007ddda7cd7fd2de17ac4fc"><div class="ttname"><a href="cnet__chnl_8h.html#a0fe2f7e1d007ddda7cd7fd2de17ac4fc">ch_rwakeup</a></div><div class="ttdeci">#define ch_rwakeup(_c)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00285">cnet_chnl.h:285</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a15ee675f1de19cde8a537e96999c46b3"><div class="ttname"><a href="cnet__chnl_8h.html#a15ee675f1de19cde8a537e96999c46b3">cb_space</a></div><div class="ttdeci">static uint32_t cb_space(struct chnl_buf *cb)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00377">cnet_chnl.h:377</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a1c854e5e1ada910220137bae06edde49"><div class="ttname"><a href="cnet__chnl_8h.html#a1c854e5e1ada910220137bae06edde49">chnl_cleanup</a></div><div class="ttdeci">CNDP_API void chnl_cleanup(struct chnl *ch)</div><div class="ttdoc">Clean up a channel structure.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a1fd5c3843bcaae5fbd296f482d45d8fe"><div class="ttname"><a href="cnet__chnl_8h.html#a1fd5c3843bcaae5fbd296f482d45d8fe">chnl_cb_wait</a></div><div class="ttdeci">CNDP_API int chnl_cb_wait(struct chnl *ch, struct chnl_buf *cb)</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a23721994ecb7ad4433bfb8a48e67a540"><div class="ttname"><a href="cnet__chnl_8h.html#a23721994ecb7ad4433bfb8a48e67a540">chnl_getpeername</a></div><div class="ttdeci">CNDP_API int chnl_getpeername(struct chnl *ch, struct sockaddr *name, socklen_t *namelen)</div><div class="ttdoc">Get channel peer address of channel similar to 'getpeername()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a28315ad2845a0bc643d143d72090ea30"><div class="ttname"><a href="cnet__chnl_8h.html#a28315ad2845a0bc643d143d72090ea30">channel</a></div><div class="ttdeci">CNDP_API struct chnl * channel(int domain, int type, int proto, chnl_cb_t cb)</div><div class="ttdoc">The routine to create a channel structure similar to 'socket()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a28c317ce2cd2e7adb5a4893912871e01"><div class="ttname"><a href="cnet__chnl_8h.html#a28c317ce2cd2e7adb5a4893912871e01">chnl_connect2</a></div><div class="ttdeci">CNDP_API int chnl_connect2(struct chnl *ch1, struct chnl *ch2)</div><div class="ttdoc">Connect to a channel, similar to 'connect2()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a2976f9dd5c466e19f7edc21c2c615501"><div class="ttname"><a href="cnet__chnl_8h.html#a2976f9dd5c466e19f7edc21c2c615501">chnl_listen</a></div><div class="ttdeci">CNDP_API int chnl_listen(struct chnl *ch, int backlog)</div><div class="ttdoc">Listen on a channel similar to 'listen()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a2f5dc0b1626fc9ea89eeeff42e0fdd67"><div class="ttname"><a href="cnet__chnl_8h.html#a2f5dc0b1626fc9ea89eeeff42e0fdd67">chnl_NULL</a></div><div class="ttdeci">CNDP_API struct chnl * chnl_NULL(struct chnl *ch)</div><div class="ttdoc">This is a protocol back-end routine for operations that don't need to do any further work and need to...</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a483d10ba1bff7cb62c4954d5b096383b"><div class="ttname"><a href="cnet__chnl_8h.html#a483d10ba1bff7cb62c4954d5b096383b">ch_readable</a></div><div class="ttdeci">static int ch_readable(struct chnl *ch)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00391">cnet_chnl.h:391</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a4e8ff696042ad6511548ccd19b9cfbbb"><div class="ttname"><a href="cnet__chnl_8h.html#a4e8ff696042ad6511548ccd19b9cfbbb">chnl_send</a></div><div class="ttdeci">CNDP_API int chnl_send(struct chnl *ch, pktmbuf_t **mbufs, uint16_t nb_mbufs)</div><div class="ttdoc">Send data to a channel similar to 'send()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a62d0f68e2d48717a5af217bbb8fb8aa9"><div class="ttname"><a href="cnet__chnl_8h.html#a62d0f68e2d48717a5af217bbb8fb8aa9">chnl_connect</a></div><div class="ttdeci">CNDP_API int chnl_connect(struct chnl *ch, struct sockaddr *sa, int addrlen)</div><div class="ttdoc">Connect to a channel, similar to 'connect()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a64dea97bb6c807cee3518bcdbe008524"><div class="ttname"><a href="cnet__chnl_8h.html#a64dea97bb6c807cee3518bcdbe008524">chnl_validate_cb</a></div><div class="ttdeci">CNDP_API int chnl_validate_cb(const char *msg, struct chnl_buf *cb)</div><div class="ttdoc">Validate the chnl_buf structure and print a message if invalid.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a08b989da42c5673809a92f0123eebfdd"><div class="ttname"><a href="cnet__chnl_8h.html#a08b989da42c5673809a92f0123eebfdd">chnl_open</a></div><div class="ttdeci">CNDP_API int chnl_open(const char *str, int flags, chnl_cb_t fn)</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32">chnl_type_t</a></div><div class="ttdeci">chnl_type_t</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00066">cnet_chnl.h:66</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32a0f2f2eb04e52ef12964a5c684cc23e1e"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a0f2f2eb04e52ef12964a5c684cc23e1e">CHNL_TCP_CLOSE_TYPE</a></div><div class="ttdeci">@ CHNL_TCP_CLOSE_TYPE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00071">cnet_chnl.h:71</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32a1448987a6590dd41079e2f51452390e1"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a1448987a6590dd41079e2f51452390e1">CHNL_UDP_CLOSE_TYPE</a></div><div class="ttdeci">@ CHNL_UDP_CLOSE_TYPE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00068">cnet_chnl.h:68</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32a20bfa0c83f6f4d6d6f7d366bfae0aabc"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a20bfa0c83f6f4d6d6f7d366bfae0aabc">CHNL_UDP_RECV_TYPE</a></div><div class="ttdeci">@ CHNL_UDP_RECV_TYPE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00067">cnet_chnl.h:67</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32a49f49b88445aa956607750d712ec3cc5"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a49f49b88445aa956607750d712ec3cc5">CHNL_TCP_RECV_TYPE</a></div><div class="ttdeci">@ CHNL_TCP_RECV_TYPE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00070">cnet_chnl.h:70</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32a6e05415e3da421623e425004ed7707b6"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a6e05415e3da421623e425004ed7707b6">CHNL_CALLBACK_TYPES</a></div><div class="ttdeci">@ CHNL_CALLBACK_TYPES</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00073">cnet_chnl.h:72</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a16d5a2be8b471f30f4ae3e3a6f599f32a7ea2ddab1df7a6293fe497f70d704a65"><div class="ttname"><a href="cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a7ea2ddab1df7a6293fe497f70d704a65">CHNL_TCP_ACCEPT_TYPE</a></div><div class="ttdeci">@ CHNL_TCP_ACCEPT_TYPE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00069">cnet_chnl.h:69</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a1aaad35546630b7a0c56440d7eed2650"><div class="ttname"><a href="cnet__chnl_8h.html#a1aaad35546630b7a0c56440d7eed2650">chnl_shutdown</a></div><div class="ttdeci">CNDP_API int chnl_shutdown(int cd, int how)</div><div class="ttdoc">Shutdown a channel connection similar to 'shutdown()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a1c492cd7780694802517b272f70713b8"><div class="ttname"><a href="cnet__chnl_8h.html#a1c492cd7780694802517b272f70713b8">chnl_cb_t</a></div><div class="ttdeci">int(* chnl_cb_t)(int chnl_type, int cd)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00050">cnet_chnl.h:50</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a1d55ac5a156ee2dab32be5a067ca3273"><div class="ttname"><a href="cnet__chnl_8h.html#a1d55ac5a156ee2dab32be5a067ca3273">chnl_getchnlname</a></div><div class="ttdeci">CNDP_API int chnl_getchnlname(int cd, struct sockaddr *name, socklen_t *namelen)</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a22022a742413830c3d48d3ffb1474ca9"><div class="ttname"><a href="cnet__chnl_8h.html#a22022a742413830c3d48d3ffb1474ca9">chnl_recv</a></div><div class="ttdeci">CNDP_API int chnl_recv(int cd, pktmbuf_t **mbufs, size_t len)</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a3d730ab64c9d1bb34b48afcc1d8f6543"><div class="ttname"><a href="cnet__chnl_8h.html#a3d730ab64c9d1bb34b48afcc1d8f6543">chnl_connect</a></div><div class="ttdeci">CNDP_API int chnl_connect(int cd, struct sockaddr *sa, int addrlen)</div><div class="ttdoc">Connect to a channel, similar to 'connect()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a4c1a0264223397137793f50ffa8f20cc"><div class="ttname"><a href="cnet__chnl_8h.html#a4c1a0264223397137793f50ffa8f20cc">chnl_bind</a></div><div class="ttdeci">CNDP_API int chnl_bind(int cd, struct sockaddr *addr, int addrlen)</div><div class="ttdoc">Bind an address to a channel similar to 'bind()'.</div></div>
 <div class="ttc" id="acnet__chnl_8h_html_a650e4c760251fef7833ca2d70c45fad4"><div class="ttname"><a href="cnet__chnl_8h.html#a650e4c760251fef7833ca2d70c45fad4">chnl_bind_common</a></div><div class="ttdeci">CNDP_API int chnl_bind_common(struct chnl *ch, struct in_caddr *pAddr, int32_t len, struct pcb_hd *pHd)</div><div class="ttdoc">Channel Bind common routine used by protocols.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a6b09dd4006dcca228d56b25eba7d9d68"><div class="ttname"><a href="cnet__chnl_8h.html#a6b09dd4006dcca228d56b25eba7d9d68">chnl_accept</a></div><div class="ttdeci">CNDP_API struct chnl * chnl_accept(struct chnl *ch, struct sockaddr *sa, socklen_t *addrlen)</div><div class="ttdoc">Accept on a channel similar to 'accept()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a755ae04d1e3325eb61a165a236c77558"><div class="ttname"><a href="cnet__chnl_8h.html#a755ae04d1e3325eb61a165a236c77558">chnl_fcntl</a></div><div class="ttdeci">CNDP_API int chnl_fcntl(struct chnl *ch, int cmd,...)</div><div class="ttdoc">file control function similar to 'fcntl()'</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a7a1962156f3d873e9e9b0753419a7d2d"><div class="ttname"><a href="cnet__chnl_8h.html#a7a1962156f3d873e9e9b0753419a7d2d">chnl_copy_data</a></div><div class="ttdeci">CNDP_API size_t chnl_copy_data(pktmbuf_t **to, pktmbuf_t **from, int len)</div><div class="ttdoc">Copy data from one mbuf to another.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a7e22147ef06aa1c666860d2b3862f52c"><div class="ttname"><a href="cnet__chnl_8h.html#a7e22147ef06aa1c666860d2b3862f52c">cb_avail</a></div><div class="ttdeci">static uint32_t cb_avail(struct chnl_buf *cb)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00363">cnet_chnl.h:363</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a04bfbc8718be3fa2595a1f3ecdf5a7d9"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04bfbc8718be3fa2595a1f3ecdf5a7d9">_ISDISCONNECTED</a></div><div class="ttdeci">@ _ISDISCONNECTED</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00115">cnet_chnl.h:115</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a0b9bac5cfb2379184898dc6a2e3c72a1"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a0b9bac5cfb2379184898dc6a2e3c72a1">_ISDISCONNECTING</a></div><div class="ttdeci">@ _ISDISCONNECTING</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00106">cnet_chnl.h:106</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a2c306b339797eecb94cf36ec186d4af3"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2c306b339797eecb94cf36ec186d4af3">_ASYNC</a></div><div class="ttdeci">@ _ASYNC</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00112">cnet_chnl.h:112</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a2eaaecb32fddfc87c6d468f753047a19"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a2eaaecb32fddfc87c6d468f753047a19">_ISCONNECTING</a></div><div class="ttdeci">@ _ISCONNECTING</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00105">cnet_chnl.h:105</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a3273a4248ae14422482ee50333b4d72b"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a3273a4248ae14422482ee50333b4d72b">_RCVATMARK</a></div><div class="ttdeci">@ _RCVATMARK</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00109">cnet_chnl.h:109</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a7cd1d8be41f06246dd7bf3e6dc779e1f">_CANTSENDMORE</a></div><div class="ttdeci">@ _CANTSENDMORE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00107">cnet_chnl.h:107</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a83a6b57ae83ab10defef07ff5811135d"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a83a6b57ae83ab10defef07ff5811135d">_ISCONFIRMING</a></div><div class="ttdeci">@ _ISCONFIRMING</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00113">cnet_chnl.h:113</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a8f0c4a91b6fac2e1c55dabe7e60f85f1"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a8f0c4a91b6fac2e1c55dabe7e60f85f1">_CHNL_FREE</a></div><div class="ttdeci">@ _CHNL_FREE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00117">cnet_chnl.h:116</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a9a114f69ea90855e0d1f383035a68d96"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9a114f69ea90855e0d1f383035a68d96">_ISCONNECTED</a></div><div class="ttdeci">@ _ISCONNECTED</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00104">cnet_chnl.h:104</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a9d91a9a6f5094f0cc502e05e83f626a0"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a9d91a9a6f5094f0cc502e05e83f626a0">_NOFDREF</a></div><div class="ttdeci">@ _NOFDREF</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00103">cnet_chnl.h:103</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5aabe22f31276673d918dd1a344dd4db79">_CANTRECVMORE</a></div><div class="ttdeci">@ _CANTRECVMORE</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00108">cnet_chnl.h:108</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5ab3e171adcd1ec641eeb562882e0654f9"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5ab3e171adcd1ec641eeb562882e0654f9">_NBIO</a></div><div class="ttdeci">@ _NBIO</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00111">cnet_chnl.h:111</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5adef382ed9e62a35675342cf9fb5d018a"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5adef382ed9e62a35675342cf9fb5d018a">_PRIV</a></div><div class="ttdeci">@ _PRIV</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00110">cnet_chnl.h:110</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5af318d307162865f7dcfe19d4c3587ae6"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af318d307162865f7dcfe19d4c3587ae6">_INCOMP</a></div><div class="ttdeci">@ _INCOMP</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00114">cnet_chnl.h:114</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_aa5d673a101b82b72761ee4861bbd0ced"><div class="ttname"><a href="cnet__chnl_8h.html#aa5d673a101b82b72761ee4861bbd0ced">chnl_getchnlname</a></div><div class="ttdeci">CNDP_API int chnl_getchnlname(struct chnl *ch, struct sockaddr *name, socklen_t *namelen)</div><div class="ttdoc">Get channel name or address of channel similar to 'getsockname()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_aaf7ce6a412157bf7187a8aeca090de1d"><div class="ttname"><a href="cnet__chnl_8h.html#aaf7ce6a412157bf7187a8aeca090de1d">chnl_bind</a></div><div class="ttdeci">CNDP_API int chnl_bind(struct chnl *ch, struct sockaddr *addr, int addrlen)</div><div class="ttdoc">Bind an address to a channel similar to 'bind()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_ab20a918f95b21f013ac1905c49a984fd"><div class="ttname"><a href="cnet__chnl_8h.html#ab20a918f95b21f013ac1905c49a984fd">chnl_cant_snd_rcv_more</a></div><div class="ttdeci">static void chnl_cant_snd_rcv_more(struct chnl *ch, int32_t which)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00315">cnet_chnl.h:315</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_abf66028b9c020cc846c53fd124d0c906"><div class="ttname"><a href="cnet__chnl_8h.html#abf66028b9c020cc846c53fd124d0c906">chnl_connect2_common</a></div><div class="ttdeci">CNDP_API int chnl_connect2_common(struct chnl *ch1, struct chnl *ch2)</div><div class="ttdoc">Common channel connect2 routine used by protocols.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_ac97c9351c6bd407626fdbf202e7e9d31"><div class="ttname"><a href="cnet__chnl_8h.html#ac97c9351c6bd407626fdbf202e7e9d31">chnl_snd_rcv_more</a></div><div class="ttdeci">static int chnl_snd_rcv_more(struct chnl *ch, int which)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00300">cnet_chnl.h:300</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_ad33d414b89ff01fcb05eb07df7e32596"><div class="ttname"><a href="cnet__chnl_8h.html#ad33d414b89ff01fcb05eb07df7e32596">chnl_cant_snd_more</a></div><div class="ttdeci">static int chnl_cant_snd_more(struct chnl *ch)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00349">cnet_chnl.h:349</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_adb61e8b38f4250720d5142f30fce1a8f"><div class="ttname"><a href="cnet__chnl_8h.html#adb61e8b38f4250720d5142f30fce1a8f">ch_writeable</a></div><div class="ttdeci">static int ch_writeable(struct chnl *ch)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00415">cnet_chnl.h:415</a></div></div>
-<div class="ttc" id="acnet__chnl_8h_html_ade3a57841fa882c17332b5b293973e2f"><div class="ttname"><a href="cnet__chnl_8h.html#ade3a57841fa882c17332b5b293973e2f">chnl_cb_wakeup</a></div><div class="ttdeci">CNDP_API void chnl_cb_wakeup(struct chnl *ch, struct chnl_buf *cb, int wakeup_type)</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_af09d004708880cd3c183d7694d85a633"><div class="ttname"><a href="cnet__chnl_8h.html#af09d004708880cd3c183d7694d85a633">chnl_shutdown</a></div><div class="ttdeci">CNDP_API int chnl_shutdown(struct chnl *ch, int how)</div><div class="ttdoc">Shutdown a channel connection similar to 'shutdown()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_af418f8ee71190e41a0301ee8d615c62c"><div class="ttname"><a href="cnet__chnl_8h.html#af418f8ee71190e41a0301ee8d615c62c">chnl_OK</a></div><div class="ttdeci">CNDP_API int chnl_OK(struct chnl *ch)</div><div class="ttdoc">This is a protocol back-end routine for operations that don't need to do any further work.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_afafde20efd6589632eb9b95a78fd6226"><div class="ttname"><a href="cnet__chnl_8h.html#afafde20efd6589632eb9b95a78fd6226">chnl_sendto</a></div><div class="ttdeci">CNDP_API int chnl_sendto(struct chnl *ch, struct sockaddr *sa, pktmbuf_t **mbufs, uint16_t nb_mbufs)</div><div class="ttdoc">Send data to a channel similar to 'sendto()'.</div></div>
-<div class="ttc" id="acnet__chnl_8h_html_afd635b6210d78c14b234d9507736a4f5"><div class="ttname"><a href="cnet__chnl_8h.html#afd635b6210d78c14b234d9507736a4f5">chnl_cant_rcv_more</a></div><div class="ttdeci">static int chnl_cant_rcv_more(struct chnl *ch)</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00335">cnet_chnl.h:335</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a68bf1afb55dbd6fb59b05a9c3f088b6f"><div class="ttname"><a href="cnet__chnl_8h.html#a68bf1afb55dbd6fb59b05a9c3f088b6f">channel</a></div><div class="ttdeci">CNDP_API int channel(int domain, int type, int proto, chnl_cb_t cb)</div><div class="ttdoc">The routine to create a channel structure similar to 'socket()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a8f0bf558aa1280b3f6d876565ee922ca"><div class="ttname"><a href="cnet__chnl_8h.html#a8f0bf558aa1280b3f6d876565ee922ca">chnl_listen</a></div><div class="ttdeci">CNDP_API int chnl_listen(int cd, int backlog)</div><div class="ttdoc">Listen on a channel similar to 'listen()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a04f6af6fa94138b8be074a17b9e6aeec"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a04f6af6fa94138b8be074a17b9e6aeec">SHUT_BIT_RDWR</a></div><div class="ttdeci">@ SHUT_BIT_RDWR</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00062">cnet_chnl.h:62</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5a304fbc4cba97016c7776de2873fb893e"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5a304fbc4cba97016c7776de2873fb893e">SHUT_BIT_RD</a></div><div class="ttdeci">@ SHUT_BIT_RD</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00060">cnet_chnl.h:60</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_a99fb83031ce9923c84392b4e92f956b5af8f28e81f1155fa50906486c668af8fd"><div class="ttname"><a href="cnet__chnl_8h.html#a99fb83031ce9923c84392b4e92f956b5af8f28e81f1155fa50906486c668af8fd">SHUT_BIT_WR</a></div><div class="ttdeci">@ SHUT_BIT_WR</div><div class="ttdef"><b>Definition:</b> <a href="cnet__chnl_8h_source.html#l00061">cnet_chnl.h:61</a></div></div>
+<div class="ttc" id="acnet__chnl_8h_html_aa2f9e4f98e8e64a554076bc1dcd270ba"><div class="ttname"><a href="cnet__chnl_8h.html#aa2f9e4f98e8e64a554076bc1dcd270ba">chnl_dump</a></div><div class="ttdeci">CNDP_API void chnl_dump(const char *msg, struct chnl *ch)</div><div class="ttdoc">Dump out a channel structure.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_aa8eb33f9b15b4992e170214ca214fe33"><div class="ttname"><a href="cnet__chnl_8h.html#aa8eb33f9b15b4992e170214ca214fe33">chnl_sendto</a></div><div class="ttdeci">CNDP_API int chnl_sendto(int cd, struct sockaddr *sa, pktmbuf_t **mbufs, uint16_t nb_mbufs)</div><div class="ttdoc">Send data to a channel similar to 'sendto()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_ab1b071fab923141512133cbb21ea5fa8"><div class="ttname"><a href="cnet__chnl_8h.html#ab1b071fab923141512133cbb21ea5fa8">chnl_getpeername</a></div><div class="ttdeci">CNDP_API int chnl_getpeername(int cd, struct sockaddr *sa, socklen_t *salen)</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_ac4825376026d099d983ebbefdc01fbfc"><div class="ttname"><a href="cnet__chnl_8h.html#ac4825376026d099d983ebbefdc01fbfc">chnl_accept</a></div><div class="ttdeci">CNDP_API int chnl_accept(int cd, struct sockaddr *sa, socklen_t *addrlen)</div><div class="ttdoc">Accept on a channel similar to 'accept()'.</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_aec4391058c7042d2be24073cf54351e7"><div class="ttname"><a href="cnet__chnl_8h.html#aec4391058c7042d2be24073cf54351e7">chnl_send</a></div><div class="ttdeci">CNDP_API int chnl_send(int cd, pktmbuf_t **mbufs, uint16_t nb_mbufs)</div></div>
+<div class="ttc" id="acnet__chnl_8h_html_afd331ac9ae3fa36dddffa0f8d618eb14"><div class="ttname"><a href="cnet__chnl_8h.html#afd331ac9ae3fa36dddffa0f8d618eb14">chnl_close</a></div><div class="ttdeci">CNDP_API int chnl_close(int cd)</div></div>
 <div class="ttc" id="acnet__const_8h_html"><div class="ttname"><a href="cnet__const_8h.html">cnet_const.h</a></div></div>
 <div class="ttc" id="acnet__protosw_8h_html"><div class="ttname"><a href="cnet__protosw_8h.html">cnet_protosw.h</a></div></div>
 <div class="ttc" id="acnet__tcp_8h_html"><div class="ttname"><a href="cnet__tcp_8h.html">cnet_tcp.h</a></div></div>
 <div class="ttc" id="acnet__udp_8h_html"><div class="ttname"><a href="cnet__udp_8h.html">cnet_udp.h</a></div></div>
 <div class="ttc" id="apktmbuf_8h_html"><div class="ttname"><a href="pktmbuf_8h.html">pktmbuf.h</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

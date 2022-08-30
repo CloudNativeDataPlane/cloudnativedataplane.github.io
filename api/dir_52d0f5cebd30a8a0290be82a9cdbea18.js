@@ -6,11 +6,9 @@ var dir_52d0f5cebd30a8a0290be82a9cdbea18 =
     [ "fib", "dir_49a9482c3e270df5ce4afd4af9ebcd11.html", "dir_49a9482c3e270df5ce4afd4af9ebcd11" ],
     [ "graph", "dir_c1c8b3a151d4b71fffb715d4cfc0f02e.html", "dir_c1c8b3a151d4b71fffb715d4cfc0f02e" ],
     [ "hmap", "dir_5ff4cbb0224dceb6b757c6f316e565e4.html", "dir_5ff4cbb0224dceb6b757c6f316e565e4" ],
-    [ "net", "dir_a1aa7035f484ba7be8202f753282f7e0.html", "dir_a1aa7035f484ba7be8202f753282f7e0" ],
     [ "nodes", "dir_3be448924c505d3e1e7e35257d22012d.html", "dir_3be448924c505d3e1e7e35257d22012d" ],
     [ "rib", "dir_6a2a2c361b5561740bde108d7e5175bb.html", "dir_6a2a2c361b5561740bde108d7e5175bb" ],
     [ "thread", "dir_a49211ec4d398cc27b5786f0d0fcc1e8.html", "dir_a49211ec4d398cc27b5786f0d0fcc1e8" ],
     [ "timer", "dir_1b40f895ec4c75ae5b5a6a43c3b27d36.html", "dir_1b40f895ec4c75ae5b5a6a43c3b27d36" ],
-    [ "utils", "dir_f965fc41cb902ace6b1ef1f015855325.html", "dir_f965fc41cb902ace6b1ef1f015855325" ],
-    [ "vec", "dir_198f6ec41c59a2e8ebeceab89a45cfc1.html", "dir_198f6ec41c59a2e8ebeceab89a45cfc1" ]
+    [ "utils", "dir_f965fc41cb902ace6b1ef1f015855325.html", "dir_f965fc41cb902ace6b1ef1f015855325" ]
 ];

@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -122,27 +122,27 @@ $(document).ready(function(){initNavTree('pktdev_8h_source.html',''); initResiza
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define __PKTDEV_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__common_8h.html">cne_common.h</a>&gt;</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;net/ethernet.h&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span>            <span class="comment">// for EINVAL, ENOTSUP</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span>           <span class="comment">// for NULL</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>           <span class="comment">// for uint16_t, uint32_t, uint64_t, uint8_t</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;x86intrin.h&gt;</span>        <span class="comment">// _mm_shuffle_xxx</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mempool_8h.html">mempool.h</a>&gt;</span>          <span class="comment">// for mempool_t</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pktmbuf_8h.html">pktmbuf.h</a>&gt;</span>          <span class="comment">// for pktmbuf_t</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;emmintrin.h&gt;</span>        <span class="comment">// for _mm_loadu_si128, _mm_set_epi8, _mm_storeu_s...</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span>          <span class="comment">// for bool</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;tmmintrin.h&gt;</span>        <span class="comment">// for _mm_shuffle_epi8</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#define PKTDEV_FOREACH(x) for (int x = 0; x &lt; CNE_MAX_ETHPORTS; x++)</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="pktdev_8h.html#a2e3c21f663824ccc40b1e4130c012582">   36</a></span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_RX_RINGSIZE 512</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_TX_RINGSIZE 512</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_RX_NBQUEUES 1</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_TX_NBQUEUES 1</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;errno.h&gt;</span>            <span class="comment">// for EINVAL, ENOTSUP</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;stddef.h&gt;</span>           <span class="comment">// for NULL</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>           <span class="comment">// for uint16_t, uint32_t, uint64_t, uint8_t</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;x86intrin.h&gt;</span>        <span class="comment">// _mm_shuffle_xxx</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="mempool_8h.html">mempool.h</a>&gt;</span>          <span class="comment">// for mempool_t</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="pktmbuf_8h.html">pktmbuf.h</a>&gt;</span>          <span class="comment">// for pktmbuf_t</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;emmintrin.h&gt;</span>        <span class="comment">// for _mm_loadu_si128, _mm_set_epi8, _mm_storeu_s...</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;stdbool.h&gt;</span>          <span class="comment">// for bool</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;tmmintrin.h&gt;</span>        <span class="comment">// for _mm_shuffle_epi8</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor">#define PKTDEV_FOREACH(x) for (int x = 0; x &lt; CNE_MAX_ETHPORTS; x++)</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="pktdev_8h.html#a2e3c21f663824ccc40b1e4130c012582">   35</a></span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_RX_RINGSIZE 512</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_TX_RINGSIZE 512</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_RX_NBQUEUES 1</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#define PKTDEV_FALLBACK_TX_NBQUEUES 1</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="preprocessor">#define PKTDEV_ADMIN_STATE_DOWN     0xFFFF</span></div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__lport_8h.html">cne_lport.h</a>&gt;</span></div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
@@ -184,92 +184,92 @@ $(document).ready(function(){initNavTree('pktdev_8h_source.html',''); initResiza
 <div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
 <div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;<span class="comment">// IWYU pragma: no_forward_declare cne_mempool</span></div>
 <div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint16_t</div>
-<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">  182</a></span>&#160;<a class="code" href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">pktdev_rx_burst</a>(uint16_t lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **rx_pkts, <span class="keyword">const</span> uint16_t nb_pkts)</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev = &amp;pktdev_devices[lport_id];</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    uint16_t nb_rx;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160; </div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="preprocessor">#ifdef PKTDEV_DEBUG</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    <span class="keywordflow">if</span> (dev-&gt;rx_pkt_burst == NULL)</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160; </div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="comment">/* Check packet stream status */</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a>(lport_id)) {</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        PKTDEV_LOG(ERR, <span class="stringliteral">&quot;Packet stream is disabled for &#39;%d&#39;\n&quot;</span>, lport_id);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    }</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    nb_rx = (*dev-&gt;rx_pkt_burst)(dev-&gt;data-&gt;rx_queue, rx_pkts, nb_pkts);</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160; </div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    <span class="keywordflow">return</span> nb_rx;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;}</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160; </div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint16_t</div>
-<div class="line"><a name="l00256"></a><span class="lineno"><a class="line" href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">  256</a></span>&#160;<a class="code" href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">pktdev_tx_burst</a>(uint16_t lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **tx_pkts, uint16_t nb_pkts)</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;{</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160; </div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#ifdef PKTDEV_DEBUG</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    <span class="keywordflow">if</span> (lport_id &gt;= CNE_MAX_ETHPORTS)</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160; </div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    dev = &amp;pktdev_devices[lport_id];</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint16_t</div>
+<div class="line"><a name="l00183"></a><span class="lineno"><a class="line" href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">  183</a></span>&#160;<a class="code" href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">pktdev_rx_burst</a>(uint16_t lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **rx_pkts, <span class="keyword">const</span> uint16_t nb_pkts)</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;{</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev = &amp;pktdev_devices[lport_id];</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    uint16_t nb_rx;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="preprocessor">#ifdef PKTDEV_DEBUG</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;    <span class="keywordflow">if</span> (dev-&gt;rx_pkt_burst == NULL)</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; </div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    <span class="comment">/* Check packet stream status */</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a>(lport_id)) {</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        CNE_DEBUG(<span class="stringliteral">&quot;Packet stream is disabled for &#39;%d&#39;\n&quot;</span>, lport_id);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">return</span> PKTDEV_ADMIN_STATE_DOWN;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    }</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160; </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;    nb_rx = (*dev-&gt;rx_pkt_burst)(dev-&gt;data-&gt;rx_queue, rx_pkts, nb_pkts);</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    <span class="keywordflow">return</span> nb_rx;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;}</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint16_t</div>
+<div class="line"><a name="l00258"></a><span class="lineno"><a class="line" href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">  258</a></span>&#160;<a class="code" href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">pktdev_tx_burst</a>(uint16_t lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **tx_pkts, uint16_t nb_pkts)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;{</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160; </div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="preprocessor">#ifdef PKTDEV_DEBUG</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="keywordflow">if</span> (lport_id &gt;= CNE_MAX_ETHPORTS)</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160; </div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#ifdef PKTDEV_DEBUG</span></div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;    <span class="keywordflow">if</span> (dev-&gt;tx_pkt_burst == NULL)</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; </div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;    <span class="comment">/* Check packet stream status */</span></div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a>(lport_id)) {</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;        PKTDEV_LOG(ERR, <span class="stringliteral">&quot;Packet stream is disabled for &#39;%d&#39;\n&quot;</span>, lport_id);</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;        <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;    }</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160; </div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    <span class="keywordflow">return</span> (*dev-&gt;tx_pkt_burst)(dev-&gt;data-&gt;tx_queue, tx_pkts, nb_pkts);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;}</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160; </div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint16_t</div>
-<div class="line"><a name="l00328"></a><span class="lineno"><a class="line" href="pktdev_8h.html#ab45a1f434f82ecfae7e9c2cffcd58a88">  328</a></span>&#160;<a class="code" href="pktdev_8h.html#ab45a1f434f82ecfae7e9c2cffcd58a88">pktdev_tx_prepare</a>(uint16_t lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **tx_pkts, uint16_t nb_pkts)</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;{</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160; </div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    dev = &amp;pktdev_devices[lport_id];</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    dev = &amp;pktdev_devices[lport_id];</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160; </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="preprocessor">#ifdef PKTDEV_DEBUG</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    <span class="keywordflow">if</span> (dev-&gt;tx_pkt_burst == NULL)</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;        <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160; </div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;    <span class="comment">/* Check packet stream status */</span></div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a>(lport_id)) {</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;        CNE_DEBUG(<span class="stringliteral">&quot;Packet stream is disabled for &#39;%d&#39;\n&quot;</span>, lport_id);</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;        <span class="keywordflow">return</span> PKTDEV_ADMIN_STATE_DOWN;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    }</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160; </div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">return</span> (*dev-&gt;tx_pkt_burst)(dev-&gt;data-&gt;tx_queue, tx_pkts, nb_pkts);</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;}</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160; </div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> uint16_t</div>
+<div class="line"><a name="l00330"></a><span class="lineno"><a class="line" href="pktdev_8h.html#ab45a1f434f82ecfae7e9c2cffcd58a88">  330</a></span>&#160;<a class="code" href="pktdev_8h.html#ab45a1f434f82ecfae7e9c2cffcd58a88">pktdev_tx_prepare</a>(uint16_t lport_id, <a class="code" href="structpktmbuf__s.html">pktmbuf_t</a> **tx_pkts, uint16_t nb_pkts)</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;{</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keyword">struct </span>cne_pktdev *dev;</div>
 <div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160; </div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    <span class="keywordflow">if</span> (!dev-&gt;tx_pkt_prepare)</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;        <span class="keywordflow">return</span> nb_pkts;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; </div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;    <span class="keywordflow">return</span> (*dev-&gt;tx_pkt_prepare)(dev-&gt;data-&gt;tx_queue, tx_pkts, nb_pkts);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;}</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; </div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno"><a class="line" href="pktdev_8h.html#af35f4824ec2fbdf01a00e0890d26da9e">  349</a></span>&#160;<a class="code" href="pktdev_8h.html#af35f4824ec2fbdf01a00e0890d26da9e">pktdev_mac_swap</a>(<span class="keywordtype">void</span> *data)</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;{</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    __m128i shfl_msk = _mm_set_epi8(15, 14, 13, 12, 5, 4, 3, 2, 1, 0, 11, 10, 9, 8, 7, 6);</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160; </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    __m128i hdr = _mm_loadu_si128((<span class="keyword">const</span> __m128i_u *)data);</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;    hdr         = _mm_shuffle_epi8(hdr, shfl_msk);</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    _mm_storeu_si128((__m128i_u *)data, hdr);</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;}</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160; </div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;}</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; </div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PKTDEV_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;    dev = &amp;pktdev_devices[lport_id];</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160; </div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    <span class="keywordflow">if</span> (!dev-&gt;tx_pkt_prepare)</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;        <span class="keywordflow">return</span> nb_pkts;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160; </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    <span class="keywordflow">return</span> (*dev-&gt;tx_pkt_prepare)(dev-&gt;data-&gt;tx_queue, tx_pkts, nb_pkts);</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;}</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160; </div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00351"></a><span class="lineno"><a class="line" href="pktdev_8h.html#af35f4824ec2fbdf01a00e0890d26da9e">  351</a></span>&#160;<a class="code" href="pktdev_8h.html#af35f4824ec2fbdf01a00e0890d26da9e">pktdev_mac_swap</a>(<span class="keywordtype">void</span> *data)</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;{</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;    __m128i shfl_msk = _mm_set_epi8(15, 14, 13, 12, 5, 4, 3, 2, 1, 0, 11, 10, 9, 8, 7, 6);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160; </div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;    __m128i hdr = _mm_loadu_si128((<span class="keyword">const</span> __m128i_u *)data);</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;    hdr         = _mm_shuffle_epi8(hdr, shfl_msk);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;    _mm_storeu_si128((__m128i_u *)data, hdr);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160; </div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;}</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160; </div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __PKTDEV_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
-<div class="ttc" id="acne__common_8h_html_a9a22f93cd5b22eadb5984216acfce0dc"><div class="ttname"><a href="cne__common_8h.html#a9a22f93cd5b22eadb5984216acfce0dc">__cne_cache_min_aligned</a></div><div class="ttdeci">#define __cne_cache_min_aligned</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00377">cne_common.h:377</a></div></div>
+<div class="ttc" id="acne__common_8h_html_a9a22f93cd5b22eadb5984216acfce0dc"><div class="ttname"><a href="cne__common_8h.html#a9a22f93cd5b22eadb5984216acfce0dc">__cne_cache_min_aligned</a></div><div class="ttdeci">#define __cne_cache_min_aligned</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00382">cne_common.h:382</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
 <div class="ttc" id="acne__lport_8h_html"><div class="ttname"><a href="cne__lport_8h.html">cne_lport.h</a></div></div>
 <div class="ttc" id="amempool_8h_html"><div class="ttname"><a href="mempool_8h.html">mempool.h</a></div></div>
 <div class="ttc" id="amempool_8h_html_a6b253c026b77db635a16d9595af41e97"><div class="ttname"><a href="mempool_8h.html#a6b253c026b77db635a16d9595af41e97">mempool_t</a></div><div class="ttdeci">void mempool_t</div><div class="ttdef"><b>Definition:</b> <a href="mempool_8h_source.html#l00045">mempool.h:45</a></div></div>
-<div class="ttc" id="apktdev_8h_html_a8b02a8a5fa5d7f4ad8866c5960584337"><div class="ttname"><a href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">pktdev_tx_burst</a></div><div class="ttdeci">static uint16_t pktdev_tx_burst(uint16_t lport_id, pktmbuf_t **tx_pkts, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00256">pktdev.h:256</a></div></div>
-<div class="ttc" id="apktdev_8h_html_ab45a1f434f82ecfae7e9c2cffcd58a88"><div class="ttname"><a href="pktdev_8h.html#ab45a1f434f82ecfae7e9c2cffcd58a88">pktdev_tx_prepare</a></div><div class="ttdeci">static uint16_t pktdev_tx_prepare(uint16_t lport_id, pktmbuf_t **tx_pkts, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00328">pktdev.h:328</a></div></div>
-<div class="ttc" id="apktdev_8h_html_abe3980a568daec5be51051bcfcdc16cc"><div class="ttname"><a href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">pktdev_rx_burst</a></div><div class="ttdeci">static uint16_t pktdev_rx_burst(uint16_t lport_id, pktmbuf_t **rx_pkts, const uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00182">pktdev.h:182</a></div></div>
-<div class="ttc" id="apktdev_8h_html_af35f4824ec2fbdf01a00e0890d26da9e"><div class="ttname"><a href="pktdev_8h.html#af35f4824ec2fbdf01a00e0890d26da9e">pktdev_mac_swap</a></div><div class="ttdeci">static void pktdev_mac_swap(void *data)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00349">pktdev.h:349</a></div></div>
+<div class="ttc" id="apktdev_8h_html_a8b02a8a5fa5d7f4ad8866c5960584337"><div class="ttname"><a href="pktdev_8h.html#a8b02a8a5fa5d7f4ad8866c5960584337">pktdev_tx_burst</a></div><div class="ttdeci">static uint16_t pktdev_tx_burst(uint16_t lport_id, pktmbuf_t **tx_pkts, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00258">pktdev.h:258</a></div></div>
+<div class="ttc" id="apktdev_8h_html_ab45a1f434f82ecfae7e9c2cffcd58a88"><div class="ttname"><a href="pktdev_8h.html#ab45a1f434f82ecfae7e9c2cffcd58a88">pktdev_tx_prepare</a></div><div class="ttdeci">static uint16_t pktdev_tx_prepare(uint16_t lport_id, pktmbuf_t **tx_pkts, uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00330">pktdev.h:330</a></div></div>
+<div class="ttc" id="apktdev_8h_html_abe3980a568daec5be51051bcfcdc16cc"><div class="ttname"><a href="pktdev_8h.html#abe3980a568daec5be51051bcfcdc16cc">pktdev_rx_burst</a></div><div class="ttdeci">static uint16_t pktdev_rx_burst(uint16_t lport_id, pktmbuf_t **rx_pkts, const uint16_t nb_pkts)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00183">pktdev.h:183</a></div></div>
+<div class="ttc" id="apktdev_8h_html_af35f4824ec2fbdf01a00e0890d26da9e"><div class="ttname"><a href="pktdev_8h.html#af35f4824ec2fbdf01a00e0890d26da9e">pktdev_mac_swap</a></div><div class="ttdeci">static void pktdev_mac_swap(void *data)</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00351">pktdev.h:351</a></div></div>
 <div class="ttc" id="apktdev__api_8h_html"><div class="ttname"><a href="pktdev__api_8h.html">pktdev_api.h</a></div></div>
 <div class="ttc" id="apktdev__api_8h_html_ad27199266508b658f01070e1a6631509"><div class="ttname"><a href="pktdev__api_8h.html#ad27199266508b658f01070e1a6631509">pktdev_admin_state</a></div><div class="ttdeci">CNDP_API bool pktdev_admin_state(uint16_t lport_id)</div></div>
 <div class="ttc" id="apktdev__core_8h_html"><div class="ttname"><a href="pktdev__core_8h.html">pktdev_core.h</a></div></div>
@@ -296,7 +296,7 @@ $(document).ready(function(){initNavTree('pktdev_8h_source.html',''); initResiza
 <div class="ttc" id="astructpktdev__rxq__info_html_ae9aa6b521b49487bc94199d1825980bf"><div class="ttname"><a href="structpktdev__rxq__info.html#ae9aa6b521b49487bc94199d1825980bf">pktdev_rxq_info::nb_desc</a></div><div class="ttdeci">uint16_t nb_desc</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00049">pktdev.h:49</a></div></div>
 <div class="ttc" id="astructpktdev__txq__info_html"><div class="ttname"><a href="structpktdev__txq__info.html">pktdev_txq_info</a></div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00056">pktdev.h:56</a></div></div>
 <div class="ttc" id="astructpktdev__txq__info_html_ae9aa6b521b49487bc94199d1825980bf"><div class="ttname"><a href="structpktdev__txq__info.html#ae9aa6b521b49487bc94199d1825980bf">pktdev_txq_info::nb_desc</a></div><div class="ttdeci">uint16_t nb_desc</div><div class="ttdef"><b>Definition:</b> <a href="pktdev_8h_source.html#l00057">pktdev.h:57</a></div></div>
-<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00091">pktmbuf.h:91</a></div></div>
+<div class="ttc" id="astructpktmbuf__s_html"><div class="ttname"><a href="structpktmbuf__s.html">pktmbuf_s</a></div><div class="ttdef"><b>Definition:</b> <a href="pktmbuf_8h_source.html#l00102">pktmbuf.h:102</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

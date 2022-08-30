@@ -54,7 +54,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CNDP
-   &#160;<span id="projectnumber">22.04.0</span>
+   &#160;<span id="projectnumber">22.08.0</span>
    </div>
   </td>
  </tr>
@@ -121,9 +121,9 @@ $(document).ready(function(){initNavTree('cnet__pcb_8h_source.html',''); initRes
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#ifndef __CNET_PCB_H</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#define __CNET_PCB_H</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cnet__inet_8h.html">cnet_inet.h</a>&gt;</span>        <span class="comment">// for in_caddr</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>           <span class="comment">// for uint16_t, uint8_t, int32_t</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span>           <span class="comment">// for NULL, memset</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="cne__inet_8h.html">cne_inet.h</a>&gt;</span>        <span class="comment">// for in_caddr</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;stdint.h&gt;</span>          <span class="comment">// for uint16_t, uint8_t, int32_t</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span>          <span class="comment">// for NULL, memset</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cne__common_8h.html">cne_common.h</a>&quot;</span>        <span class="comment">// for __cne_aligned, __cne_cache_aligned</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="cne__log_8h.html">cne_log.h</a>&quot;</span>           <span class="comment">// for CNE_LOG, CNE_LOG_DEBUG</span></div>
@@ -136,108 +136,106 @@ $(document).ready(function(){initNavTree('cnet__pcb_8h_source.html',''); initRes
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> {</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">enum</span> {</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    PCB_ENTRIES      = 255,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    PCB_MBUF_ENTRIES = 256,</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">struct </span>pcb_key {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keyword">struct </span>in_caddr <a class="code" href="cnet__pcb_8h.html#a5782deb3070540b7cdbfe994a6f00eaa">faddr</a>; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">struct </span>in_caddr <a class="code" href="cnet__pcb_8h.html#a933a871ab76b00e6955fc5bb2003b640">laddr</a>; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;} <a class="code" href="cne__common_8h.html#acc5defbf14ad8a0390da39751d695c10">__cne_aligned</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *));</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>pcb_key {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keyword">struct </span>in_caddr faddr;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">struct </span>in_caddr laddr;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;} <a class="code" href="cne__common_8h.html#acc5defbf14ad8a0390da39751d695c10">__cne_aligned</a>(<span class="keyword">sizeof</span>(<span class="keywordtype">void</span> *));</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">struct </span>netif;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="keyword">struct </span>chnl;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">struct </span>tcb_entry;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">struct </span>pcb_entry {</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keyword">struct </span>pcb_key key;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">struct </span>netif *netif;   </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">struct </span>chnl *ch;       </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keyword">struct </span>tcb_entry *tcb; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    uint16_t opt_flag;     </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    uint8_t ttl;           </div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    uint8_t tos;           </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t closed;        </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    uint8_t ip_proto;      </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;} __cne_cache_aligned;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">struct </span>pcb_hd {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">struct </span>pcb_entry **vec;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    uint16_t lport;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;};</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;cnet_pcb_free(<span class="keyword">struct</span> pcb_entry *pcb)</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;{</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordflow">if</span> (pcb) {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        memset(pcb, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> pcb_entry));</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        pcb-&gt;closed   = 1;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        pcb-&gt;ip_proto = -1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <a class="code" href="mempool_8h.html#aed0ff3a8bf585e0162ef5ef5fd54a4e0">mempool_put</a>(this_stk-&gt;pcb_objs, (<span class="keywordtype">void</span> *)pcb);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span>pcb_entry *</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;cnet_pcb_alloc(<span class="keyword">struct</span> pcb_hd *hd, uint16_t proto)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;{</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="keyword">struct </span>pcb_entry *pcb;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="mempool_8h.html#a92b75721048ba908ec24e2e1987e7d48">mempool_get</a>(this_stk-&gt;pcb_objs, (<span class="keywordtype">void</span> *)&amp;pcb) &lt; 0)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    pcb-&gt;closed   = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    pcb-&gt;ip_proto = proto;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    vec_add_ptr(hd-&gt;vec, pcb);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordflow">return</span> pcb;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;}</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;cnet_pcb_delete(<span class="keyword">struct</span> pcb_hd *hd, <span class="keyword">struct</span> pcb_entry *pcb)</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;{</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">struct </span>pcb_entry *p;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    vec_foreach_ptr (p, hd-&gt;vec) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">if</span> (p == pcb) {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            cnet_pcb_free(pcb);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">  134</a></span>&#160;CNDP_API <span class="keyword">struct </span>pcb_entry *<a class="code" href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">cnet_pcb_lookup</a>(<span class="keyword">struct</span> pcb_hd *hd, <span class="keyword">struct</span> pcb_key *key, int32_t flags);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160; </div>
-<div class="line"><a name="l00144"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">  144</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">cnet_pcb_dump</a>(stk_t *stk);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a8ebbc159f035bacb8192922f5a53ae1b">  154</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__pcb_8h.html#a8ebbc159f035bacb8192922f5a53ae1b">cnet_pcb_dump_details</a>(stk_t *stk);</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160; </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span>pcb_entry *</div>
-<div class="line"><a name="l00169"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">  169</a></span>&#160;<a class="code" href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">cnet_pcb_locate</a>(<span class="keyword">struct</span> pcb_hd *hd, <span class="keyword">struct</span> in_caddr *faddr, <span class="keyword">struct</span> in_caddr *laddr)</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;{</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">struct </span>pcb_key key;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">struct </span>netif;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">struct </span>chnl;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">struct </span>tcb_entry;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">struct </span>pcb_entry {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    TAILQ_ENTRY(pcb_entry) next; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">struct </span>pcb_key key;          </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">struct </span>netif *netif;         </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">struct </span>chnl *ch;             </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">struct </span>tcb_entry *tcb;       </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    uint16_t opt_flag;           </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    uint8_t ttl;                 </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    uint8_t tos;                 </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    uint8_t closed;              </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    uint8_t ip_proto;            </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;} __cne_cache_aligned;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">struct </span>pcb_hd {</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keyword">struct </span>pcb_entry **vec; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    uint16_t local_port;    </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;};</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;cnet_pcb_free(<span class="keyword">struct</span> pcb_entry *pcb)</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;{</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="keywordflow">if</span> (pcb) {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        memset(pcb, 0, <span class="keyword">sizeof</span>(<span class="keyword">struct</span> pcb_entry));</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        pcb-&gt;closed   = 1;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        pcb-&gt;ip_proto = -1;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="mempool_8h.html#aed0ff3a8bf585e0162ef5ef5fd54a4e0">mempool_put</a>(this_stk-&gt;pcb_objs, (<span class="keywordtype">void</span> *)pcb);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span>pcb_entry *</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;cnet_pcb_alloc(<span class="keyword">struct</span> pcb_hd *hd, uint16_t proto)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keyword">struct </span>pcb_entry *pcb;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="mempool_8h.html#a92b75721048ba908ec24e2e1987e7d48">mempool_get</a>(this_stk-&gt;pcb_objs, (<span class="keywordtype">void</span> *)&amp;pcb) &lt; 0)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> NULL;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    pcb-&gt;closed   = 0;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    pcb-&gt;ip_proto = proto;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    vec_add(hd-&gt;vec, pcb);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">return</span> pcb;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;}</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">void</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;cnet_pcb_delete(<span class="keyword">struct</span> pcb_hd *hd, <span class="keyword">struct</span> pcb_entry *pcb)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">struct </span>pcb_entry *p;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    vec_foreach_ptr (p, hd-&gt;vec) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span> (p == pcb) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            cnet_pcb_free(pcb);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;}</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">  130</a></span>&#160;CNDP_API <span class="keyword">struct </span>pcb_entry *<a class="code" href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">cnet_pcb_lookup</a>(<span class="keyword">struct</span> pcb_hd *hd, <span class="keyword">struct</span> pcb_key *key, int32_t flags);</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">  140</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">cnet_pcb_dump</a>(stk_t *stk);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160; </div>
+<div class="line"><a name="l00148"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a57a3ff576473be55e522392c7140e2ad">  148</a></span>&#160;CNDP_API <span class="keywordtype">void</span> <a class="code" href="cnet__pcb_8h.html#a57a3ff576473be55e522392c7140e2ad">cnet_pcb_show</a>(<span class="keyword">struct</span> pcb_entry *pcb);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;<span class="keyword">static</span> <span class="keyword">inline</span> <span class="keyword">struct </span>pcb_entry *</div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="line" href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">  163</a></span>&#160;<a class="code" href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">cnet_pcb_locate</a>(<span class="keyword">struct</span> pcb_hd *hd, <span class="keyword">struct</span> in_caddr *<a class="code" href="cnet__pcb_8h.html#a5782deb3070540b7cdbfe994a6f00eaa">faddr</a>, <span class="keyword">struct</span> in_caddr *<a class="code" href="cnet__pcb_8h.html#a933a871ab76b00e6955fc5bb2003b640">laddr</a>)</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;{</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keyword">struct </span>pcb_key key;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160; </div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    *(<span class="keyword">struct </span>in_caddr *)&amp;key.faddr = *<a class="code" href="cnet__pcb_8h.html#a5782deb3070540b7cdbfe994a6f00eaa">faddr</a>;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    *(<span class="keyword">struct</span> in_caddr *)&amp;key.laddr = *<a class="code" href="cnet__pcb_8h.html#a933a871ab76b00e6955fc5bb2003b640">laddr</a>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160; </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">cnet_pcb_lookup</a>(hd, &amp;key, BEST_MATCH);</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;}</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160; </div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    *(<span class="keyword">struct </span>in_caddr *)&amp;key.faddr = *faddr;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    *(<span class="keyword">struct</span> in_caddr *)&amp;key.laddr = *laddr;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160; </div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <span class="keywordflow">return</span> <a class="code" href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">cnet_pcb_lookup</a>(hd, &amp;key, BEST_MATCH);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;}</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160; </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;}</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CNET_PCB_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="preprocessor">#ifdef __cplusplus</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;}</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160; </div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* __CNET_PCB_H */</span><span class="preprocessor"></span></div>
 <div class="ttc" id="acne__common_8h_html"><div class="ttname"><a href="cne__common_8h.html">cne_common.h</a></div></div>
 <div class="ttc" id="acne__common_8h_html_acc5defbf14ad8a0390da39751d695c10"><div class="ttname"><a href="cne__common_8h.html#acc5defbf14ad8a0390da39751d695c10">__cne_aligned</a></div><div class="ttdeci">#define __cne_aligned(a)</div><div class="ttdef"><b>Definition:</b> <a href="cne__common_8h_source.html#l00124">cne_common.h:124</a></div></div>
+<div class="ttc" id="acne__inet_8h_html"><div class="ttname"><a href="cne__inet_8h.html">cne_inet.h</a></div></div>
 <div class="ttc" id="acne__log_8h_html"><div class="ttname"><a href="cne__log_8h.html">cne_log.h</a></div></div>
 <div class="ttc" id="acnet__const_8h_html"><div class="ttname"><a href="cnet__const_8h.html">cnet_const.h</a></div></div>
-<div class="ttc" id="acnet__inet_8h_html"><div class="ttname"><a href="cnet__inet_8h.html">cnet_inet.h</a></div></div>
-<div class="ttc" id="acnet__pcb_8h_html_a7047d33040efa074a992dc0728bcbdca"><div class="ttname"><a href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">cnet_pcb_locate</a></div><div class="ttdeci">static struct pcb_entry * cnet_pcb_locate(struct pcb_hd *hd, struct in_caddr *faddr, struct in_caddr *laddr)</div><div class="ttdoc">Return the PCB entry matching the given information.</div><div class="ttdef"><b>Definition:</b> <a href="cnet__pcb_8h_source.html#l00169">cnet_pcb.h:169</a></div></div>
+<div class="ttc" id="acnet__pcb_8h_html_a5782deb3070540b7cdbfe994a6f00eaa"><div class="ttname"><a href="cnet__pcb_8h.html#a5782deb3070540b7cdbfe994a6f00eaa">faddr</a></div><div class="ttdeci">struct in_caddr faddr</div><div class="ttdef"><b>Definition:</b> <a href="cnet__pcb_8h_source.html#l00163">cnet_pcb.h:0</a></div></div>
+<div class="ttc" id="acnet__pcb_8h_html_a57a3ff576473be55e522392c7140e2ad"><div class="ttname"><a href="cnet__pcb_8h.html#a57a3ff576473be55e522392c7140e2ad">cnet_pcb_show</a></div><div class="ttdeci">CNDP_API void cnet_pcb_show(struct pcb_entry *pcb)</div></div>
+<div class="ttc" id="acnet__pcb_8h_html_a7047d33040efa074a992dc0728bcbdca"><div class="ttname"><a href="cnet__pcb_8h.html#a7047d33040efa074a992dc0728bcbdca">cnet_pcb_locate</a></div><div class="ttdeci">static struct pcb_entry * cnet_pcb_locate(struct pcb_hd *hd, struct in_caddr *faddr, struct in_caddr *laddr)</div><div class="ttdoc">Return the PCB entry matching the given information.</div><div class="ttdef"><b>Definition:</b> <a href="cnet__pcb_8h_source.html#l00163">cnet_pcb.h:163</a></div></div>
 <div class="ttc" id="acnet__pcb_8h_html_a7308f04ca3b3df799fbc638cecb3cf99"><div class="ttname"><a href="cnet__pcb_8h.html#a7308f04ca3b3df799fbc638cecb3cf99">cnet_pcb_lookup</a></div><div class="ttdeci">CNDP_API struct pcb_entry * cnet_pcb_lookup(struct pcb_hd *hd, struct pcb_key *key, int32_t flags)</div></div>
 <div class="ttc" id="acnet__pcb_8h_html_a89534149f80758f89b0ebef60723b781"><div class="ttname"><a href="cnet__pcb_8h.html#a89534149f80758f89b0ebef60723b781">cnet_pcb_dump</a></div><div class="ttdeci">CNDP_API void cnet_pcb_dump(stk_t *stk)</div><div class="ttdoc">Dump out the PCB information.</div></div>
-<div class="ttc" id="acnet__pcb_8h_html_a8ebbc159f035bacb8192922f5a53ae1b"><div class="ttname"><a href="cnet__pcb_8h.html#a8ebbc159f035bacb8192922f5a53ae1b">cnet_pcb_dump_details</a></div><div class="ttdeci">CNDP_API void cnet_pcb_dump_details(stk_t *stk)</div><div class="ttdoc">Dump out the details information for the stack PCB list.</div></div>
+<div class="ttc" id="acnet__pcb_8h_html_a933a871ab76b00e6955fc5bb2003b640"><div class="ttname"><a href="cnet__pcb_8h.html#a933a871ab76b00e6955fc5bb2003b640">laddr</a></div><div class="ttdeci">struct in_caddr laddr</div><div class="ttdef"><b>Definition:</b> <a href="cnet__pcb_8h_source.html#l00163">cnet_pcb.h:1</a></div></div>
 <div class="ttc" id="acnet__stk_8h_html"><div class="ttname"><a href="cnet__stk_8h.html">cnet_stk.h</a></div></div>
 <div class="ttc" id="amempool_8h_html"><div class="ttname"><a href="mempool_8h.html">mempool.h</a></div></div>
 <div class="ttc" id="amempool_8h_html_a92b75721048ba908ec24e2e1987e7d48"><div class="ttname"><a href="mempool_8h.html#a92b75721048ba908ec24e2e1987e7d48">mempool_get</a></div><div class="ttdeci">CNDP_API int mempool_get(mempool_t *mp, void **obj_p)</div></div>
