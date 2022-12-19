@@ -27,10 +27,38 @@ apply the clang format to modified files in a commit. The pre-commit hook also r
 ``gofmt`` for modified .go files, and runs ``tools/check_json.py`` for modified
 .jsonc files.
 
-Install the clang-format:
+Install clang-format:
 
 ``` bash
 sudo apt-get install -y clang-format
+```
+
+A .clang-format file is available in the CNDP repo and can be run with ninja:
+
+``` bash
+$ ninja -C builddir clang-format
+ninja: Entering directory `builddir'
+[0/1] /usr/bin/meson --internal clangformat /home/cndp /home/cndp/builddir
+```
+
+Or with git clang-format if it is installed, for example:
+
+``` bash
+$ git clang-format --diff
+diff --git a/examples/cli/main.c b/examples/cli/main.c
+index 66b42e7..3f7a15a 100644
+--- a/examples/cli/main.c
++++ b/examples/cli/main.c
+@@ -62,7 +62,8 @@ __on_exit(int val, void *arg __cne_unused, int exit_type)
+ }
+
+ static int
+-sizeof_cmd(int argc, char **argv) {
++sizeof_cmd(int argc, char **argv)
++{
+     // clang-format off
+     struct struct_sizes ssizes[] = {
+         {"mmap_sizes_t", sizeof(mmap_sizes_t)},
 ```
 
 If committing changes to the .go or .jsonc files:
@@ -106,3 +134,13 @@ int foobar(foo_t *foo) {
 
 Naming header files as xyz\_private.h and cne\_xyz.h is preferred. The .c files should be named
 xyz.c or cne\_xyz.c.
+
+Braces for single line statements: do not use braces where a single statement (if, while, for,
+...) will do, for example:
+
+``` c
+if (foo)
+    do_this();
+else
+    do_that();
+```
