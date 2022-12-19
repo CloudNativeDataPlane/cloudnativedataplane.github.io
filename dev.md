@@ -36,29 +36,13 @@ sudo apt-get install -y clang-format
 A .clang-format file is available in the CNDP repo and can be run with ninja:
 
 ``` bash
-$ ninja -C builddir clang-format
-ninja: Entering directory `builddir'
-[0/1] /usr/bin/meson --internal clangformat /home/cndp /home/cndp/builddir
+ninja -C builddir clang-format
 ```
 
 Or with git clang-format if it is installed, for example:
 
 ``` bash
-$ git clang-format --diff
-diff --git a/examples/cli/main.c b/examples/cli/main.c
-index 66b42e7..3f7a15a 100644
---- a/examples/cli/main.c
-+++ b/examples/cli/main.c
-@@ -62,7 +62,8 @@ __on_exit(int val, void *arg __cne_unused, int exit_type)
- }
-
- static int
--sizeof_cmd(int argc, char **argv) {
-+sizeof_cmd(int argc, char **argv)
-+{
-     // clang-format off
-     struct struct_sizes ssizes[] = {
-         {"mmap_sizes_t", sizeof(mmap_sizes_t)},
+git clang-format --diff
 ```
 
 If committing changes to the .go or .jsonc files:
