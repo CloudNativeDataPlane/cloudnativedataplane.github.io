@@ -82,3 +82,6 @@ find $GUIDE_DIR -name '*.html' -exec sed -i 's/_static/static/g' {} +
 
 mv $GUIDE_DIR $GUIDE_OUTDIR
 mv $API_DIR/api $API_OUTDIR
+
+# Generated docs contain older bundled jQuery copies. Refresh both outputs together.
+bash "$SCRIPT_DIR/_api/refresh_jquery.sh" "$API_OUTDIR" "$GUIDE_OUTDIR/static"
