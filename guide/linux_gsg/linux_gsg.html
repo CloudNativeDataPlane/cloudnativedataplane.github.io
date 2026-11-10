@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. Introduction &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,10 +80,10 @@
           <div class="body" role="main">
             
   <section id="introduction">
-<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <p>This document contains instructions to install and configure the Cloud Native Data Plane (CNDP).</p>
 <section id="documentation-roadmap">
-<h2><span class="section-number">1.1. </span>Documentation Roadmap<a class="headerlink" href="#documentation-roadmap" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.1. </span>Documentation Roadmap<a class="headerlink" href="#documentation-roadmap" title="Link to this heading">¶</a></h2>
 <p>The following is a list of documents in the suggested reading order:</p>
 <blockquote>
 <div><ul class="simple">
@@ -105,19 +103,19 @@ use the sample application.</p></li>
 </section>
 </section>
 <section id="system-requirements-and-building-cndp">
-<span id="building-cndp"></span><h1><span class="section-number">2. </span>System Requirements and Building CNDP<a class="headerlink" href="#system-requirements-and-building-cndp" title="Permalink to this headline">¶</a></h1>
+<span id="building-cndp"></span><h1><span class="section-number">2. </span>System Requirements and Building CNDP<a class="headerlink" href="#system-requirements-and-building-cndp" title="Link to this heading">¶</a></h1>
 <p>This chapter describes the packages required to compile CNDP. It assumes you are building on an
 Ubuntu 21.04 host.</p>
 <p>To bypass manual installation, use the ansible scripts provided by CNDP in the section:
 <a class="reference internal" href="#installation-of-cndp-requirements-using-ansible">Installation of CNDP requirements using Ansible</a>.</p>
 <section id="bios-settings">
-<h2><span class="section-number">2.1. </span>BIOS Settings<a class="headerlink" href="#bios-settings" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>BIOS Settings<a class="headerlink" href="#bios-settings" title="Link to this heading">¶</a></h2>
 <p>No special BIOS settings are needed to use CNDP.</p>
 </section>
 <section id="install-cndp-manually">
-<h2><span class="section-number">2.2. </span>Install CNDP Manually<a class="headerlink" href="#install-cndp-manually" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.2. </span>Install CNDP Manually<a class="headerlink" href="#install-cndp-manually" title="Link to this heading">¶</a></h2>
 <section id="system-software">
-<h3><span class="section-number">2.2.1. </span>System Software<a class="headerlink" href="#system-software" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.1. </span>System Software<a class="headerlink" href="#system-software" title="Link to this heading">¶</a></h3>
 <p><strong>Required:</strong></p>
 <ul>
 <li><p>Kernel version &gt;= 5.0.0</p>
@@ -152,14 +150,14 @@ support.</p>
 </ul>
 </section>
 <section id="hugepages">
-<span id="linux-gsg-hugepages"></span><h3><span class="section-number">2.2.2. </span>Hugepages<a class="headerlink" href="#hugepages" title="Permalink to this headline">¶</a></h3>
+<span id="linux-gsg-hugepages"></span><h3><span class="section-number">2.2.2. </span>Hugepages<a class="headerlink" href="#hugepages" title="Link to this heading">¶</a></h3>
 <p>Hugepage support is optional, but preferred. Performance is increased when using hugepages since
 fewer pages are needed, and therefore less Translation Lookaside Buffer (TLB) entries are used. This
 reduces the time it takes to translate a virtual page address to a physical page address. Without
 hugepages, high TLB miss rates might occur with the standard 4KB page size, potentially reducing
 performance.</p>
 <section id="reserving-hugepages">
-<h4><span class="section-number">2.2.2.1. </span>Reserving Hugepages<a class="headerlink" href="#reserving-hugepages" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.2.1. </span>Reserving Hugepages<a class="headerlink" href="#reserving-hugepages" title="Link to this heading">¶</a></h4>
 <p>The allocation of hugepages should be done at boot time or as soon as possible after system boot to
 prevent physical memory fragmentation. To reserve hugepages at boot time, a parameter is passed to
 the Linux kernel on the kernel command line.</p>
@@ -208,7 +206,7 @@ echo 1024 &gt; /sys/devices/system/node/node1/hugepages/hugepages-2048kB/nr_huge
 </section>
 </section>
 <section id="prerequisites">
-<h3><span class="section-number">2.2.3. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.3. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h3>
 <p>If behind a proxy server you may need to setup a number of configurations to allow access via the server.
 Some commands i.e. apt-get, git, ssh, curl, wget and others will need configuration to work correctly.
 Please refer to apt-get, git and other documentations to enable access through a proxy server.</p>
@@ -219,7 +217,7 @@ Please refer to apt-get, git and other documentations to enable access through a
 <p>Apt-get is used to install the required packages to build CNDP and its dependencies.</p>
 </section>
 <section id="build-libbpf">
-<h3><span class="section-number">2.2.4. </span>Build libbpf<a class="headerlink" href="#build-libbpf" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.4. </span>Build libbpf<a class="headerlink" href="#build-libbpf" title="Link to this heading">¶</a></h3>
 <p>The <a class="reference external" href="https://github.com/libbpf/libbpf">libbpf</a> is a dependency of CNDP. Starting with Ubuntu 20.10
 the libbpf libraries can be installed using apt-get. For earlier Ubuntu versions, or for users who
 want the latest code, it can be installed from source.</p>
@@ -233,7 +231,7 @@ want the latest code, it can be installed from source.</p>
 </pre></div>
 </div>
 <section id="clone-build-and-install-libbpf">
-<h4><span class="section-number">2.2.4.1. </span>Clone, build, and install libbpf<a class="headerlink" href="#clone-build-and-install-libbpf" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.4.1. </span>Clone, build, and install libbpf<a class="headerlink" href="#clone-build-and-install-libbpf" title="Link to this heading">¶</a></h4>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/libbpf/libbpf.git</span>
 <span class="go">cd libbpf</span>
 <span class="go">git checkout v0.5.0   # or you can use v0.6.1 if needing a newer version</span>
@@ -251,7 +249,7 @@ bottom of the file.</p>
 </section>
 </section>
 <section id="build-cndp">
-<h3><span class="section-number">2.2.5. </span>Build CNDP<a class="headerlink" href="#build-cndp" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.2.5. </span>Build CNDP<a class="headerlink" href="#build-cndp" title="Link to this heading">¶</a></h3>
 <p>Install packages to build CNDP</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get install -y build-essential libbsd-dev libelf-dev libjson-c-dev\</span>
 <span class="go"> libnuma-dev libpcap-dev meson pkg-config libnl-3-dev libnl-cli-3-dev</span>
@@ -262,7 +260,7 @@ bottom of the file.</p>
 </pre></div>
 </div>
 <section id="clone-and-build-cndp">
-<h4><span class="section-number">2.2.5.1. </span>Clone and build CNDP<a class="headerlink" href="#clone-and-build-cndp" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.5.1. </span>Clone and build CNDP<a class="headerlink" href="#clone-and-build-cndp" title="Link to this heading">¶</a></h4>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">git clone https://github.com/CloudNativeDataPlane/cndp.git</span>
 <span class="go">cd cndp</span>
 <span class="go">make</span>
@@ -305,9 +303,9 @@ as root as too many problems like this one can happen.</p>
 </div>
 </section>
 <section id="run-cndp-examples">
-<h4><span class="section-number">2.2.5.2. </span>Run CNDP examples<a class="headerlink" href="#run-cndp-examples" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.2.5.2. </span>Run CNDP examples<a class="headerlink" href="#run-cndp-examples" title="Link to this heading">¶</a></h4>
 <section id="helloworld">
-<h5><span class="section-number">2.2.5.2.1. </span>helloworld<a class="headerlink" href="#helloworld" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.2.5.2.1. </span>helloworld<a class="headerlink" href="#helloworld" title="Link to this heading">¶</a></h5>
 <p>The most basic example is <code class="docutils literal notranslate"><span class="pre">helloworld</span></code>.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">./builddir/examples/helloworld/helloworld</span>
 <span class="go">Max threads: 512, Max lcores: 32, NUMA nodes: 1, Num Threads: 1</span>
@@ -317,7 +315,7 @@ as root as too many problems like this one can happen.</p>
 </div>
 </section>
 <section id="cndpfwd">
-<h5><span class="section-number">2.2.5.2.2. </span>cndpfwd<a class="headerlink" href="#cndpfwd" title="Permalink to this headline">¶</a></h5>
+<h5><span class="section-number">2.2.5.2.2. </span>cndpfwd<a class="headerlink" href="#cndpfwd" title="Link to this heading">¶</a></h5>
 <p>An example that uses networking is <code class="docutils literal notranslate"><span class="pre">cndpfwd</span></code>. It requires the underlying network interface
 uses, e.g. AF_XDP sockets. Make sure the kernel on which you intend to run the application
 supports AF_XDP sockets, i.e. CONFIG_XDP_SOCKETS=y.</p>
@@ -342,15 +340,15 @@ launch the application, specifying the updated configuration file.</p>
 </section>
 </section>
 <section id="installation-of-cndp-requirements-using-ansible">
-<h2><span class="section-number">2.3. </span>Installation of CNDP requirements using Ansible<a class="headerlink" href="#installation-of-cndp-requirements-using-ansible" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.3. </span>Installation of CNDP requirements using Ansible<a class="headerlink" href="#installation-of-cndp-requirements-using-ansible" title="Link to this heading">¶</a></h2>
 <p>CNDP provides an Ansible playbook to install all CNDP dependencies and setup the CNDP env.</p>
 <p>Though CNDP can run on many distributions and kernels, the preferred environment is for an Ubuntu
 20.04 installation. This is chosen as its the most recent LTS version, and the kernel can be
 updated from the package manager to one which natively supports many AF_XDP features.</p>
 <section id="id1">
-<h3><span class="section-number">2.3.1. </span>Prerequisites<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.1. </span>Prerequisites<a class="headerlink" href="#id1" title="Link to this heading">¶</a></h3>
 <section id="dependencies">
-<h4><span class="section-number">2.3.1.1. </span>dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.1.1. </span>dependencies<a class="headerlink" href="#dependencies" title="Link to this heading">¶</a></h4>
 <p>apt-get should now work to install the packages needed to use ansible.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo apt-get update</span>
 <span class="go">sudo apt-get install -y ansible</span>
@@ -363,7 +361,7 @@ following these <a class="reference external" href="https://docs.ansible.com/ans
 </div>
 </section>
 <section id="ssh-key-setup">
-<h4><span class="section-number">2.3.1.2. </span>SSH Key Setup<a class="headerlink" href="#ssh-key-setup" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">2.3.1.2. </span>SSH Key Setup<a class="headerlink" href="#ssh-key-setup" title="Link to this heading">¶</a></h4>
 <p>Ansible uses ssh to load and run it’s modules on the target host. As such, it’s important to setup a
 SSH key and copy it to the target node (note: the target node maybe the localhost).</p>
 <p>As root on both nodes run:</p>
@@ -375,7 +373,7 @@ SSH key and copy it to the target node (note: the target node maybe the localhos
 </section>
 </section>
 <section id="cndp-ansible-tree">
-<h3><span class="section-number">2.3.2. </span>CNDP Ansible tree<a class="headerlink" href="#cndp-ansible-tree" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.2. </span>CNDP Ansible tree<a class="headerlink" href="#cndp-ansible-tree" title="Link to this heading">¶</a></h3>
 <p>Below is the full directory tree of Ansible playbooks and roles.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">.</span>
 <span class="go">├── group_vars</span>
@@ -424,7 +422,7 @@ CNDP after the Kernel is updated and rebooted.</p></li>
 </ol>
 </section>
 <section id="running-the-ansible-playbook">
-<h3><span class="section-number">2.3.3. </span>Running the Ansible playbook<a class="headerlink" href="#running-the-ansible-playbook" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.3. </span>Running the Ansible playbook<a class="headerlink" href="#running-the-ansible-playbook" title="Link to this heading">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>It’s important to edit group_vars/all and hosts.ini before running any playbooks.</p>
@@ -438,7 +436,7 @@ CNDP after the Kernel is updated and rebooted.</p></li>
 </div>
 </section>
 <section id="id2">
-<h3><span class="section-number">2.3.4. </span>Building CNDP<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">2.3.4. </span>Building CNDP<a class="headerlink" href="#id2" title="Link to this heading">¶</a></h3>
 <p>After running Ansible to install all the dependencies, CNDP can be built by typing <cite>make</cite> in the
 top level dir:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">make</span>
@@ -458,8 +456,9 @@ top level dir:</p>
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">1. Introduction</a><ul>
 <li><a class="reference internal" href="#documentation-roadmap">1.1. Documentation Roadmap</a></li>
 </ul>
@@ -503,12 +502,17 @@ top level dir:</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Getting Started Guide</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="../rel_notes/index.html"
-                        title="next chapter">Release Notes</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Getting Started Guide</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="../rel_notes/index.html"
+                          title="next chapter">Release Notes</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -520,12 +524,12 @@ top level dir:</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -548,7 +552,7 @@ top level dir:</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

@@ -8,6 +8,6 @@ var cne__pktcpy_8h =
     [ "cne_mov128", "cne__pktcpy_8h.html#aa86ad1980fb593f23c948749fa419d64", null ],
     [ "cne_mov256", "cne__pktcpy_8h.html#a8a0f530ad51fabfd933ad8f46e5c94a8", null ],
     [ "cne_pktcpy", "cne__pktcpy_8h.html#a8ec2fbc37ba11390f4715bfd61fc66b9", null ],
-    [ "cne_pktcpy_generic", "cne__pktcpy_8h.html#a15414f4f054d9780b1ad4603f9a81bb2", null ],
-    [ "cne_pktcpy_aligned", "cne__pktcpy_8h.html#ad4a27232c8db602d30741bd7579968d1", null ]
+    [ "cne_pktcpy_generic", "cne__pktcpy_8h.html#a8bb13d2cb10068004cfeb1e49ee636ba", null ],
+    [ "cne_pktcpy_aligned", "cne__pktcpy_8h.html#a09f5db7c2dc11ee61391c0853b0e7e82", null ]
 ];

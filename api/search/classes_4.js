@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ether_5faddr_2752',['ether_addr',['../structether__addr.html',1,'']]]
+  ['dsa_5fstats_0',['dsa_stats',['../structdsa__stats.html',1,'']]]
 ];

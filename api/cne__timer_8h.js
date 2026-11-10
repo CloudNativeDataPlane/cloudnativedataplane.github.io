@@ -9,7 +9,7 @@ var cne__timer_8h =
     [ "CNE_TIMER_CONFIG", "cne__timer_8h.html#a0f8dcdc3c6fd46c830508fa5741eec53", null ],
     [ "CNE_TIMER_NO_OWNER", "cne__timer_8h.html#a5814607a6850df6026b64f14afa3758d", null ],
     [ "CNE_TIMER_INITIALIZER", "cne__timer_8h.html#aae564d1a2472d0f51623aea50e5f60c2", null ],
-    [ "cne_timer_cb_t", "cne__timer_8h.html#a01354c311460b9da7a1865908dbb9827", null ],
+    [ "cne_timer_cb_t", "cne__timer_8h.html#ace6537f3f216af31e8be32abf1d4174d", null ],
     [ "cne_timer_type", "cne__timer_8h.html#a0f008a603ed1950e2e778e81201046a4", null ],
     [ "cne_timer_subsystem_init", "cne__timer_8h.html#a903fec48fbfdd8ffc852b63c90d4d7be", null ],
     [ "cne_timer_init", "cne__timer_8h.html#abca24cbe1db3da21efca35f6e07a8379", null ],

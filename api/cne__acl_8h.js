@@ -16,7 +16,7 @@ var cne__acl_8h =
       [ "CNE_ACL_CLASSIFY_AVX512X16", "cne__acl_8h.html#a0469861b224f16364a9d7c4b8b8c7e4aa3ccbb1e9445c9b4043e203f565ee5a09", null ],
       [ "CNE_ACL_CLASSIFY_AVX512X32", "cne__acl_8h.html#a0469861b224f16364a9d7c4b8b8c7e4aa2df30c1989921ca6f947be95aa925023", null ]
     ] ],
-    [ "cne_acl_create", "cne__acl_8h.html#ab62bdf223912367dfa93fb00a443000c", null ],
+    [ "cne_acl_create", "cne__acl_8h.html#a404ebb16c2a36a96559dc480cea47e8e", null ],
     [ "cne_acl_free", "cne__acl_8h.html#a73f335ab96b7ed07006b08bcc7c6103a", null ],
     [ "cne_acl_add_rules", "cne__acl_8h.html#a735470359e5040315f713864c757814f", null ],
     [ "cne_acl_reset_rules", "cne__acl_8h.html#aff539459aa09fd27252ca96b9c90df0c", null ],

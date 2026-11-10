@@ -12,12 +12,12 @@ var cne__fib6_8h =
       [ "CNE_FIB6_LOOKUP_TRIE_SCALAR", "cne__fib6_8h.html#af5300b4ca0e72e509510872835709ab5add7af5a615cdaab6c59a8f68764d3b7f", null ],
       [ "CNE_FIB6_LOOKUP_TRIE_VECTOR_AVX512", "cne__fib6_8h.html#af5300b4ca0e72e509510872835709ab5a38cee5d08bd833e70b62ac4c00cd388d", null ]
     ] ],
-    [ "cne_fib6_create", "cne__fib6_8h.html#a23005d6c6651c2476c44eda0264084b1", null ],
+    [ "cne_fib6_create", "cne__fib6_8h.html#a7279f9a2fd7a4cb318a9c82a8251a56b", null ],
     [ "cne_fib6_free", "cne__fib6_8h.html#a5766bc91a78a89dde73bc2874c613cc7", null ],
     [ "cne_fib6_add", "cne__fib6_8h.html#a553df039a6aad0180e2c6c55d78538c7", null ],
     [ "cne_fib6_delete", "cne__fib6_8h.html#adbd2f301ceda4fc5da5a7c40e0643070", null ],
     [ "cne_fib6_lookup_bulk", "cne__fib6_8h.html#a9bbbb2461eef634a0bd89730fb8dd927", null ],
-    [ "cne_fib6_get_dp", "cne__fib6_8h.html#a22a514eaefa7f4336bcea2fe3a1b6cda", null ],
-    [ "cne_fib6_get_rib", "cne__fib6_8h.html#ad133ae9508834cf74665856123109e48", null ],
+    [ "cne_fib6_get_dp", "cne__fib6_8h.html#acbe37bbb9a630eedfe5e09d7a1d2ffa7", null ],
+    [ "cne_fib6_get_rib", "cne__fib6_8h.html#a04c9f902e5a60a76f5d30b875c1d7a20", null ],
     [ "cne_fib6_select_lookup", "cne__fib6_8h.html#aab958c6c8ff504df7bafe74399cf9e95", null ]
 ];

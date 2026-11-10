@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tcp_5fstats_2793',['tcp_stats',['../structtcp__stats.html',1,'']]],
-  ['txbuff_2794',['txbuff',['../structtxbuff.html',1,'']]]
+  ['queue_5flist_0',['queue_list',['../structqueue__list.html',1,'']]],
+  ['queue_5flist_5fentry_1',['queue_list_entry',['../structqueue__list__entry.html',1,'']]]
 ];

@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>10. CNET Stack Library &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,9 +80,9 @@
           <div class="body" role="main">
             
   <section id="cnet-stack-library">
-<span id="cnet-library"></span><h1><span class="section-number">10. </span>CNET Stack Library<a class="headerlink" href="#cnet-stack-library" title="Permalink to this headline">¶</a></h1>
+<span id="cnet-library"></span><h1><span class="section-number">10. </span>CNET Stack Library<a class="headerlink" href="#cnet-stack-library" title="Link to this heading">¶</a></h1>
 <section id="overview">
-<h2><span class="section-number">10.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
 <p>The CNET graph node library uses a set of graph nodes to create a UDP/TCP/IPv4 network stack in
 user space. One goal is to provide a network stack for applications in CNDP as the developer
 may have been using the Linux network stack via the socket interface.</p>
@@ -98,7 +96,7 @@ packets at a time using a function pointer callback.</p>
 </div>
 <figure class="align-default" id="id1">
 <span id="figure-cndp-system-overview"></span><img alt="../images/cndp_system_overview.svg" src="../images/cndp_system_overview.svg" /><figcaption>
-<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">CNDP System Overview</span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.1 </span><span class="caption-text">CNDP System Overview</span><a class="headerlink" href="#id1" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>A CNDP application runs in user-space inside a container or non-container environment (bare-metal)
@@ -115,14 +113,14 @@ CNET stack, but provides another solution for a very simple packet processing ap
 </div>
 </section>
 <section id="cnet-pod-container-overview">
-<h2><span class="section-number">10.2. </span>CNET Pod/Container Overview<a class="headerlink" href="#cnet-pod-container-overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.2. </span>CNET Pod/Container Overview<a class="headerlink" href="#cnet-pod-container-overview" title="Link to this heading">¶</a></h2>
 <p>The following CNET stack overview shows the pod/container view and where CNDP components will
 be placed in a pod/container. The <em>Sidecar</em> container is used to configure and obtain statistics
 for the CNDP application. The <em>Sidecar</em> container is <em>optional</em> and is not used in all applications
 use cases.</p>
 <figure class="align-default" id="id2">
 <span id="figure-cnet-overview"></span><img alt="../images/cnet_overview.svg" src="../images/cnet_overview.svg" /><figcaption>
-<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">CNET Pod/Container Overview</span><a class="headerlink" href="#id2" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.2 </span><span class="caption-text">CNET Pod/Container Overview</span><a class="headerlink" href="#id2" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <p>The CNET stack splits some of the processing of packets between the Linux kernel and the CNDP
@@ -141,7 +139,7 @@ The <em>Netlink</em> message processing is handled by a different thread within 
 directly attached to the CNET graph node instances.</p>
 </section>
 <section id="cnet-graph-nodes">
-<h2><span class="section-number">10.3. </span>CNET Graph nodes<a class="headerlink" href="#cnet-graph-nodes" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.3. </span>CNET Graph nodes<a class="headerlink" href="#cnet-graph-nodes" title="Link to this heading">¶</a></h2>
 <p>The CNET library contains support for UDP/TCP/IPv4 and IPv6 in the future. We have a number
 of different graph nodes in CNET and creating your own graph node is very straight forward.
 Please refer to <a class="reference internal" href="graph_lib.html#graph-library"><span class="std std-ref">Graph Library</span></a> for more information on graph nodes.</p>
@@ -152,11 +150,11 @@ of the nodes will call packet drop if needed.</p>
 </div>
 <figure class="align-default" id="id3">
 <span id="figure-cnet"></span><img alt="../images/cnet.svg" src="../images/cnet.svg" /><figcaption>
-<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">CNET Graph Node Layout</span><a class="headerlink" href="#id3" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.3 </span><span class="caption-text">CNET Graph Node Layout</span><a class="headerlink" href="#id3" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="cnet-nodes">
-<h3><span class="section-number">10.3.1. </span>CNET nodes<a class="headerlink" href="#cnet-nodes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.1. </span>CNET nodes<a class="headerlink" href="#cnet-nodes" title="Link to this heading">¶</a></h3>
 <p>Each CNET instance (one per defined thread) is created with a set of nodes with each node handling
 a number of packets at a time. Packets are processed from the inputs to the output nodes in
 the <a class="reference internal" href="#figure-cnet"><span class="std std-ref">CNET Graph Nodes</span></a> in a single thread.</p>
@@ -173,7 +171,7 @@ to avoid locks and race conditions.</p>
 </div>
 </section>
 <section id="input-nodes">
-<h3><span class="section-number">10.3.2. </span>Input Nodes<a class="headerlink" href="#input-nodes" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.3.2. </span>Input Nodes<a class="headerlink" href="#input-nodes" title="Link to this heading">¶</a></h3>
 <ul class="simple">
 <li><p><strong>eth_rx-N</strong> is the Ethernet input node and is a <em>source node</em>, which means it is called repeatedly.</p>
 <ul>
@@ -213,7 +211,7 @@ to avoid locks and race conditions.</p>
 </section>
 </section>
 <section id="anatomy-of-cnet-processing">
-<h2><span class="section-number">10.4. </span>Anatomy of CNET processing<a class="headerlink" href="#anatomy-of-cnet-processing" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">10.4. </span>Anatomy of CNET processing<a class="headerlink" href="#anatomy-of-cnet-processing" title="Link to this heading">¶</a></h2>
 <p>The anatomy of the CNET stack is complex, but most of the processing and configuration is defined by
 the <a class="reference internal" href="graph_lib.html#graph-library"><span class="std std-ref">Graph Library</span></a>, but a number of internal structures and designs should be understood.
 One of the design details is the CNET stack uses a couple thread local variables <em>this_cnet</em> and <em>this_stk</em>
@@ -236,35 +234,35 @@ to the socket API. Using APIs like <em>channel()</em>, <em>chnl_recv()</em>, <em
 APIs look similar to standard <em>Socket</em> APIs.</p>
 <figure class="align-default" id="id4">
 <span id="figure-cnet-stack-view"></span><img alt="../images/cnet_stack_view.svg" src="../images/cnet_stack_view.svg" /><figcaption>
-<p><span class="caption-number">Fig. 10.4 </span><span class="caption-text">CNET Stack High Level View</span><a class="headerlink" href="#id4" title="Permalink to this image">¶</a></p>
+<p><span class="caption-number">Fig. 10.4 </span><span class="caption-text">CNET Stack High Level View</span><a class="headerlink" href="#id4" title="Link to this image">¶</a></p>
 </figcaption>
 </figure>
 <section id="cnet-structure">
-<h3><span class="section-number">10.4.1. </span>CNET Structure<a class="headerlink" href="#cnet-structure" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.4.1. </span>CNET Structure<a class="headerlink" href="#cnet-structure" title="Link to this heading">¶</a></h3>
 <p>The CNET structure <a class="reference internal" href="#figure-cnet-structure"><span class="std std-ref">CNET Structure</span></a> contains a number of fields to describe
 the information to control the CNET stack. This structure is created once for all stack instances.</p>
 <div class="literal-block-wrapper docutils container" id="id5">
-<span id="figure-cnet-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.1 </span><span class="caption-text">CNET Structure layout</span><a class="headerlink" href="#id5" title="Permalink to this code">¶</a></div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">cnet</span> <span class="p">{</span>
-        <span class="n">CNE_ATOMIC</span><span class="p">(</span><span class="kt">uint_fast16_t</span><span class="p">)</span> <span class="n">stk_order</span><span class="p">;</span> <span class="cm">/**&lt; Order of the stack initializations */</span>
-        <span class="kt">uint16_t</span> <span class="n">nb_ports</span><span class="p">;</span>                   <span class="cm">/**&lt; Number of ports in the system */</span>
-        <span class="kt">uint32_t</span> <span class="n">num_chnls</span><span class="p">;</span>                  <span class="cm">/**&lt; Number of channels in system */</span>
-        <span class="kt">uint32_t</span> <span class="n">num_routes</span><span class="p">;</span>                 <span class="cm">/**&lt; Number of routes */</span>
-        <span class="kt">uint32_t</span> <span class="n">num_arps</span><span class="p">;</span>                   <span class="cm">/**&lt; Number of ARP entries */</span>
-        <span class="kt">uint16_t</span> <span class="n">flags</span><span class="p">;</span>                      <span class="cm">/**&lt; Flags */</span>
-        <span class="n">u_id_t</span> <span class="n">chnl_uids</span><span class="p">;</span>                    <span class="cm">/**&lt; UID for channel descriptor like values */</span>
-        <span class="kt">void</span> <span class="o">**</span><span class="n">chnl_descriptors</span><span class="p">;</span>             <span class="cm">/**&lt; List of channel descriptors pointers */</span>
-        <span class="kt">void</span> <span class="o">*</span><span class="n">netlink_info</span><span class="p">;</span>                  <span class="cm">/**&lt; Netlink information structure */</span>
-        <span class="k">struct</span> <span class="nc">stk_s</span> <span class="o">**</span><span class="n">stks</span><span class="p">;</span>                 <span class="cm">/**&lt; Vector list of stk_entry pointers */</span>
-        <span class="k">struct</span> <span class="nc">drv_entry</span> <span class="o">**</span><span class="n">drvs</span><span class="p">;</span>             <span class="cm">/**&lt; Vector list of drv_entry pointers */</span>
-        <span class="k">struct</span> <span class="nc">netif</span> <span class="o">**</span><span class="n">netifs</span><span class="p">;</span>               <span class="cm">/**&lt; List of active netif structures */</span>
-        <span class="k">struct</span> <span class="nc">cne_mempool</span> <span class="o">*</span><span class="n">rt4_obj</span><span class="p">;</span>         <span class="cm">/**&lt; Route IPv4 table pointer */</span>
-        <span class="k">struct</span> <span class="nc">cne_mempool</span> <span class="o">*</span><span class="n">arp_obj</span><span class="p">;</span>         <span class="cm">/**&lt; ARP object structures */</span>
-        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">rt4_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; Pointer to the IPv4 FIB information structure */</span>
-        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">arp_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; ARP FIB table pointer */</span>
-        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">pcb_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; PCB FIB table pointer */</span>
-        <span class="k">struct</span> <span class="nc">fib_info</span> <span class="o">*</span><span class="n">tcb_finfo</span><span class="p">;</span>          <span class="cm">/**&lt; TCB FIB table pointer */</span>
-    <span class="p">}</span> <span class="n">__cne_cache_aligned</span><span class="p">;</span>
+<span id="figure-cnet-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.1 </span><span class="caption-text">CNET Structure layout</span><a class="headerlink" href="#id5" title="Link to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">cnet</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">CNE_ATOMIC</span><span class="p">(</span><span class="kt">uint_fast16_t</span><span class="p">)</span><span class="w"> </span><span class="n">stk_order</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; Order of the stack initializations */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">nb_ports</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Number of ports in the system */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_chnls</span><span class="p">;</span><span class="w">                  </span><span class="cm">/**&lt; Number of channels in system */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_routes</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; Number of routes */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">num_arps</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; Number of ARP entries */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">flags</span><span class="p">;</span><span class="w">                      </span><span class="cm">/**&lt; Flags */</span>
+<span class="w">        </span><span class="n">u_id_t</span><span class="w"> </span><span class="n">chnl_uids</span><span class="p">;</span><span class="w">                    </span><span class="cm">/**&lt; UID for channel descriptor like values */</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="o">**</span><span class="n">chnl_descriptors</span><span class="p">;</span><span class="w">             </span><span class="cm">/**&lt; List of channel descriptors pointers */</span>
+<span class="w">        </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">netlink_info</span><span class="p">;</span><span class="w">                  </span><span class="cm">/**&lt; Netlink information structure */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">stk_s</span><span class="w"> </span><span class="o">**</span><span class="n">stks</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; Vector list of stk_entry pointers */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">drv_entry</span><span class="w"> </span><span class="o">**</span><span class="n">drvs</span><span class="p">;</span><span class="w">             </span><span class="cm">/**&lt; Vector list of drv_entry pointers */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">netif</span><span class="w"> </span><span class="o">**</span><span class="n">netifs</span><span class="p">;</span><span class="w">               </span><span class="cm">/**&lt; List of active netif structures */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cne_mempool</span><span class="w"> </span><span class="o">*</span><span class="n">rt4_obj</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Route IPv4 table pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cne_mempool</span><span class="w"> </span><span class="o">*</span><span class="n">arp_obj</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; ARP object structures */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">fib_info</span><span class="w"> </span><span class="o">*</span><span class="n">rt4_finfo</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; Pointer to the IPv4 FIB information structure */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">fib_info</span><span class="w"> </span><span class="o">*</span><span class="n">arp_finfo</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; ARP FIB table pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">fib_info</span><span class="w"> </span><span class="o">*</span><span class="n">pcb_finfo</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; PCB FIB table pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">fib_info</span><span class="w"> </span><span class="o">*</span><span class="n">tcb_finfo</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; TCB FIB table pointer */</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">__cne_cache_aligned</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -299,40 +297,40 @@ to enable allocating/freeing these entries quickly, plus limiting the number of 
 entries rt4, arp, pcb and tcb are used to locate these entries quickly using the <em>FIB</em> LPM library.</p>
 </section>
 <section id="cnet-stack-structure">
-<h3><span class="section-number">10.4.2. </span>CNET Stack Structure<a class="headerlink" href="#cnet-stack-structure" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.4.2. </span>CNET Stack Structure<a class="headerlink" href="#cnet-stack-structure" title="Link to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="#figure-cnet-stack-structure"><span class="std std-ref">CNET stack structure</span></a> is created one per thread and graph node set.
 The structure contains many values and information about the given instance it defines.</p>
 <div class="literal-block-wrapper docutils container" id="id6">
-<span id="figure-cnet-stack-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.2 </span><span class="caption-text">CNET Stack Structure layout</span><a class="headerlink" href="#id6" title="Permalink to this code">¶</a></div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">typedef</span> <span class="k">struct</span> <span class="nc">stk_s</span> <span class="p">{</span>
-        <span class="n">pthread_mutex_t</span> <span class="n">mutex</span><span class="p">;</span>              <span class="cm">/**&lt; Stack Mutex */</span>
-        <span class="kt">uint16_t</span> <span class="n">idx</span><span class="p">;</span>                       <span class="cm">/**&lt; Index number of stack instance */</span>
-        <span class="kt">uint16_t</span> <span class="n">lid</span><span class="p">;</span>                       <span class="cm">/**&lt; lcore ID for the stack instance */</span>
-        <span class="kt">uint16_t</span> <span class="n">reserved</span><span class="p">;</span>                  <span class="cm">/**&lt; Reserved for future use */</span>
-        <span class="kt">pid_t</span> <span class="n">tid</span><span class="p">;</span>                          <span class="cm">/**&lt; Thread process id */</span>
-        <span class="kt">char</span> <span class="n">name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span>                      <span class="cm">/**&lt; Name of the network instance */</span>
-        <span class="k">struct</span> <span class="nc">cne_graph</span> <span class="o">*</span><span class="n">graph</span><span class="p">;</span>            <span class="cm">/**&lt; Graph structure pointer for this instance */</span>
-        <span class="k">struct</span> <span class="nc">cne_node</span> <span class="o">*</span><span class="n">tx_node</span><span class="p">;</span>           <span class="cm">/**&lt; TX node pointer used for sending packets */</span>
-        <span class="n">bitstr_t</span> <span class="o">*</span><span class="n">tcbs</span><span class="p">;</span>                     <span class="cm">/**&lt; Bitmap of active TCB structures based on mempool index */</span>
-        <span class="kt">uint32_t</span> <span class="n">tcp_now</span><span class="p">;</span>                   <span class="cm">/**&lt; TCP now timer tick on slow timeout */</span>
-        <span class="kt">uint32_t</span> <span class="n">gflags</span><span class="p">;</span>                    <span class="cm">/**&lt; Global flags */</span>
-        <span class="kt">uint64_t</span> <span class="n">ticks</span><span class="p">;</span>                     <span class="cm">/**&lt; Number of ticks from start */</span>
-        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">tcb_objs</span><span class="p">;</span>                <span class="cm">/**&lt; List of free TCB structures */</span>
-        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">seg_objs</span><span class="p">;</span>                <span class="cm">/**&lt; List of free Segment structures */</span>
-        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">pcb_objs</span><span class="p">;</span>                <span class="cm">/**&lt; PCB cnet_objpool pointer */</span>
-        <span class="n">mempool_t</span> <span class="o">*</span><span class="n">chnl_objs</span><span class="p">;</span>               <span class="cm">/**&lt; Channel cnet_objpool pointer */</span>
-        <span class="k">struct</span> <span class="nc">protosw_entry</span> <span class="o">**</span><span class="n">protosw_vec</span><span class="p">;</span> <span class="cm">/**&lt; protosw vector entries */</span>
-        <span class="k">struct</span> <span class="nc">icmp_entry</span> <span class="o">*</span><span class="n">icmp</span><span class="p">;</span>            <span class="cm">/**&lt; ICMP information */</span>
-        <span class="k">struct</span> <span class="nc">icmp6_entry</span> <span class="o">*</span><span class="n">icmp6</span><span class="p">;</span>          <span class="cm">/**&lt; ICMP6 information */</span>
-        <span class="k">struct</span> <span class="nc">ipv4_entry</span> <span class="o">*</span><span class="n">ipv4</span><span class="p">;</span>            <span class="cm">/**&lt; IPv4 information */</span>
-        <span class="k">struct</span> <span class="nc">ipv6_entry</span> <span class="o">*</span><span class="n">ipv6</span><span class="p">;</span>            <span class="cm">/**&lt; IPv6 information */</span>
-        <span class="k">struct</span> <span class="nc">tcp_entry</span> <span class="o">*</span><span class="n">tcp</span><span class="p">;</span>              <span class="cm">/**&lt; TCP information */</span>
-        <span class="k">struct</span> <span class="nc">raw_entry</span> <span class="o">*</span><span class="n">raw</span><span class="p">;</span>              <span class="cm">/**&lt; Raw information */</span>
-        <span class="k">struct</span> <span class="nc">udp_entry</span> <span class="o">*</span><span class="n">udp</span><span class="p">;</span>              <span class="cm">/**&lt; UDP information */</span>
-        <span class="k">struct</span> <span class="nc">chnl_optsw</span> <span class="o">**</span><span class="n">chnlopt</span><span class="p">;</span>        <span class="cm">/**&lt; Channel Option pointers */</span>
-        <span class="k">struct</span> <span class="nc">cne_timer</span> <span class="n">tcp_timer</span><span class="p">;</span>         <span class="cm">/**&lt; TCP Timer structure */</span>
-        <span class="k">struct</span> <span class="nc">tcp_stats</span> <span class="o">*</span><span class="n">tcp_stats</span><span class="p">;</span>        <span class="cm">/**&lt; TCP statistics */</span>
-    <span class="p">}</span> <span class="n">stk_t</span> <span class="n">__cne_cache_aligned</span><span class="p">;</span>
+<span id="figure-cnet-stack-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.2 </span><span class="caption-text">CNET Stack Structure layout</span><a class="headerlink" href="#id6" title="Link to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">typedef</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">stk_s</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">mutex</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; Stack Mutex */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">idx</span><span class="p">;</span><span class="w">                       </span><span class="cm">/**&lt; Index number of stack instance */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">lid</span><span class="p">;</span><span class="w">                       </span><span class="cm">/**&lt; lcore ID for the stack instance */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">reserved</span><span class="p">;</span><span class="w">                  </span><span class="cm">/**&lt; Reserved for future use */</span>
+<span class="w">        </span><span class="kt">pid_t</span><span class="w"> </span><span class="n">tid</span><span class="p">;</span><span class="w">                          </span><span class="cm">/**&lt; Thread process id */</span>
+<span class="w">        </span><span class="kt">char</span><span class="w"> </span><span class="n">name</span><span class="p">[</span><span class="mi">32</span><span class="p">];</span><span class="w">                      </span><span class="cm">/**&lt; Name of the network instance */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cne_graph</span><span class="w"> </span><span class="o">*</span><span class="n">graph</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; Graph structure pointer for this instance */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cne_node</span><span class="w"> </span><span class="o">*</span><span class="n">tx_node</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; TX node pointer used for sending packets */</span>
+<span class="w">        </span><span class="n">bitstr_t</span><span class="w"> </span><span class="o">*</span><span class="n">tcbs</span><span class="p">;</span><span class="w">                     </span><span class="cm">/**&lt; Bitmap of active TCB structures based on mempool index */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">tcp_now</span><span class="p">;</span><span class="w">                   </span><span class="cm">/**&lt; TCP now timer tick on slow timeout */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">gflags</span><span class="p">;</span><span class="w">                    </span><span class="cm">/**&lt; Global flags */</span>
+<span class="w">        </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">ticks</span><span class="p">;</span><span class="w">                     </span><span class="cm">/**&lt; Number of ticks from start */</span>
+<span class="w">        </span><span class="n">mempool_t</span><span class="w"> </span><span class="o">*</span><span class="n">tcb_objs</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; List of free TCB structures */</span>
+<span class="w">        </span><span class="n">mempool_t</span><span class="w"> </span><span class="o">*</span><span class="n">seg_objs</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; List of free Segment structures */</span>
+<span class="w">        </span><span class="n">mempool_t</span><span class="w"> </span><span class="o">*</span><span class="n">pcb_objs</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; PCB cnet_objpool pointer */</span>
+<span class="w">        </span><span class="n">mempool_t</span><span class="w"> </span><span class="o">*</span><span class="n">chnl_objs</span><span class="p">;</span><span class="w">               </span><span class="cm">/**&lt; Channel cnet_objpool pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">protosw_entry</span><span class="w"> </span><span class="o">**</span><span class="n">protosw_vec</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; protosw vector entries */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">icmp_entry</span><span class="w"> </span><span class="o">*</span><span class="n">icmp</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; ICMP information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">icmp6_entry</span><span class="w"> </span><span class="o">*</span><span class="n">icmp6</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; ICMP6 information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">ipv4_entry</span><span class="w"> </span><span class="o">*</span><span class="n">ipv4</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; IPv4 information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">ipv6_entry</span><span class="w"> </span><span class="o">*</span><span class="n">ipv6</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; IPv6 information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcp_entry</span><span class="w"> </span><span class="o">*</span><span class="n">tcp</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; TCP information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">raw_entry</span><span class="w"> </span><span class="o">*</span><span class="n">raw</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; Raw information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">udp_entry</span><span class="w"> </span><span class="o">*</span><span class="n">udp</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; UDP information */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">chnl_optsw</span><span class="w"> </span><span class="o">**</span><span class="n">chnlopt</span><span class="p">;</span><span class="w">        </span><span class="cm">/**&lt; Channel Option pointers */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cne_timer</span><span class="w"> </span><span class="n">tcp_timer</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; TCP Timer structure */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcp_stats</span><span class="w"> </span><span class="o">*</span><span class="n">tcp_stats</span><span class="p">;</span><span class="w">        </span><span class="cm">/**&lt; TCP statistics */</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">stk_t</span><span class="w"> </span><span class="n">__cne_cache_aligned</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -352,25 +350,25 @@ a timer to manage connections. The <strong>tcp_timer</strong> pointer is the <em
 stack timeouts. The last entry <strong>tcp_stats</strong> is the TCP specific statistics, which are always collected.</p>
 </section>
 <section id="cnet-channel-structure">
-<h3><span class="section-number">10.4.3. </span>CNET Channel Structure<a class="headerlink" href="#cnet-channel-structure" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.4.3. </span>CNET Channel Structure<a class="headerlink" href="#cnet-channel-structure" title="Link to this heading">¶</a></h3>
 <p>The <a class="reference internal" href="#figure-cnet-chnl-structure"><span class="std std-ref">CNET Chnl structure</span></a> is created for passive and active open connections.
 The structure is used to manage the connection plus store the data connected to the channel.</p>
 <div class="literal-block-wrapper docutils container" id="id7">
-<span id="figure-cnet-chnl-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.3 </span><span class="caption-text">CNET Channel Structure layout</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">chnl</span> <span class="p">{</span>
-        <span class="kt">uint16_t</span> <span class="n">stk_id</span><span class="p">;</span>                <span class="cm">/**&lt; Stack instance ID value */</span>
-        <span class="kt">uint16_t</span> <span class="n">ch_options</span><span class="p">;</span>            <span class="cm">/**&lt; Options for channel */</span>
-        <span class="kt">uint16_t</span> <span class="n">ch_state</span><span class="p">;</span>              <span class="cm">/**&lt; Current state of channel */</span>
-        <span class="kt">uint16_t</span> <span class="n">ch_error</span><span class="p">;</span>              <span class="cm">/**&lt; Error value */</span>
-        <span class="kt">int</span> <span class="n">ch_cd</span><span class="p">;</span>                      <span class="cm">/**&lt; Channel descriptor index value */</span>
-        <span class="n">pthread_mutex_t</span> <span class="n">ch_mutex</span><span class="p">;</span>       <span class="cm">/**&lt; Mutex for buffer */</span>
-        <span class="k">struct</span> <span class="nc">pcb_entry</span> <span class="o">*</span><span class="n">ch_pcb</span><span class="p">;</span>       <span class="cm">/**&lt; Pointer to the PCB */</span>
-        <span class="k">struct</span> <span class="nc">protosw_entry</span> <span class="o">*</span><span class="n">ch_proto</span><span class="p">;</span> <span class="cm">/**&lt; Current proto value */</span>
-        <span class="n">chnl_cb_t</span> <span class="n">ch_callback</span><span class="p">;</span>          <span class="cm">/**&lt; Channel callback routine */</span>
-        <span class="k">struct</span> <span class="nc">cne_node</span> <span class="o">*</span><span class="n">ch_node</span><span class="p">;</span>       <span class="cm">/**&lt; Next Node pointer */</span>
-        <span class="k">struct</span> <span class="nc">chnl_buf</span> <span class="n">ch_rcv</span><span class="p">;</span>         <span class="cm">/**&lt; Receive buffer */</span>
-        <span class="k">struct</span> <span class="nc">chnl_buf</span> <span class="n">ch_snd</span><span class="p">;</span>         <span class="cm">/**&lt; Transmit buffer */</span>
-    <span class="p">};</span>
+<span id="figure-cnet-chnl-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.3 </span><span class="caption-text">CNET Channel Structure layout</span><a class="headerlink" href="#id7" title="Link to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">chnl</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">stk_id</span><span class="p">;</span><span class="w">                </span><span class="cm">/**&lt; Stack instance ID value */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ch_options</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; Options for channel */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ch_state</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; Current state of channel */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">ch_error</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; Error value */</span>
+<span class="w">        </span><span class="kt">int</span><span class="w"> </span><span class="n">ch_cd</span><span class="p">;</span><span class="w">                      </span><span class="cm">/**&lt; Channel descriptor index value */</span>
+<span class="w">        </span><span class="n">pthread_mutex_t</span><span class="w"> </span><span class="n">ch_mutex</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; Mutex for buffer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">pcb_entry</span><span class="w"> </span><span class="o">*</span><span class="n">ch_pcb</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; Pointer to the PCB */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">protosw_entry</span><span class="w"> </span><span class="o">*</span><span class="n">ch_proto</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; Current proto value */</span>
+<span class="w">        </span><span class="n">chnl_cb_t</span><span class="w"> </span><span class="n">ch_callback</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; Channel callback routine */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cne_node</span><span class="w"> </span><span class="o">*</span><span class="n">ch_node</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; Next Node pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">chnl_buf</span><span class="w"> </span><span class="n">ch_rcv</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Receive buffer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">chnl_buf</span><span class="w"> </span><span class="n">ch_snd</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Transmit buffer */</span>
+<span class="w">    </span><span class="p">};</span>
 </pre></div>
 </div>
 </div>
@@ -395,42 +393,42 @@ used to receive and send data to/from the application.</p>
 <p>The <a class="reference internal" href="#figure-cnet-chnl-buffer"><span class="std std-ref">CNET Chnl Buffer structure</span></a> is part of the Chnl structure and manages the
 channel data.</p>
 <div class="literal-block-wrapper docutils container" id="id8">
-<span id="figure-cnet-chnl-buffer"></span><div class="code-block-caption"><span class="caption-number">Listing 10.4 </span><span class="caption-text">CNET Channel Buffer layout</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">chnl_buf</span> <span class="p">{</span>
-        <span class="n">pktmbuf_t</span> <span class="o">**</span><span class="n">cb_vec</span><span class="p">;</span>     <span class="cm">/**&lt; Vector of mbuf pointers */</span>
-        <span class="kt">uint32_t</span> <span class="n">cb_cc</span><span class="p">;</span>         <span class="cm">/**&lt; actual chars in buffer */</span>
-        <span class="kt">uint32_t</span> <span class="n">cb_hiwat</span><span class="p">;</span>      <span class="cm">/**&lt; high water mark */</span>
-        <span class="kt">uint32_t</span> <span class="n">cb_lowat</span><span class="p">;</span>      <span class="cm">/**&lt; low water mark */</span>
-        <span class="kt">uint32_t</span> <span class="n">cb_size</span><span class="p">;</span>       <span class="cm">/**&lt; protocol send/receive size */</span>
-    <span class="p">};</span>
+<span id="figure-cnet-chnl-buffer"></span><div class="code-block-caption"><span class="caption-number">Listing 10.4 </span><span class="caption-text">CNET Channel Buffer layout</span><a class="headerlink" href="#id8" title="Link to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">chnl_buf</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">pktmbuf_t</span><span class="w"> </span><span class="o">**</span><span class="n">cb_vec</span><span class="p">;</span><span class="w">     </span><span class="cm">/**&lt; Vector of mbuf pointers */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cb_cc</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; actual chars in buffer */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cb_hiwat</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; high water mark */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cb_lowat</span><span class="p">;</span><span class="w">      </span><span class="cm">/**&lt; low water mark */</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">cb_size</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; protocol send/receive size */</span>
+<span class="w">    </span><span class="p">};</span>
 </pre></div>
 </div>
 </div>
 </section>
 <section id="protocol-control-block-pcb">
-<h3><span class="section-number">10.4.4. </span>Protocol Control Block (PCB)<a class="headerlink" href="#protocol-control-block-pcb" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">10.4.4. </span>Protocol Control Block (PCB)<a class="headerlink" href="#protocol-control-block-pcb" title="Link to this heading">¶</a></h3>
 <p>The <em>PCB</em> structure contains information about the protocol connection and which network interface is connected
 to the given instance of a connection. The <em>PCB</em> is used by the protocol packet handling to locate an active
 connection as in a listening connection.</p>
 <div class="literal-block-wrapper docutils container" id="id9">
-<span id="figure-pcb-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.5 </span><span class="caption-text">CNET Protocol Control Block</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span>    <span class="k">struct</span> <span class="nc">pcb_key</span> <span class="p">{</span>
-        <span class="k">struct</span> <span class="nc">in_caddr</span> <span class="n">faddr</span><span class="p">;</span> <span class="cm">/**&lt; foreign IP address */</span>
-        <span class="k">struct</span> <span class="nc">in_caddr</span> <span class="n">laddr</span><span class="p">;</span> <span class="cm">/**&lt; local IP address */</span>
-    <span class="p">}</span> <span class="n">__cne_aligned</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">));</span>
+<span id="figure-pcb-structure"></span><div class="code-block-caption"><span class="caption-number">Listing 10.5 </span><span class="caption-text">CNET Protocol Control Block</span><a class="headerlink" href="#id9" title="Link to this code">¶</a></div>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">pcb_key</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">in_caddr</span><span class="w"> </span><span class="n">faddr</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; foreign IP address */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">in_caddr</span><span class="w"> </span><span class="n">laddr</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; local IP address */</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">__cne_aligned</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">));</span>
 
-    <span class="k">struct</span> <span class="nc">pcb_entry</span> <span class="p">{</span>
-        <span class="n">TAILQ_ENTRY</span><span class="p">(</span><span class="n">pcb_entry</span><span class="p">)</span> <span class="n">next</span><span class="p">;</span> <span class="cm">/**&lt; Pointer to the next pcb_entry in a list */</span>
-        <span class="k">struct</span> <span class="nc">pcb_key</span> <span class="n">key</span><span class="p">;</span>          <span class="cm">/**&lt; Key values for PCB entry */</span>
-        <span class="k">struct</span> <span class="nc">netif</span> <span class="o">*</span><span class="n">netif</span><span class="p">;</span>         <span class="cm">/**&lt; Netif pointer */</span>
-        <span class="k">struct</span> <span class="nc">chnl</span> <span class="o">*</span><span class="n">ch</span><span class="p">;</span>             <span class="cm">/**&lt; Channel pointer */</span>
-        <span class="k">struct</span> <span class="nc">tcb_entry</span> <span class="o">*</span><span class="n">tcb</span><span class="p">;</span>       <span class="cm">/**&lt; TCB pointer */</span>
-        <span class="kt">uint16_t</span> <span class="n">opt_flag</span><span class="p">;</span>           <span class="cm">/**&lt; Option flags */</span>
-        <span class="kt">uint8_t</span> <span class="n">ttl</span><span class="p">;</span>                 <span class="cm">/**&lt; Time to live */</span>
-        <span class="kt">uint8_t</span> <span class="n">tos</span><span class="p">;</span>                 <span class="cm">/**&lt; TOS value */</span>
-        <span class="kt">uint8_t</span> <span class="n">closed</span><span class="p">;</span>              <span class="cm">/**&lt; Closed flag */</span>
-        <span class="kt">uint8_t</span> <span class="n">ip_proto</span><span class="p">;</span>            <span class="cm">/**&lt; IP protocol number */</span>
-    <span class="p">}</span> <span class="n">__cne_cache_aligned</span><span class="p">;</span>
+<span class="w">    </span><span class="k">struct</span><span class="w"> </span><span class="nc">pcb_entry</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">TAILQ_ENTRY</span><span class="p">(</span><span class="n">pcb_entry</span><span class="p">)</span><span class="w"> </span><span class="n">next</span><span class="p">;</span><span class="w"> </span><span class="cm">/**&lt; Pointer to the next pcb_entry in a list */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">pcb_key</span><span class="w"> </span><span class="n">key</span><span class="p">;</span><span class="w">          </span><span class="cm">/**&lt; Key values for PCB entry */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">netif</span><span class="w"> </span><span class="o">*</span><span class="n">netif</span><span class="p">;</span><span class="w">         </span><span class="cm">/**&lt; Netif pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">chnl</span><span class="w"> </span><span class="o">*</span><span class="n">ch</span><span class="p">;</span><span class="w">             </span><span class="cm">/**&lt; Channel pointer */</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">tcb_entry</span><span class="w"> </span><span class="o">*</span><span class="n">tcb</span><span class="p">;</span><span class="w">       </span><span class="cm">/**&lt; TCB pointer */</span>
+<span class="w">        </span><span class="kt">uint16_t</span><span class="w"> </span><span class="n">opt_flag</span><span class="p">;</span><span class="w">           </span><span class="cm">/**&lt; Option flags */</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ttl</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; Time to live */</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">tos</span><span class="p">;</span><span class="w">                 </span><span class="cm">/**&lt; TOS value */</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">closed</span><span class="p">;</span><span class="w">              </span><span class="cm">/**&lt; Closed flag */</span>
+<span class="w">        </span><span class="kt">uint8_t</span><span class="w"> </span><span class="n">ip_proto</span><span class="p">;</span><span class="w">            </span><span class="cm">/**&lt; IP protocol number */</span>
+<span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="n">__cne_cache_aligned</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
@@ -452,8 +450,9 @@ application/protocols to locate an active <em>PCBs</em>.</p>
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">10. CNET Stack Library</a><ul>
 <li><a class="reference internal" href="#overview">10.1. Overview</a></li>
 <li><a class="reference internal" href="#cnet-pod-container-overview">10.2. CNET Pod/Container Overview</a></li>
@@ -473,12 +472,17 @@ application/protocols to locate an active <em>PCBs</em>.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="xskdev_buffer_mgmt.html"
-                        title="previous chapter"><span class="section-number">9. </span>xskdev Buffer Management</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="glossary.html"
-                        title="next chapter"><span class="section-number">11. </span>Glossary</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="xskdev_buffer_mgmt.html"
+                          title="previous chapter"><span class="section-number">9. </span>xskdev Buffer Management</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="glossary.html"
+                          title="next chapter"><span class="section-number">11. </span>Glossary</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -490,12 +494,12 @@ application/protocols to locate an active <em>PCBs</em>.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -518,7 +522,7 @@ application/protocols to locate an active <em>PCBs</em>.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

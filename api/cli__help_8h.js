@@ -1,6 +1,6 @@
 var cli__help_8h =
 [
-    [ "cli_help_find_group", "cli__help_8h.html#a9b51858eff8b86304f83052dc6346fea", null ],
+    [ "cli_help_find_group", "cli__help_8h.html#a29d59b25a816845633ca973695d801f9", null ],
     [ "cli_help_show_all", "cli__help_8h.html#a489ae625cfe9ef1f66a05ae05e3efeef", null ],
     [ "cli_help_show_group", "cli__help_8h.html#a0b4df05463485b8dbe46a7eba8d4fdcd", null ],
     [ "cli_help_add", "cli__help_8h.html#afeb9061f75f17613e89d5655014c39c2", null ],

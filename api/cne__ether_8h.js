@@ -51,5 +51,5 @@ var cne__ether_8h =
     [ "ether_addr_copy", "cne__ether_8h.html#abc74ad76505ddb8e8866e17fef111600", null ],
     [ "ether_format_addr", "cne__ether_8h.html#aabd39013b615c02f7c43a1ec57a2bf2e", null ],
     [ "ether_unformat_addr", "cne__ether_8h.html#ac8fd4f9edba35cc79e17d3a2c08baef3", null ],
-    [ "cne_ether_aton", "cne__ether_8h.html#aeabc1a2392c03be9a20a6087bd0a5b95", null ]
+    [ "cne_ether_aton", "cne__ether_8h.html#a99555bbc64fe3b5864886bbdd12d510a", null ]
 ];

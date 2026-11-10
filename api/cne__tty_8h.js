@@ -10,7 +10,7 @@ var cne__tty_8h =
     [ "tty_set_wchanged", "cne__tty_8h.html#acb421e875e472acf296cad3f112a7130", null ],
     [ "tty_clear_wchanged", "cne__tty_8h.html#a47b75483ff0f75b937f6588669b6ed0b", null ],
     [ "tty_did_wchange", "cne__tty_8h.html#ae98eb4ae8a575331a70a5bb503a226c0", null ],
-    [ "tty_window_size", "cne__tty_8h.html#a04495f80563319b3923b2506e48677dd", null ],
+    [ "tty_window_size", "cne__tty_8h.html#a1e8448565d0db7a8d8ba979099437c1b", null ],
     [ "tty_num_rows", "cne__tty_8h.html#a1e8686e67c4213495bc475ae9f402bd5", null ],
     [ "tty_num_columns", "cne__tty_8h.html#a64a056e80e8231a2b6e95de9fe6e9eec", null ],
     [ "tty_poll", "cne__tty_8h.html#a166f3fcfb2c5d527bb5159511e6cfc6c", null ],

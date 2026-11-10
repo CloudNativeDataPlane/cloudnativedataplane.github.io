@@ -108,7 +108,7 @@ var cne__cpuflags_8h =
       [ "CNE_CPUFLAG_WAITPKG", "cne__cpuflags_8h.html#a176ef6b9de9d5c35df6e9b2b6521eadcad2ee046730fc1b5547b11c1d6f59a884", null ],
       [ "CNE_CPUFLAG_NUMFLAGS", "cne__cpuflags_8h.html#a176ef6b9de9d5c35df6e9b2b6521eadca427cacf182aee9acbd288da61a08b8ba", null ]
     ] ],
-    [ "cne_cpu_get_flag_name", "cne__cpuflags_8h.html#a3ce165eae39401b1951243adc5aec7fd", null ],
+    [ "cne_cpu_get_flag_name", "cne__cpuflags_8h.html#ae5c5e45dff2f71d63a40fb07083d2727", null ],
     [ "cne_cpu_get_flag_enabled", "cne__cpuflags_8h.html#a3f764b6f3a3e23845093a166ded04221", null ],
     [ "cne_cpu_is_supported", "cne__cpuflags_8h.html#ae68c95efa9244c490e26ff0d4bf878d1", null ],
     [ "cne_cpu_getauxval", "cne__cpuflags_8h.html#a445d89e2084c37544116c89261896e40", null ],

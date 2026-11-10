@@ -8,7 +8,7 @@ var cne__graph__worker_8h =
     [ "cne_node_enqueue_x2", "cne__graph__worker_8h.html#a402b503acf86d096b42aeee8a1dafc5f", null ],
     [ "cne_node_enqueue_x4", "cne__graph__worker_8h.html#a2790c4fe9e78c05ef5c1ae1aa052f985", null ],
     [ "cne_node_enqueue_next", "cne__graph__worker_8h.html#ad311884a53bcb49368abe9e259a60221", null ],
-    [ "cne_node_next_stream_get", "cne__graph__worker_8h.html#a638fa3d6f8ab6cf07b321765ff6aaa22", null ],
+    [ "cne_node_next_stream_get", "cne__graph__worker_8h.html#ab3c98cf889a3d586cba4b0ba6927f2b5", null ],
     [ "cne_node_next_stream_put", "cne__graph__worker_8h.html#aaec818d5e5a68c3e516bce062dcb920c", null ],
     [ "cne_node_next_stream_move", "cne__graph__worker_8h.html#a3011f17e55f14be3e886571e29591aa2", null ]
 ];
