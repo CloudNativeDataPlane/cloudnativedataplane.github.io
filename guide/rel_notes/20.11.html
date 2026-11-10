@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>8. CNDP Release 20.11 &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,9 +80,9 @@
           <div class="body" role="main">
             
   <section id="cndp-release-20-11">
-<h1><span class="section-number">8. </span>CNDP Release 20.11<a class="headerlink" href="#cndp-release-20-11" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">8. </span>CNDP Release 20.11<a class="headerlink" href="#cndp-release-20-11" title="Link to this heading">¶</a></h1>
 <section id="new-features">
-<h2><span class="section-number">8.1. </span>New Features<a class="headerlink" href="#new-features" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.1. </span>New Features<a class="headerlink" href="#new-features" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>xskdev</strong>
 A new low level API that allows quick and easy access to an AF_XDP channel.</p></li>
@@ -97,7 +95,7 @@ A new low level API that allows quick and easy access to an AF_XDP channel.</p><
 </ul>
 </section>
 <section id="known-issues">
-<h2><span class="section-number">8.2. </span>Known Issues<a class="headerlink" href="#known-issues" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.2. </span>Known Issues<a class="headerlink" href="#known-issues" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>The following Testcne test suites are currently failing: loop</p></li>
 <li><p>The example apps (xdpfwd and pktfwd) are sending all 0s packets in tx-only mode.</p></li>
@@ -105,19 +103,19 @@ A new low level API that allows quick and easy access to an AF_XDP channel.</p><
 </ul>
 </section>
 <section id="limitations">
-<h2><span class="section-number">8.3. </span>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.3. </span>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Currently the Prometheus go agent only supports collecting metrics from one CNDP process. It will be extended in the follow up release to support multiple processes.</p></li>
 </ul>
 </section>
 <section id="tested-platforms">
-<h2><span class="section-number">8.4. </span>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.4. </span>Tested Platforms<a class="headerlink" href="#tested-platforms" title="Link to this heading">¶</a></h2>
 <ul class="simple">
 <li><p><strong>Intel® Server System R2000WF Family</strong></p></li>
 </ul>
 </section>
 <section id="tested-nics">
-<h2><span class="section-number">8.5. </span>Tested NICs<a class="headerlink" href="#tested-nics" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">8.5. </span>Tested NICs<a class="headerlink" href="#tested-nics" title="Link to this heading">¶</a></h2>
 <ol class="arabic simple">
 <li><p><strong>Ethernet controller: Intel Corporation Ethernet Controller XXV710 for 25GbE SFP28 (rev 02)</strong></p>
 <ul class="simple">
@@ -139,8 +137,9 @@ A new low level API that allows quick and easy access to an AF_XDP channel.</p><
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">8. CNDP Release 20.11</a><ul>
 <li><a class="reference internal" href="#new-features">8.1. New Features</a></li>
 <li><a class="reference internal" href="#known-issues">8.2. Known Issues</a></li>
@@ -151,12 +150,17 @@ A new low level API that allows quick and easy access to an AF_XDP channel.</p><
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="21.01.html"
-                        title="previous chapter"><span class="section-number">7. </span>CNDP Release 21.01</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="20.06.html"
-                        title="next chapter"><span class="section-number">9. </span>CNDP Release 20.06</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="21.01.html"
+                          title="previous chapter"><span class="section-number">7. </span>CNDP Release 21.01</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="20.06.html"
+                          title="next chapter"><span class="section-number">9. </span>CNDP Release 20.06</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -168,12 +172,12 @@ A new low level API that allows quick and easy access to an AF_XDP channel.</p><
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -196,7 +200,7 @@ A new low level API that allows quick and easy access to an AF_XDP channel.</p><
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

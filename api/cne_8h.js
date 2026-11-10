@@ -1,6 +1,6 @@
 var cne_8h =
 [
-    [ "on_exit_fn_t", "cne_8h.html#ad8b7898f0b6e1c524eef5487b8746c5d", null ],
+    [ "on_exit_fn_t", "cne_8h.html#a08a9d1ad7a5e8f7a72a3c700a4494335", null ],
     [ "cne_init", "cne_8h.html#a2dd46e2096148023d060831f7868b74a", null ],
     [ "cne_on_exit", "cne_8h.html#ae44241df5dc9d02f736816190d3d42c5", null ],
     [ "cne_initial_uid", "cne_8h.html#ae8a5466aef77ae234ff1ca4e15a9455d", null ],
@@ -14,7 +14,7 @@ var cne_8h =
     [ "cne_next_id", "cne_8h.html#a4bd11f1eef8bda50229bd5fe3dbb0cb7", null ],
     [ "cne_active_threads", "cne_8h.html#aeb5e1766bc211c8330c06d46b8e3e7b1", null ],
     [ "cne_dump", "cne_8h.html#a8a44cd4dc16bcb0fb4bc015021bd7bda", null ],
-    [ "copyright_msg", "cne_8h.html#a8304f031c62e79166312cf53281f7b49", null ],
-    [ "copyright_msg_short", "cne_8h.html#a3c15ce6f1b8f4f05a2f7422b658a63e7", null ],
-    [ "powered_by", "cne_8h.html#aa9a254220cbf55952fc2b95c6d0b9da2", null ]
+    [ "copyright_msg", "cne_8h.html#aca56b90639dc17fd6cff864e4aa08417", null ],
+    [ "copyright_msg_short", "cne_8h.html#a2a13c779f57d615a007cf95350f25d80", null ],
+    [ "powered_by", "cne_8h.html#affd8898b9eb1e1b4f6141a93bda24289", null ]
 ];

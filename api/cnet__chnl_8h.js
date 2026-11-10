@@ -1,7 +1,7 @@
 var cnet__chnl_8h =
 [
     [ "CHNL_ENABLE_UDP_CHECKSUM", "cnet__chnl_8h.html#a244d5814303c8b1f85ff72fa6c590879", null ],
-    [ "chnl_cb_t", "cnet__chnl_8h.html#a1c492cd7780694802517b272f70713b8", null ],
+    [ "chnl_cb_t", "cnet__chnl_8h.html#a6c55f5c1a7a78594ab00eba11e2645c0", null ],
     [ "chnl_type_t", "cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32", [
       [ "CHNL_UDP_RECV_TYPE", "cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a20bfa0c83f6f4d6d6f7d366bfae0aabc", null ],
       [ "CHNL_UDP_CLOSE_TYPE", "cnet__chnl_8h.html#a16d5a2be8b471f30f4ae3e3a6f599f32a1448987a6590dd41079e2f51452390e1", null ],

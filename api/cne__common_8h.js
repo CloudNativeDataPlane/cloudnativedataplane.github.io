@@ -33,7 +33,6 @@ var cne__common_8h =
     [ "CNE_BUILD_BUG_ON", "cne__common_8h.html#ada74b77831aef8ce9f7b0900f2f048f0", null ],
     [ "CNE_CACHE_LINE_MASK", "cne__common_8h.html#ade94c4dd464d76ac49325adef70b5d81", null ],
     [ "CNE_CACHE_LINE_ROUNDUP", "cne__common_8h.html#a101b957706ef1e14194e039dcd31222e", null ],
-    [ "CNE_CACHE_LINE_SIZE_LOG2", "cne__common_8h.html#a041a482ddc86d0be3c8f45ce2983b342", null ],
     [ "CNE_CACHE_LINE_MIN_SIZE", "cne__common_8h.html#a3166f771bccd19c802eb2855d5855a06", null ],
     [ "__cne_cache_aligned", "cne__common_8h.html#af3b280a130272d71c7a94e854dc274a7", null ],
     [ "__cne_cache_min_aligned", "cne__common_8h.html#a9a22f93cd5b22eadb5984216acfce0dc", null ],

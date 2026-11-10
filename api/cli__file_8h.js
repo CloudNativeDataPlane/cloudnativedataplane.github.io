@@ -11,13 +11,13 @@ var cli__file_8h =
     [ "is_seek_set", "cli__file_8h.html#a133205f4a128b6f22547b8281f1226fe", null ],
     [ "is_seek_cur", "cli__file_8h.html#a09b94f952e9c6961781af487591a39de", null ],
     [ "is_seek_end", "cli__file_8h.html#a41725c0b81eb100c24e0d8032eba9d03", null ],
-    [ "cli_file_open", "cli__file_8h.html#ac6e53171378bc94eb097e0a6cad4f3d3", null ],
+    [ "cli_file_open", "cli__file_8h.html#a135d43e08697a9f29ae67d2e5b3e1ccd", null ],
     [ "cli_file_close", "cli__file_8h.html#a8743436e307022826a359e51b0aa113a", null ],
     [ "cli_file_read", "cli__file_8h.html#a48862229a6a8f07bf85301e9fc8e4c14", null ],
     [ "cli_file_write", "cli__file_8h.html#ac92c5464936e4dea272d83aa449edf67", null ],
     [ "cli_file_seek", "cli__file_8h.html#a689fe3c699892b16bc68f286d1521fd3", null ],
     [ "cli_readline", "cli__file_8h.html#a2087d0060fb66355fe81663c82062542", null ],
-    [ "cli_file_create", "cli__file_8h.html#a2f1e268ba0ba72b4f39f095ff1d072ab", null ],
+    [ "cli_file_create", "cli__file_8h.html#a93a8dde2fb34aea8ddb6bba2ccf7433d", null ],
     [ "cli_file_handler", "cli__file_8h.html#a4aab33f7a95fe1ecb6884a44e3beb632", null ],
     [ "cli_system", "cli__file_8h.html#aa662578c8d179745dfbe38de6e889f4f", null ]
 ];

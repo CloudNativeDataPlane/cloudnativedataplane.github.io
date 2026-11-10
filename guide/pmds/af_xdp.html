@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3. AF_XDP Poll Mode Driver &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,7 +80,7 @@
           <div class="body" role="main">
             
   <section id="af-xdp-poll-mode-driver">
-<h1><span class="section-number">3. </span>AF_XDP Poll Mode Driver<a class="headerlink" href="#af-xdp-poll-mode-driver" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3. </span>AF_XDP Poll Mode Driver<a class="headerlink" href="#af-xdp-poll-mode-driver" title="Link to this heading">¶</a></h1>
 <p>AF_XDP is an address family that is optimized for high performance
 packet processing. AF_XDP sockets enable the possibility for XDP program to
 redirect packets to a memory buffer in userspace.</p>
@@ -105,7 +103,7 @@ queue pair rather than interacting with the full netdev.</p>
 <p>The image below shows the logical view of lports</p>
 <img alt="../images/lport_logical_view.png" src="../images/lport_logical_view.png" />
 <section id="prerequisites">
-<h2><span class="section-number">3.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading">¶</a></h2>
 <p>This is a Linux-specific PMD, thus the following prerequisites apply:</p>
 <ul class="simple">
 <li><p>A Linux Kernel (version &gt; v4.18) with XDP sockets configuration enabled;</p></li>
@@ -119,7 +117,7 @@ User can install libbpf via <cite>make install_lib</cite> &amp;&amp; <cite>make 
 </ul>
 </section>
 <section id="limitations">
-<h2><span class="section-number">3.2. </span>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Limitations<a class="headerlink" href="#limitations" title="Link to this heading">¶</a></h2>
 <ul>
 <li><p><strong>MTU</strong></p>
 <p>The MTU of the AF_XDP PMD is limited due to the XDP requirement of one packet
@@ -140,7 +138,7 @@ conditions as above is set prior to launching the application.</p>
 </ul>
 </section>
 <section id="busy-polling">
-<h2><span class="section-number">3.3. </span>Busy Polling<a class="headerlink" href="#busy-polling" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Busy Polling<a class="headerlink" href="#busy-polling" title="Link to this heading">¶</a></h2>
 <p>As described in <a class="reference external" href="https://lwn.net/Articles/837010/">Introduce preferred busy-polling</a> the
 AF_XDP PMD can be configured to use busy-polling. This can reduce interrupt overhead and improve
 performance for workloads where the interrupt is assigned to the same core as the application
@@ -148,15 +146,15 @@ thread processing the queue. In other words, the userspace processing and the ke
 run on the same core, without Rx interrupts.</p>
 <p>To configure busy polling, first the napi_defer_hard_irqs and gro_flush_timeout knobs must be
 programmed. This is <em>not</em> done automatically by CNDP.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span> <span class="m">2</span> <span class="p">|</span> sudo tee /sys/class/net/eth0/napi_defer_hard_irqs
-<span class="gp">$ </span><span class="nb">echo</span> <span class="m">200000</span> <span class="p">|</span> sudo tee /sys/class/net/eth0/gro_flush_timeout
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/sys/class/net/eth0/napi_defer_hard_irqs
+<span class="gp">$ </span><span class="nb">echo</span><span class="w"> </span><span class="m">200000</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/sys/class/net/eth0/gro_flush_timeout
 </pre></div>
 </div>
 <p>The busy polling settings can be configured in the json file:</p>
-<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">busy_poll</span>     <span class="o">-</span> <span class="n">Enable</span> <span class="n">busy</span> <span class="n">polling</span> <span class="n">support</span><span class="p">,</span> <span class="nb">true</span> <span class="n">or</span> <span class="nb">false</span><span class="p">,</span> <span class="k">default</span> <span class="nb">false</span>
-<span class="n">busy_polling</span>  <span class="o">-</span>   <span class="n">Same</span> <span class="n">as</span> <span class="n">above</span>
-<span class="n">busy_timeout</span>  <span class="o">-</span> <span class="mi">1-65535</span> <span class="n">or</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">use</span> <span class="k">default</span> <span class="n">value</span><span class="p">,</span> <span class="n">values</span> <span class="n">in</span> <span class="n">milliseconds</span>
-<span class="n">busy_budget</span>   <span class="o">-</span> <span class="mh">0xFFFF</span> <span class="n">disabled</span><span class="p">,</span> <span class="mi">0</span> <span class="n">use</span> <span class="k">default</span><span class="p">,</span> <span class="o">&gt;</span><span class="mi">0</span> <span class="n">budget</span> <span class="n">value</span>
+<div class="highlight-C notranslate"><div class="highlight"><pre><span></span><span class="n">busy_poll</span><span class="w">     </span><span class="o">-</span><span class="w"> </span><span class="n">Enable</span><span class="w"> </span><span class="n">busy</span><span class="w"> </span><span class="n">polling</span><span class="w"> </span><span class="n">support</span><span class="p">,</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="nb">false</span><span class="p">,</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="nb">false</span>
+<span class="n">busy_polling</span><span class="w">  </span><span class="o">-</span><span class="w">   </span><span class="n">Same</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">above</span>
+<span class="n">busy_timeout</span><span class="w">  </span><span class="o">-</span><span class="w"> </span><span class="mi">1-65535</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="n">value</span><span class="p">,</span><span class="w"> </span><span class="n">values</span><span class="w"> </span><span class="n">in</span><span class="w"> </span><span class="n">milliseconds</span>
+<span class="n">busy_budget</span><span class="w">   </span><span class="o">-</span><span class="w"> </span><span class="mh">0xFFFF</span><span class="w"> </span><span class="n">disabled</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="k">default</span><span class="p">,</span><span class="w"> </span><span class="o">&gt;</span><span class="mi">0</span><span class="w"> </span><span class="n">budget</span><span class="w"> </span><span class="n">value</span>
 </pre></div>
 </div>
 <p>Configuring busy polling is a privileged operation. For more information on how to configure this
@@ -174,8 +172,9 @@ setting in an unprivileged container, see <a class="reference internal" href="..
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">3. AF_XDP Poll Mode Driver</a><ul>
 <li><a class="reference internal" href="#prerequisites">3.1. Prerequisites</a></li>
 <li><a class="reference internal" href="#limitations">3.2. Limitations</a></li>
@@ -184,12 +183,17 @@ setting in an unprivileged container, see <a class="reference internal" href="..
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="af_packet.html"
-                        title="previous chapter"><span class="section-number">2. </span>AF_PACKET Poll Mode Driver</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="memif.html"
-                        title="next chapter"><span class="section-number">4. </span>Memif Poll Mode Driver</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="af_packet.html"
+                          title="previous chapter"><span class="section-number">2. </span>AF_PACKET Poll Mode Driver</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="memif.html"
+                          title="next chapter"><span class="section-number">4. </span>Memif Poll Mode Driver</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -201,12 +205,12 @@ setting in an unprivileged container, see <a class="reference internal" href="..
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -229,7 +233,7 @@ setting in an unprivileged container, see <a class="reference internal" href="..
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

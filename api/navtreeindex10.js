@@ -1,8 +1,5 @@
 var NAVTREEINDEX10 =
 {
-"structcne__graph__cluster__stats__param.html#abab3f31a5182176f13a707bee711461f":[2,0,22,0],
-"structcne__gre__hdr.html":[2,0,23],
-"structcne__gre__hdr.html#a0a079030ddf01045984049d505b8cf78":[2,0,23,2],
 "structcne__gre__hdr.html#a1b808201bbee86954ad833b7825f4078":[2,0,23,3],
 "structcne__gre__hdr.html#a3d20e34e76a5c87d55a3b5510c511711":[2,0,23,1],
 "structcne__gre__hdr.html#a3d66cc33d330dadd0f8f5014d791083c":[2,0,23,0],
@@ -249,5 +246,8 @@ var NAVTREEINDEX10 =
 "structjcfg__client__s.html":[2,0,63],
 "structjcfg__client__s.html#a339d22b3e442946380f98ed19e320db2":[2,0,63,0],
 "structjcfg__client__s.html#a5d86c19b2e4b5f2ad5e8e2ec6f3f6615":[2,0,63,1],
-"structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858":[2,0,63,2]
+"structjcfg__client__s.html#a779bfbbb688cf46720cfb65109ea4858":[2,0,63,2],
+"structjcfg__data.html":[2,0,64],
+"structjcfg__data.html#a021b45c40baf6bacc73b19555f06f59c":[2,0,64,11],
+"structjcfg__data.html#a02a7161c2871058e4a86092965f4fc5f":[2,0,64,3]
 };

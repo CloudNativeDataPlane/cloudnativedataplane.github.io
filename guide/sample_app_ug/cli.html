@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>3. CLI library guide &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,10 +80,10 @@
           <div class="body" role="main">
             
   <section id="cli-library-guide">
-<h1><span class="section-number">3. </span>CLI library guide<a class="headerlink" href="#cli-library-guide" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">3. </span>CLI library guide<a class="headerlink" href="#cli-library-guide" title="Link to this heading">¶</a></h1>
 <p>CLI stands for “Command Line Interface”.</p>
 <section id="overview">
-<h2><span class="section-number">3.1. </span>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.1. </span>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
 <p>The CLI library is a simple set of APIs which allow the developer to quickly
 create a set of commands using a simple programming interface already familiar
 to the developer.</p>
@@ -102,18 +100,18 @@ as access to the global thread variable called <strong>this_cli</strong> pointin
 struct cli variable.</p>
 </section>
 <section id="mapping-commands">
-<h2><span class="section-number">3.2. </span>Mapping commands<a class="headerlink" href="#mapping-commands" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.2. </span>Mapping commands<a class="headerlink" href="#mapping-commands" title="Link to this heading">¶</a></h2>
 <p>One other big advantage is the use of MAP structures, to help identify commands
 quickly plus allowing the developer to define new versions of commands and
 be able to identify these new versions using a simple identifier value.</p>
 <p>The format of the struct cli_map is:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">cli_map</span> <span class="n">show_map</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="cm">/* Index value, Mapping string */</span>
-    <span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;show&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;show %s&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="mi">30</span><span class="p">,</span> <span class="s">&quot;show %P stats&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="mi">40</span><span class="p">,</span> <span class="s">&quot;show %P %|link|errors|missed stats&quot;</span> <span class="p">},</span>
-    <span class="p">{</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">}</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_map</span><span class="w"> </span><span class="n">show_map</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="cm">/* Index value, Mapping string */</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %s&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %P stats&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %P %|link|errors|missed stats&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -134,11 +132,11 @@ fixed strings must match in that position.</p>
 commands for user development. To add a command a developer needs to add an
 entry to the cli_tree structure and create a function using the above
 prototype format.</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">cli_tree</span> <span class="n">my_tree</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">),</span>
-    <span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="n">hello_cmd</span><span class="p">,</span> <span class="s">&quot;simple hello world command&quot;</span><span class="p">),</span>
-    <span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;show&quot;</span><span class="p">,</span>  <span class="n">show_cmd</span><span class="p">,</span>  <span class="s">&quot;Show system information&quot;</span><span class="p">),</span>
-    <span class="n">c_end</span><span class="p">()</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_tree</span><span class="w"> </span><span class="n">my_tree</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">hello_cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;simple hello world command&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;show&quot;</span><span class="p">,</span><span class="w">  </span><span class="n">show_cmd</span><span class="p">,</span><span class="w">  </span><span class="s">&quot;Show system information&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_end</span><span class="p">()</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -160,7 +158,7 @@ needed. The cli variable being a thread Local Storage (TLS) all user routines
 can access <strong>this_cli</strong> to gain access to the CLI structure if required at all.</p>
 </section>
 <section id="environment-variables">
-<h2><span class="section-number">3.3. </span>Environment variables<a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.3. </span>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading">¶</a></h2>
 <p>The user can also set environment variables using the <strong>env</strong> command. These
 variables are also parsed in the command line as direct substitutions.</p>
 <p>Another special file is a string file, which can be used as an environment
@@ -177,14 +175,14 @@ the time of execution each time the command line is executed. Which means
 history lines with environment variables will be expanded again.</p>
 </section>
 <section id="simple-files">
-<h2><span class="section-number">3.4. </span>Simple Files<a class="headerlink" href="#simple-files" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.4. </span>Simple Files<a class="headerlink" href="#simple-files" title="Link to this heading">¶</a></h2>
 <p>The CLI system also has support for simple files along with alias like commands.
 These simple files are backed by a function call and the other commands can read
 these files to get constant data or generated data depending on how the backend
 function works.</p>
 </section>
 <section id="alias-commands">
-<h2><span class="section-number">3.5. </span>Alias commands<a class="headerlink" href="#alias-commands" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.5. </span>Alias commands<a class="headerlink" href="#alias-commands" title="Link to this heading">¶</a></h2>
 <p>The alias commands are fixed strings which are executed instead of a function
 provided by the developer. If the user has more arguments these are appended
 to the alias string and processed as if typed on the command line. Also the
@@ -246,7 +244,7 @@ shell command along with a directory like file system.</p>
 </div>
 </section>
 <section id="auto-completion">
-<h2><span class="section-number">3.6. </span>Auto completion<a class="headerlink" href="#auto-completion" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.6. </span>Auto completion<a class="headerlink" href="#auto-completion" title="Link to this heading">¶</a></h2>
 <p>CLI does support auto completion at the file or directory level, meaning the
 arguments to commands are not expanded as was done in Cmdline code. The CLI
 auto completion works similar to the standard Unix* system by expanding
@@ -254,7 +252,7 @@ commands and directory paths. In normal Unix* like commands the user needs to
 execute the command asking for help information.</p>
 </section>
 <section id="special-command-features">
-<h2><span class="section-number">3.7. </span>Special command features<a class="headerlink" href="#special-command-features" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.7. </span>Special command features<a class="headerlink" href="#special-command-features" title="Link to this heading">¶</a></h2>
 <p>Using the ‘!’ followed by a number from the history list of commands you can
 execute that command again. Or using the UP/Down arrows the user can quickly
 find and execute or modify a previous command in history.</p>
@@ -263,7 +261,7 @@ to a command line e.g. &#64;ls or &#64;lspci or … line is passed to popen or s
 function to be executed and the output displayed on the console if any output.</p>
 </section>
 <section id="running-the-application">
-<h2><span class="section-number">3.8. </span>Running the Application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.8. </span>Running the Application<a class="headerlink" href="#running-the-application" title="Link to this heading">¶</a></h2>
 <p>To run the application in linux environment, issue the following command:</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./builddir/cli
 </pre></div>
@@ -276,20 +274,20 @@ CNE initialization.</p>
 </div>
 </section>
 <section id="explanation">
-<h2><span class="section-number">3.9. </span>Explanation<a class="headerlink" href="#explanation" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">3.9. </span>Explanation<a class="headerlink" href="#explanation" title="Link to this heading">¶</a></h2>
 <p>The following sections provide some explanation of the code.</p>
 <section id="cne-initialization-and-cli-start">
-<h3><span class="section-number">3.9.1. </span>CNE Initialization and cli Start<a class="headerlink" href="#cne-initialization-and-cli-start" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.9.1. </span>CNE Initialization and cli Start<a class="headerlink" href="#cne-initialization-and-cli-start" title="Link to this heading">¶</a></h3>
 <p>The first task is the initialization of the Cloud Native Environment (CNE),
 if required for the application.</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span>
-<span class="nf">main</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">cli_create_with_tree</span><span class="p">(</span><span class="n">init_tree</span><span class="p">)</span> <span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
-        <span class="n">cli_start</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span> <span class="cm">/* NULL is some init message done only once */</span>
-                            <span class="cm">/* 0 means do not use color themes */</span>
-        <span class="n">cli_destroy</span><span class="p">();</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cli_create_with_tree</span><span class="p">(</span><span class="n">init_tree</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">cli_start</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span><span class="w"> </span><span class="cm">/* NULL is some init message done only once */</span>
+<span class="w">                            </span><span class="cm">/* 0 means do not use color themes */</span>
+<span class="w">        </span><span class="n">cli_destroy</span><span class="p">();</span>
+<span class="w">    </span><span class="p">}</span>
 </pre></div>
 </div>
 <p>The cli_start() function returns when the user types <strong>Ctrl-x</strong> or uses the
@@ -313,8 +311,8 @@ is the cli_create_with_tree(), which uses defaults for three of the arguments.</
 <span class="cm">* @return</span>
 <span class="cm">*   0 on success or -1</span>
 <span class="cm">*/</span>
-<span class="kt">int</span> <span class="nf">cli_create</span><span class="p">(</span><span class="n">cli_prompt_t</span> <span class="n">prompt_func</span><span class="p">,</span> <span class="n">cli_tree_t</span> <span class="n">tree_func</span><span class="p">,</span>
-                    <span class="kt">int</span> <span class="n">nb_entries</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">nb_hist</span><span class="p">);</span>
+<span class="kt">int</span><span class="w"> </span><span class="nf">cli_create</span><span class="p">(</span><span class="n">cli_prompt_t</span><span class="w"> </span><span class="n">prompt_func</span><span class="p">,</span><span class="w"> </span><span class="n">cli_tree_t</span><span class="w"> </span><span class="n">tree_func</span><span class="p">,</span>
+<span class="w">                    </span><span class="kt">int</span><span class="w"> </span><span class="n">nb_entries</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">nb_hist</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The cli_create_with_tree() has only one argument which is the structure to use
@@ -323,33 +321,33 @@ int cli_create_with_defaults(void) can be used as well.</p>
 <p>Consult the cli.h header file for the default values. Also the alias node is a
 special alias file to allow for aliasing a command to another command.</p>
 <p>The tree init routine is defined like:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">struct</span> <span class="nc">cli_tree</span> <span class="n">my_tree</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">),</span>
-    <span class="n">c_file</span><span class="p">(</span><span class="s">&quot;pci&quot;</span><span class="p">,</span> <span class="n">pci_file</span><span class="p">,</span> <span class="s">&quot;display lspci information&quot;</span><span class="p">),</span>
-    <span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">),</span>
-    <span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="n">hello_cmd</span><span class="p">,</span> <span class="s">&quot;Hello-World!!&quot;</span><span class="p">),</span>
-    <span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">,</span> <span class="s">&quot;history&quot;</span><span class="p">,</span> <span class="s">&quot;display history commands&quot;</span><span class="p">),</span>
-    <span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;ll&quot;</span><span class="p">,</span> <span class="s">&quot;ls -l&quot;</span><span class="p">,</span> <span class="s">&quot;long directory listing alias&quot;</span><span class="p">),</span>
-    <span class="n">c_end</span><span class="p">()</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_tree</span><span class="w"> </span><span class="n">my_tree</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_file</span><span class="p">(</span><span class="s">&quot;pci&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">pci_file</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;display lspci information&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">hello_cmd</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;Hello-World!!&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;history&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;display history commands&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;ll&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;ls -l&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;long directory listing alias&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_end</span><span class="p">()</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="kt">int</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span>
 <span class="nf">init_tree</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="cm">/*</span>
+<span class="w">    </span><span class="cm">/*</span>
 <span class="cm">     * Root is created already and using system default cmds and dirs, the</span>
 <span class="cm">     * developer is not required to use the system default cmds/dirs.</span>
 <span class="cm">     */</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">cli_default_tree_init</span><span class="p">())</span>
-        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cli_default_tree_init</span><span class="p">())</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 
-        <span class="cm">/* Using NULL here to start at root directory */</span>
-    <span class="k">if</span> <span class="p">(</span><span class="n">cli_add_tree</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span> <span class="n">my_tree</span><span class="p">))</span>
-        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="w">        </span><span class="cm">/* Using NULL here to start at root directory */</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">cli_add_tree</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">my_tree</span><span class="p">))</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 
-        <span class="n">cli_help_add</span><span class="p">(</span><span class="s">&quot;Show&quot;</span><span class="p">,</span> <span class="n">show_map</span><span class="p">,</span> <span class="n">show_help</span><span class="p">);</span>
+<span class="w">        </span><span class="n">cli_help_add</span><span class="p">(</span><span class="s">&quot;Show&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">show_map</span><span class="p">,</span><span class="w"> </span><span class="n">show_help</span><span class="p">);</span>
 
-        <span class="k">return</span> <span class="n">cli_add_bin_path</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">cli_add_bin_path</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -365,7 +363,7 @@ CLI routine, then he must call the cli_create_root() function first before
 adding other nodes. Other nodes can be added and removed at anytime.</p>
 </section>
 <section id="cli-map-command-support">
-<h3><span class="section-number">3.9.2. </span>CLI Map command support<a class="headerlink" href="#cli-map-command-support" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.9.2. </span>CLI Map command support<a class="headerlink" href="#cli-map-command-support" title="Link to this heading">¶</a></h3>
 <p>The CLI command has two types of support to handle arguments normal argc/argv
 and the map system. As shown above the developer creates a directory tree and
 attaches a function to a command. The function takes the argc/argv as arguments
@@ -386,145 +384,145 @@ the pointer the struct cli_map instance.</p>
 <p>Now the developer can use the cli_map.index value in a switch() statement to
 locate the command the user typed or if not found a return of -1.</p>
 <p>Example:</p>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">int</span>
-<span class="nf">hello_cmd</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span><span class="w"> </span><span class="kt">int</span>
+<span class="nf">hello_cmd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="kt">int</span> <span class="n">i</span><span class="p">,</span> <span class="n">opt</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">opt</span><span class="p">;</span>
 
-    <span class="n">optind</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">((</span><span class="n">opt</span> <span class="o">=</span> <span class="n">getopt</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">,</span> <span class="s">&quot;?&quot;</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">-1</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">switch</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">case</span> <span class="sc">&#39;?&#39;</span><span class="o">:</span> <span class="n">cli_usage</span><span class="p">();</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-            <span class="k">default</span><span class="o">:</span>
-                <span class="k">break</span><span class="p">;</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="n">optind</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">while</span><span class="p">((</span><span class="n">opt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">getopt</span><span class="p">(</span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;?&quot;</span><span class="p">))</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">switch</span><span class="p">(</span><span class="n">opt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="k">case</span><span class="w"> </span><span class="sc">&#39;?&#39;</span><span class="p">:</span><span class="w"> </span><span class="n">cli_usage</span><span class="p">();</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">            </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                </span><span class="k">break</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 
-    <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;Hello command said: Hello World!! &quot;</span><span class="p">);</span>
-    <span class="k">for</span><span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">argc</span><span class="p">;</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span>
-        <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;%s &quot;</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
-    <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;Hello command said: Hello World!! &quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="k">for</span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">argc</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span>
+<span class="w">        </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;%s &quot;</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="n">i</span><span class="p">]);</span>
+<span class="w">    </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">);</span>
 
-    <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="kt">int</span>
-<span class="nf">pci_file</span><span class="p">(</span><span class="k">struct</span> <span class="nc">cli_node</span> <span class="o">*</span><span class="n">node</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">buff</span><span class="p">,</span> <span class="kt">int</span> <span class="n">len</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">opt</span><span class="p">)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span>
+<span class="nf">pci_file</span><span class="p">(</span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_node</span><span class="w"> </span><span class="o">*</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">buff</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">opt</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="n">is_file_open</span><span class="p">(</span><span class="n">opt</span><span class="p">))</span> <span class="p">{</span>
-                <span class="kt">FILE</span> <span class="o">*</span><span class="n">f</span><span class="p">;</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">is_file_open</span><span class="p">(</span><span class="n">opt</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="kt">FILE</span><span class="w"> </span><span class="o">*</span><span class="n">f</span><span class="p">;</span>
 
-                <span class="k">if</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span> <span class="o">&amp;&amp;</span> <span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">fflags</span> <span class="o">&amp;</span> <span class="n">CLI_FREE_DATA</span><span class="p">))</span>
-                        <span class="n">free</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">fflags</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">CLI_FREE_DATA</span><span class="p">))</span>
+<span class="w">                        </span><span class="n">free</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="p">);</span>
 
-        <span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span> <span class="o">=</span> <span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="p">)</span>
-                        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
-        <span class="n">node</span><span class="o">-&gt;</span><span class="n">file_size</span> <span class="o">=</span> <span class="mi">32</span> <span class="o">*</span> <span class="mi">1024</span><span class="p">;</span>
-        <span class="n">node</span><span class="o">-&gt;</span><span class="n">fflags</span> <span class="o">=</span> <span class="n">CLI_DATA_RDONLY</span> <span class="o">|</span> <span class="n">CLI_FREE_DATA</span><span class="p">;</span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">calloc</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="p">)</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">32</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1024</span><span class="p">;</span>
+<span class="w">        </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">fflags</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CLI_DATA_RDONLY</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">CLI_FREE_DATA</span><span class="p">;</span>
 
-                <span class="n">f</span> <span class="o">=</span> <span class="n">popen</span><span class="p">(</span><span class="s">&quot;lspci&quot;</span><span class="p">,</span> <span class="s">&quot;r&quot;</span><span class="p">);</span>
-                <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span>
-                        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="w">                </span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">popen</span><span class="p">(</span><span class="s">&quot;lspci&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">);</span>
+<span class="w">                </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">f</span><span class="p">)</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 
-                <span class="n">node</span><span class="o">-&gt;</span><span class="n">file_size</span> <span class="o">=</span> <span class="n">fread</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">node</span><span class="o">-&gt;</span><span class="n">file_size</span><span class="p">,</span> <span class="n">f</span><span class="p">);</span>
+<span class="w">                </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fread</span><span class="p">(</span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_data</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">node</span><span class="o">-&gt;</span><span class="n">file_size</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">);</span>
 
-                <span class="n">pclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="p">}</span>
-    <span class="k">return</span> <span class="n">cli_file_handler</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">buff</span><span class="p">,</span> <span class="n">len</span><span class="p">,</span> <span class="n">opt</span><span class="p">);</span>
+<span class="w">                </span><span class="n">pclose</span><span class="p">(</span><span class="n">f</span><span class="p">);</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">cli_file_handler</span><span class="p">(</span><span class="n">node</span><span class="p">,</span><span class="w"> </span><span class="n">buff</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">opt</span><span class="p">);</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="k">struct</span> <span class="nc">cli_map</span> <span class="n">show_map</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="p">{</span> <span class="mi">10</span><span class="p">,</span> <span class="s">&quot;show %P&quot;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="mi">20</span><span class="p">,</span> <span class="s">&quot;show %P mac %m&quot;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="mi">30</span><span class="p">,</span> <span class="s">&quot;show %P vlan %d mac %m&quot;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="mi">40</span><span class="p">,</span> <span class="s">&quot;show %P %|vlan|mac&quot;</span> <span class="p">},</span>
-        <span class="p">{</span> <span class="mi">-1</span><span class="p">,</span> <span class="nb">NULL</span> <span class="p">}</span>
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_map</span><span class="w"> </span><span class="n">show_map</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %P&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="mi">20</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %P mac %m&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="mi">30</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %P vlan %d mac %m&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;show %P %|vlan|mac&quot;</span><span class="w"> </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span><span class="w"> </span><span class="mi">-1</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="w"> </span><span class="p">}</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">show_help</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s">&quot;show &lt;portlist&gt;&quot;</span><span class="p">,</span>
-        <span class="s">&quot;show &lt;portlist&gt; mac &lt;m_ether_addr&gt;&quot;</span><span class="p">,</span>
-        <span class="s">&quot;show &lt;portlist&gt; vlan &lt;vlanid&gt; mac &lt;m_ether_addr&gt;&quot;</span><span class="p">,</span>
-        <span class="s">&quot;show &lt;portlist&gt; [vlan|mac]&quot;</span><span class="p">,</span>
-        <span class="n">CLI_HELP_PAUSE</span><span class="p">,</span>
-        <span class="nb">NULL</span>
+<span class="k">static</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="n">show_help</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="s">&quot;show &lt;portlist&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;show &lt;portlist&gt; mac &lt;m_ether_addr&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;show &lt;portlist&gt; vlan &lt;vlanid&gt; mac &lt;m_ether_addr&gt;&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="s">&quot;show &lt;portlist&gt; [vlan|mac]&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="n">CLI_HELP_PAUSE</span><span class="p">,</span>
+<span class="w">        </span><span class="nb">NULL</span>
 <span class="p">};</span>
 
-<span class="k">static</span> <span class="kt">int</span>
-<span class="nf">show_cmd</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
+<span class="k">static</span><span class="w"> </span><span class="kt">int</span>
+<span class="nf">show_cmd</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
-        <span class="k">struct</span> <span class="nc">cli_map</span> <span class="o">*</span><span class="n">m</span><span class="p">;</span>
-        <span class="kt">uint32_t</span> <span class="n">portlist</span><span class="p">;</span>
-        <span class="k">struct</span> <span class="nc">m_ether_addr</span> <span class="n">mac</span><span class="p">;</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_map</span><span class="w"> </span><span class="o">*</span><span class="n">m</span><span class="p">;</span>
+<span class="w">        </span><span class="kt">uint32_t</span><span class="w"> </span><span class="n">portlist</span><span class="p">;</span>
+<span class="w">        </span><span class="k">struct</span><span class="w"> </span><span class="nc">m_ether_addr</span><span class="w"> </span><span class="n">mac</span><span class="p">;</span>
 
-        <span class="n">m</span> <span class="o">=</span> <span class="n">cli_mapping</span><span class="p">(</span><span class="n">Show_info</span><span class="p">.</span><span class="n">map</span><span class="p">,</span> <span class="n">argc</span><span class="p">,</span> <span class="n">argv</span><span class="p">);</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">m</span><span class="p">)</span>
-                <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
+<span class="w">        </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cli_mapping</span><span class="p">(</span><span class="n">Show_info</span><span class="p">.</span><span class="n">map</span><span class="p">,</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">);</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">m</span><span class="p">)</span>
+<span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
 
-        <span class="k">switch</span><span class="p">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">)</span> <span class="p">{</span>
-                <span class="k">case</span> <span class="mi">10</span><span class="o">:</span>
-                        <span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
-                        <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">portlist</span><span class="p">);</span>
-                        <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="mi">20</span><span class="o">:</span>
-                        <span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
-                        <span class="n">m_ether_aton</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">mac</span><span class="p">);</span>
-                        <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x, MAC: %02x:%02x:%02x:%02x:%02x:%02x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
-                                           <span class="n">portlist</span><span class="p">,</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
-                        <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="mi">30</span><span class="o">:</span>
-                        <span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
-                        <span class="n">m_ether_aton</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">mac</span><span class="p">);</span>
-                        <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x vlan %d MAC: %02x:%02x:%02x:%02x:%02x:%02x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
-                                           <span class="n">portlist</span><span class="p">,</span>
-                                           <span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
-                        <span class="k">break</span><span class="p">;</span>
-                <span class="k">case</span> <span class="mi">40</span><span class="o">:</span>
-                        <span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
-                        <span class="n">m_ether_aton</span><span class="p">(</span><span class="s">&quot;1234:4567:8901&quot;</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">mac</span><span class="p">);</span>
-                        <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x %s: &quot;</span><span class="p">,</span>
-                                           <span class="n">portlist</span><span class="p">,</span> <span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
-                        <span class="k">if</span> <span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="sc">&#39;m&#39;</span><span class="p">)</span>
-                                <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;%02x:%02x:%02x:%02x:%02x:%02x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
-                                           <span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
-                        <span class="k">else</span>
-                                <span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span> <span class="mi">101</span><span class="p">);</span>
-                        <span class="k">break</span><span class="p">;</span>
-                <span class="k">default</span><span class="o">:</span>
-                        <span class="n">cli_help_show_group</span><span class="p">(</span><span class="s">&quot;Show&quot;</span><span class="p">);</span>
-                        <span class="k">return</span> <span class="mi">-1</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="k">return</span> <span class="mi">0</span><span class="p">;</span>
+<span class="w">        </span><span class="k">switch</span><span class="p">(</span><span class="n">m</span><span class="o">-&gt;</span><span class="n">index</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mi">10</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">portlist</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mi">20</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">m_ether_aton</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mac</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x, MAC: %02x:%02x:%02x:%02x:%02x:%02x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">portlist</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mi">30</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">m_ether_aton</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mac</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x vlan %d MAC: %02x:%02x:%02x:%02x:%02x:%02x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">portlist</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">atoi</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="mi">40</span><span class="p">:</span>
+<span class="w">                        </span><span class="n">portlist_parse</span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="o">&amp;</span><span class="n">portlist</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">m_ether_aton</span><span class="p">(</span><span class="s">&quot;1234:4567:8901&quot;</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mac</span><span class="p">);</span>
+<span class="w">                        </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;   Show Portlist: %08x %s: &quot;</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">portlist</span><span class="p">,</span><span class="w"> </span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]);</span>
+<span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="sc">&#39;m&#39;</span><span class="p">)</span>
+<span class="w">                                </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;%02x:%02x:%02x:%02x:%02x:%02x</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span>
+<span class="w">                                           </span><span class="n">mac</span><span class="p">.</span><span class="n">ether_addr_octet</span><span class="p">[</span><span class="mi">5</span><span class="p">]);</span>
+<span class="w">                        </span><span class="k">else</span>
+<span class="w">                                </span><span class="n">cne_printf</span><span class="p">(</span><span class="s">&quot;%d</span><span class="se">\n</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">101</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">break</span><span class="p">;</span>
+<span class="w">                </span><span class="k">default</span><span class="o">:</span>
+<span class="w">                        </span><span class="n">cli_help_show_group</span><span class="p">(</span><span class="s">&quot;Show&quot;</span><span class="p">);</span>
+<span class="w">                        </span><span class="k">return</span><span class="w"> </span><span class="mi">-1</span><span class="p">;</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">static</span> <span class="k">struct</span> <span class="nc">cli_tree</span> <span class="n">my_tree</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">),</span>
-    <span class="n">c_file</span><span class="p">(</span><span class="s">&quot;pci&quot;</span><span class="p">,</span>       <span class="n">pci_file</span><span class="p">,</span>       <span class="s">&quot;display lspci information&quot;</span><span class="p">),</span>
-    <span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">),</span>
-    <span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;show&quot;</span><span class="p">,</span>       <span class="n">show_cmd</span><span class="p">,</span>       <span class="s">&quot;show mapping options&quot;</span><span class="p">),</span>
-    <span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span>      <span class="n">hello_cmd</span><span class="p">,</span>      <span class="s">&quot;Hello-World!!&quot;</span><span class="p">),</span>
-    <span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">,</span>        <span class="s">&quot;history&quot;</span><span class="p">,</span>      <span class="s">&quot;display history commands&quot;</span><span class="p">),</span>
-    <span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;ll&quot;</span><span class="p">,</span>       <span class="s">&quot;ls -l&quot;</span><span class="p">,</span>        <span class="s">&quot;long directory listing alias&quot;</span><span class="p">),</span>
-    <span class="n">c_end</span><span class="p">()</span>
+<span class="k">static</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">cli_tree</span><span class="w"> </span><span class="n">my_tree</span><span class="p">[]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/data&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_file</span><span class="p">(</span><span class="s">&quot;pci&quot;</span><span class="p">,</span><span class="w">       </span><span class="n">pci_file</span><span class="p">,</span><span class="w">       </span><span class="s">&quot;display lspci information&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_dir</span><span class="p">(</span><span class="s">&quot;/bin&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;show&quot;</span><span class="p">,</span><span class="w">       </span><span class="n">show_cmd</span><span class="p">,</span><span class="w">       </span><span class="s">&quot;show mapping options&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_cmd</span><span class="p">(</span><span class="s">&quot;hello&quot;</span><span class="p">,</span><span class="w">      </span><span class="n">hello_cmd</span><span class="p">,</span><span class="w">      </span><span class="s">&quot;Hello-World!!&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;h&quot;</span><span class="p">,</span><span class="w">        </span><span class="s">&quot;history&quot;</span><span class="p">,</span><span class="w">      </span><span class="s">&quot;display history commands&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_alias</span><span class="p">(</span><span class="s">&quot;ll&quot;</span><span class="p">,</span><span class="w">       </span><span class="s">&quot;ls -l&quot;</span><span class="p">,</span><span class="w">        </span><span class="s">&quot;long directory listing alias&quot;</span><span class="p">),</span>
+<span class="w">    </span><span class="n">c_end</span><span class="p">()</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -538,7 +536,7 @@ correct entry in the list. You will also notice another structure called
 description of each of the commands.</p>
 </section>
 <section id="understanding-the-cli-system">
-<h3><span class="section-number">3.9.3. </span>Understanding the CLI system<a class="headerlink" href="#understanding-the-cli-system" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">3.9.3. </span>Understanding the CLI system<a class="headerlink" href="#understanding-the-cli-system" title="Link to this heading">¶</a></h3>
 <p>The command line interface is defined as a fake directory tree with executables,
 directories and files. The user uses shell like standard commands to move about
 the directory and execute commands. The CLI is not a powerful as the
@@ -568,8 +566,9 @@ but a limit of CLI_MAX_BINS is defined in the cli.h header file.</p>
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">3. CLI library guide</a><ul>
 <li><a class="reference internal" href="#overview">3.1. Overview</a></li>
 <li><a class="reference internal" href="#mapping-commands">3.2. Mapping commands</a></li>
@@ -589,12 +588,17 @@ but a limit of CLI_MAX_BINS is defined in the cli.h header file.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="compiling.html"
-                        title="previous chapter"><span class="section-number">2. </span>Compiling the Sample Applications</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="cndpfwd.html"
-                        title="next chapter"><span class="section-number">4. </span>CNDPFWD Sample Application</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="compiling.html"
+                          title="previous chapter"><span class="section-number">2. </span>Compiling the Sample Applications</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="cndpfwd.html"
+                          title="next chapter"><span class="section-number">4. </span>CNDPFWD Sample Application</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -606,12 +610,12 @@ but a limit of CLI_MAX_BINS is defined in the cli.h header file.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -634,7 +638,7 @@ but a limit of CLI_MAX_BINS is defined in the cli.h header file.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

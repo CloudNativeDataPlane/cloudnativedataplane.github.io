@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>1. Introduction &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -78,13 +76,13 @@
           <div class="body" role="main">
             
   <section id="introduction">
-<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">¶</a></h1>
 <p>This document is a user guide for the <code class="docutils literal notranslate"><span class="pre">test-cne</span></code> test application shipped as part of CNDP.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">test-cne</span></code> application is used to test the CNDP libraries. It’s essentially a functional test
 harness.</p>
 </section>
 <section id="running-the-application">
-<h1><span class="section-number">2. </span>Running the Application<a class="headerlink" href="#running-the-application" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">2. </span>Running the Application<a class="headerlink" href="#running-the-application" title="Link to this heading">¶</a></h1>
 <p>After <a class="reference internal" href="../linux_gsg/linux_gsg.html#building-cndp"><span class="std std-ref">building CNDP</span></a>, run <code class="docutils literal notranslate"><span class="pre">test-cne</span></code> with the following command.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo ./builddir/test/testcne/test-cne</span>
 </pre></div>
@@ -128,7 +126,7 @@ harness.</p>
 </pre></div>
 </div>
 <section id="testcne-command-line-options">
-<h2><span class="section-number">2.1. </span>Testcne Command-line Options<a class="headerlink" href="#testcne-command-line-options" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">2.1. </span>Testcne Command-line Options<a class="headerlink" href="#testcne-command-line-options" title="Link to this heading">¶</a></h2>
 <p>Use ‘chelp -a’ to list all commands</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">*** All executable commands in path ***</span>
 <span class="go">/:</span>
@@ -198,8 +196,9 @@ harness.</p>
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">1. Introduction</a></li>
 <li><a class="reference internal" href="#running-the-application">2. Running the Application</a><ul>
 <li><a class="reference internal" href="#testcne-command-line-options">2.1. Testcne Command-line Options</a></li>
@@ -207,9 +206,12 @@ harness.</p>
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="index.html"
-                        title="previous chapter">Testcne Application User Guide</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="index.html"
+                          title="previous chapter">Testcne Application User Guide</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -221,12 +223,12 @@ harness.</p>
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -246,7 +248,7 @@ harness.</p>
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>

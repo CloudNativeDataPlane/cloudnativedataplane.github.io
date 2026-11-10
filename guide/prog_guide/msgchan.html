@@ -1,15 +1,14 @@
-
 <!DOCTYPE html>
 
-<html>
+<html lang="en" data-content_root="../">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>5. MsgChan Library &#8212; Cloud Native Data Plane Latest documentation</title>
     
-    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../static/classic.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../static/classic.css?v=514cf933" />
     <link rel="stylesheet" type="text/css" href="../static/css/custom.css" />
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link href="/assets/css/styles.css" rel="stylesheet" type="text/css" />
@@ -18,10 +17,9 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 
     
-    <script id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
-    <script src="../static/jquery.js"></script>
-    <script src="../static/underscore.js"></script>
-    <script src="../static/doctools.js"></script>
+    <script src="../static/documentation_options.js?v=4222aa8f"></script>
+    <script src="../static/doctools.js?v=888ff710"></script>
+    <script src="../static/sphinx_highlight.js?v=dc90522c"></script>
     
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -82,7 +80,7 @@
           <div class="body" role="main">
             
   <section id="msgchan-library">
-<span id="id1"></span><h1><span class="section-number">5. </span>MsgChan Library<a class="headerlink" href="#msgchan-library" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1><span class="section-number">5. </span>MsgChan Library<a class="headerlink" href="#msgchan-library" title="Link to this heading">¶</a></h1>
 <p>The msgchan library allows the user to create a pipe like message channel in user space using the
 lockless rings. The user can send and receive messages between different threads and between other
 languages. One goal is to have a Go binding to allow for passing messages between Go and CNDP.</p>
@@ -103,7 +101,7 @@ languages/threads.</p>
 <li><p>Handling the connections between multiple threads is managed within the msgchan code and not requiring the user to manage.</p></li>
 </ul>
 <section id="use-cases">
-<h2><span class="section-number">5.1. </span>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.1. </span>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">¶</a></h2>
 <p>Use cases for the MsgChan library include:</p>
 <blockquote>
 <div><ul class="simple">
@@ -113,7 +111,7 @@ languages/threads.</p>
 </div></blockquote>
 </section>
 <section id="anatomy-of-a-msgchan">
-<h2><span class="section-number">5.2. </span>Anatomy of a MsgChan<a class="headerlink" href="#anatomy-of-a-msgchan" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">5.2. </span>Anatomy of a MsgChan<a class="headerlink" href="#anatomy-of-a-msgchan" title="Link to this heading">¶</a></h2>
 <p>Creating a MsgChan is a simple call to mc_create(const char *name, int size, uint32_t flags).
 Giving the name of the channel to create or attach to as a child msgchan. The parent msgchan
 is the first one to be created and any other attempts to create the message channel will create
@@ -144,8 +142,9 @@ then single-producer and single consumer (RING_F_SP_ENQ/RING_F_SP_DEQ) can be pa
             <p class="logo"><a href="../index.html">
               <img class="logo" src="../static/CNDP_logo_small.png" alt="Logo"/>
             </a></p>
-  <h3><a href="../index.html">Table of Contents</a></h3>
-  <ul>
+  <div>
+    <h3><a href="../index.html">Table of Contents</a></h3>
+    <ul>
 <li><a class="reference internal" href="#">5. MsgChan Library</a><ul>
 <li><a class="reference internal" href="#use-cases">5.1. Use Cases</a></li>
 <li><a class="reference internal" href="#anatomy-of-a-msgchan">5.2. Anatomy of a MsgChan</a></li>
@@ -153,12 +152,17 @@ then single-producer and single consumer (RING_F_SP_ENQ/RING_F_SP_DEQ) can be pa
 </li>
 </ul>
 
-  <h4>Previous topic</h4>
-  <p class="topless"><a href="mempool_lib.html"
-                        title="previous chapter"><span class="section-number">4. </span>Mempool Library</a></p>
-  <h4>Next topic</h4>
-  <p class="topless"><a href="pktmbuf_lib.html"
-                        title="next chapter"><span class="section-number">6. </span>Pktmbuf Library</a></p>
+  </div>
+  <div>
+    <h4>Previous topic</h4>
+    <p class="topless"><a href="mempool_lib.html"
+                          title="previous chapter"><span class="section-number">4. </span>Mempool Library</a></p>
+  </div>
+  <div>
+    <h4>Next topic</h4>
+    <p class="topless"><a href="pktmbuf_lib.html"
+                          title="next chapter"><span class="section-number">6. </span>Pktmbuf Library</a></p>
+  </div>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -170,12 +174,12 @@ then single-producer and single consumer (RING_F_SP_ENQ/RING_F_SP_DEQ) can be pa
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
     <form class="search" action="../search.html" method="get">
-      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
         </div>
       </div>
       <div class="clearer"></div>
@@ -198,7 +202,7 @@ then single-producer and single consumer (RING_F_SP_ENQ/RING_F_SP_DEQ) can be pa
       </ul>
     </div>
     <div class="footer" role="contentinfo">
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 3.5.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 7.2.6.
     </div>
   </body>
 </html>
